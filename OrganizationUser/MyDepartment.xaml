@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="OrganizationUser.MyDepartment"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OrganizationUser"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:OrganizationUser.Model"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemBaseLowColor}">
+
+    <Grid>
+        <GridView Name="MyDepartmentGridView" ItemsSource="{x:Bind DepartPeoples,Mode=OneWay}" Margin="10" SelectionMode="None">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="data:People">
+                    <Grid Name="MyDepartmentGrid" Background="{ThemeResource SystemRevealAltMediumHighColor}" Width="200" Height="210" Margin="10" PointerEntered="MyDepartmentGrid_PointerEntered" PointerExited="MyDepartmentGrid_PointerExited">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Rectangle Fill="Transparent" Grid.Row="0" Grid.RowSpan="4" Tapped="MyDepartmentGrid_Tapped" Canvas.ZIndex="20"></Rectangle>
+                        <Image Canvas.ZIndex="10" Source="{x:Bind ImageUrl,Mode=OneWay}" Width="100" Height="100" Margin="0,10,0,0"></Image>
+                        <Grid  Grid.Row="1" Canvas.ZIndex="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Black" Text="{x:Bind Fullname,Mode=OneWay}" Margin="10,0,10,0" HorizontalAlignment="Left"></TextBlock>
+                            <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,0,0,0"></Ellipse>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,0,10,0"></TextBlock>
+                        </Grid>
+                        <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Grid.Row="2" FontSize="14" Text="{x:Bind Email_id,Mode=OneWay}" Margin="7,0,7,10"></TextBlock>
+                        <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DepartmentText" Grid.Row="3" FontSize="16" Text="{x:Bind Depart.Name,Mode=OneWay}" Margin="7,0,7,0"></TextBlock>
+                        <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DesignationText" Grid.Row="4" FontSize="14" Text="{x:Bind Design.Name,Mode=OneWay}" Margin="7,0,7,7"></TextBlock>
+                        <StackPanel Name="TaskStackPanel" Orientation="Horizontal" Grid.Row="3" Grid.RowSpan="2" Visibility="Collapsed" Background="{ThemeResource SystemChromeMediumColor}">
+                            <Button Name="CallButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE13A;" Margin="10,10,0,10"></Button>
+                            <Button Name="VideoButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE714;" Margin="10,10,0,10"></Button>
+                            <Button Name="MessageButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE134;" Margin="10,10,0,10"></Button>
+                            <Button Name="InfoButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE171;" Margin="10,10,0,10" Click="InfoButton_Click"></Button>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
+</Page>
