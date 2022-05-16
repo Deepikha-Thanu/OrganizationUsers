@@ -8165,11 +8165,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\deepikha-pt5222\\source\\repos\\OrganizationUser\\OrganizationUser\\OrganizationUser.csproj",
+      "projectUniqueName": "D:\\Organization\\OrganizationUser\\OrganizationUser\\OrganizationUser.csproj",
       "projectName": "OrganizationUser",
-      "projectPath": "C:\\Users\\deepikha-pt5222\\source\\repos\\OrganizationUser\\OrganizationUser\\OrganizationUser.csproj",
+      "projectPath": "D:\\Organization\\OrganizationUser\\OrganizationUser\\OrganizationUser.csproj",
       "packagesPath": "C:\\Users\\deepikha-pt5222\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\deepikha-pt5222\\source\\repos\\OrganizationUser\\OrganizationUser\\obj\\",
+      "outputPath": "D:\\Organization\\OrganizationUser\\OrganizationUser\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

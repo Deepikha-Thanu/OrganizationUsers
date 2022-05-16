@@ -64,6 +64,7 @@ namespace OrganizationUser
             //StatusCheck();
             EventManager.EmployeeSearched += EventManager_EmployeeSearched;
             Window.Current.Closed += Current_Closed;
+            //StatusCheck();
         }
 
         private void Current_Closed(object sender, Windows.UI.Core.CoreWindowEventArgs e)
@@ -80,20 +81,22 @@ namespace OrganizationUser
 
         public void StatusCheck()
         {
-            //for(int i=0;i<Peoples.Count;i++)
+
+
+            for (int i = 0; i < Peoples.Count; i++)
+            {
+                GridViewItem gridViewItem = AllUserGridView.ContainerFromIndex(i) as GridViewItem;
+                Grid grid = gridViewItem.ContentTemplateRoot as Grid;
+                TextBlock tb = grid.FindName("StatusText") as TextBlock;
+                tb.Foreground = new SolidColorBrush(Colors.Orange);
+            }
+            //for (int i = 0; i < Peoples.Count; i++)
             //{
-            //    GridViewItem gridViewItem=AllUserGridView.ContainerFromIndex(2) as GridViewItem;
-            //    Grid grid = gridViewItem.ContentTemplate.LoadContent() as Grid;
-            //    TextBlock tb=grid.FindName("StatusText") as TextBlock;
-            //    tb.Foreground=new SolidColorBrush(Colors.Orange);
-            //}
-            //for(int i=0;i<Peoples.Count;i++)
-            //{
-            //    if(Peoples[i].CheckinStatus_Text == "Away")
-            //    { 
+            //    if (Peoples[i].CheckinStatus_Text == "Away")
+            //    {
             //        GridViewItem AlluserGridviewItem = AllUserGridView.ContainerFromIndex(i) as GridViewItem;
 
-            //        TextBlock StatusTextBlock= AlluserGridviewItem.FindName("StatusText") as TextBlock;
+            //        TextBlock StatusTextBlock = AlluserGridviewItem.FindName("StatusText") as TextBlock;
             //        StatusTextBlock.Foreground = new SolidColorBrush(Colors.Orange);
             //    }
 
@@ -122,37 +125,37 @@ namespace OrganizationUser
             }
         }
 
-        private void AllUserDataGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            //int index = AllUserGridView.SelectedIndex;
-            //int i = 0;
-            //foreach(var popup in FindVisualChildren<Popup>(AllUserGridView))
-            //{
-            //    if(index==i)
-            //    { 
-            //            popup.IsOpen = true;
-            //    }
-            //    i++;
-            //}
+        //private void AllUserDataGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
+        //{
+        //    //int index = AllUserGridView.SelectedIndex;
+        //    //int i = 0;
+        //    //foreach(var popup in FindVisualChildren<Popup>(AllUserGridView))
+        //    //{
+        //    //    if(index==i)
+        //    //    { 
+        //    //            popup.IsOpen = true;
+        //    //    }
+        //    //    i++;
+        //    //}
 
-            //GridViewItem gridViewItem = (GridViewItem)AllUserGridView.ItemContainerGenerator.ContainerFromItem(AllUserGridView.SelectedItem);
-            //ContentPresenter myContent = FindVisualChild<ContentPresenter>(gridViewItem);
-            //DataTemplate myDataTemplate=myContent.ContentTemplate as DataTemplate;
-            //Popup childPopup = (Popup)myDataTemplate.FindName("TaskPopup", myContent);
+        //    //GridViewItem gridViewItem = (GridViewItem)AllUserGridView.ItemContainerGenerator.ContainerFromItem(AllUserGridView.SelectedItem);
+        //    //ContentPresenter myContent = FindVisualChild<ContentPresenter>(gridViewItem);
+        //    //DataTemplate myDataTemplate=myContent.ContentTemplate as DataTemplate;
+        //    //Popup childPopup = (Popup)myDataTemplate.FindName("TaskPopup", myContent);
 
-            //GridViewItem gridViewItem= (GridViewItem)AllUserGridView.ContainerFromIndex(AllUserGridView.SelectedIndex);
-            //Grid childGrid = (Grid)gridViewItem.ContentTemplateRoot;
-            //Popup childPopup = (Popup)childGrid.FindName("TaskPopup");
-            //childPopup.IsOpen = true;
+        //    //GridViewItem gridViewItem= (GridViewItem)AllUserGridView.ContainerFromIndex(AllUserGridView.SelectedIndex);
+        //    //Grid childGrid = (Grid)gridViewItem.ContentTemplateRoot;
+        //    //Popup childPopup = (Popup)childGrid.FindName("TaskPopup");
+        //    //childPopup.IsOpen = true;
 
-            Panel root = sender as Panel;
-            StackPanel ChildPopup = (StackPanel)root.FindName("TaskStackPanel");
-            TextBlock departTextblock = (TextBlock)root.FindName("DepartmentText");
-            TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
-            departTextblock.Visibility = Visibility.Collapsed;
-            designTextblock.Visibility = Visibility.Collapsed;
-            ChildPopup.Visibility = Visibility.Visible;
-        }
+        //    Panel root = sender as Panel;
+        //    StackPanel ChildPopup = (StackPanel)root.FindName("TaskStackPanel");
+        //    TextBlock departTextblock = (TextBlock)root.FindName("DepartmentText");
+        //    TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
+        //    departTextblock.Visibility = Visibility.Collapsed;
+        //    designTextblock.Visibility = Visibility.Collapsed;
+        //    ChildPopup.Visibility = Visibility.Visible;
+        //}
     //    private childItem FindVisualChild<childItem>(DependencyObject obj)
     //where childItem : DependencyObject
     //    {
@@ -172,33 +175,33 @@ namespace OrganizationUser
     //        }
     //        return null;
     //    }
-        private void AllUserDataGrid_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            //int index = AllUserGridView.SelectedIndex;
-            //int i = 0;
-            //foreach (var popup in FindVisualChildren<Popup>(AllUserGridView))
-            //{
-            //    if (index == i)
-            //    {
-            //            popup.IsOpen = false;
+        //private void AllUserDataGrid_PointerExited(object sender, PointerRoutedEventArgs e)
+        //{
+        //    //int index = AllUserGridView.SelectedIndex;
+        //    //int i = 0;
+        //    //foreach (var popup in FindVisualChildren<Popup>(AllUserGridView))
+        //    //{
+        //    //    if (index == i)
+        //    //    {
+        //    //            popup.IsOpen = false;
 
-            //    }
-            //    i++;
-            //}
+        //    //    }
+        //    //    i++;
+        //    //}
 
-            //GridViewItem gridViewItem = (GridViewItem)AllUserGridView.ContainerFromIndex(AllUserGridView.SelectedIndex);
-            //Grid childGrid = (Grid)gridViewItem.ContentTemplateRoot;
-            //Popup childPopup = (Popup)childGrid.FindName("TaskPopup");
-            //childPopup.IsOpen = false;
+        //    //GridViewItem gridViewItem = (GridViewItem)AllUserGridView.ContainerFromIndex(AllUserGridView.SelectedIndex);
+        //    //Grid childGrid = (Grid)gridViewItem.ContentTemplateRoot;
+        //    //Popup childPopup = (Popup)childGrid.FindName("TaskPopup");
+        //    //childPopup.IsOpen = false;
 
-            Panel root = sender as Panel;
-            StackPanel ChildPopup = (StackPanel)root.FindName("TaskStackPanel");
-            TextBlock departTextblock = (TextBlock)root.FindName("DepartmentText");
-            TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
-            departTextblock.Visibility = Visibility.Visible;
-            designTextblock.Visibility = Visibility.Visible;
-            ChildPopup.Visibility = Visibility.Collapsed;
-        }
+        //    Panel root = sender as Panel;
+        //    StackPanel ChildPopup = (StackPanel)root.FindName("TaskStackPanel");
+        //    TextBlock departTextblock = (TextBlock)root.FindName("DepartmentText");
+        //    TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
+        //    departTextblock.Visibility = Visibility.Visible;
+        //    designTextblock.Visibility = Visibility.Visible;
+        //    ChildPopup.Visibility = Visibility.Collapsed;
+        //}
 
         //private void AllUserGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{
@@ -224,20 +227,20 @@ namespace OrganizationUser
         //    //}
         //}
 
-        private void InfoButton_Click(object sender, RoutedEventArgs e)
-        {
-            People chosen = (sender as FrameworkElement).DataContext as People;
-            //People chosen=(People)AllUserGridView.SelectedItem;
-           EventManager.OnEmployeeClicked(chosen);
-        }
+        //private void InfoButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    People chosen = (sender as FrameworkElement).DataContext as People;
+        //    //People chosen=(People)AllUserGridView.SelectedItem;
+        //   EventManager.OnEmployeeClicked(chosen);
+        //}
 
-        private void AllUserDataGrid_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            People chosen= (sender as FrameworkElement).DataContext as People;
-            EventManager.OnEmployeeClicked(chosen);
-            //subscription(chosen);
-            //allUser.EmployeeClicked?.Invoke(null,chosen);
-        }
+        //private void AllUserDataGrid_Tapped(object sender, TappedRoutedEventArgs e)
+        //{
+        //    People chosen= (sender as FrameworkElement).DataContext as People;
+        //    EventManager.OnEmployeeClicked(chosen);
+        //    //subscription(chosen);
+        //    //allUser.EmployeeClicked?.Invoke(null,chosen);
+        //}
 
        
     }

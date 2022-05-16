@@ -94,39 +94,39 @@ namespace OrganizationUser
             return toReturn;
         }
 
-        private void MyDepartmentGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            Panel root = sender as Panel;
-            StackPanel ChildPopup = (StackPanel)root.FindName("TaskStackPanel");
-            TextBlock departTextblock = (TextBlock)root.FindName("DepartmentText");
-            TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
-            departTextblock.Visibility = Visibility.Collapsed;
-            designTextblock.Visibility = Visibility.Collapsed;
-            ChildPopup.Visibility = Visibility.Visible;
-        }
+        //private void MyDepartmentGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
+        //{
+        //    Panel root = sender as Panel;
+        //    StackPanel ChildPopup = (StackPanel)root.FindName("TaskStackPanel");
+        //    TextBlock departTextblock = (TextBlock)root.FindName("DepartmentText");
+        //    TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
+        //    departTextblock.Visibility = Visibility.Collapsed;
+        //    designTextblock.Visibility = Visibility.Collapsed;
+        //    ChildPopup.Visibility = Visibility.Visible;
+        //}
 
-        private void MyDepartmentGrid_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            Panel root = sender as Panel;
-            StackPanel ChildPopup = (StackPanel)root.FindName("TaskStackPanel");
-            TextBlock departTextblock = (TextBlock)root.FindName("DepartmentText");
-            TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
-            departTextblock.Visibility = Visibility.Visible;
-            designTextblock.Visibility = Visibility.Visible;
-            ChildPopup.Visibility = Visibility.Collapsed;
-        }
+        //private void MyDepartmentGrid_PointerExited(object sender, PointerRoutedEventArgs e)
+        //{
+        //    Panel root = sender as Panel;
+        //    StackPanel ChildPopup = (StackPanel)root.FindName("TaskStackPanel");
+        //    TextBlock departTextblock = (TextBlock)root.FindName("DepartmentText");
+        //    TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
+        //    departTextblock.Visibility = Visibility.Visible;
+        //    designTextblock.Visibility = Visibility.Visible;
+        //    ChildPopup.Visibility = Visibility.Collapsed;
+        //}
 
-        private void MyDepartmentGrid_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            People chosen = (sender as FrameworkElement).DataContext as People;
-            EventManager.OnEmployeeClicked(chosen);
-        }
+        //private void MyDepartmentGrid_Tapped(object sender, TappedRoutedEventArgs e)
+        //{
+        //    People chosen = (sender as FrameworkElement).DataContext as People;
+        //    EventManager.OnEmployeeClicked(chosen);
+        //}
 
-        private void InfoButton_Click(object sender, RoutedEventArgs e)
-        {
-            People chosen = (sender as FrameworkElement).DataContext as People;
-            EventManager.OnEmployeeClicked(chosen);
-        }
+        //private void InfoButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    People chosen = (sender as FrameworkElement).DataContext as People;
+        //    EventManager.OnEmployeeClicked(chosen);
+        //}
 
     }
 }
