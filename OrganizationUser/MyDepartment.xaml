@@ -8,8 +8,8 @@
     xmlns:data="using:OrganizationUser.Model"
     mc:Ignorable="d"
     Background="{ThemeResource SystemBaseLowColor}">
-
-    <Grid>
+    
+    <Grid Margin="50,20,50,20">
         <GridView Name="MyDepartmentGridView" ItemsSource="{x:Bind DepartPeoples,Mode=OneWay}" Margin="10" SelectionMode="None">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="data:People">

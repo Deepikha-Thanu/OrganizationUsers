@@ -5,12 +5,11 @@
     xmlns:local="using:OrganizationUser"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:DataTriggers="using:OrganizationUser"
     mc:Ignorable="d"
     d:DesignHeight="210"
     d:DesignWidth="200">
 
-    <Grid x:ConnectionId='2' Name="AllUserDataGrid" Background="{ThemeResource SystemRevealAltMediumHighColor}" Width="200" Height="210" Margin="10" FocusVisualMargin="0" FocusVisualPrimaryBrush="Transparent"                                                                                              >
+    <Grid x:ConnectionId='2' Name="AllUserDataGrid" Background="{ThemeResource SystemRevealAltMediumHighColor}" Width="200" Height="210" Margin="20" FocusVisualMargin="0" FocusVisualPrimaryBrush="Transparent"                                                                                              >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -22,7 +21,7 @@
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <DataTriggers:StatusComparisonTrigger x:ConnectionId='4'                                                TriggerValue="Away"></DataTriggers:StatusComparisonTrigger>
+                        <local:StatusComparisonTrigger x:ConnectionId='4'                                                TriggerValue="Away"></local:StatusComparisonTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
@@ -32,7 +31,7 @@
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <DataTriggers:StatusComparisonTrigger x:ConnectionId='3'                                                TriggerValue="Office in"></DataTriggers:StatusComparisonTrigger>
+                        <local:StatusComparisonTrigger x:ConnectionId='3'                                                TriggerValue="Office in"></local:StatusComparisonTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>

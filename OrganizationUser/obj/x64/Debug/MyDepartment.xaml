@@ -8,8 +8,8 @@
     xmlns:data="using:OrganizationUser.Model"
     mc:Ignorable="d"
     Background="{ThemeResource SystemBaseLowColor}">
-
-    <Grid>
+    
+    <Grid Margin="50,20,50,20">
         <GridView x:ConnectionId='2' Name="MyDepartmentGridView"                                                  Margin="10" SelectionMode="None">
             <GridView.ItemTemplate>
                 <DataTemplate                         >

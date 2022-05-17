@@ -8,7 +8,6 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
-        
         <Style TargetType="ListBoxItem" x:Key="ListItemStyle">
             <Setter Property="Width" Value="200"></Setter>
             <Setter Property="Height" Value="50"></Setter>
@@ -29,10 +28,6 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="NarrowState">
@@ -51,16 +46,39 @@
                         <Setter Target="SearchBar.Visibility" Value="Visible"></Setter>
                     </VisualState.Setters>
                 </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text}" TriggerValue="Away"></local:StatusComparisonTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text}" TriggerValue="Office in"></local:StatusComparisonTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
-
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-           
+            <!--<VisualStateManager.VisualStateGroups>
+                <VisualStateGroup>
+                    
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>-->
             <RelativePanel BorderThickness="0,0,0,2" Background="{ThemeResource AppBarBackgroundThemeBrush}">
                 <TextBlock Name="HeaderIcon" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Text="&#xE8D4;" FontSize="30" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="10"></TextBlock>
                 <TextBlock Name="HeaderText" RelativePanel.RightOf="HeaderIcon" Text="People" FontSize="30" FontWeight="Bold" Margin="10" VerticalAlignment="Center"></TextBlock>
@@ -74,14 +92,16 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                
                 <Frame Name="PeopleFrame" Grid.Column="0"></Frame>
                 
-                <Grid Name="EmployeeViewGrid" Grid.Column="1" HorizontalAlignment="Right" Width="500" Visibility="Collapsed">
+                <Grid Name="EmployeeViewGrid" Grid.Column="1" HorizontalAlignment="Right" Width="500">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
+                    
                     <Button Grid.Row="0" Canvas.ZIndex="20" Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Top"  FontFamily="Segoe MDL2 Assets" Content="&#xE106;" FontSize="16" Click="CloseButton_Click"></Button>
                     <!--<Button Name="CloseButton" FontFamily="Segoe MDL2 Assets" Content="&#xE10A;" FontSize="16" Click="CloseButton_Click"></Button>-->
                     <Grid Canvas.ZIndex="10" Grid.Row="0" Background="{ThemeResource SystemRevealAltMediumHighColor}">
@@ -90,6 +110,7 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
+                        
                         <Image Name="EmployeeImage" Source="{x:Bind EmployeeToShow.ImageUrl,Mode=OneWay}" Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
                         <StackPanel Grid.Column="1">
                             <Grid>

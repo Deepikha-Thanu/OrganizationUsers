@@ -107,22 +107,22 @@ namespace OrganizationUser
         {
             ObservableCollection<People> original=EmployeeManager.getEmployees();
             data=data.ToLower();
-            if (data != "")
-            {
-                ObservableCollection<People> temp = new ObservableCollection<People>();
-                for (int i = 0; i < original.Count; i++)
+                if (data != "")
                 {
-                    if (original[i].Fullname.StartsWith(data,StringComparison.OrdinalIgnoreCase))
+                    ObservableCollection<People> temp = new ObservableCollection<People>();
+                    for (int i = 0; i < original.Count; i++)
                     {
-                        temp.Add(original[i]);
+                        if (original[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
+                        {
+                            temp.Add(original[i]);
+                        }
                     }
+                    Peoples = temp;
                 }
-                Peoples = temp;
-            }
-            else
-            {
-                Peoples= EmployeeManager.getEmployees();
-            }
+                else
+                {
+                    Peoples = EmployeeManager.getEmployees();
+                }
         }
 
         //private void AllUserDataGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
