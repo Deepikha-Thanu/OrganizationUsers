@@ -5,6 +5,7 @@
     xmlns:local="using:OrganizationUser"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:DataTriggers="using:OrganizationUser"
     mc:Ignorable="d"
     d:DesignHeight="210"
     d:DesignWidth="200">
@@ -17,6 +18,28 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <DataTriggers:StatusComparisonTrigger DataValue="{x:Bind People.CheckinStatus_Text}" TriggerValue="Away"></DataTriggers:StatusComparisonTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <DataTriggers:StatusComparisonTrigger DataValue="{x:Bind People.CheckinStatus_Text}" TriggerValue="Office in"></DataTriggers:StatusComparisonTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Rectangle Fill="Transparent" Grid.RowSpan="4" Canvas.ZIndex="0" Tapped="AllUserDataGrid_Tapped"></Rectangle>
         <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Canvas.ZIndex="10" Source="{x:Bind People.ImageUrl,Mode=OneWay}" Width="100" Height="100" Margin="0,10,0,0" Tapped="AllUserDataGrid_Tapped"></Image>
         <Grid  Grid.Row="1" Canvas.ZIndex="10" Tapped="AllUserDataGrid_Tapped">

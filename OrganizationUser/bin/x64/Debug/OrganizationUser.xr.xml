@@ -208,6 +208,10 @@
     <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="OrganizationUser.StatusComparisonTrigger">
+      <RootProperty Name="DataValue" />
+      <RootProperty Name="TriggerValue" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Fill" />
       <RootEvent Name="Tapped" />
