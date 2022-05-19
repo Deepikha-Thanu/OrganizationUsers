@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
@@ -28,6 +29,9 @@ namespace OrganizationUser
     public sealed partial class AllUser : Page,INotifyPropertyChanged
     {
         ObservableCollection<People> _Peoples;
+        Dictionary<int, People> RemovedPosPeople = new Dictionary<int, People>();
+        Dictionary<int,string> PeoplePosition =new Dictionary<int, string>();
+        int j = 0;
         //EventManager _AllUserNotifyInstance;
         //public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
         //public event EmployeeDisplayEventHandler EmployeeClicked;
@@ -60,11 +64,17 @@ namespace OrganizationUser
         {
             this.InitializeComponent();
             Peoples=EmployeeManager.getEmployees();
-            //NotificationManager.NotifyMainPage(AllUserNotifyInstance);
-            //StatusCheck();
             EventManager.EmployeeSearched += EventManager_EmployeeSearched;
             Window.Current.Closed += Current_Closed;
-            //StatusCheck();
+            DictionaryInitialise();
+            
+        }
+        public void DictionaryInitialise()
+        {
+            for(int i=0;i<Peoples.Count;i++)
+            {
+                PeoplePosition.Add(i, Peoples[i].Fullname);
+            }
         }
 
         private void Current_Closed(object sender, Windows.UI.Core.CoreWindowEventArgs e)
@@ -79,51 +89,83 @@ namespace OrganizationUser
         //}
 
 
-        public void StatusCheck()
-        {
-
-
-            for (int i = 0; i < Peoples.Count; i++)
-            {
-                GridViewItem gridViewItem = AllUserGridView.ContainerFromIndex(i) as GridViewItem;
-                Grid grid = gridViewItem.ContentTemplateRoot as Grid;
-                TextBlock tb = grid.FindName("StatusText") as TextBlock;
-                tb.Foreground = new SolidColorBrush(Colors.Orange);
-            }
-            //for (int i = 0; i < Peoples.Count; i++)
-            //{
-            //    if (Peoples[i].CheckinStatus_Text == "Away")
-            //    {
-            //        GridViewItem AlluserGridviewItem = AllUserGridView.ContainerFromIndex(i) as GridViewItem;
-
-            //        TextBlock StatusTextBlock = AlluserGridviewItem.FindName("StatusText") as TextBlock;
-            //        StatusTextBlock.Foreground = new SolidColorBrush(Colors.Orange);
-            //    }
-
-            //}
-
-        }
         private void EventManager_EmployeeSearched(object sender, string data)
         {
-            ObservableCollection<People> original=EmployeeManager.getEmployees();
-            data=data.ToLower();
-                if (data != "")
+            
+            int Length=Peoples.Count;
+            //if(!String.IsNullOrWhiteSpace(data))
+            //{
+            //    if (data.Length == 1)
+            //    {
+            //        Peoples.Clear();
+            //        for (int i = 0; i < original.Count; i++)
+            //        {
+            //            if (original[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
+            //            {
+            //                Peoples.Add(original[i]);
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        for (int i = 0; i < Peoples.Count; i++)
+            //        {
+            //            if (!original[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
+            //            {
+            //                Peoples.RemoveAt(i);
+            //            }
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    for (int i = 0; i < original.Count; i++)
+            //    {
+            //        if (Peoples[i].Fullname != original[i].Fullname)
+            //        {
+            //            Peoples.Add(original[i]);
+            //        }
+            //    }
+            //}
+            List<People> Original = EmployeeManager.getEmployees().ToList<People>();
+            for (int i=0;i<Peoples.Count;i++)
+            {
+                if(!Peoples[i].Fullname.StartsWith(data,StringComparison.OrdinalIgnoreCase))
                 {
-                    ObservableCollection<People> temp = new ObservableCollection<People>();
-                    for (int i = 0; i < original.Count; i++)
+                    int pos = PeoplePosition.FirstOrDefault(x => x.Value == Peoples[i].Fullname).Key;
+                    if (!RemovedPosPeople.Keys.Contains(pos))
                     {
-                        if (original[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
-                        {
-                            temp.Add(original[i]);
-                        }
+                        RemovedPosPeople.Add(pos, Peoples[i]);
                     }
-                    Peoples = temp;
+                    Peoples.RemoveAt(i);
+                    i--;
                 }
-                else
-                {
-                    Peoples = EmployeeManager.getEmployees();
+                j++;
+            }
+            Length= EmployeeManager.getEmployees().Count;
+            for(int i=0;i< Length;i++)
+            {
+                if (RemovedPosPeople.ContainsKey(i))
+                 { 
+                    if (RemovedPosPeople[i].Fullname.StartsWith(data,StringComparison.OrdinalIgnoreCase))
+                    {
+                        int pos = RemovedPosPeople.FirstOrDefault(x => x.Value == RemovedPosPeople[i]).Key;
+                        //Peoples.Add(RemovedPosPeople[i]);
+                        if (pos <= RemovedPosPeople.Count)
+                        {
+                            Peoples.Insert(pos, RemovedPosPeople[i]);
+                        } 
+                        else
+                        {
+                            Peoples.Add(RemovedPosPeople[i]);
+                        }
+                        RemovedPosPeople.Remove(i);
+                    } 
                 }
+            }
         }
+
+
 
         //private void AllUserDataGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
         //{
@@ -156,25 +198,25 @@ namespace OrganizationUser
         //    designTextblock.Visibility = Visibility.Collapsed;
         //    ChildPopup.Visibility = Visibility.Visible;
         //}
-    //    private childItem FindVisualChild<childItem>(DependencyObject obj)
-    //where childItem : DependencyObject
-    //    {
-    //        for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
-    //        {
-    //            DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-    //            if (child != null && child is childItem)
-    //            {
-    //                return (childItem)child;
-    //            }
-    //            else
-    //            {
-    //                childItem childOfChild = FindVisualChild<childItem>(child);
-    //                if (childOfChild != null)
-    //                    return childOfChild;
-    //            }
-    //        }
-    //        return null;
-    //    }
+        //    private childItem FindVisualChild<childItem>(DependencyObject obj)
+        //where childItem : DependencyObject
+        //    {
+        //        for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+        //        {
+        //            DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+        //            if (child != null && child is childItem)
+        //            {
+        //                return (childItem)child;
+        //            }
+        //            else
+        //            {
+        //                childItem childOfChild = FindVisualChild<childItem>(child);
+        //                if (childOfChild != null)
+        //                    return childOfChild;
+        //            }
+        //        }
+        //        return null;
+        //    }
         //private void AllUserDataGrid_PointerExited(object sender, PointerRoutedEventArgs e)
         //{
         //    //int index = AllUserGridView.SelectedIndex;
@@ -242,6 +284,6 @@ namespace OrganizationUser
         //    //allUser.EmployeeClicked?.Invoke(null,chosen);
         //}
 
-       
+
     }
 }

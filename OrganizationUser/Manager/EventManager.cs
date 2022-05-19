@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace OrganizationUser
 {
@@ -17,9 +18,9 @@ namespace OrganizationUser
         {
             EmployeeClicked?.Invoke(null, selectedEmp);
         }
-        public static void OnEmployeeSearched(string toSearch)
+        public static void OnEmployeeSearched(string data)
         {
-            EmployeeSearched?.Invoke(null,toSearch);
+            EmployeeSearched?.Invoke(null,data);
         }
     }
 }
