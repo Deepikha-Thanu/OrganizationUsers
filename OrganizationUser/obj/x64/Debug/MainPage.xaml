@@ -26,11 +26,174 @@
             <Setter Property="Foreground" Value="Gray"></Setter>
             <Setter Property="Margin" Value="20,10,0,0"></Setter>
         </Style>
+        <Style x:Key="TextBoxStyle1" TargetType="TextBox">
+            <Setter Property="Foreground" Value="{ThemeResource TextControlForeground}"/>
+            <Setter Property="Background" Value="{ThemeResource TextControlBackground}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource TextControlBorderBrush}"/>
+            <Setter Property="SelectionHighlightColor" Value="{ThemeResource TextControlSelectionHighlightColor}"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource TextControlBorderThemeThickness}"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollMode" Value="Auto"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False"/>
+            <Setter Property="Padding" Value="{ThemeResource TextControlThemePadding}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="{ThemeResource IsApplicationFocusVisualKindReveal}"/>
+            <Setter Property="ContextFlyout" Value="{StaticResource TextControlCommandBarContextFlyout}"/>
+            <Setter Property="SelectionFlyout" Value="{StaticResource TextControlCommandBarSelectionFlyout}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid>
+                            <Grid.Resources>
+                                <Style x:Name="DeleteButtonStyle" TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid x:Name="ButtonLayoutGrid" Background="{ThemeResource TextControlButtonBackground}" BorderBrush="{ThemeResource TextControlButtonBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup x:Name="CommonStates">
+                                                            <VisualState x:Name="Normal"/>
+                                                            <VisualState x:Name="PointerOver">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonLayoutGrid" Storyboard.TargetProperty="Background">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBackgroundPointerOver}"/>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonLayoutGrid" Storyboard.TargetProperty="BorderBrush">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBorderBrushPointerOver}"/>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GlyphElement" Storyboard.TargetProperty="Foreground">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonForegroundPointerOver}"/>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Pressed">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonLayoutGrid" Storyboard.TargetProperty="Background">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBackgroundPressed}"/>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonLayoutGrid" Storyboard.TargetProperty="BorderBrush">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBorderBrushPressed}"/>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GlyphElement" Storyboard.TargetProperty="Foreground">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonForegroundPressed}"/>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Disabled">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Duration="0" Storyboard.TargetName="ButtonLayoutGrid" To="0" Storyboard.TargetProperty="Opacity"/>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                    <TextBlock x:Name="GlyphElement" AutomationProperties.AccessibilityView="Raw" Foreground="{ThemeResource TextControlButtonForeground}" FontStyle="Normal" FontFamily="{ThemeResource SymbolThemeFontFamily}" FontSize="12" HorizontalAlignment="Center" Text="&#xE10A;" VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HeaderContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlHeaderForegroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBorderBrushDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlForegroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderTextContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding PlaceholderForeground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource TextControlPlaceholderForegroundDisabled}}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource AppBarBackgroundThemeBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderTextContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding PlaceholderForeground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource TextControlPlaceholderForegroundPointerOver}}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlForegroundPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Focused">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderTextContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding PlaceholderForeground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource TextControlPlaceholderForegroundFocused}}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource AppBarBackgroundThemeBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource AppBarBackgroundThemeBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource BackButtonForegroundThemeBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="RequestedTheme">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Light"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="ButtonStates">
+                                    <VisualState x:Name="ButtonVisible">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DeleteButton" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="ButtonCollapsed"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="HeaderContentPresenter" ContentTemplate="{TemplateBinding HeaderTemplate}" Grid.Column="0" Content="{TemplateBinding Header}" Grid.ColumnSpan="2" Foreground="{ThemeResource TextControlHeaderForeground}" FontWeight="Normal" Margin="{ThemeResource TextBoxTopHeaderMargin}" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed" x:DeferLoadStrategy="Lazy"/>
+                            <Border x:Name="BorderElement" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Grid.Column="0" Grid.ColumnSpan="2" Control.IsTemplateFocusTarget="True" MinWidth="{ThemeResource TextControlThemeMinWidth}" MinHeight="{ThemeResource TextControlThemeMinHeight}" Grid.RowSpan="1" Grid.Row="1"/>
+                            <ScrollViewer x:Name="ContentElement" AutomationProperties.AccessibilityView="Raw" Grid.Column="0" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" IsTabStop="False" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" Grid.Row="1" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="Disabled"/>
+                            <TextBlock x:Name="PlaceholderTextContentPresenter" Grid.Column="0" Grid.ColumnSpan="2" Foreground="{Binding PlaceholderForeground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource TextControlPlaceholderForeground}}" IsHitTestVisible="False" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" Grid.Row="1" TextAlignment="{TemplateBinding TextAlignment}" TextWrapping="{TemplateBinding TextWrapping}" Text="{TemplateBinding PlaceholderText}"/>
+                            <Button x:Name="DeleteButton" AutomationProperties.AccessibilityView="Raw" BorderThickness="{TemplateBinding BorderThickness}" Grid.Column="1" FontSize="{TemplateBinding FontSize}" IsTabStop="False" Margin="{ThemeResource HelperButtonThemePadding}" MinWidth="34" Grid.Row="1" Style="{StaticResource DeleteButtonStyle}" VerticalAlignment="Stretch" Visibility="Collapsed"/>
+                            <ContentPresenter x:Name="DescriptionPresenter" AutomationProperties.AccessibilityView="Raw" Grid.Column="0" Content="{TemplateBinding Description}" Grid.ColumnSpan="2" Foreground="{ThemeResource SystemControlDescriptionTextForegroundBrush}" Grid.Row="2" x:Load="False"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
     <Grid>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <VisualState x:ConnectionId='2' x:Name="NarrowState">
+                <!--<VisualState x:Name="NarrowState">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="400"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
@@ -38,17 +201,17 @@
                         <Setter Target="SearchBar.Visibility" Value="Collapsed"></Setter>
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState x:ConnectionId='3' x:Name="WideState">
+                <VisualState x:Name="WideState">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="900"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBar.Visibility" Value="Visible"></Setter>
                     </VisualState.Setters>
-                </VisualState>
+                </VisualState>-->
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger x:ConnectionId='5'                                                        TriggerValue="Away"></local:StatusComparisonTrigger>
+                        <local:StatusComparisonTrigger x:ConnectionId='28'                                                        TriggerValue="Away"></local:StatusComparisonTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
@@ -56,7 +219,7 @@
                 </VisualState>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger x:ConnectionId='4'                                                        TriggerValue="Office in"></local:StatusComparisonTrigger>
+                        <local:StatusComparisonTrigger x:ConnectionId='27'                                                        TriggerValue="Office in"></local:StatusComparisonTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
@@ -80,29 +243,29 @@
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>-->
             <RelativePanel BorderThickness="0,0,0,2" Background="{ThemeResource AppBarBackgroundThemeBrush}">
-                <TextBlock x:ConnectionId='38' Name="HeaderIcon" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Text="&#xE8D4;" FontSize="30" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="10"></TextBlock>
-                <TextBlock x:ConnectionId='39' Name="HeaderText" RelativePanel.RightOf="HeaderIcon" Text="People" FontSize="30" FontWeight="Bold" Margin="10" VerticalAlignment="Center"></TextBlock>
-                <StackPanel x:ConnectionId='40' Name="SearchBar" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel= "True" RelativePanel.AlignVerticalCenterWithPanel="True" BorderBrush="{ThemeResource TextBoxBorderThemeBrush}" BorderThickness="2"> 
-                    <Button x:ConnectionId='41' Name="SearchIcon" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE1A3;" Background="Transparent"  RelativePanel.RightOf="SearchBox" RelativePanel.AlignVerticalCenterWithPanel="True"></Button>
-                    <TextBox x:ConnectionId='42' Name="SearchBox" Width="300" PlaceholderText="Search the name" BorderBrush="Transparent"                                    />
+                <TextBlock x:ConnectionId='61' Name="HeaderIcon" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Text="&#xE8D4;" FontSize="30" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="10"></TextBlock>
+                <TextBlock x:ConnectionId='62' Name="HeaderText" RelativePanel.RightOf="HeaderIcon" Text="People" FontSize="30" FontWeight="Bold" Margin="10" VerticalAlignment="Center"></TextBlock>
+                <StackPanel x:ConnectionId='63' Name="SearchBar" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel= "True" RelativePanel.AlignVerticalCenterWithPanel="True" BorderBrush="{ThemeResource TextBoxBorderThemeBrush}" BorderThickness="2" Visibility="Visible"> 
+                    <Button x:ConnectionId='64' Name="SearchIcon" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE1A3;" Background="Transparent"  RelativePanel.RightOf="SearchBox" RelativePanel.AlignVerticalCenterWithPanel="True"></Button>
+                    <TextBox x:ConnectionId='65' Style="{StaticResource TextBoxStyle1}" Name="SearchBox" Width="300" PlaceholderText="Search the name" BorderBrush="Transparent"                                     Background="Transparent" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent"></TextBox>
                 </StackPanel>
             </RelativePanel>
-            <Grid x:ConnectionId='10' Name="FrameEmployeeViewGrid" Grid.Row="1">
+            <Grid x:ConnectionId='33' Name="FrameEmployeeViewGrid" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 
-                <Frame x:ConnectionId='11' Name="PeopleFrame" Grid.Column="0"></Frame>
+                <Frame x:ConnectionId='34' Name="PeopleFrame" Grid.Column="0"></Frame>
                 
-                <Grid x:ConnectionId='12' Name="EmployeeViewGrid" Grid.Column="1" HorizontalAlignment="Right" Width="500">
+                <Grid x:ConnectionId='35' Name="EmployeeViewGrid" Grid.Column="1" HorizontalAlignment="Right" Width="500">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     
-                    <Button x:ConnectionId='13' Grid.Row="0" Canvas.ZIndex="20" Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Top"  FontFamily="Segoe MDL2 Assets" Content="&#xE106;" FontSize="16"                          ></Button>
+                    <Button x:ConnectionId='36' Grid.Row="0" Canvas.ZIndex="20" Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Top"  FontFamily="Segoe MDL2 Assets" Content="&#xE106;" FontSize="16"                          ></Button>
                     <!--<Button Name="CloseButton" FontFamily="Segoe MDL2 Assets" Content="&#xE10A;" FontSize="16" Click="CloseButton_Click"></Button>-->
                     <Grid Canvas.ZIndex="10" Grid.Row="0" Background="{ThemeResource SystemRevealAltMediumHighColor}">
                         <Grid.ColumnDefinitions>
@@ -111,7 +274,7 @@
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         
-                        <Image x:ConnectionId='30' Name="EmployeeImage"                                                       Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
+                        <Image x:ConnectionId='53' Name="EmployeeImage"                                                       Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
                         <StackPanel Grid.Column="1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -119,17 +282,17 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock x:ConnectionId='36' Name="NameText"                                                     TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
+                                <TextBlock x:ConnectionId='59' Name="NameText"                                                     TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
                                 <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,10,0,0"></Ellipse>
-                                <TextBlock x:ConnectionId='37' VerticalAlignment="Center" Grid.Column="2" Name="StatusText"                                                               FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
+                                <TextBlock x:ConnectionId='60' VerticalAlignment="Center" Grid.Column="2" Name="StatusText"                                                               FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
                             </Grid>
-                            <TextBlock x:ConnectionId='34' Name="DepartmentText"                                                        TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
-                            <TextBlock x:ConnectionId='35' Name="DesignationText"                                                        TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
+                            <TextBlock x:ConnectionId='57' Name="DepartmentText"                                                        TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
+                            <TextBlock x:ConnectionId='58' Name="DesignationText"                                                        TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
                         </StackPanel>
                         <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
-                            <Button x:ConnectionId='31' Name="CallButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE13A;" Margin="10,10,0,10"></Button>
-                            <Button x:ConnectionId='32' Name="VideoButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE714;" Margin="10,10,0,10"></Button>
-                            <Button x:ConnectionId='33' Name="MessageButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE134;" Margin="10,10,10,10"></Button>
+                            <Button x:ConnectionId='54' Name="CallButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE13A;" Margin="10,10,0,10"></Button>
+                            <Button x:ConnectionId='55' Name="VideoButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE714;" Margin="10,10,0,10"></Button>
+                            <Button x:ConnectionId='56' Name="MessageButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE134;" Margin="10,10,10,10"></Button>
                         </StackPanel>
                     </Grid>
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
@@ -137,23 +300,25 @@
                                 <PivotItem Name="PeoplePivotElement" Header="People"></PivotItem>
                                 <PivotItem Name="CommonChatPivotElement" Header="Chats in common" FontSize="18" FontWeight="Medium"></PivotItem>
                             </Pivot>-->
-                        <Button x:ConnectionId='28' Name="PeopleButton" Content="People" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" BorderBrush="LimeGreen" BorderThickness="0,0,0,2"                           >
+                        <Button x:ConnectionId='51' Name="PeopleButton" Content="People" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" BorderBrush="LimeGreen" BorderThickness="0,0,0,2"                           >
                             <Button.Resources>
                                 <ResourceDictionary>
                                     <ResourceDictionary.ThemeDictionaries>
                                         <ResourceDictionary x:Key="Dark">
                                             <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White"/>
                                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerPressed" Color="Transparent"/>
                                         </ResourceDictionary>
                                         <ResourceDictionary x:Key="Light">
                                             <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
                                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerPressed" Color="Transparent"/>
                                         </ResourceDictionary>
                                     </ResourceDictionary.ThemeDictionaries>
                                 </ResourceDictionary>
                             </Button.Resources>
                         </Button>
-                        <Button x:ConnectionId='29' Name="CommonChatButton" Content="Chats in common" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium"                                BorderBrush="LimeGreen" BorderThickness="0">
+                        <Button x:ConnectionId='52' Name="CommonChatButton" Content="Chats in common" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium"                                BorderBrush="LimeGreen" BorderThickness="0">
                             <Button.Resources>
                                 <ResourceDictionary>
                                     <ResourceDictionary.ThemeDictionaries>
@@ -171,7 +336,7 @@
                         </Button>
                     </StackPanel>
                     <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2">
-                        <Grid x:ConnectionId='15' Grid.Row="2" Name="PeopleGrid" Visibility="Visible">
+                        <Grid x:ConnectionId='38' Grid.Row="2" Name="PeopleGrid" Visibility="Visible">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -212,19 +377,19 @@
                             <TextBlock Grid.Row="13" Grid.ColumnSpan="2" Text="Geo Location" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
                             <TextBlock Grid.Row="14" Text="Country:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
                             <TextBlock Grid.Row="15" Text="Local Time:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock x:ConnectionId='16' Grid.Row="1" Grid.Column="1"                                                     Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock x:ConnectionId='17' Grid.Row="2" Grid.Column="1"                                                     Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock x:ConnectionId='18' Grid.Row="3" Grid.Column="1"                                                   Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock x:ConnectionId='19' Grid.Row="4" Grid.Column="1"                                                   Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock x:ConnectionId='20' Grid.Row="5" Grid.Column="1"                                               Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock x:ConnectionId='21' Grid.Row="7" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock x:ConnectionId='22' Grid.Row="8" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock x:ConnectionId='23' Grid.Row="9" Grid.Column="1"                                                             Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='39' Grid.Row="1" Grid.Column="1"                                                     Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='40' Grid.Row="2" Grid.Column="1"                                                     Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='41' Grid.Row="3" Grid.Column="1"                                                   Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='42' Grid.Row="4" Grid.Column="1"                                                   Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='43' Grid.Row="5" Grid.Column="1"                                               Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='44' Grid.Row="7" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='45' Grid.Row="8" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='46' Grid.Row="9" Grid.Column="1"                                                             Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
                             <TextBlock Grid.Row="10" Grid.Column="1" Text="-" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock x:ConnectionId='24' Grid.Row="11" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock x:ConnectionId='25' Grid.Row="12" Grid.Column="1"                                                               Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock x:ConnectionId='26' Grid.Row="14" Grid.Column="1"                                                    Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock x:ConnectionId='27' Grid.Row="15" Grid.Column="1"                                                       Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='47' Grid.Row="11" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='48' Grid.Row="12" Grid.Column="1"                                                               Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='49' Grid.Row="14" Grid.Column="1"                                                    Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
+                            <TextBlock x:ConnectionId='50' Grid.Row="15" Grid.Column="1"                                                       Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
                             <HyperlinkButton Grid.Row="16" Grid.ColumnSpan="2" BorderBrush="Red">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="&#xE107;" FontFamily="Segoe MDL2 Assets" FontSize="16" Foreground="Red" Margin="10,10,0,0" VerticalAlignment="Center"></TextBlock>
@@ -233,7 +398,7 @@
                             </HyperlinkButton>
                         </Grid>
                     </ScrollViewer>
-                    <Grid x:ConnectionId='14' Name="CommonChatGrid" Grid.Row="2" Visibility="Collapsed">
+                    <Grid x:ConnectionId='37' Name="CommonChatGrid" Grid.Row="2" Visibility="Collapsed">
                         <TextBlock Text="Under Development" HorizontalAlignment="Center"></TextBlock>
                     </Grid>
                 </Grid>
@@ -242,20 +407,20 @@
         </Grid>
         <StackPanel Background="#36454F">
             <TextBlock Text="People" FontSize="26" Margin="10" FontWeight="Bold" Foreground="White"></TextBlock>
-            <ListBox x:ConnectionId='6' Name="PeopleTabView" SelectionMode="Single"                                                    Background="LimeGreen"  ItemContainerStyle="{StaticResource ListItemStyle}">
-                <ListBoxItem x:ConnectionId='7' Name="AllUserButton" IsSelected="True">
+            <ListBox x:ConnectionId='29' Name="PeopleTabView" SelectionMode="Single"                                                    Background="LimeGreen"  ItemContainerStyle="{StaticResource ListItemStyle}">
+                <ListBoxItem x:ConnectionId='30' Name="AllUserButton" IsSelected="True">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource IconTextStyle}" Text="&#xE902;" HorizontalAlignment="Left"></TextBlock>
                         <TextBlock Text="All User" HorizontalAlignment="Left" Foreground="White"></TextBlock>
                     </StackPanel>
                 </ListBoxItem>
-                <ListBoxItem x:ConnectionId='8' Name="MyDepartmentButton">
+                <ListBoxItem x:ConnectionId='31' Name="MyDepartmentButton">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" >
                         <TextBlock Style="{StaticResource IconTextStyle}" Text="&#xE902;" HorizontalAlignment="Left"></TextBlock>
                         <TextBlock Text="My Department" HorizontalAlignment="Left" Foreground="White" ></TextBlock>
                     </StackPanel>
                 </ListBoxItem>
-                <ListBoxItem x:ConnectionId='9' Name="MyReportButton">
+                <ListBoxItem x:ConnectionId='32' Name="MyReportButton">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource IconTextStyle}" Text="&#xE902;" Margin="0,0,10,0" HorizontalAlignment="Left"></TextBlock>
                         <TextBlock Text="My Direct Reports" HorizontalAlignment="Left" Foreground="White"></TextBlock>

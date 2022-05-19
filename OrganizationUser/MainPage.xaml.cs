@@ -175,5 +175,8 @@ namespace OrganizationUser
             string toSearch=SearchBox.Text;
             EventManager.OnEmployeeSearched(toSearch);
         }
+
+
+       
     }
 }
