@@ -82,52 +82,12 @@ namespace OrganizationUser
             EventManager.EmployeeSearched -= EventManager_EmployeeSearched;
         }
 
-        //public void subscription(EventManager NotifyInstance)
-        //{
-        //    NotifyInstance.EmployeeSearched += allUser.EventManager_EmployeeSearched;
-        //    //NotifyInstance.OnEmployeeClicked(chosen);
-        //}
 
 
         private void EventManager_EmployeeSearched(object sender, string data)
         {
-            
             int Length=Peoples.Count;
-            //if(!String.IsNullOrWhiteSpace(data))
-            //{
-            //    if (data.Length == 1)
-            //    {
-            //        Peoples.Clear();
-            //        for (int i = 0; i < original.Count; i++)
-            //        {
-            //            if (original[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
-            //            {
-            //                Peoples.Add(original[i]);
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        for (int i = 0; i < Peoples.Count; i++)
-            //        {
-            //            if (!original[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
-            //            {
-            //                Peoples.RemoveAt(i);
-            //            }
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    for (int i = 0; i < original.Count; i++)
-            //    {
-            //        if (Peoples[i].Fullname != original[i].Fullname)
-            //        {
-            //            Peoples.Add(original[i]);
-            //        }
-            //    }
-            //}
-            List<People> Original = EmployeeManager.getEmployees().ToList<People>();
+            //List<People> Original = EmployeeManager.getEmployees().ToList<People>();
             for (int i=0;i<Peoples.Count;i++)
             {
                 if(!Peoples[i].Fullname.StartsWith(data,StringComparison.OrdinalIgnoreCase))
@@ -142,7 +102,7 @@ namespace OrganizationUser
                 }
                 j++;
             }
-            Length= EmployeeManager.getEmployees().Count;
+           Length= EmployeeManager.getEmployees().Count;
             for(int i=0;i< Length;i++)
             {
                 if (RemovedPosPeople.ContainsKey(i))
@@ -150,15 +110,14 @@ namespace OrganizationUser
                     if (RemovedPosPeople[i].Fullname.StartsWith(data,StringComparison.OrdinalIgnoreCase))
                     {
                         int pos = RemovedPosPeople.FirstOrDefault(x => x.Value == RemovedPosPeople[i]).Key;
-                        //Peoples.Add(RemovedPosPeople[i]);
-                        if (pos <= RemovedPosPeople.Count)
+                        if (pos < RemovedPosPeople.Count)
                         {
                             Peoples.Insert(pos, RemovedPosPeople[i]);
                         } 
                         else
                         {
                             Peoples.Add(RemovedPosPeople[i]);
-                        }
+                         }
                         RemovedPosPeople.Remove(i);
                     } 
                 }

@@ -28,9 +28,12 @@ namespace OrganizationUser
     {
         ObservableCollection<People> _Peoples;
         ObservableCollection<People> _DepartPeoples=new ObservableCollection<People>();
+        Dictionary<int, People> RemovedPosPeople = new Dictionary<int, People>();
+        Dictionary<int, string> PeoplePosition = new Dictionary<int, string>();
+        public int j = 0;
         //EventManager _NotifyInstance;
 
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
         void RaisePropertyChanged(string name)
         {
@@ -57,27 +60,53 @@ namespace OrganizationUser
             DepartPeoples=FilterDepartment();
             //NotifyInstance = new EventManager();
             EventManager.EmployeeSearched += EventManager_EmployeeSearched;
+            DictionaryInitialise();
+
+        }
+        public void DictionaryInitialise()
+        {
+            for (int i = 0; i < DepartPeoples.Count; i++)
+            {
+                PeoplePosition.Add(i, DepartPeoples[i].Fullname);
+            }
         }
 
         private void EventManager_EmployeeSearched(object sender, string data)
         {
-            ObservableCollection<People> original = FilterDepartment();
-            data = data.ToLower();
-            if (data != "")
+            int Length = DepartPeoples.Count;
+            for (int i = 0; i < DepartPeoples.Count; i++)
             {
-                ObservableCollection<People> temp = new ObservableCollection<People>();
-                for (int i = 0; i < original.Count; i++)
+                if (!DepartPeoples[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
                 {
-                    if (original[i].Fullname.ToLower().StartsWith(data,StringComparison.OrdinalIgnoreCase))
+                    int pos = PeoplePosition.FirstOrDefault(x => x.Value == DepartPeoples[i].Fullname).Key;
+                    if (!RemovedPosPeople.Keys.Contains(pos))
                     {
-                        temp.Add(original[i]);
+                        RemovedPosPeople.Add(pos, DepartPeoples[i]);
+                    }
+                    DepartPeoples.RemoveAt(i);
+                    i--;
+                }
+                j++;
+            }
+            Length = FilterDepartment().Count;
+            for (int i = 0; i < Length; i++)
+            {
+                if (RemovedPosPeople.ContainsKey(i))
+                {
+                    if (RemovedPosPeople[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
+                    {
+                        int pos = RemovedPosPeople.FirstOrDefault(x => x.Value == RemovedPosPeople[i]).Key;
+                        if (pos < RemovedPosPeople.Count)
+                        {
+                            DepartPeoples.Insert(pos, RemovedPosPeople[i]);
+                        }
+                        else
+                        {
+                            DepartPeoples.Add(RemovedPosPeople[i]);
+                        }
+                        RemovedPosPeople.Remove(i);
                     }
                 }
-                DepartPeoples = temp;
-            }
-            else
-            {
-                DepartPeoples = FilterDepartment();
             }
         }
 
