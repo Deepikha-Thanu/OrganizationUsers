@@ -29,9 +29,11 @@ namespace OrganizationUser
     public sealed partial class AllUser : Page,INotifyPropertyChanged
     {
         ObservableCollection<People> _Peoples;
-        Dictionary<int, People> RemovedPosPeople = new Dictionary<int, People>();
-        Dictionary<int,string> PeoplePosition =new Dictionary<int, string>();
-        int j = 0;
+        SearchAlgo searchObj;
+        //Dictionary<int, People> RemovedPosPeople = new Dictionary<int, People>();
+        //Dictionary<int,string> PeoplePosition =new Dictionary<int, string>();
+        //int j = 0;
+        //int Length;
         //EventManager _AllUserNotifyInstance;
         //public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
         //public event EmployeeDisplayEventHandler EmployeeClicked;
@@ -66,16 +68,17 @@ namespace OrganizationUser
             Peoples=EmployeeManager.getEmployees();
             EventManager.EmployeeSearched += EventManager_EmployeeSearched;
             Window.Current.Closed += Current_Closed;
-            DictionaryInitialise();
-            
+            searchObj=new SearchAlgo(Peoples.ToList<People>());
+            //DictionaryInitialise();
+            //Length=Peoples.Count;
         }
-        public void DictionaryInitialise()
-        {
-            for(int i=0;i<Peoples.Count;i++)
-            {
-                PeoplePosition.Add(i, Peoples[i].Fullname);
-            }
-        }
+        //public void DictionaryInitialise()
+        //{
+        //    for(int i=0;i<Peoples.Count;i++)
+        //    {
+        //        PeoplePosition.Add(i, Peoples[i].Fullname);
+        //    }
+        //}
 
         private void Current_Closed(object sender, Windows.UI.Core.CoreWindowEventArgs e)
         {
@@ -86,42 +89,44 @@ namespace OrganizationUser
 
         private void EventManager_EmployeeSearched(object sender, string data)
         {
-            int Length=Peoples.Count;
+            searchObj.search(Peoples,data);
+            //int Length=Peoples.Count;
             //List<People> Original = EmployeeManager.getEmployees().ToList<People>();
-            for (int i=0;i<Peoples.Count;i++)
-            {
-                if(!Peoples[i].Fullname.StartsWith(data,StringComparison.OrdinalIgnoreCase))
-                {
-                    int pos = PeoplePosition.FirstOrDefault(x => x.Value == Peoples[i].Fullname).Key;
-                    if (!RemovedPosPeople.Keys.Contains(pos))
-                    {
-                        RemovedPosPeople.Add(pos, Peoples[i]);
-                    }
-                    Peoples.RemoveAt(i);
-                    i--;
-                }
-                j++;
-            }
-           Length= EmployeeManager.getEmployees().Count;
-            for(int i=0;i< Length;i++)
-            {
-                if (RemovedPosPeople.ContainsKey(i))
-                 { 
-                    if (RemovedPosPeople[i].Fullname.StartsWith(data,StringComparison.OrdinalIgnoreCase))
-                    {
-                        int pos = RemovedPosPeople.FirstOrDefault(x => x.Value == RemovedPosPeople[i]).Key;
-                        if (pos < RemovedPosPeople.Count)
-                        {
-                            Peoples.Insert(pos, RemovedPosPeople[i]);
-                        } 
-                        else
-                        {
-                            Peoples.Add(RemovedPosPeople[i]);
-                         }
-                        RemovedPosPeople.Remove(i);
-                    } 
-                }
-            }
+           // for (int i=0;i<Peoples.Count;i++)
+           // {
+           //     if(!Peoples[i].Fullname.StartsWith(data,StringComparison.OrdinalIgnoreCase))
+           //     {
+           //         int pos = PeoplePosition.FirstOrDefault(x => x.Value == Peoples[i].Fullname).Key;
+           //         if (!RemovedPosPeople.Keys.Contains(pos))
+           //         {
+           //             RemovedPosPeople.Add(pos, Peoples[i]);
+           //         }
+           //         Peoples.RemoveAt(i);
+           //         i--;
+           //     }
+           //     j++;
+           // }
+           ////int Length= Original.Count;
+           // for(int i=0;i< Length;i++)
+           // {
+           //     if (RemovedPosPeople.ContainsKey(i))
+           //      { 
+           //         if (RemovedPosPeople[i].Fullname.StartsWith(data,StringComparison.OrdinalIgnoreCase))
+           //         {
+           //             int pos = RemovedPosPeople.FirstOrDefault(x => x.Value == RemovedPosPeople[i]).Key;
+           //             if (pos < RemovedPosPeople.Count)
+           //             {
+           //                 Peoples.Insert(pos, RemovedPosPeople[i]);
+           //             } 
+           //             else
+           //             {
+           //                 Peoples.Add(RemovedPosPeople[i]);
+           //              }
+           //             RemovedPosPeople.Remove(i);
+           //         } 
+           //     }
+           // }
+
         }
 
 
