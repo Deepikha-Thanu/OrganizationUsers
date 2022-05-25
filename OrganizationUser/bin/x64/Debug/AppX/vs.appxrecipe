@@ -30,17 +30,41 @@
     <AppXManifest Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-19T11:47:38.797</Modified>
+      <Modified>2022-05-25T11:09:39.363</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\OrganizationUser.exe">
       <PackagePath>entrypoint\OrganizationUser.exe</PackagePath>
-      <Modified>2022-05-19T11:47:38.296</Modified>
+      <Modified>2022-05-25T11:09:38.765</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\deepikha-pt5222\.nuget\packages\microsoft.data.sqlite.core\6.0.5\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
+      <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
+      <Modified>2022-04-18T08:51:16.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.12\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2021-02-04T19:45:54.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\deepikha-pt5222\.nuget\packages\sqlitepclraw.bundle_e_sqlite3\2.0.6\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll">
+      <PackagePath>SQLitePCLRaw.batteries_v2.dll</PackagePath>
+      <Modified>2021-09-03T18:04:58.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\deepikha-pt5222\.nuget\packages\sqlitepclraw.core\2.0.6\lib\netstandard2.0\SQLitePCLRaw.core.dll">
+      <PackagePath>SQLitePCLRaw.core.dll</PackagePath>
+      <Modified>2021-09-03T18:04:16.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\deepikha-pt5222\.nuget\packages\sqlitepclraw.lib.e_sqlite3\2.0.6\runtimes\win10-x64\nativeassets\uap10.0\e_sqlite3.dll">
+      <PackagePath>e_sqlite3.dll</PackagePath>
+      <Modified>2021-09-03T18:02:06.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\deepikha-pt5222\.nuget\packages\sqlitepclraw.provider.e_sqlite3\2.0.6\lib\uap10.0\SQLitePCLRaw.provider.e_sqlite3.dll">
+      <PackagePath>SQLitePCLRaw.provider.e_sqlite3.dll</PackagePath>
+      <Modified>2021-09-03T18:04:36.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\deepikha-pt5222\.nuget\packages\system.runtime.compilerservices.unsafe\4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
+      <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
+      <Modified>2018-09-18T19:38:10.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
@@ -318,31 +342,35 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\OrganizationUser.xr.xml">
       <PackagePath>OrganizationUser.xr.xml</PackagePath>
-      <Modified>2022-05-19T09:16:30.426</Modified>
+      <Modified>2022-05-25T10:28:32.999</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-05-19T11:47:38.181</Modified>
+      <Modified>2022-05-25T11:09:38.617</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\AllUser.xbf">
       <PackagePath>AllUser.xbf</PackagePath>
-      <Modified>2022-05-19T11:47:38.184</Modified>
+      <Modified>2022-05-25T11:09:38.620</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-05-19T11:47:38.179</Modified>
+      <Modified>2022-05-25T11:09:38.610</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\MyDepartment.xbf">
       <PackagePath>MyDepartment.xbf</PackagePath>
-      <Modified>2022-05-19T11:47:38.190</Modified>
+      <Modified>2022-05-25T11:09:38.626</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\MyDirectReports.xbf">
       <PackagePath>MyDirectReports.xbf</PackagePath>
-      <Modified>2022-05-19T11:47:38.192</Modified>
+      <Modified>2022-05-25T11:09:38.628</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\OrgUserControl.xbf">
       <PackagePath>OrgUserControl.xbf</PackagePath>
-      <Modified>2022-05-19T11:47:38.194</Modified>
+      <Modified>2022-05-25T11:09:38.630</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\PeopleDataUserControl.xbf">
+      <PackagePath>PeopleDataUserControl.xbf</PackagePath>
+      <Modified>2022-05-25T11:09:38.617</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -350,11 +378,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-05-17T09:00:23.995</Modified>
+      <Modified>2022-05-25T09:10:13.523</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\Core\OrganizationUser.exe">
       <PackagePath>OrganizationUser.exe</PackagePath>
-      <Modified>2022-05-19T11:47:38.782</Modified>
+      <Modified>2022-05-25T11:09:39.352</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

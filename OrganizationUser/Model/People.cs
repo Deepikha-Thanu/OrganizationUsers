@@ -39,7 +39,6 @@ namespace OrganizationUser.Model
         long _Organization_id;
         string _Email_id;
         DateTimeOffset _TimeOffset;
-        TimeZoneInfo _TimeZone;
         Language _Lang;
         Status _Stat;
         Department _Depart;
@@ -61,7 +60,6 @@ namespace OrganizationUser.Model
         public string Email_id { get => _Email_id; set => _Email_id = value; }
         public long Id { get => _Id; set => _Id = value; }
         public DateTimeOffset TimeOffset { get => _TimeOffset; set => _TimeOffset = value; }
-        public TimeZoneInfo Timezone { get => _TimeZone; set => _TimeZone = value; }
         public string Fullname { get => _Fullname; set => _Fullname = value; }
         public bool Checkin_status { get => _Checkin_status; set => _Checkin_status = value; }
         public string DisplayName { get => _DisplayName; set => _DisplayName = value; }

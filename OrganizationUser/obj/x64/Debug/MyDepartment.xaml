@@ -8,15 +8,13 @@
     xmlns:data="using:OrganizationUser.Model"
     mc:Ignorable="d"
     Background="{ThemeResource SystemBaseLowColor}">
-    
-    <Grid Margin="50,20,50,20">
-        <GridView x:ConnectionId='2' Name="MyDepartmentGridView"                                                  Margin="10" SelectionMode="None">
-            <GridView.ItemTemplate>
-                <DataTemplate                         >
-                    <local:OrgUserControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></local:OrgUserControl>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
-    </Grid>
+
+    <GridView x:ConnectionId='2' Name="MyDepartmentGridView"                                                  Margin="10" SelectionMode="None">
+        <GridView.ItemTemplate>
+            <DataTemplate                         >
+                <local:OrgUserControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></local:OrgUserControl>
+            </DataTemplate>
+        </GridView.ItemTemplate>
+    </GridView>
 </Page>
 

@@ -21,11 +21,7 @@
             <Setter Property="Margin" Value="0,0,10,0"></Setter>
             <Setter Property="Foreground" Value="White"></Setter>
         </Style>
-        <Style TargetType="TextBlock" x:Key="DataViewHeadTextBlockStyle">
-            <Setter Property="FontSize" Value="16"></Setter>
-            <Setter Property="Foreground" Value="Gray"></Setter>
-            <Setter Property="Margin" Value="20,10,0,0"></Setter>
-        </Style>
+        
         <Style x:Key="TextBoxStyle1" TargetType="TextBox">
             <Setter Property="Foreground" Value="{ThemeResource TextControlForeground}"/>
             <Setter Property="Background" Value="{ThemeResource TextControlBackground}"/>
@@ -193,7 +189,7 @@
     <Grid>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <!--<VisualState x:Name="NarrowState">
+                <VisualState x:Name="NarrowState">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="400"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
@@ -208,22 +204,6 @@
                     <VisualState.Setters>
                         <Setter Target="SearchBar.Visibility" Value="Visible"></Setter>
                     </VisualState.Setters>
-                </VisualState>-->
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text}" TriggerValue="Away"></local:StatusComparisonTrigger>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text}" TriggerValue="Office in"></local:StatusComparisonTrigger>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
-                    </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
@@ -231,7 +211,6 @@
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -245,8 +224,9 @@
             <RelativePanel BorderThickness="0,0,0,2" Background="{ThemeResource AppBarBackgroundThemeBrush}">
                 <TextBlock Name="HeaderIcon" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Text="&#xE8D4;" FontSize="30" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="10"></TextBlock>
                 <TextBlock Name="HeaderText" RelativePanel.RightOf="HeaderIcon" Text="People" FontSize="30" FontWeight="Bold" Margin="10" VerticalAlignment="Center"></TextBlock>
-                <StackPanel Name="SearchBar" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel= "True" RelativePanel.AlignVerticalCenterWithPanel="True" BorderBrush="{ThemeResource TextBoxBorderThemeBrush}" BorderThickness="2" Visibility="Visible"> 
-                    <Button Name="SearchIcon" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE1A3;" Background="Transparent"  RelativePanel.RightOf="SearchBox" RelativePanel.AlignVerticalCenterWithPanel="True"></Button>
+                <StackPanel Name="SearchBar" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel= "True" RelativePanel.AlignVerticalCenterWithPanel="True" BorderBrush="{ThemeResource TextBoxBorderThemeBrush}" BorderThickness="2" Visibility="Visible">
+                    <Button Name="SearchIcon" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE1A3;" Background="Transparent"  RelativePanel.RightOf="SearchBox" RelativePanel.AlignVerticalCenterWithPanel="True">
+                    </Button>
                     <TextBox Style="{StaticResource TextBoxStyle1}" Name="SearchBox" Width="300" PlaceholderText="Search the name" BorderBrush="Transparent" TextChanged="SearchBox_TextChanged" Background="Transparent" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent"></TextBox>
                 </StackPanel>
             </RelativePanel>
@@ -257,151 +237,7 @@
                 </Grid.ColumnDefinitions>
                 
                 <Frame Name="PeopleFrame" Grid.Column="0"></Frame>
-                
-                <Grid Name="EmployeeViewGrid" Grid.Column="1" HorizontalAlignment="Right" Width="500">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    
-                    <Button Grid.Row="0" Canvas.ZIndex="20" Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Top"  FontFamily="Segoe MDL2 Assets" Content="&#xE106;" FontSize="16" Click="CloseButton_Click"></Button>
-                    <!--<Button Name="CloseButton" FontFamily="Segoe MDL2 Assets" Content="&#xE10A;" FontSize="16" Click="CloseButton_Click"></Button>-->
-                    <Grid Canvas.ZIndex="10" Grid.Row="0" Background="{ThemeResource SystemRevealAltMediumHighColor}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        
-                        <Image Name="EmployeeImage" Source="{x:Bind EmployeeToShow.ImageUrl,Mode=OneWay}" Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
-                        <StackPanel Grid.Column="1">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Name="NameText" Text="{x:Bind EmployeeToShow.Fullname,Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
-                                <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,10,0,0"></Ellipse>
-                                <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
-                            </Grid>
-                            <TextBlock Name="DepartmentText" Text="{x:Bind EmployeeToShow.Depart.Name,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
-                            <TextBlock Name="DesignationText" Text="{x:Bind EmployeeToShow.Design.Name,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
-                            <Button Name="CallButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE13A;" Margin="10,10,0,10"></Button>
-                            <Button Name="VideoButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE714;" Margin="10,10,0,10"></Button>
-                            <Button Name="MessageButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE134;" Margin="10,10,10,10"></Button>
-                        </StackPanel>
-                    </Grid>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <!--<Pivot>
-                                <PivotItem Name="PeoplePivotElement" Header="People"></PivotItem>
-                                <PivotItem Name="CommonChatPivotElement" Header="Chats in common" FontSize="18" FontWeight="Medium"></PivotItem>
-                            </Pivot>-->
-                        <Button Name="PeopleButton" Content="People" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" BorderBrush="LimeGreen" BorderThickness="0,0,0,2" Click="PeopleButton_Click">
-                            <Button.Resources>
-                                <ResourceDictionary>
-                                    <ResourceDictionary.ThemeDictionaries>
-                                        <ResourceDictionary x:Key="Dark">
-                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White"/>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerPressed" Color="Transparent"/>
-                                        </ResourceDictionary>
-                                        <ResourceDictionary x:Key="Light">
-                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerPressed" Color="Transparent"/>
-                                        </ResourceDictionary>
-                                    </ResourceDictionary.ThemeDictionaries>
-                                </ResourceDictionary>
-                            </Button.Resources>
-                        </Button>
-                        <Button Name="CommonChatButton" Content="Chats in common" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" Click="CommonChatButton_Click" BorderBrush="LimeGreen" BorderThickness="0">
-                            <Button.Resources>
-                                <ResourceDictionary>
-                                    <ResourceDictionary.ThemeDictionaries>
-                                        <ResourceDictionary x:Key="Dark">
-                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White"/>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
-                                        </ResourceDictionary>
-                                        <ResourceDictionary x:Key="Light">
-                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
-                                        </ResourceDictionary>
-                                    </ResourceDictionary.ThemeDictionaries>
-                                </ResourceDictionary>
-                            </Button.Resources>
-                        </Button>
-                    </StackPanel>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2">
-                        <Grid Grid.Row="2" Name="PeopleGrid" Visibility="Visible">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-
-                            <TextBlock Grid.ColumnSpan="2" Text="Contact" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
-                            <TextBlock Grid.Row="1" Text="Name:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="2" Text="Email:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="3" Text="Work Phone:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="4" Text="Personal Phone:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="5" Text="Extension:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="6" Grid.ColumnSpan="2" Text="Work" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
-                            <TextBlock Grid.Row="7" Text="Designation:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="8" Text="Department:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="9" Text="Reporting To:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="10" Text="Seating Loaction:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="11" Text="Employee ID:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="12" Text="Status:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="13" Grid.ColumnSpan="2" Text="Geo Location" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
-                            <TextBlock Grid.Row="14" Text="Country:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="15" Text="Local Time:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind EmployeeToShow.Fullname,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{x:Bind EmployeeToShow.Email_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{x:Bind EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{x:Bind EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="5" Grid.Column="1" Text="{x:Bind EmployeeToShow.Id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="7" Grid.Column="1" Text="{x:Bind EmployeeToShow.Design.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="8" Grid.Column="1" Text="{x:Bind EmployeeToShow.Depart.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="9" Grid.Column="1" Text="{x:Bind EmployeeToShow.ReportingTo.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="10" Grid.Column="1" Text="-" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="11" Grid.Column="1" Text="{x:Bind EmployeeToShow.Employee_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="12" Grid.Column="1" Text="{x:Bind EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="14" Grid.Column="1" Text="{x:Bind EmployeeToShow.Country,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <TextBlock Grid.Row="15" Grid.Column="1" Text="{x:Bind EmployeeToShow.TimeOffset,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"></TextBlock>
-                            <HyperlinkButton Grid.Row="16" Grid.ColumnSpan="2" BorderBrush="Red">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="&#xE107;" FontFamily="Segoe MDL2 Assets" FontSize="16" Foreground="Red" Margin="10,10,0,0" VerticalAlignment="Center"></TextBlock>
-                                    <TextBlock Text="Delete Contact" FontSize="16" Foreground="Red" Margin="10,10,0,0" VerticalAlignment="Center"></TextBlock>
-                                </StackPanel>
-                            </HyperlinkButton>
-                        </Grid>
-                    </ScrollViewer>
-                    <Grid Name="CommonChatGrid" Grid.Row="2" Visibility="Collapsed">
-                        <TextBlock Text="Under Development" HorizontalAlignment="Center"></TextBlock>
-                    </Grid>
-                </Grid>
+                <local:PeopleDataUserControl Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></local:PeopleDataUserControl>
             </Grid>
                
         </Grid>

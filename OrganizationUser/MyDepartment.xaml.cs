@@ -29,11 +29,7 @@ namespace OrganizationUser
         ObservableCollection<People> _Peoples;
         ObservableCollection<People> _DepartPeoples=new ObservableCollection<People>();
         SearchAlgo searchObj;
-        //Dictionary<int, People> RemovedPosPeople = new Dictionary<int, People>();
-        //Dictionary<int, string> PeoplePosition = new Dictionary<int, string>();
-        //public int j = 0;
-        //EventManager _NotifyInstance;
-
+        EmployeeManager employeeManager;
 
         public event PropertyChangedEventHandler PropertyChanged;
         void RaisePropertyChanged(string name)
@@ -57,60 +53,18 @@ namespace OrganizationUser
         public MyDepartment()
         {
             this.InitializeComponent();
-            Peoples=EmployeeManager.getEmployees();
+            employeeManager = new EmployeeManager();
+            Peoples=new ObservableCollection<People>(employeeManager.getEmployees());
             DepartPeoples=FilterDepartment();
             //NotifyInstance = new EventManager();
             EventManager.EmployeeSearched += EventManager_EmployeeSearched;
             searchObj=new SearchAlgo(DepartPeoples.ToList<People>());
-            //DictionaryInitialise();
-
         }
-        //public void DictionaryInitialise()
-        //{
-        //    for (int i = 0; i < DepartPeoples.Count; i++)
-        //    {
-        //        PeoplePosition.Add(i, DepartPeoples[i].Fullname);
-        //    }
-        //}
+
 
         private void EventManager_EmployeeSearched(object sender, string data)
         {
             searchObj.search(DepartPeoples,data);
-            //int Length = DepartPeoples.Count;
-            //for (int i = 0; i < DepartPeoples.Count; i++)
-            //{
-            //    if (!DepartPeoples[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
-            //    {
-            //        int pos = PeoplePosition.FirstOrDefault(x => x.Value == DepartPeoples[i].Fullname).Key;
-            //        if (!RemovedPosPeople.Keys.Contains(pos))
-            //        {
-            //            RemovedPosPeople.Add(pos, DepartPeoples[i]);
-            //        }
-            //        DepartPeoples.RemoveAt(i);
-            //        i--;
-            //    }
-            //    j++;
-            //}
-            //Length = FilterDepartment().Count;
-            //for (int i = 0; i < Length; i++)
-            //{
-            //    if (RemovedPosPeople.ContainsKey(i))
-            //    {
-            //        if (RemovedPosPeople[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
-            //        {
-            //            int pos = RemovedPosPeople.FirstOrDefault(x => x.Value == RemovedPosPeople[i]).Key;
-            //            if (pos < RemovedPosPeople.Count)
-            //            {
-            //                DepartPeoples.Insert(pos, RemovedPosPeople[i]);
-            //            }
-            //            else
-            //            {
-            //                DepartPeoples.Add(RemovedPosPeople[i]);
-            //            }
-            //            RemovedPosPeople.Remove(i);
-            //        }
-            //    }
-            //}
         }
 
         ObservableCollection<People> FilterDepartment()
@@ -125,40 +79,5 @@ namespace OrganizationUser
             }
             return toReturn;
         }
-
-        //private void MyDepartmentGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
-        //{
-        //    Panel root = sender as Panel;
-        //    StackPanel ChildPopup = (StackPanel)root.FindName("TaskStackPanel");
-        //    TextBlock departTextblock = (TextBlock)root.FindName("DepartmentText");
-        //    TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
-        //    departTextblock.Visibility = Visibility.Collapsed;
-        //    designTextblock.Visibility = Visibility.Collapsed;
-        //    ChildPopup.Visibility = Visibility.Visible;
-        //}
-
-        //private void MyDepartmentGrid_PointerExited(object sender, PointerRoutedEventArgs e)
-        //{
-        //    Panel root = sender as Panel;
-        //    StackPanel ChildPopup = (StackPanel)root.FindName("TaskStackPanel");
-        //    TextBlock departTextblock = (TextBlock)root.FindName("DepartmentText");
-        //    TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
-        //    departTextblock.Visibility = Visibility.Visible;
-        //    designTextblock.Visibility = Visibility.Visible;
-        //    ChildPopup.Visibility = Visibility.Collapsed;
-        //}
-
-        //private void MyDepartmentGrid_Tapped(object sender, TappedRoutedEventArgs e)
-        //{
-        //    People chosen = (sender as FrameworkElement).DataContext as People;
-        //    EventManager.OnEmployeeClicked(chosen);
-        //}
-
-        //private void InfoButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    People chosen = (sender as FrameworkElement).DataContext as People;
-        //    EventManager.OnEmployeeClicked(chosen);
-        //}
-
     }
 }

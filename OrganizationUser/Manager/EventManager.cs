@@ -14,13 +14,18 @@ namespace OrganizationUser
         public delegate void EmployeeSearchedEventHandler(object sender, string data);
         public static event EmployeeDisplayEventHandler EmployeeClicked;
         public static event EmployeeSearchedEventHandler EmployeeSearched;
+        public static event EventHandler UnloadGrid;
         public static void OnEmployeeClicked(People selectedEmp)
         {
             EmployeeClicked?.Invoke(null, selectedEmp);
         }
         public static void OnEmployeeSearched(string data)
         {
-            EmployeeSearched?.Invoke(null,data);
+            EmployeeSearched?.Invoke(null, data);
+        }
+        public static void onUnloadGrid()
+        {
+            UnloadGrid?.Invoke(null,null);
         }
     }
 }

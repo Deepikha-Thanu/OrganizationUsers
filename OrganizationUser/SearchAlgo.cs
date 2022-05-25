@@ -46,7 +46,7 @@ namespace OrganizationUser
                     if (RemovedPosPeople[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
                     {
                         int pos = RemovedPosPeople.FirstOrDefault(x => x.Value == RemovedPosPeople[i]).Key;
-                        if (pos < RemovedPosPeople.Count)
+                        if (pos < Peoples.Count)
                         {
                             Peoples.Insert(pos, RemovedPosPeople[i]);
                         }
