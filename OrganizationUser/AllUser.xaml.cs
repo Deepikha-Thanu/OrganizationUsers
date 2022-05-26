@@ -56,8 +56,7 @@ namespace OrganizationUser
         public AllUser()
         {
             this.InitializeComponent();
-            employeeManager = new EmployeeManager();
-            Peoples=new ObservableCollection<People>(employeeManager.getEmployees());
+            Peoples=new ObservableCollection<People>(EmployeeManager.Employees);
             EventManager.EmployeeSearched += EventManager_EmployeeSearched;
             Window.Current.Closed += Current_Closed;
             searchObj=new SearchAlgo(Peoples.ToList<People>());
@@ -66,6 +65,7 @@ namespace OrganizationUser
         private void Current_Closed(object sender, Windows.UI.Core.CoreWindowEventArgs e)
         {
             EventManager.EmployeeSearched -= EventManager_EmployeeSearched;
+            employeeManager.DeleteTable();
         }
 
 

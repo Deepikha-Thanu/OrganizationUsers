@@ -53,8 +53,7 @@ namespace OrganizationUser
         public MyDepartment()
         {
             this.InitializeComponent();
-            employeeManager = new EmployeeManager();
-            Peoples=new ObservableCollection<People>(employeeManager.getEmployees());
+            Peoples=new ObservableCollection<People>(EmployeeManager.Employees);
             DepartPeoples=FilterDepartment();
             //NotifyInstance = new EventManager();
             EventManager.EmployeeSearched += EventManager_EmployeeSearched;

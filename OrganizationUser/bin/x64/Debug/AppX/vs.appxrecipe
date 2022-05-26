@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-26T10:02:19.801</Modified>
+      <Modified>2022-05-26T14:04:44.269</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\OrganizationUser.exe">
       <PackagePath>entrypoint\OrganizationUser.exe</PackagePath>
-      <Modified>2022-05-26T10:02:18.879</Modified>
+      <Modified>2022-05-26T14:04:42.204</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\deepikha-pt5222\.nuget\packages\microsoft.data.sqlite.core\6.0.5\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
       <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
@@ -346,31 +346,31 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-05-26T10:02:18.745</Modified>
+      <Modified>2022-05-26T14:04:42.028</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\AllUser.xbf">
       <PackagePath>AllUser.xbf</PackagePath>
-      <Modified>2022-05-26T10:02:18.747</Modified>
+      <Modified>2022-05-26T14:04:42.031</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-05-26T10:02:18.738</Modified>
+      <Modified>2022-05-26T14:04:42.019</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\MyDepartment.xbf">
       <PackagePath>MyDepartment.xbf</PackagePath>
-      <Modified>2022-05-26T10:02:18.751</Modified>
+      <Modified>2022-05-26T14:04:42.037</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\MyDirectReports.xbf">
       <PackagePath>MyDirectReports.xbf</PackagePath>
-      <Modified>2022-05-26T10:02:18.753</Modified>
+      <Modified>2022-05-26T14:04:42.040</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\OrgUserControl.xbf">
       <PackagePath>OrgUserControl.xbf</PackagePath>
-      <Modified>2022-05-26T10:02:18.754</Modified>
+      <Modified>2022-05-26T14:04:42.042</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\PeopleDataUserControl.xbf">
       <PackagePath>PeopleDataUserControl.xbf</PackagePath>
-      <Modified>2022-05-26T10:02:18.745</Modified>
+      <Modified>2022-05-26T14:04:42.028</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -382,7 +382,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\Core\OrganizationUser.exe">
       <PackagePath>OrganizationUser.exe</PackagePath>
-      <Modified>2022-05-26T10:02:19.787</Modified>
+      <Modified>2022-05-26T14:04:44.251</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -11,13 +11,13 @@ namespace OrganizationUser.Manager
 {
     class EmployeeManager
     {
-        static List<People> Employees = new List<People>();
+        public static List<People> Employees = new List<People>();
         public static People me;
         Datastore datastore;
-
         public EmployeeManager()
         {
             datastore = new Datastore();
+            IntialiseEmployees();
         }
         //public void insertDepartment()
         //{
@@ -56,29 +56,30 @@ namespace OrganizationUser.Manager
         //    datastore.insertPeopleData(rajesh);
         //}
 
-        public List<People> getEmployees()
+        public void IntialiseEmployees()
         {
-            List<People> toReturnEmployees= new List<People>();
-            toReturnEmployees= datastore.ReadData();
+            //List<People> toReturnEmployees= new List<People>();
+            Employees = datastore.ReadData();
+            datastore.DeleteTableData();
             datastore.CloseConnecton();
-            for (int i = 0; i < toReturnEmployees.Count; i++)
+            for (int i = 0; i < Employees.Count; i++)
             {
-                if (toReturnEmployees[i].Id == 235667)
+                if (Employees[i].Id == 235667)
                 {
-                    me = toReturnEmployees[i];
+                    me = Employees[i];
                     break;
                 }
             }
                 
-            for (int i = 0; i < toReturnEmployees.Count; i++)
+            for (int i = 0; i < Employees.Count; i++)
             {
-                    if (toReturnEmployees[i].ReportingTo==null)
+                    if (Employees[i].ReportingTo==null)
                     {
-                        toReturnEmployees[i].ReportingTo = new People();
-                        toReturnEmployees[i].ReportingTo.Name = "-";
+                        Employees[i].ReportingTo = new People();
+                        Employees[i].ReportingTo.Name = "-";
                     }
             }
-                return toReturnEmployees;
+             
             //List<People> ToReturn = new List<People>();
             //for (int i = 0; i < Employees.Count; i++)
             //{
@@ -109,6 +110,10 @@ namespace OrganizationUser.Manager
             //    ToReturn.Add(tempEmployee);
             //}
             //return ToReturn;
+        }
+        public void DeleteTable()
+        {
+            datastore.DeleteTableData();
         }
     }
 }

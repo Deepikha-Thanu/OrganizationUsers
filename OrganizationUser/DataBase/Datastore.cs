@@ -18,27 +18,79 @@ namespace OrganizationUser.DataBase
         public Datastore()
         {
             connectionString = Path.Combine(ApplicationData.Current.LocalFolder.Path , "EmployeeDatabase.db");
-            createDBFile("EmployeeDatabase.db");
+            //createDBFile("EmployeeDatabase.db");
             conn = new SqliteConnection($"FileName={connectionString}");
-            conn.Open();
-            createPeopleTable();
-            
+            conn.Open();     
+        }
+        public async void InitialiseDB()
+        {
+            await ApplicationData.Current.LocalFolder.CreateFileAsync("EmployeeDatabase.db",CreationCollisionOption.OpenIfExists);
+            //string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "EmployeeDatabase.db");
+            //using(SqliteConnection connection = new SqliteConnection($"FileName={dbPath}"))
+            //{
+                SqliteCommand DepartCreateCmd;
+                SqliteCommand DesignCreateCmd;
+                SqliteCommand PeopleCreateCmd;
+                DepartCreateCmd = conn.CreateCommand();
+                string DepartCreateQuery = "CREATE TABLE IF NOT EXISTS Department(Id INTEGER PRIMARY KEY,Name TEXT);";
+                DepartCreateCmd.CommandText = DepartCreateQuery;
+                DepartCreateCmd.ExecuteNonQuery();
+                DesignCreateCmd = conn.CreateCommand();
+                string DesignCreateQuery = "CREATE TABLE IF NOT EXISTS Designation(Id INTEGER PRIMARY KEY,Name TEXT);";
+                DesignCreateCmd.CommandText = DesignCreateQuery;
+                DesignCreateCmd.ExecuteNonQuery();
+                PeopleCreateCmd = conn.CreateCommand();
+                string PeoplecreateQuery = "CREATE TABLE IF NOT EXISTS People(Id INTEGER PRIMARY KEY," +
+                    "Employee_Id VARCHAR(20)," +
+                    "FirstName TEXT," +
+                    "LastName TEXT," +
+                    "ReportingToId INTEGER," +
+                    "CheckinStatusText TEXT," +
+                    "Mobile INTEGER," +
+                    "EmpType TEXT," +
+                    "Zoid INTEGER," +
+                    "OrgId INTEGER," +
+                    "EmailId TEXT," +
+                    "DateTimeOffset TEXT," +
+                    "Language TEXT," +
+                    "Status TEXT," +
+                    "DepartmentId INTEGER," +
+                    "DesignationId INTEGER," +
+                    "Fullname TEXT," +
+                    "CheckinStatus TEXT," +
+                    "ImageUrl TEXT," +
+                    "DisplayName TEXT," +
+                    "Name TEXT," +
+                    "Country TEXT);";
+                PeopleCreateCmd.CommandText = PeoplecreateQuery;
+                PeopleCreateCmd.ExecuteNonQuery();
+            //}
         }
         public void insertDepartment()
         {
-            Department appx = new Department() { Id = 15, Name = "AppX-Windows-Cliq" };
-            Department mail = new Department() { Id = 16, Name = "Appx-Windows-Mail" };
-            insertDepartmentData(appx);
-            insertDepartmentData(mail);
+            List<Department> departments = new List<Department>();
+            departments.Add( new Department() { Id = 15, Name = "AppX-Windows-Cliq" });
+            departments.Add( new Department() { Id = 16, Name = "Appx-Windows-Mail" });
+            foreach(Department department in departments)
+            {
+                insertDepartmentData(department);
+            }
+            //insertDepartmentData(appx);
+            //insertDepartmentData(mail);
         }
         public void insertDesign()
         {
-            Designation pt = new Designation() { Id = 1020, Name = "Project Trainee" };
-            Designation mts = new Designation() { Id = 123, Name = "Member Technical Staff" };
-            Designation lead = new Designation() { Id = 186, Name = "Project Lead" };
-            insertDesignData(pt);
-            insertDesignData(mts);
-            insertDesignData(lead);
+            List<Designation> designations = new List<Designation>();
+            designations.Add( new Designation() { Id = 1020, Name = "Project Trainee" });
+            designations.Add( new Designation() { Id = 123, Name = "Member Technical Staff" });
+            designations.Add( new Designation() { Id = 186, Name = "Project Lead" });
+            foreach (Designation designation in designations)
+            {
+                insertDesignData(designation);
+            }
+            //insertDesignData(pt);
+            //insertDesignData(mts);
+            //insertDesignData(lead);
         }
         public void insertPeople()
         {
@@ -47,7 +99,7 @@ namespace OrganizationUser.DataBase
             Designation pt = getDesignObj(1020);
             Designation mts = getDesignObj(123);
             Designation lead = getDesignObj(186);
-            People Ram = new People() { Employee_id = "1344", Id = 123402, Firstname = "Ram", Lastname = "Sekar", CheckinStatus_Text = "Away", Mobile = 9832391383, Zoid = 149367, Organization_id = 1333, Email_id = "ramsekar.zohocorp.com", TimeOffset = DateTime.Now, Fullname = "Ram Sekar", Checkin_status = true, DisplayName = "Ram", Name = "Ram Sekar", ImageUrl = "Assets/MaleUser.png", Country = "India", ReportingTo = null, Type = Emp_type.Paid, Lang = Language.English, Stat = Status.Away, Design = lead, Depart = mail };
+            People Ram =new People() { Employee_id = "1344", Id = 123402, Firstname = "Ram", Lastname = "Sekar", CheckinStatus_Text = "Away", Mobile = 9832391383, Zoid = 149367, Organization_id = 1333, Email_id = "ramsekar.zohocorp.com", TimeOffset = DateTime.Now, Fullname = "Ram Sekar", Checkin_status = true, DisplayName = "Ram", Name = "Ram Sekar", ImageUrl = "Assets/MaleUser.png", Country = "India", ReportingTo = null, Type = Emp_type.Paid, Lang = Language.English, Stat = Status.Away, Design = lead, Depart = mail };
             People Rahul = new People() { Employee_id = "1290", Id = 129434, Firstname = "Rahul", Lastname = "Takur", CheckinStatus_Text = "Away", Mobile = 9832391383, Zoid = 149367, Organization_id = 1333, Email_id = "rahultakur.zohocorp.com", TimeOffset = DateTime.Now, Fullname = "Rahul Takur", Checkin_status = true, DisplayName = "Rahul", Name = "Rahul", ImageUrl = "Assets/MaleUser.png", Country = "India", ReportingTo = Ram, Type = Emp_type.Paid, Lang = Language.English, Stat = Status.Away, Design = lead, Depart = appx };
             People me = new People() { Employee_id = "PT2339", Id = 235667, Firstname = "Deepikha", Lastname = "Thanu", CheckinStatus_Text = "Office in", Mobile = 7839201283, Zoid = 1920403, Organization_id = 12933, Email_id = "deepikha.thanu@zohocorp.com", TimeOffset = DateTime.Now, Fullname = "Deepikha T", Checkin_status = true, DisplayName = "Deepi", Name = "Deepikha", ImageUrl = "Assets/WomenUser.png", Country = "India", ReportingTo = Ram, Type = Emp_type.Paid, Lang = Language.English, Stat = Status.Officein, Design = pt, Depart = appx };
             People pratiksha = new People() { Employee_id = "PT4893", Id = 975483, Firstname = "Partiksha", Lastname = "Arun", CheckinStatus_Text = "Office in", Mobile = 94438294313, Zoid = 1223443, Organization_id = 24433, Email_id = "pratiksha.arun@zohocorp.com", TimeOffset = DateTime.Now, Fullname = "Pratiksha Arun", Checkin_status = true, DisplayName = "Prati", Name = "Pratiksha", ImageUrl = "Assets/WomenUser.png", Country = "India", ReportingTo = Ram, Type = Emp_type.Paid, Lang = Language.English, Stat = Status.Officein, Design = pt, Depart = appx };
@@ -60,65 +112,65 @@ namespace OrganizationUser.DataBase
             insertPeopleData(srimathi);
             insertPeopleData(rajesh);
         }
-        public async void createDBFile(string dbName)
-        {
-            StorageFolder dbFolder = ApplicationData.Current.LocalFolder;
-            if (await dbFolder.TryGetItemAsync(dbName)==null)
-            {
-                StorageFile dbFile = await dbFolder.CreateFileAsync(dbName);
-                insertDepartment();
-                insertDesign();
-                insertPeople();
-                //conn = new SqliteConnection($"FileName={connectionString}");
+        //public async void createDBFile(string dbName)
+        //{
+        //    StorageFolder dbFolder = ApplicationData.Current.LocalFolder;
+        //    if (await dbFolder.TryGetItemAsync(dbName)==null)
+        //    {
+        //        StorageFile dbFile = await dbFolder.CreateFileAsync(dbName);
+        //        insertDepartment();
+        //        insertDesign();
+        //        insertPeople();
+        //        //conn = new SqliteConnection($"FileName={connectionString}");
 
-            }
-            else
-            {
-                //conn = new SqliteConnection($"FileName={connectionString}");
-                //conn.Open();
-                return;
-            }
-        }
-        public void createPeopleTable()
-        {
+        //    }
+        //    else
+        //    {
+        //        //conn = new SqliteConnection($"FileName={connectionString}");
+        //        //conn.Open();
+        //        return;
+        //    }
+        //}
+        //public void createPeopleTable()
+        //{
            
-            SqliteCommand DepartCreateCmd;
-            SqliteCommand DesignCreateCmd;
-            SqliteCommand PeopleCreateCmd;
-            DepartCreateCmd = conn.CreateCommand();
-            string DepartCreateQuery = "CREATE TABLE IF NOT EXISTS Department(Id INTEGER PRIMARY KEY,Name TEXT);";
-            DepartCreateCmd.CommandText = DepartCreateQuery;
-            DepartCreateCmd.ExecuteNonQuery();
-            DesignCreateCmd = conn.CreateCommand();
-            string DesignCreateQuery = "CREATE TABLE IF NOT EXISTS Designation(Id INTEGER PRIMARY KEY,Name TEXT);";
-            DesignCreateCmd.CommandText = DesignCreateQuery;
-            DesignCreateCmd.ExecuteNonQuery();
-            PeopleCreateCmd = conn.CreateCommand();
-            string PeoplecreateQuery = "CREATE TABLE IF NOT EXISTS People(Id INTEGER PRIMARY KEY," +
-                "Employee_Id VARCHAR(20)," +
-                "FirstName TEXT," +
-                "LastName TEXT," +
-                "ReportingToId INTEGER," +
-                "CheckinStatusText TEXT," +
-                "Mobile INTEGER," +
-                "EmpType TEXT," +
-                "Zoid INTEGER," +
-                "OrgId INTEGER," +
-                "EmailId TEXT," +
-                "DateTimeOffset TEXT," +
-                "Language TEXT," +
-                "Status TEXT," +
-                "DepartmentId INTEGER," +
-                "DesignationId INTEGER," +
-                "Fullname TEXT," +
-                "CheckinStatus TEXT," +
-                "ImageUrl TEXT," +
-                "DisplayName TEXT," +
-                "Name TEXT," +
-                "Country TEXT);";
-            PeopleCreateCmd.CommandText = PeoplecreateQuery;
-            PeopleCreateCmd.ExecuteNonQuery();
-        }
+        //    SqliteCommand DepartCreateCmd;
+        //    SqliteCommand DesignCreateCmd;
+        //    SqliteCommand PeopleCreateCmd;
+        //    DepartCreateCmd = conn.CreateCommand();
+        //    string DepartCreateQuery = "CREATE TABLE IF NOT EXISTS Department(Id INTEGER PRIMARY KEY,Name TEXT);";
+        //    DepartCreateCmd.CommandText = DepartCreateQuery;
+        //    DepartCreateCmd.ExecuteNonQuery();
+        //    DesignCreateCmd = conn.CreateCommand();
+        //    string DesignCreateQuery = "CREATE TABLE IF NOT EXISTS Designation(Id INTEGER PRIMARY KEY,Name TEXT);";
+        //    DesignCreateCmd.CommandText = DesignCreateQuery;
+        //    DesignCreateCmd.ExecuteNonQuery();
+        //    PeopleCreateCmd = conn.CreateCommand();
+        //    string PeoplecreateQuery = "CREATE TABLE IF NOT EXISTS People(Id INTEGER PRIMARY KEY," +
+        //        "Employee_Id VARCHAR(20)," +
+        //        "FirstName TEXT," +
+        //        "LastName TEXT," +
+        //        "ReportingToId INTEGER," +
+        //        "CheckinStatusText TEXT," +
+        //        "Mobile INTEGER," +
+        //        "EmpType TEXT," +
+        //        "Zoid INTEGER," +
+        //        "OrgId INTEGER," +
+        //        "EmailId TEXT," +
+        //        "DateTimeOffset TEXT," +
+        //        "Language TEXT," +
+        //        "Status TEXT," +
+        //        "DepartmentId INTEGER," +
+        //        "DesignationId INTEGER," +
+        //        "Fullname TEXT," +
+        //        "CheckinStatus TEXT," +
+        //        "ImageUrl TEXT," +
+        //        "DisplayName TEXT," +
+        //        "Name TEXT," +
+        //        "Country TEXT);";
+        //    PeopleCreateCmd.CommandText = PeoplecreateQuery;
+        //    PeopleCreateCmd.ExecuteNonQuery();
+        //}
         public void insertDepartmentData(Department depart)
         {
             conn = new SqliteConnection($"FileName={connectionString}");
@@ -254,6 +306,18 @@ namespace OrganizationUser.DataBase
                 toReturn.Name= dataReader.GetString(1);
             }
             return toReturn;
+        }
+        public void DeleteTableData()
+        {
+            SqliteCommand delPeoplecmd=conn.CreateCommand();
+            delPeoplecmd.CommandText = "DELETE FROM People;";
+            delPeoplecmd.ExecuteNonQuery();
+            SqliteCommand delDepartmentcmd = conn.CreateCommand();
+            delDepartmentcmd.CommandText = "DELETE FROM Department;";
+            delDepartmentcmd.ExecuteNonQuery();
+            SqliteCommand delDesigncmd = conn.CreateCommand();
+            delDesigncmd.CommandText = "DELETE FROM Designation;";
+            delDesigncmd.ExecuteNonQuery();
         }
         public void CloseConnecton()
         {
