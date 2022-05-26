@@ -77,6 +77,7 @@ namespace OrganizationUser
         {
             EmployeeViewGrid.Visibility = Visibility.Collapsed;
             CloseButton.Visibility = Visibility.Collapsed;
+            this.UnloadObject(EmployeeViewGrid);
         }
         private void EventManager_EmployeeClicked(object sender, People selectedEmp)
         {

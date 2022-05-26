@@ -66,7 +66,6 @@ namespace OrganizationUser.Model
         public string Name { get => _Name; set => _Name = value; }
         public string ImageUrl { get => _ImageUrl; set => _ImageUrl = value; }
         public string Country { get => _Country; set => _Country = value; }
-       // public Windows.UI.Xaml.Media.Brush DisplayColor { get => _DisplayColor; set => _DisplayColor = value; }
         internal People ReportingTo { get => _ReportingTo; set => _ReportingTo = value; }
         internal Emp_type Type { get => _Type; set => _Type = value; }
         internal Language Lang { get => _Lang; set => _Lang = value; }
