@@ -59,7 +59,7 @@ namespace OrganizationUser
         }
         private void CommonChatButton_Click(object sender, RoutedEventArgs e)
         {
-            this.FindName("CommonChatGrid");
+            CommonChatGrid.Visibility = Visibility.Visible;
             PeopleGrid.Visibility = Visibility.Collapsed;
             PeopleButton.BorderThickness = new Thickness(0);
             CommonChatButton.BorderThickness = new Thickness(0, 0, 0, 2);
@@ -84,6 +84,20 @@ namespace OrganizationUser
             this.FindName("EmployeeViewGrid");
             EmployeeToShow = selectedEmp;
             //LoadBoolean = true;
+            EmployeeViewGrid.Visibility = Visibility.Visible;
+            CloseButton.Visibility = Visibility.Visible;
+        }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (EmployeeToShow.ReportingTo == null || EmployeeToShow.ReportingTo.Name=="-")
+                return;
+            if (EmployeeToShow.ReportingTo.ReportingTo == null)
+            {
+                EmployeeToShow.ReportingTo.ReportingTo = new People();
+                EmployeeToShow.ReportingTo.ReportingTo.Name = "-";
+            }
+            EmployeeToShow=EmployeeToShow.ReportingTo;
             EmployeeViewGrid.Visibility = Visibility.Visible;
             CloseButton.Visibility = Visibility.Visible;
         }

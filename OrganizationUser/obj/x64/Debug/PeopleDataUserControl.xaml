@@ -20,13 +20,87 @@
             <Setter Property="IsReadOnly" Value="True"></Setter>
             <Setter Property="BorderBrush" Value="Transparent"></Setter>
             <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        </Style>
+        <Style x:Key="ButtonStyle1" TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource ButtonBackground}"/>
+            <Setter Property="BackgroundSizing" Value="OuterBorderEdge"/>
+            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}"/>
+            <Setter Property="Padding" Value="{StaticResource ButtonPadding}"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}"/>
+            <Setter Property="FocusVisualMargin" Value="-3"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" BackgroundSizing="{TemplateBinding BackgroundSizing}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" CornerRadius="{TemplateBinding CornerRadius}" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="LimeGreen"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </UserControl.Resources>
     <VisualStateManager.VisualStateGroups>
         <VisualStateGroup>
             <VisualState>
                 <VisualState.StateTriggers>
-                    <local:StatusComparisonTrigger x:ConnectionId='3'                                                        TriggerValue="Away"></local:StatusComparisonTrigger>
+                    <local:StatusComparisonTrigger x:ConnectionId='10'                                                        TriggerValue="Away"></local:StatusComparisonTrigger>
                 </VisualState.StateTriggers>
                 <VisualState.Setters>
                     <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
@@ -34,7 +108,7 @@
             </VisualState>
             <VisualState>
                 <VisualState.StateTriggers>
-                    <local:StatusComparisonTrigger x:ConnectionId='2'                                                        TriggerValue="Office in"></local:StatusComparisonTrigger>
+                    <local:StatusComparisonTrigger x:ConnectionId='9'                                                        TriggerValue="Office in"></local:StatusComparisonTrigger>
                 </VisualState.StateTriggers>
                 <VisualState.Setters>
                     <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
@@ -42,14 +116,14 @@
             </VisualState>
         </VisualStateGroup>
     </VisualStateManager.VisualStateGroups>
-    <Grid x:ConnectionId='4' Name="EmployeeViewGrid" HorizontalAlignment="Right" Width="500" x:Load="False">
+    <Grid x:ConnectionId='11' Name="EmployeeViewGrid" HorizontalAlignment="Right" Width="500" x:Load="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         
-        <Button x:ConnectionId='5' Grid.Row="0" Canvas.ZIndex="20" Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Top"  FontFamily="Segoe MDL2 Assets" Content="&#xE106;" FontSize="16"                          ></Button>
+        <Button x:ConnectionId='12' Grid.Row="0" Canvas.ZIndex="20" Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Top"  FontFamily="Segoe MDL2 Assets" Content="&#xE106;" FontSize="16"                          ></Button>
         <!--<Button Name="CloseButton" FontFamily="Segoe MDL2 Assets" Content="&#xE10A;" FontSize="16" Click="CloseButton_Click"></Button>-->
         <Grid Canvas.ZIndex="10" Grid.Row="0" Background="{ThemeResource SystemRevealAltMediumHighColor}">
             <Grid.ColumnDefinitions>
@@ -58,7 +132,7 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Image x:ConnectionId='22' Name="EmployeeImage"                                                       Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
+            <Image x:ConnectionId='30' Name="EmployeeImage"                                                       Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
             <StackPanel Grid.Column="1">
                 <Grid >
                     <Grid.ColumnDefinitions>
@@ -66,21 +140,21 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:ConnectionId='28' MaxWidth="110" Name="NameText"                                                     TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
+                    <TextBlock x:ConnectionId='36' MaxWidth="110" Name="NameText"                                                     TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
                     <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,10,0,0"></Ellipse>
-                    <TextBlock x:ConnectionId='29' VerticalAlignment="Center" Grid.Column="2" Name="StatusText"                                                               FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
+                    <TextBlock x:ConnectionId='37' VerticalAlignment="Center" Grid.Column="2" Name="StatusText"                                                               FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
                 </Grid>
-                <TextBlock x:ConnectionId='26' Name="DepartmentText"                                                        TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
-                <TextBlock x:ConnectionId='27' Name="DesignationText"                                                        TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
+                <TextBlock x:ConnectionId='34' Name="DepartmentText"                                                        TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
+                <TextBlock x:ConnectionId='35' Name="DesignationText"                                                        TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
-                <Button x:ConnectionId='23' Name="CallButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE13A;" Margin="10,10,0,10"></Button>
-                <Button x:ConnectionId='24' Name="VideoButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE714;" Margin="10,10,0,10"></Button>
-                <Button x:ConnectionId='25' Name="MessageButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE134;" Margin="10,10,10,10"></Button>
+                <Button x:ConnectionId='31' Name="CallButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE13A;" Margin="10,10,0,10"></Button>
+                <Button x:ConnectionId='32' Name="VideoButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE714;" Margin="10,10,0,10"></Button>
+                <Button x:ConnectionId='33' Name="MessageButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE134;" Margin="10,10,10,10"></Button>
             </StackPanel>
         </Grid>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button x:ConnectionId='20' Name="PeopleButton" Content="People" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" BorderBrush="LimeGreen" BorderThickness="0,0,0,2"                           >
+            <Button x:ConnectionId='28' Style="{StaticResource ButtonStyle1}" Name="PeopleButton" Content="People" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" BorderBrush="LimeGreen" BorderThickness="0,0,0,2"                           >
                 <Button.Resources>
                     <ResourceDictionary>
                         <ResourceDictionary.ThemeDictionaries>
@@ -98,7 +172,7 @@
                     </ResourceDictionary>
                 </Button.Resources>
             </Button>
-            <Button x:ConnectionId='21' Name="CommonChatButton" Content="Chats in common" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium"                                BorderBrush="LimeGreen" BorderThickness="0">
+            <Button x:ConnectionId='29' Name="CommonChatButton" Style="{StaticResource ButtonStyle1}" Content="Chats in common" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium"                                BorderBrush="LimeGreen" BorderThickness="0">
                 <Button.Resources>
                     <ResourceDictionary>
                         <ResourceDictionary.ThemeDictionaries>
@@ -116,7 +190,7 @@
             </Button>
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2">
-            <Grid x:ConnectionId='7' Grid.Row="2" Name="PeopleGrid" Visibility="Visible">
+            <Grid x:ConnectionId='14' Grid.Row="2" Name="PeopleGrid" Visibility="Visible">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -157,19 +231,21 @@
                 <TextBlock Grid.Row="13" Grid.ColumnSpan="2" Text="Geo Location" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
                 <TextBlock Grid.Row="14" Text="Country:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
                 <TextBlock Grid.Row="15" Text="Local Time:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBox x:ConnectionId='8' Grid.Row="1" Grid.Column="1"                                                     Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='9' Grid.Row="2" Grid.Column="1"                                                     Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='10' Grid.Row="3" Grid.Column="1"                                                   Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='11' Grid.Row="4" Grid.Column="1"                                                   Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='12' Grid.Row="5" Grid.Column="1"                                               Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='13' Grid.Row="7" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='14' Grid.Row="8" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='15' Grid.Row="9" Grid.Column="1"                                                             Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='15' Grid.Row="1" Grid.Column="1"                                                     Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='16' Grid.Row="2" Grid.Column="1"                                                     Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='17' Grid.Row="3" Grid.Column="1"                                                   Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='18' Grid.Row="4" Grid.Column="1"                                                   Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='19' Grid.Row="5" Grid.Column="1"                                               Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='20' Grid.Row="7" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='21' Grid.Row="8" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <HyperlinkButton x:ConnectionId='22' Grid.Row="9" Grid.Column="1"                               Margin="20,10,0,0">
+                    <TextBlock x:ConnectionId='27'                                                              Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="Blue" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left"></TextBlock>
+                </HyperlinkButton>
                 <TextBox Grid.Row="10" Grid.Column="1" Text="-" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='16' Grid.Row="11" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='17' Grid.Row="12" Grid.Column="1"                                                               Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='18' Grid.Row="14" Grid.Column="1"                                                    Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='19' Grid.Row="15" Grid.Column="1"                                                       Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='23' Grid.Row="11" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='24' Grid.Row="12" Grid.Column="1"                                                               Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='25' Grid.Row="14" Grid.Column="1"                                                    Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='26' Grid.Row="15" Grid.Column="1"                                                       Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <HyperlinkButton Grid.Row="16" Grid.ColumnSpan="2" BorderBrush="Red">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="&#xE107;" FontFamily="Segoe MDL2 Assets" FontSize="16" Foreground="Red" Margin="10,10,0,0" VerticalAlignment="Center"></TextBlock>
@@ -178,7 +254,7 @@
                 </HyperlinkButton>
             </Grid>
         </ScrollViewer>
-        <Grid x:ConnectionId='6' Name="CommonChatGrid" Grid.Row="2" x:Load="False">
+        <Grid x:ConnectionId='13' Name="CommonChatGrid" Grid.Row="2" Visibility="Collapsed">
             <TextBlock Text="Under Development" Margin="0,20,0,0" HorizontalAlignment="Center"></TextBlock>
         </Grid>
     </Grid>
