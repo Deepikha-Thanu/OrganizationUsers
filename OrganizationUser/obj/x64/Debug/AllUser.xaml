@@ -8,14 +8,15 @@
     xmlns:data="using:OrganizationUser.Model"
     mc:Ignorable="d"
     Background="{ThemeResource SystemBaseLowColor}">
-
-
-    <GridView x:ConnectionId='2' Name="AllUserGridView"                                            Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" SelectionMode="None">
-        <GridView.ItemTemplate>
-            <DataTemplate x:Name="AllDataTemplate"                         >
-                <local:OrgUserControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></local:OrgUserControl>
-            </DataTemplate>
-        </GridView.ItemTemplate>
-    </GridView>
+    <Grid>
+        <TextBlock x:ConnectionId='2' x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
+        <GridView x:ConnectionId='3' Name="AllUserGridView"                                            Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" SelectionMode="None">
+            <GridView.ItemTemplate>
+                <DataTemplate  x:Name="AllDataTemplate"                         >
+                    <local:OrgUserControl x:ConnectionId='5' x:Name="OrgUsersUC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                                Margin="20"></local:OrgUserControl>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
 </Page>
 

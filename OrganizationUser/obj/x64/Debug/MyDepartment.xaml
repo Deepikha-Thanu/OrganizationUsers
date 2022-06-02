@@ -12,7 +12,7 @@
     <GridView x:ConnectionId='2' Name="MyDepartmentGridView"                                                  Margin="10" SelectionMode="None">
         <GridView.ItemTemplate>
             <DataTemplate                         >
-                <local:OrgUserControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></local:OrgUserControl>
+                <local:OrgUserControl x:ConnectionId='4' HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                                Margin="20"></local:OrgUserControl>
             </DataTemplate>
         </GridView.ItemTemplate>
     </GridView>

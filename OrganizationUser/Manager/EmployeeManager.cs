@@ -19,6 +19,22 @@ namespace OrganizationUser.Manager
             datastore = new Datastore();
             IntialiseEmployees();
         }
+        public async void DBInvocation()
+        {
+            await Task.Run(() =>
+            {
+                datastore.InitialiseDB();
+            });
+        }
+        public async void DBInsertion()
+        {
+            await Task.Run(() =>
+            {
+                datastore.InsertDepartment();
+                datastore.InsertDesign();
+                datastore.InsertPeople();
+            });
+        }
         //public void insertDepartment()
         //{
         //    Department appx = new Department() { Id = 15, Name = "AppX-Windows-Cliq" };
@@ -59,9 +75,14 @@ namespace OrganizationUser.Manager
         public void IntialiseEmployees()
         {
             //List<People> toReturnEmployees= new List<People>();
-            Employees = datastore.ReadData();
-            datastore.DeleteTableData();
-            datastore.CloseConnecton();
+            //await Task.Run(() =>
+            //{
+                DBInvocation();
+                DBInsertion();
+                Employees = datastore.ReadData(); 
+            //});
+            
+            //datastore.CloseConnecton();
             for (int i = 0; i < Employees.Count; i++)
             {
                 if (Employees[i].Id == 235667)
@@ -111,9 +132,9 @@ namespace OrganizationUser.Manager
             //}
             //return ToReturn;
         }
-        public void DeleteTable()
-        {
-            datastore.DeleteTableData();
-        }
+        //public void DeleteTable()
+        //{
+        //    datastore.DeleteTableData();
+        //}
     }
 }

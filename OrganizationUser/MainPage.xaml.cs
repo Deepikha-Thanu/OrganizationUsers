@@ -30,47 +30,92 @@ namespace OrganizationUser
     
     public sealed partial class MainPage : Page
     {
+        PeopleDataUserControl peopleDataUserControl;
         public MainPage()
         {
             this.InitializeComponent();
-            new EmployeeManager();
-            PeopleFrame.Navigate(typeof(AllUser));
+            //PeopleFrame.Navigate(typeof(AllUser),this);
+            //EventManager.EmployeeClicked += EventManager_EmployeeClicked;
         }
+        //protected override void OnNavigatedTo(NavigationEventArgs e)
+        //{
+        //    if(e.Parameter as Type==typeof(AllUser))
+        //    {
+        //        allUserPage
+        //    }
+        //}
+        //private void EventManager_EmployeeClicked(object sender, People selectedEmp)
+        //{
+            
+        //}
 
+       //private void InitialiseAllUser()
+       // {
+       //     allUserPage = PeopleFrame.Content as AllUser;
+       // }
+
+        public void MainPage_EmployeeClicked(object sender, People selectedEmp)
+        {
+            peopleDataUserControl = this.FindName("PeopleUserControl") as PeopleDataUserControl;
+            peopleDataUserControl.MakeVisible();
+            peopleDataUserControl.EmployeeToShow=selectedEmp;
+        }
 
         private void PeopleTabView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (AllUserButton.IsSelected)
             {
-                EventManager.onUnloadGrid();
+                //InitialiseAllUser();
+                new EmployeeManager();
+                this.UnloadObject(PeopleUserControl);
                 MyReportButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(0);
                 AllUserButton.BorderThickness = new Thickness(2, 0, 0, 0);
-                PeopleFrame.Navigate(typeof(AllUser));
+                PeopleFrame.Navigate(typeof(AllUser),this);
                 
             }
             if (MyDepartmentButton.IsSelected)
             {
-                EventManager.onUnloadGrid();
+                //InitialiseDepartment();
+                this.UnloadObject(PeopleUserControl);
                 AllUserButton.BorderThickness = new Thickness(0);
                 MyReportButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(2, 0, 0, 0);
-                PeopleFrame.Navigate(typeof(MyDepartment));
+                PeopleFrame.Navigate(typeof(MyDepartment),this);
             }
             if (MyReportButton.IsSelected)
             {
-                EventManager.onUnloadGrid();
+                this.UnloadObject(PeopleUserControl);
                 AllUserButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(0);
                 MyReportButton.BorderThickness = new Thickness(2, 0, 0, 0);
-                PeopleFrame.Navigate(typeof(MyDirectReports));
+                PeopleFrame.Navigate(typeof(MyDirectReports),this);
             }
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if(peopleDataUserControl != null) 
+            { 
+            peopleDataUserControl.MakeCollapsed();
+            }
             string toSearch=SearchBox.Text;
-            EventManager.OnEmployeeSearched(toSearch);
+            AllUser allUserPage = PeopleFrame.Content as AllUser;
+            MyDepartment department=PeopleFrame.Content as MyDepartment;
+            if (allUserPage != null)
+            {
+                allUserPage.EmployeeSearched(toSearch);
+            }
+            else if (department != null)
+            {
+                department.EmployeeSearched(toSearch);
+            }
         }
+
+        //private void Page_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    TextBlock empText = (sender as UserControl).FindName("NameText") as TextBlock;
+        //    empText.Text = "Changed the name";
+        //}
     }
 }

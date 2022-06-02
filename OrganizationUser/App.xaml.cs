@@ -31,12 +31,6 @@ namespace OrganizationUser
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-            Datastore mainDatastore = new Datastore();
-            mainDatastore.InitialiseDB();
-            mainDatastore.insertDepartment();
-            mainDatastore.insertDesign();
-            mainDatastore.insertPeople();
-            mainDatastore.CloseConnecton();
         }
 
         /// <summary>

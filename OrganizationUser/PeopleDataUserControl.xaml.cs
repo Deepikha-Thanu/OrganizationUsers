@@ -19,10 +19,10 @@ using Windows.UI.Xaml.Navigation;
 
 namespace OrganizationUser
 {
-    public sealed partial class PeopleDataUserControl : UserControl, INotifyPropertyChanged
+    public sealed partial class PeopleDataUserControl : UserControl,INotifyPropertyChanged
     {
-        People _EmployeeToShow;
-        People EmployeeToShow
+        public People _EmployeeToShow;
+        public People EmployeeToShow
         {
             get { return _EmployeeToShow; }
             set
@@ -43,19 +43,6 @@ namespace OrganizationUser
         public PeopleDataUserControl()
         {
             this.InitializeComponent();
-            EventManager.EmployeeClicked += EventManager_EmployeeClicked;
-            EventManager.UnloadGrid += EventManager_UnloadGrid;
-            Window.Current.Closed += Current_Closed;
-        }
-
-        private void EventManager_UnloadGrid(object sender, EventArgs e)
-        {
-            this.UnloadObject(EmployeeViewGrid);
-        }
-
-        private void Current_Closed(object sender, Windows.UI.Core.CoreWindowEventArgs e)
-        {
-            EventManager.EmployeeClicked -= EventManager_EmployeeClicked;
         }
         private void CommonChatButton_Click(object sender, RoutedEventArgs e)
         {
@@ -65,6 +52,16 @@ namespace OrganizationUser
             CommonChatButton.BorderThickness = new Thickness(0, 0, 0, 2);
         }
 
+        public void MakeVisible()
+        {
+            EmployeeViewGrid.Visibility = Visibility.Visible;
+            CloseButton.Visibility = Visibility.Visible;
+        }
+        public void MakeCollapsed()
+        {
+            EmployeeViewGrid.Visibility = Visibility.Collapsed;
+            CloseButton.Visibility = Visibility.Collapsed;
+        }
         private void PeopleButton_Click(object sender, RoutedEventArgs e)
         {
             PeopleGrid.Visibility = Visibility.Visible;
@@ -77,27 +74,19 @@ namespace OrganizationUser
         {
             EmployeeViewGrid.Visibility = Visibility.Collapsed;
             CloseButton.Visibility = Visibility.Collapsed;
-            this.UnloadObject(EmployeeViewGrid);
-        }
-        private void EventManager_EmployeeClicked(object sender, People selectedEmp)
-        {
-            this.FindName("EmployeeViewGrid");
-            EmployeeToShow = selectedEmp;
-            //LoadBoolean = true;
-            EmployeeViewGrid.Visibility = Visibility.Visible;
-            CloseButton.Visibility = Visibility.Visible;
+            //this.UnloadObject(this);
         }
 
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EmployeeToShow.ReportingTo == null || EmployeeToShow.ReportingTo.Name=="-")
+            if (EmployeeToShow.ReportingTo == null || EmployeeToShow.ReportingTo.Name == "-")
                 return;
             if (EmployeeToShow.ReportingTo.ReportingTo == null)
             {
                 EmployeeToShow.ReportingTo.ReportingTo = new People();
                 EmployeeToShow.ReportingTo.ReportingTo.Name = "-";
             }
-            EmployeeToShow=EmployeeToShow.ReportingTo;
+            EmployeeToShow = EmployeeToShow.ReportingTo;
             EmployeeViewGrid.Visibility = Visibility.Visible;
             CloseButton.Visibility = Visibility.Visible;
         }

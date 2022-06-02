@@ -22,7 +22,7 @@ namespace OrganizationUser
             }
             Length = Peoples.Count;
         }
-        public void search(ObservableCollection<People> Peoples,string data)
+        public bool search(ObservableCollection<People> Peoples,string data)
         {
             for (int i = 0; i < Peoples.Count; i++)
             {
@@ -37,6 +37,10 @@ namespace OrganizationUser
                     i--;
                 }
                 j++;
+                if(Peoples.Count==0)
+                {
+                    return false;
+                }    
             }
             //int Length= Original.Count;
             for (int i = 0; i < Length; i++)
@@ -58,6 +62,7 @@ namespace OrganizationUser
                     }
                 }
             }
+            return true;
         }
     }
 }

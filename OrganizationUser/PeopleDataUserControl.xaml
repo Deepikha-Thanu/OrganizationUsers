@@ -96,33 +96,32 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup>
-            <VisualState>
-                <VisualState.StateTriggers>
-                    <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text}" TriggerValue="Away"></local:StatusComparisonTrigger>
-                </VisualState.StateTriggers>
-                <VisualState.Setters>
-                    <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
-                </VisualState.Setters>
-            </VisualState>
-            <VisualState>
-                <VisualState.StateTriggers>
-                    <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text}" TriggerValue="Office in"></local:StatusComparisonTrigger>
-                </VisualState.StateTriggers>
-                <VisualState.Setters>
-                    <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
-                </VisualState.Setters>
-            </VisualState>
-        </VisualStateGroup>
-    </VisualStateManager.VisualStateGroups>
-    <Grid Name="EmployeeViewGrid" HorizontalAlignment="Right" Width="500" x:Load="False">
+    <Grid Name="EmployeeViewGrid" HorizontalAlignment="Right" Width="500">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text}" TriggerValue="Away"></local:StatusComparisonTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text}" TriggerValue="Office in"></local:StatusComparisonTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Button Grid.Row="0" Canvas.ZIndex="20" Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Top"  FontFamily="Segoe MDL2 Assets" Content="&#xE106;" FontSize="16" Click="CloseButton_Click"></Button>
         <!--<Button Name="CloseButton" FontFamily="Segoe MDL2 Assets" Content="&#xE10A;" FontSize="16" Click="CloseButton_Click"></Button>-->
         <Grid Canvas.ZIndex="10" Grid.Row="0" Background="{ThemeResource SystemRevealAltMediumHighColor}">
@@ -140,7 +139,7 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock MaxWidth="110" Name="NameText" Text="{x:Bind EmployeeToShow.Fullname,Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
+                    <TextBlock MaxWidth="110" x:Name="NameText" Text="{x:Bind EmployeeToShow.Fullname,Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
                     <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,10,0,0"></Ellipse>
                     <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
                 </Grid>

@@ -222,12 +222,12 @@
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>-->
             <RelativePanel BorderThickness="0,0,0,2" Background="{ThemeResource AppBarBackgroundThemeBrush}">
-                <TextBlock x:ConnectionId='35' Name="HeaderIcon" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Text="&#xE8D4;" FontSize="30" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="10"></TextBlock>
-                <TextBlock x:ConnectionId='36' Name="HeaderText" RelativePanel.RightOf="HeaderIcon" Text="People" FontSize="30" FontWeight="Bold" Margin="10" VerticalAlignment="Center"></TextBlock>
-                <StackPanel x:ConnectionId='37' Name="SearchBar" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel= "True" RelativePanel.AlignVerticalCenterWithPanel="True" BorderBrush="{ThemeResource TextBoxBorderThemeBrush}" BorderThickness="2" Visibility="Visible">
-                    <Button x:ConnectionId='38' Name="SearchIcon" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE1A3;" Background="Transparent"  RelativePanel.RightOf="SearchBox" RelativePanel.AlignVerticalCenterWithPanel="True">
+                <TextBlock x:ConnectionId='36' Name="HeaderIcon" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Text="&#xE8D4;" FontSize="30" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="10"></TextBlock>
+                <TextBlock x:ConnectionId='37' Name="HeaderText" RelativePanel.RightOf="HeaderIcon" Text="People" FontSize="30" FontWeight="Bold" Margin="10" VerticalAlignment="Center"></TextBlock>
+                <StackPanel x:ConnectionId='38' Name="SearchBar" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel= "True" RelativePanel.AlignVerticalCenterWithPanel="True" BorderBrush="{ThemeResource TextBoxBorderThemeBrush}" BorderThickness="2" Visibility="Visible">
+                    <Button x:ConnectionId='39' Name="SearchIcon" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE1A3;" Background="Transparent"  RelativePanel.RightOf="SearchBox" RelativePanel.AlignVerticalCenterWithPanel="True">
                     </Button>
-                    <TextBox x:ConnectionId='39' Style="{StaticResource TextBoxStyle1}" Name="SearchBox" Width="300" PlaceholderText="Search the name" BorderBrush="Transparent"                                     Background="Transparent" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent"></TextBox>
+                    <TextBox x:ConnectionId='40' Style="{StaticResource TextBoxStyle1}" Name="SearchBox" Width="300" PlaceholderText="Search the name" BorderBrush="Transparent"                                     Background="Transparent" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent"></TextBox>
                 </StackPanel>
             </RelativePanel>
             <Grid x:ConnectionId='33' Name="FrameEmployeeViewGrid" Grid.Row="1">
@@ -237,7 +237,7 @@
                 </Grid.ColumnDefinitions>
                 
                 <Frame x:ConnectionId='34' Name="PeopleFrame" Grid.Column="0"></Frame>
-                <local:PeopleDataUserControl Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></local:PeopleDataUserControl>
+                <local:PeopleDataUserControl x:ConnectionId='35' Grid.Column="1" x:Name="PeopleUserControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Load="False"></local:PeopleDataUserControl>
             </Grid>
                
         </Grid>

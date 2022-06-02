@@ -86,20 +86,21 @@ namespace OrganizationUser
             designTextblock.Visibility = Visibility.Visible;
             ChildPopup.Visibility = Visibility.Collapsed;
         }
-        private void InfoButton_Click(object sender, RoutedEventArgs e)
-        {
-            People chosen = (sender as FrameworkElement).DataContext as People;
-            //People chosen=(People)AllUserGridView.SelectedItem;
-            EventManager.OnEmployeeClicked(chosen);
-        }
+        //private void InfoButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    People chosen = (sender as FrameworkElement).DataContext as People;
+        //    //People chosen=(People)AllUserGridView.SelectedItem;
+        //    //EventManager.OnEmployeeClicked(chosen);
+        //}
 
-        private void AllUserDataGrid_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            People chosen = (sender as FrameworkElement).DataContext as People;
-            EventManager.OnEmployeeClicked(chosen);
-            //subscription(chosen);
-            //allUser.EmployeeClicked?.Invoke(null,chosen);
-        }
+        //private void AllUserDataGrid_Tapped(object sender, TappedRoutedEventArgs e)
+        //{
+        //    //(this.Parent as FrameworkElement).FindName("PeopleUserControl");
+        //    People chosen = (sender as FrameworkElement).DataContext as People;
+        //    //EventManager.OnEmployeeClicked(chosen);
+        //    //subscription(chosen);
+        //    //allUser.EmployeeClicked?.Invoke(null,chosen);
+        //}
     }
 
 }

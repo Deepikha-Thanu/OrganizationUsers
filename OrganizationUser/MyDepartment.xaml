@@ -12,7 +12,7 @@
     <GridView Name="MyDepartmentGridView" ItemsSource="{x:Bind DepartPeoples,Mode=OneWay}" Margin="10" SelectionMode="None">
         <GridView.ItemTemplate>
             <DataTemplate x:DataType="data:People">
-                <local:OrgUserControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></local:OrgUserControl>
+                <local:OrgUserControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Loaded="OrgUserControl_Loaded" Margin="20"></local:OrgUserControl>
             </DataTemplate>
         </GridView.ItemTemplate>
     </GridView>
