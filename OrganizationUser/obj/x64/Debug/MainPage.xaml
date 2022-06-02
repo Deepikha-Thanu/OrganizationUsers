@@ -237,7 +237,7 @@
                 </Grid.ColumnDefinitions>
                 
                 <Frame x:ConnectionId='34' Name="PeopleFrame" Grid.Column="0"></Frame>
-                <local:PeopleDataUserControl x:ConnectionId='35' Grid.Column="1" x:Name="PeopleUserControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Load="False"></local:PeopleDataUserControl>
+                <local:PeopleDataUserControl x:ConnectionId='35' Grid.Column="1" x:Name="PeopleUserControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Load="False"                                  ></local:PeopleDataUserControl>
             </Grid>
                
         </Grid>

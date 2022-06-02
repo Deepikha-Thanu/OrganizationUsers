@@ -298,6 +298,7 @@
     <RootType FullName="OrganizationUser.PeopleDataUserControl">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootEvent Name="Loaded" />
     </RootType>
     <RootType FullName="OrganizationUser.MainPage" />
     <RootType FullName="OrganizationUser.MyDepartment" />

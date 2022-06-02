@@ -56,8 +56,9 @@ namespace OrganizationUser
 
         public void MainPage_EmployeeClicked(object sender, People selectedEmp)
         {
+            this.UnloadObject(PeopleUserControl);
             peopleDataUserControl = this.FindName("PeopleUserControl") as PeopleDataUserControl;
-            peopleDataUserControl.MakeVisible();
+            //peopleDataUserControl.MakeVisible();
             peopleDataUserControl.EmployeeToShow=selectedEmp;
         }
 
@@ -95,10 +96,7 @@ namespace OrganizationUser
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(peopleDataUserControl != null) 
-            { 
-            peopleDataUserControl.MakeCollapsed();
-            }
+            this.UnloadObject(PeopleUserControl);
             string toSearch=SearchBox.Text;
             AllUser allUserPage = PeopleFrame.Content as AllUser;
             MyDepartment department=PeopleFrame.Content as MyDepartment;
@@ -110,6 +108,17 @@ namespace OrganizationUser
             {
                 department.EmployeeSearched(toSearch);
             }
+        }
+
+        private void PeopleUserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Button closeButton = (sender as UserControl).FindName("CloseButton") as Button;
+            closeButton.Click += CloseButton_Click;
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.UnloadObject(PeopleUserControl);
         }
 
         //private void Page_Loaded(object sender, RoutedEventArgs e)

@@ -51,17 +51,6 @@ namespace OrganizationUser
             PeopleButton.BorderThickness = new Thickness(0);
             CommonChatButton.BorderThickness = new Thickness(0, 0, 0, 2);
         }
-
-        public void MakeVisible()
-        {
-            EmployeeViewGrid.Visibility = Visibility.Visible;
-            CloseButton.Visibility = Visibility.Visible;
-        }
-        public void MakeCollapsed()
-        {
-            EmployeeViewGrid.Visibility = Visibility.Collapsed;
-            CloseButton.Visibility = Visibility.Collapsed;
-        }
         private void PeopleButton_Click(object sender, RoutedEventArgs e)
         {
             PeopleGrid.Visibility = Visibility.Visible;
@@ -70,12 +59,12 @@ namespace OrganizationUser
             CommonChatButton.BorderThickness = new Thickness(0);
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            EmployeeViewGrid.Visibility = Visibility.Collapsed;
-            CloseButton.Visibility = Visibility.Collapsed;
-            //this.UnloadObject(this);
-        }
+        //private void CloseButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    EmployeeViewGrid.Visibility = Visibility.Collapsed;
+        //    CloseButton.Visibility = Visibility.Collapsed;
+        //    //this.UnloadObject(this);
+        //}
 
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
