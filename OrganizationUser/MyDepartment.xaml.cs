@@ -74,7 +74,8 @@ namespace OrganizationUser
         }
         public void EmployeeSearched(string data)
         {
-            searchObj.search(DepartPeoples,data);
+           bool res= searchObj.search(DepartPeoples,data);
+            SearchResult.Text = !res ? "No Results Found" : "";
         }
 
         List<People> FilterDepartment()

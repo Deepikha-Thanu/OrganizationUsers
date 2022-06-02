@@ -24,6 +24,7 @@ namespace OrganizationUser
         }
         public bool search(ObservableCollection<People> Peoples,string data)
         {
+            bool res=true;
             for (int i = 0; i < Peoples.Count; i++)
             {
                 if (!Peoples[i].Fullname.StartsWith(data, StringComparison.OrdinalIgnoreCase))
@@ -37,11 +38,8 @@ namespace OrganizationUser
                     i--;
                 }
                 j++;
-                if(Peoples.Count==0)
-                {
-                    return false;
-                }    
             }
+            
             //int Length= Original.Count;
             for (int i = 0; i < Length; i++)
             {
@@ -62,7 +60,15 @@ namespace OrganizationUser
                     }
                 }
             }
-            return true;
+            if (Peoples.Count == 0)
+            {
+                res = false;
+            }
+            if (Peoples.Count > 0)
+            {
+                res = true;
+            }
+            return res;
         }
     }
 }

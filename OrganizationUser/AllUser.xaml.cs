@@ -79,7 +79,7 @@ namespace OrganizationUser
         public void EmployeeSearched(string data)
         {
            bool result= searchObj.search(Peoples,data);
-           SearchResult.Text = !result ? "No Results Found" : "";
+           SearchResult.Text = (result || data=="")? "" : "No Results Found";
         }
 
         private void OrgUserControl_Loaded(object sender, RoutedEventArgs e)

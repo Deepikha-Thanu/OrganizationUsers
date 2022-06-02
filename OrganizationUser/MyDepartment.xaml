@@ -8,12 +8,14 @@
     xmlns:data="using:OrganizationUser.Model"
     mc:Ignorable="d"
     Background="{ThemeResource SystemBaseLowColor}">
-
-    <GridView Name="MyDepartmentGridView" ItemsSource="{x:Bind DepartPeoples,Mode=OneWay}" Margin="10" SelectionMode="None">
-        <GridView.ItemTemplate>
-            <DataTemplate x:DataType="data:People">
-                <local:OrgUserControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Loaded="OrgUserControl_Loaded" Margin="20"></local:OrgUserControl>
-            </DataTemplate>
-        </GridView.ItemTemplate>
-    </GridView>
+    <Grid>
+        <TextBlock x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
+        <GridView Name="MyDepartmentGridView" ItemsSource="{x:Bind DepartPeoples,Mode=OneWay}" Margin="10" SelectionMode="None">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="data:People">
+                    <local:OrgUserControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Loaded="OrgUserControl_Loaded" Margin="20"></local:OrgUserControl>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
 </Page>
