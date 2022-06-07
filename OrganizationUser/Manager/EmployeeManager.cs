@@ -12,6 +12,7 @@ namespace OrganizationUser.Manager
     class EmployeeManager
     {
         public static List<People> Employees = new List<People>();
+        private const long myId = 235667;
         public static People me;
         Datastore datastore;
         public EmployeeManager()
@@ -21,20 +22,39 @@ namespace OrganizationUser.Manager
         }
         public async void DBInvocation()
         {
-            await Task.Run(() =>
-            {
-                datastore.InitialiseDB();
-            });
+            await Task.Run(()=>
+                {
+                    datastore.InitialiseDB();
+                    datastore.InsertDepartment();
+                    datastore.InsertDesign();
+                    datastore.InsertPeople();
+                    Employees = datastore.ReadData();
+                    for (int i = 0; i < Employees.Count; i++)
+                    {
+                        if (Employees[i].Id == myId)
+                        {
+                            me = Employees[i];
+                            break;
+                        }
+                    }
+
+                    for (int i = 0; i < Employees.Count; i++)
+                    {
+                        if (Employees[i].ReportingTo == null)
+                        {
+                            Employees[i].ReportingTo = new People();
+                            Employees[i].ReportingTo.Name = "-";
+                        }
+                    }
+                });
         }
-        public async void DBInsertion()
-        {
-            await Task.Run(() =>
-            {
-                datastore.InsertDepartment();
-                datastore.InsertDesign();
-                datastore.InsertPeople();
-            });
-        }
+        //public async void DBInsertion()
+        //{
+        //    await Task.Run(() =>
+        //    {
+                
+        //    });
+        //}
         //public void insertDepartment()
         //{
         //    Department appx = new Department() { Id = 15, Name = "AppX-Windows-Cliq" };
@@ -78,28 +98,28 @@ namespace OrganizationUser.Manager
             //await Task.Run(() =>
             //{
                 DBInvocation();
-                DBInsertion();
-                Employees = datastore.ReadData(); 
-            //});
+                //DBInsertion();
             
+            //});
+
             //datastore.CloseConnecton();
-            for (int i = 0; i < Employees.Count; i++)
-            {
-                if (Employees[i].Id == 235667)
-                {
-                    me = Employees[i];
-                    break;
-                }
-            }
+            //for (int i = 0; i < Employees.Count; i++)
+            //{
+            //    if (Employees[i].Id == 235667)
+            //    {
+            //        me = Employees[i];
+            //        break;
+            //    }
+            //}
                 
-            for (int i = 0; i < Employees.Count; i++)
-            {
-                    if (Employees[i].ReportingTo==null)
-                    {
-                        Employees[i].ReportingTo = new People();
-                        Employees[i].ReportingTo.Name = "-";
-                    }
-            }
+            //for (int i = 0; i < Employees.Count; i++)
+            //{
+            //        if (Employees[i].ReportingTo==null)
+            //        {
+            //            Employees[i].ReportingTo = new People();
+            //            Employees[i].ReportingTo.Name = "-";
+            //        }
+            //}
              
             //List<People> ToReturn = new List<People>();
             //for (int i = 0; i < Employees.Count; i++)

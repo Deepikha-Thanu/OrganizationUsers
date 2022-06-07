@@ -23,6 +23,8 @@ namespace OrganizationUser
     public sealed partial class OrgUserControl : UserControl
     {
         public People People { get { return this.DataContext as People; } }
+        public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
+        public event EmployeeDisplayEventHandler InfoEmployeeClicked;
         public OrgUserControl()
         {
             this.InitializeComponent();
@@ -30,16 +32,6 @@ namespace OrganizationUser
         }
         private void AllUserDataGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            //int index = AllUserGridView.SelectedIndex;
-            //int i = 0;
-            //foreach(var popup in FindVisualChildren<Popup>(AllUserGridView))
-            //{
-            //    if(index==i)
-            //    { 
-            //            popup.IsOpen = true;
-            //    }
-            //    i++;
-            //}
 
             //GridViewItem gridViewItem = (GridViewItem)AllUserGridView.ItemContainerGenerator.ContainerFromItem(AllUserGridView.SelectedItem);
             //ContentPresenter myContent = FindVisualChild<ContentPresenter>(gridViewItem);
@@ -86,9 +78,22 @@ namespace OrganizationUser
             designTextblock.Visibility = Visibility.Visible;
             ChildPopup.Visibility = Visibility.Collapsed;
         }
+
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            People chosen=(sender as FrameworkElement).DataContext as People;
+            if(chosen!=null)
+            {
+               InfoEmployeeClicked.Invoke(this,chosen);
+            }
+        }
         //private void InfoButton_Click(object sender, RoutedEventArgs e)
         //{
         //    People chosen = (sender as FrameworkElement).DataContext as People;
+        //    if(chosen != null)
+        //    {
+        //        EmployeeClicked.Invoke(this,chosen);
+        //    }
         //    //People chosen=(People)AllUserGridView.SelectedItem;
         //    //EventManager.OnEmployeeClicked(chosen);
         //}
@@ -97,6 +102,10 @@ namespace OrganizationUser
         //{
         //    //(this.Parent as FrameworkElement).FindName("PeopleUserControl");
         //    People chosen = (sender as FrameworkElement).DataContext as People;
+        //    if (chosen != null)
+        //    {
+        //        EmployeeClicked.Invoke(this,chosen);
+        //    }
         //    //EventManager.OnEmployeeClicked(chosen);
         //    //subscription(chosen);
         //    //allUser.EmployeeClicked?.Invoke(null,chosen);

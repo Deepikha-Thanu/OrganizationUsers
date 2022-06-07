@@ -34,6 +34,7 @@ namespace OrganizationUser
         public MainPage()
         {
             this.InitializeComponent();
+            //SubscribeEvents();
             //PeopleFrame.Navigate(typeof(AllUser),this);
             //EventManager.EmployeeClicked += EventManager_EmployeeClicked;
         }
@@ -46,17 +47,28 @@ namespace OrganizationUser
         //}
         //private void EventManager_EmployeeClicked(object sender, People selectedEmp)
         //{
-            
+
         //}
 
-       //private void InitialiseAllUser()
-       // {
-       //     allUserPage = PeopleFrame.Content as AllUser;
-       // }
-
-        public void MainPage_EmployeeClicked(object sender, People selectedEmp)
+        //private void InitialiseAllUser()
+        // {
+        //     allUserPage = PeopleFrame.Content as AllUser;
+        // }
+        //public void SubscribeEvents()
+        //{
+        //    if (PeopleFrame.Content is AllUser)
+        //    {
+                
+        //        //allUserPage.SampleText.Text = "Hi from Mainpage";
+        //    }
+        //    else
+        //    {
+                
+        //    }
+        //}
+        public void OnEmployeeClicked(object sender, People selectedEmp)
         {
-            this.UnloadObject(PeopleUserControl);
+            //this.UnloadObject(PeopleUserControl);
             peopleDataUserControl = this.FindName("PeopleUserControl") as PeopleDataUserControl;
             //peopleDataUserControl.MakeVisible();
             peopleDataUserControl.EmployeeToShow=selectedEmp;
@@ -73,7 +85,14 @@ namespace OrganizationUser
                 MyDepartmentButton.BorderThickness = new Thickness(0);
                 AllUserButton.BorderThickness = new Thickness(2, 0, 0, 0);
                 PeopleFrame.Navigate(typeof(AllUser),this);
-                
+                AllUser allUserPage = PeopleFrame.Content as AllUser;
+                //OrgUserControl orgUserControl = allUserPage.userControl as OrgUserControl;
+                if (allUserPage != null)
+                {
+                    //orgUserControl.EmployeeClicked += OnEmployeeClicked;
+                    allUserPage.EmployeeClicked += OnEmployeeClicked;
+                }
+                //allUserPage.EmployeeClicked += OnEmployeeClicked;
             }
             if (MyDepartmentButton.IsSelected)
             {
@@ -83,6 +102,13 @@ namespace OrganizationUser
                 MyReportButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(2, 0, 0, 0);
                 PeopleFrame.Navigate(typeof(MyDepartment),this);
+                MyDepartment departmentPage = PeopleFrame.Content as MyDepartment;
+                //OrgUserControl orgUserControl = departmentPage.FindName("OrgUsersUC") as OrgUserControl;
+                if (departmentPage != null)
+                {
+                    departmentPage.EmployeeClicked += OnEmployeeClicked;
+                }
+                //departmentPage.EmployeeClicked += OnEmployeeClicked;
             }
             if (MyReportButton.IsSelected)
             {
@@ -98,15 +124,17 @@ namespace OrganizationUser
         {
             this.UnloadObject(PeopleUserControl);
             string toSearch=SearchBox.Text;
-            AllUser allUserPage = PeopleFrame.Content as AllUser;
-            MyDepartment department=PeopleFrame.Content as MyDepartment;
-            if (allUserPage != null)
+            //AllUser allUserPage = PeopleFrame.Content as AllUser;
+            //MyDepartment department = PeopleFrame.Content as MyDepartment;
+            if (PeopleFrame.Content is AllUser)
             {
+                AllUser allUserPage= PeopleFrame.Content as AllUser;
                 allUserPage.EmployeeSearched(toSearch);
             }
-            else if (department != null)
+            else
             {
-                department.EmployeeSearched(toSearch);
+                MyDepartment departmentPage = PeopleFrame.Content as MyDepartment;
+                departmentPage.EmployeeSearched(toSearch);
             }
         }
 

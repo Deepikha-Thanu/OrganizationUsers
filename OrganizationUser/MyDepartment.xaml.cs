@@ -25,31 +25,15 @@ namespace OrganizationUser
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MyDepartment : Page,INotifyPropertyChanged
+    public sealed partial class MyDepartment : Page
     {
-        List<People> _Peoples;
-        ObservableCollection<People> _DepartPeoples=new ObservableCollection<People>();
+        List<People> Peoples { get; set; }
+        ObservableCollection<People> DepartPeoples { get; set; }
         SearchAlgo searchObj;
-        MainPage mainPage;
         public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
         public event EmployeeDisplayEventHandler EmployeeClicked;
-        public event PropertyChangedEventHandler PropertyChanged;
-        void RaisePropertyChanged(string name)
-        {
-            if(PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-        }
-        internal ObservableCollection<People> DepartPeoples 
-        { 
-            get => _DepartPeoples;
-            set
-            {
-                _DepartPeoples = value;
-                RaisePropertyChanged("DepartPeoples");
-            }
-          }
-
-        internal List<People> Peoples { get => _Peoples; set => _Peoples = value; }
+        
+        
         //internal EventManager NotifyInstance { get => _NotifyInstance; set => _NotifyInstance = value; }
 
         public MyDepartment()
@@ -60,18 +44,18 @@ namespace OrganizationUser
             searchObj=new SearchAlgo(DepartPeoples.ToList<People>());
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            mainPage=e.Parameter as MainPage;
-            EmployeeClicked += mainPage.MainPage_EmployeeClicked;
-        }
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            if (mainPage != null)
-            {
-                EmployeeClicked -= mainPage.MainPage_EmployeeClicked;
-            }
-        }
+        //protected override void OnNavigatedTo(NavigationEventArgs e)
+        //{
+        //    mainPage=e.Parameter as MainPage;
+        //    EmployeeClicked += mainPage.MainPage_EmployeeClicked;
+        //}
+        //protected override void OnNavigatedFrom(NavigationEventArgs e)
+        //{
+        //    if (mainPage != null)
+        //    {
+        //        EmployeeClicked -= mainPage.EmployeeClicked;
+        //    }
+        //}
         public void EmployeeSearched(string data)
         {
            bool res= searchObj.search(DepartPeoples,data);
@@ -91,28 +75,53 @@ namespace OrganizationUser
             return toReturn;
         }
 
-        private void OrgUserControl_Loaded(object sender, RoutedEventArgs e)
+        //private void OrgUsersUC_Tapped(object sender, TappedRoutedEventArgs e)
+        //{
+        //    People chosen = (sender as FrameworkElement).DataContext as People;
+        //    OrgUserControl orgUser= sender as OrgUserControl;
+        //    if(orgUser!=null)
+        //    {
+        //        EmployeeClicked.Invoke(orgUser, chosen);
+        //    }
+        //}
+
+        private void MyDepartmentGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Rectangle tappedRect = (Rectangle)(sender as UserControl).FindName("TransRectangle");
-            Image empImage = (sender as UserControl).FindName("EmployeeImage") as Image;
-            Grid dataGrid = (sender as UserControl).FindName("DataGrid") as Grid;
-            TextBlock emailText = (sender as UserControl).FindName("EmailIDText") as TextBlock;
-            Button infoButton = (sender as UserControl).FindName("InfoButton") as Button;
-            tappedRect.Tapped += EmployeeTapped;
-            empImage.Tapped += EmployeeTapped;
-            dataGrid.Tapped += EmployeeTapped;
-            emailText.Tapped += EmployeeTapped;
-            infoButton.Click += InfoButton_Click;
+            People chosen = e.ClickedItem as People;
+            //OrgUserControl orgUser = sender as OrgUserControl;
+            //if (orgUser != null)
+            //{
+                EmployeeClicked.Invoke(this, chosen);
+            //}
         }
-        private void EmployeeTapped(object sender, TappedRoutedEventArgs e)
+
+        private void OrgUsersUC_InfoEmployeeClicked(object sender, People selectedEmp)
         {
-            People chosen = (sender as FrameworkElement).DataContext as People;
-            EmployeeClicked?.Invoke(this, chosen);
+            EmployeeClicked.Invoke(this, selectedEmp);
         }
-        private void InfoButton_Click(object sender, RoutedEventArgs e)
-        {
-            People chosen = (sender as FrameworkElement).DataContext as People;
-            EmployeeClicked?.Invoke(this, chosen);
-        }
+
+        //private void OrgUserControl_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    Rectangle tappedRect = (Rectangle)(sender as UserControl).FindName("TransRectangle");
+        //    Image empImage = (sender as UserControl).FindName("EmployeeImage") as Image;
+        //    Grid dataGrid = (sender as UserControl).FindName("DataGrid") as Grid;
+        //    TextBlock emailText = (sender as UserControl).FindName("EmailIDText") as TextBlock;
+        //    Button infoButton = (sender as UserControl).FindName("InfoButton") as Button;
+        //    tappedRect.Tapped += EmployeeTapped;
+        //    empImage.Tapped += EmployeeTapped;
+        //    dataGrid.Tapped += EmployeeTapped;
+        //    emailText.Tapped += EmployeeTapped;
+        //    infoButton.Click += InfoButton_Click;
+        //}
+        //private void EmployeeTapped(object sender, TappedRoutedEventArgs e)
+        //{
+        //    People chosen = (sender as FrameworkElement).DataContext as People;
+        //    EmployeeClicked?.Invoke(this, chosen);
+        //}
+        //private void InfoButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    People chosen = (sender as FrameworkElement).DataContext as People;
+        //    EmployeeClicked?.Invoke(this, chosen);
+        //}
     }
 }

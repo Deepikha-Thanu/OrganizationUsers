@@ -122,7 +122,7 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Button x:ConnectionId='12' Grid.Row="0" Canvas.ZIndex="20" Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Top"  FontFamily="Segoe MDL2 Assets" Content="&#xE106;" FontSize="16"></Button>
+        <Button x:ConnectionId='12' Grid.Row="0" Canvas.ZIndex="20" Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Top"  FontFamily="Segoe MDL2 Assets" Content="&#xE106;" FontSize="16" x:Load="False"></Button>
         <!--<Button Name="CloseButton" FontFamily="Segoe MDL2 Assets" Content="&#xE10A;" FontSize="16" Click="CloseButton_Click"></Button>-->
         <Grid Canvas.ZIndex="10" Grid.Row="0" Background="{ThemeResource SystemRevealAltMediumHighColor}">
             <Grid.ColumnDefinitions>

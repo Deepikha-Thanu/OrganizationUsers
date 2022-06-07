@@ -5,17 +5,14 @@
     xmlns:local="using:OrganizationUser"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    d:DesignHeight="220"
-    d:DesignWidth="200"
-    CornerRadius="10,0,10,0">
-    <Grid Name="AllUserDataGrid" CornerRadius="10,0,10,0" Background="{ThemeResource SystemRevealAltMediumHighColor}" Width="200" Height="215" FocusVisualMargin="0" FocusVisualPrimaryBrush="Transparent" PointerEntered="AllUserDataGrid_PointerEntered" PointerExited="AllUserDataGrid_PointerExited">
+    mc:Ignorable="d">
+    <Grid Name="AllUserDataGrid" CornerRadius="10,0,10,0" Background="{ThemeResource SystemRevealAltMediumHighColor}" Width="200" Height="230" FocusVisualMargin="0" FocusVisualPrimaryBrush="Transparent" PointerEntered="AllUserDataGrid_PointerEntered" PointerExited="AllUserDataGrid_PointerExited">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -54,7 +51,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="AllUserDataGrid.Width" Value="200"></Setter>
-                        <Setter Target="AllUserDataGrid.Height" Value="220"></Setter>
+                        <Setter Target="AllUserDataGrid.Height" Value="230"></Setter>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -71,14 +68,14 @@
             <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,0,0,0"></Ellipse>
             <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind People.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,0,10,0"></TextBlock>
         </Grid>
-        <TextBlock x:Name="EmailIDText" Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Grid.Row="2" FontSize="14" Text="{x:Bind People.Email_id,Mode=OneWay}" Margin="10,0,7,7" ToolTipService.ToolTip="{x:Bind People.Email_id,Mode=OneWay}"></TextBlock>
-        <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DepartmentText" FontSize="16" Grid.Row="3" Text="{x:Bind People.Depart.Name,Mode=OneWay}" Margin="10,0,7,5" ToolTipService.ToolTip="{x:Bind People.Depart.Name,Mode=OneWay}"></TextBlock>
-        <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DesignationText" Grid.Row="4" FontSize="14" Text="{x:Bind People.Design.Name,Mode=OneWay}" Margin="10,0,7,7" ToolTipService.ToolTip="{x:Bind People.Design.Name,Mode=OneWay}"></TextBlock>
-        <StackPanel CornerRadius="0,0,10,0" Name="TaskStackPanel" Orientation="Horizontal" Grid.Row="3" Grid.RowSpan="2" Visibility="Collapsed" Background="{ThemeResource SystemChromeMediumColor}">
-            <Button x:Name="CallButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE13A;" Margin="10,10,0,10"></Button>
-            <Button x:Name="VideoButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE714;" Margin="10,10,0,10"></Button>
-            <Button x:Name="MessageButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE134;" Margin="10,10,0,10"></Button>
-            <Button x:Name="InfoButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE171;" Margin="10,10,0,10"></Button>
+        <TextBlock x:Name="EmailIDText" Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Grid.Row="2" FontSize="14" Text="{x:Bind People.Email_id,Mode=OneWay}" Margin="10,0,10,7" ToolTipService.ToolTip="{x:Bind People.Email_id,Mode=OneWay}"></TextBlock>
+        <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DepartmentText" FontSize="16" Grid.Row="3" Text="{x:Bind People.Depart.Name,Mode=OneWay}" Margin="10,0,10,5" ToolTipService.ToolTip="{x:Bind People.Depart.Name,Mode=OneWay}"></TextBlock>
+        <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DesignationText" Grid.Row="4" FontSize="14" Text="{x:Bind People.Design.Name,Mode=OneWay}" Margin="10,0,0,10" ToolTipService.ToolTip="{x:Bind People.Design.Name,Mode=OneWay}"></TextBlock>
+        <StackPanel Name="TaskStackPanel" Orientation="Horizontal" Grid.Row="3" Grid.RowSpan="2" Visibility="Collapsed" Background="{ThemeResource SystemChromeMediumColor}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Button CornerRadius="2" Background="White" x:Name="CallButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE13A;" Margin="10,10,0,10"></Button>
+            <Button CornerRadius="2" Background="White" x:Name="VideoButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE714;" Margin="10,10,0,10"></Button>
+            <Button CornerRadius="2" Background="White" x:Name="MessageButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE134;" Margin="10,10,0,10"></Button>
+            <Button CornerRadius="2" Background="White" x:Name="InfoButton" FontFamily="Segoe MDL2 Assets" FontSize="14" Content="&#xE171;" Margin="10,10,0,10" Click="InfoButton_Click"></Button>
         </StackPanel>
     </Grid>
 </UserControl>

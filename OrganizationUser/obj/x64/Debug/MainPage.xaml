@@ -22,7 +22,7 @@
             <Setter Property="Foreground" Value="White"></Setter>
         </Style>
         
-        <Style x:Key="TextBoxStyle1" TargetType="TextBox">
+        <Style x:Key="SearchBoxStyle" TargetType="TextBox">
             <Setter Property="Foreground" Value="{ThemeResource TextControlForeground}"/>
             <Setter Property="Background" Value="{ThemeResource TextControlBackground}"/>
             <Setter Property="BorderBrush" Value="{ThemeResource TextControlBorderBrush}"/>
@@ -227,7 +227,7 @@
                 <StackPanel x:ConnectionId='38' Name="SearchBar" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel= "True" RelativePanel.AlignVerticalCenterWithPanel="True" BorderBrush="{ThemeResource TextBoxBorderThemeBrush}" BorderThickness="2" Visibility="Visible">
                     <Button x:ConnectionId='39' Name="SearchIcon" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE1A3;" Background="Transparent"  RelativePanel.RightOf="SearchBox" RelativePanel.AlignVerticalCenterWithPanel="True">
                     </Button>
-                    <TextBox x:ConnectionId='40' Style="{StaticResource TextBoxStyle1}" Name="SearchBox" Width="300" PlaceholderText="Search the name" BorderBrush="Transparent"                                     Background="Transparent" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent"></TextBox>
+                    <TextBox x:ConnectionId='40' Style="{StaticResource SearchBoxStyle}" Name="SearchBox" Width="300" PlaceholderText="Search the name" BorderBrush="Transparent"                                     Background="Transparent" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent"></TextBox>
                 </StackPanel>
             </RelativePanel>
             <Grid x:ConnectionId='33' Name="FrameEmployeeViewGrid" Grid.Row="1">
