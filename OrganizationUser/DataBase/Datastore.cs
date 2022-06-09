@@ -21,9 +21,14 @@ namespace OrganizationUser.DataBase
         //    conn = new SqliteConnection($"FileName={connectionString}");
         //    conn.Open();     
         //}
-        public async void InitialiseDB()
+
+        public async void CreateDB()
         {
-            await ApplicationData.Current.LocalFolder.CreateFileAsync("EmployeeDatabase.db",CreationCollisionOption.OpenIfExists);
+            await ApplicationData.Current.LocalFolder.CreateFileAsync("EmployeeDatabase.db", CreationCollisionOption.OpenIfExists);
+        }
+        public void InitialiseDB()
+        {
+            CreateDB();
             string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "EmployeeDatabase.db");
             using (SqliteConnection conn = new SqliteConnection($"FileName={dbPath}"))
             {

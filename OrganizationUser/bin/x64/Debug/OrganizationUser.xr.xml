@@ -27,6 +27,7 @@
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Padding" />
+      <RootProperty Name="CornerRadius" />
       <RootProperty Name="BackgroundSizing" />
       <RootProperty Name="FontWeight" />
       <RootMethod Name="GetIsTemplateFocusTarget" />
@@ -226,7 +227,6 @@
       <RootProperty Name="FontFamily" />
       <RootProperty Name="Content" />
       <RootProperty Name="Background" />
-      <RootProperty Name="CornerRadius" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="BorderBrush" />
@@ -320,7 +320,6 @@
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
-      <RootProperty Name="BorderThickness" />
       <RootProperty Name="Background" />
       <RootProperty Name="Children" />
       <RootMethod Name="GetAlignLeftWithPanel" />
@@ -344,8 +343,8 @@
     <RootType FullName="OrganizationUser.MyDepartment" />
     <RootType FullName="OrganizationUser.MyDirectReports" />
     <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
-      <RootProperty Name="Content" />
       <RootProperty Name="Resources" />
+      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="OrganizationUser.StatusComparisonTrigger">
       <RootProperty Name="DataValue" />

@@ -28,23 +28,11 @@ namespace OrganizationUser
     /// </summary>
     public sealed partial class AllUser : Page
     {
-        ObservableCollection<People> _Peoples;
+        ObservableCollection<People> Peoples { get; set; }
         SearchAlgo searchObj;
         public OrgUserControl userControl;
         public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
         public event EmployeeDisplayEventHandler EmployeeClicked;
-        ObservableCollection<People> Peoples
-        {
-            get
-            {
-                return _Peoples;
-            }
-            set
-            {
-                _Peoples = value;
-                //RaisePropertyChanged("Peoples");
-            }
-        }
 
         //public event PropertyChangedEventHandler PropertyChanged;
         //void RaisePropertyChanged(string name)

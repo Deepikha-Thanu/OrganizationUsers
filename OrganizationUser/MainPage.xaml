@@ -221,7 +221,7 @@
                     
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>-->
-            <RelativePanel BorderThickness="0,0,0,2" Background="{ThemeResource AppBarBackgroundThemeBrush}">
+            <RelativePanel Background="{ThemeResource AppBarBackgroundThemeBrush}">
                 <TextBlock Name="HeaderIcon" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Text="&#xE8D4;" FontSize="30" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="10"></TextBlock>
                 <TextBlock Name="HeaderText" RelativePanel.RightOf="HeaderIcon" Text="People" FontSize="30" FontWeight="Bold" Margin="10" VerticalAlignment="Center"></TextBlock>
                 <StackPanel Name="SearchBar" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel= "True" RelativePanel.AlignVerticalCenterWithPanel="True" BorderBrush="{ThemeResource TextBoxBorderThemeBrush}" BorderThickness="2" Visibility="Visible">
@@ -235,7 +235,7 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                
+                <TextBlock x:Name="NavigationStatus" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <Frame Name="PeopleFrame" Grid.Column="0"></Frame>
                 <local:PeopleDataUserControl Grid.Column="1" x:Name="PeopleUserControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Load="False" Loaded="PeopleUserControl_Loaded"></local:PeopleDataUserControl>
             </Grid>

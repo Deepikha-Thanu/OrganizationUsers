@@ -20,9 +20,9 @@ namespace OrganizationUser.Manager
             datastore = new Datastore();
             IntialiseEmployees();
         }
-        public async void DBInvocation()
+        public void DBInvocation()
         {
-            await Task.Run(()=>
+            Task.Run(() =>
                 {
                     datastore.InitialiseDB();
                     datastore.InsertDepartment();
