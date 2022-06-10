@@ -104,6 +104,11 @@
     <Grid>
         <TextBlock x:ConnectionId='15' x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
         <GridView x:ConnectionId='16' ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="MyDepartmentGridView"                                                  Margin="10" SelectionMode="Single" IsItemClickEnabled="True"                                           >
+            <GridView.ItemContainerTransitions>
+                <TransitionCollection>
+                    <AddDeleteThemeTransition></AddDeleteThemeTransition>
+                </TransitionCollection>
+            </GridView.ItemContainerTransitions>
             <GridView.ItemTemplate>
                 <DataTemplate                         >
                     <local:OrgUserControl x:ConnectionId='18' x:Name="OrgUsersUC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20"                                                     ></local:OrgUserControl>

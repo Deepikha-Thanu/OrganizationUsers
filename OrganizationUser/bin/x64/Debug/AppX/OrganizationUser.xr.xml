@@ -153,6 +153,7 @@
       <RootProperty Name="FocusVisualPrimaryBrush" />
       <RootProperty Name="FocusVisualSecondaryBrush" />
       <RootProperty Name="IsItemClickEnabled" />
+      <RootProperty Name="ItemContainerTransitions" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="SelectionMode" />
       <RootEvent Name="ItemClick" />
@@ -160,6 +161,8 @@
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
       <RootProperty Name="Mode" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.AddDeleteThemeTransition" />
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>

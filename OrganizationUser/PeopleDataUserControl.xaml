@@ -106,7 +106,7 @@
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text}" TriggerValue="Away"></local:StatusComparisonTrigger>
+                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" TriggerValue="Away"></local:StatusComparisonTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
@@ -114,7 +114,7 @@
                 </VisualState>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text}" TriggerValue="Office in"></local:StatusComparisonTrigger>
+                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" TriggerValue="Office in"></local:StatusComparisonTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>

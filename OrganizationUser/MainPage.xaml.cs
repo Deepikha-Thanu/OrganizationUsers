@@ -20,6 +20,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -94,7 +95,7 @@ namespace OrganizationUser
                 { 
                     if(!isTimeExceeded)
                     { 
-                        PeopleFrame.Navigate(typeof(AllUser), this);
+                        PeopleFrame.Navigate(typeof(AllUser), this,new SuppressNavigationTransitionInfo());
                         AllUser allUserPage = PeopleFrame.Content as AllUser;
                         if (allUserPage != null)
                         {
@@ -130,7 +131,7 @@ namespace OrganizationUser
                 MyDepartmentButton.BorderThickness = new Thickness(2, 0, 0, 0);
                 if(!isTimeExceeded)
                 {
-                    PeopleFrame.Navigate(typeof(MyDepartment),this);
+                    PeopleFrame.Navigate(typeof(MyDepartment),this,new SuppressNavigationTransitionInfo());
                     MyDepartment departmentPage = PeopleFrame.Content as MyDepartment;
                     //OrgUserControl orgUserControl = departmentPage.FindName("OrgUsersUC") as OrgUserControl;
                     if (departmentPage != null)
@@ -150,7 +151,7 @@ namespace OrganizationUser
                 AllUserButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(0);
                 MyReportButton.BorderThickness = new Thickness(2, 0, 0, 0);
-                PeopleFrame.Navigate(typeof(MyDirectReports),this);
+                PeopleFrame.Navigate(typeof(MyDirectReports),this,new SuppressNavigationTransitionInfo());
             }
         }
         public Task PauseNavigation()
@@ -159,7 +160,7 @@ namespace OrganizationUser
              {
                  for (int i = 0; EmployeeManager.Employees.Count == 0;i++)
                  {
-                    await Task.Delay(500);
+                    await Task.Delay(1000);
                      if(i==20)
                      {
                          isTimeExceeded = true;

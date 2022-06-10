@@ -8,12 +8,13 @@
     mc:Ignorable="d">
     <UserControl.Resources>
         <Style TargetType="Button" x:Key="HoverButtonStyle">
-            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="Foreground" Value="{ThemeResource AppBarItemForegroundThemeBrush}"></Setter>
             <Setter Property="Margin" Value="10,10,0,10"></Setter>
-            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="Background" Value="{ThemeResource SystemChromeAltHighColor}"></Setter>
             <Setter Property="CornerRadius" Value="2"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>
-            <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderThemeBrush}"></Setter>
+            <Setter Property="BorderBrush" Value="{ThemeResource SystemChromeHighColor}"></Setter>
+            <Setter Property="BorderThickness" Value="2"></Setter>
         </Style>
     </UserControl.Resources>
         <Grid x:ConnectionId='2' Name="AllUserDataGrid" CornerRadius="10,0,10,0" Background="{ThemeResource SystemRevealAltMediumHighColor}" Width="200" Height="230" FocusVisualMargin="0" FocusVisualPrimaryBrush="Transparent"                                                                                              >
