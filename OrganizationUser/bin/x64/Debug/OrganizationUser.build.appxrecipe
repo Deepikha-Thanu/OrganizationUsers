@@ -75,6 +75,12 @@
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\MaleUser.png">
       <PackagePath>Assets\MaleUser.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\MaleUser1.png">
+      <PackagePath>Assets\MaleUser1.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\MaleUser2.png">
+      <PackagePath>Assets\MaleUser2.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SmallTile.scale-100.png">
       <PackagePath>Assets\SmallTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
@@ -240,6 +246,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\WomenUser.png">
       <PackagePath>Assets\WomenUser.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\WomenUser1.png">
+      <PackagePath>Assets\WomenUser1.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\WomenUser2.png">
+      <PackagePath>Assets\WomenUser2.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\WomenUser3.png">
+      <PackagePath>Assets\WomenUser3.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>

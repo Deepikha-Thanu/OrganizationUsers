@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser
 {
-    internal class SearchAlgo
+    public class SearchAlgo
     {
         Dictionary<int, People> RemovedPosPeople = new Dictionary<int, People>();
         Dictionary<int, string> PeoplePosition = new Dictionary<int, string>();

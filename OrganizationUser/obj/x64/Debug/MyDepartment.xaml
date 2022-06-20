@@ -103,7 +103,7 @@
     </Page.Resources>
     <Grid>
         <TextBlock x:ConnectionId='15' x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
-        <GridView x:ConnectionId='16' ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="MyDepartmentGridView"                                                  Margin="10" SelectionMode="Single" IsItemClickEnabled="True"                                           >
+        <GridView x:ConnectionId='16' ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="MyDepartmentGridView"                                                                Margin="10" SelectionMode="Single" IsItemClickEnabled="True"                                           >
             <GridView.ItemContainerTransitions>
                 <TransitionCollection>
                     <AddDeleteThemeTransition></AddDeleteThemeTransition>

@@ -34,11 +34,11 @@ namespace OrganizationUser
     public sealed partial class MainPage : Page
     {
         PeopleDataUserControl peopleDataUserControl;
-        bool isTimeExceeded = false;
         public MainPage()
         {
             this.InitializeComponent();
-            new EmployeeManager();
+
+            //new EmployeeManager();
             //SubscribeEvents();
             //PeopleFrame.Navigate(typeof(AllUser),this);
             //EventManager.EmployeeClicked += EventManager_EmployeeClicked;
@@ -71,12 +71,12 @@ namespace OrganizationUser
                 
         //    }
         //}
-        public void OnEmployeeClicked(object sender, People selectedEmp)
+        private void OnEmployeeClicked(object sender, People selectedEmp)
         {
             //this.UnloadObject(PeopleUserControl);
             peopleDataUserControl = this.FindName("PeopleUserControl") as PeopleDataUserControl;
             //peopleDataUserControl.MakeVisible();
-            peopleDataUserControl.EmployeeToShow=selectedEmp;
+            peopleDataUserControl.viewModel.EmployeeToShow=selectedEmp;
         }
 
         private void PeopleTabView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -87,27 +87,29 @@ namespace OrganizationUser
                 MyReportButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(0);
                 AllUserButton.BorderThickness = new Thickness(2, 0, 0, 0);
-                if (EmployeeManager.Employees.Count==0) {
-                    Task t1 = PauseNavigation();
-                    t1.Start();
+                PeopleFrame.Navigate(typeof(AllUser), this, new SuppressNavigationTransitionInfo());
+                AllUser allUserPage = PeopleFrame.Content as AllUser;
+                if (allUserPage != null)
+                {
+                    allUserPage.EmployeeClicked += OnEmployeeClicked;
                 }
-                else
-                { 
-                    if(!isTimeExceeded)
-                    { 
-                        PeopleFrame.Navigate(typeof(AllUser), this,new SuppressNavigationTransitionInfo());
-                        AllUser allUserPage = PeopleFrame.Content as AllUser;
-                        if (allUserPage != null)
-                        {
-                            //orgUserControl.EmployeeClicked += OnEmployeeClicked;
-                            allUserPage.EmployeeClicked += OnEmployeeClicked;
-                        }
-                    }
-                    else
-                    {
-                        NavigationStatus.Text = "Not Able to access data for the moment";
-                    }
-                }
+                //Task t1 = PauseNavigation("AllUser");
+                //t1.Start();
+
+                //if(EmployeeManager.Employees.Count!=0)
+                //{ 
+                //    PeopleFrame.Navigate(typeof(AllUser), this,new SuppressNavigationTransitionInfo());
+                //    AllUser allUserPage = PeopleFrame.Content as AllUser;
+                //    if (allUserPage != null)
+                //    {
+                //        //orgUserControl.EmployeeClicked += OnEmployeeClicked;
+                //        allUserPage.EmployeeClicked += OnEmployeeClicked;
+                //    }
+                //}
+                //else
+                //{
+                //    NavigationStatus.Text = "Not Able to access data for the moment";
+                //}
                 //else
                 //{
                 //    PeopleFrame.Navigate(typeof(AllUser), this);
@@ -129,20 +131,29 @@ namespace OrganizationUser
                 AllUserButton.BorderThickness = new Thickness(0);
                 MyReportButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(2, 0, 0, 0);
-                if(!isTimeExceeded)
+                PeopleFrame.Navigate(typeof(MyDepartment), this, new SuppressNavigationTransitionInfo());
+                MyDepartment departmentPage = PeopleFrame.Content as MyDepartment;
+                if (departmentPage != null)
                 {
-                    PeopleFrame.Navigate(typeof(MyDepartment),this,new SuppressNavigationTransitionInfo());
-                    MyDepartment departmentPage = PeopleFrame.Content as MyDepartment;
-                    //OrgUserControl orgUserControl = departmentPage.FindName("OrgUsersUC") as OrgUserControl;
-                    if (departmentPage != null)
-                    {
-                        departmentPage.EmployeeClicked += OnEmployeeClicked;
-                    }
+                    departmentPage.EmployeeClicked += OnEmployeeClicked;
                 }
-                else
-                {
-                    NavigationStatus.Text = "Not Able to access data for the moment";
-                }
+                //Task t1= PauseNavigation("MyDepartment");
+                //t1.Start();
+
+                //if(EmployeeManager.Employees.Count!=0)
+                //{
+                //    PeopleFrame.Navigate(typeof(MyDepartment),this,new SuppressNavigationTransitionInfo());
+                //    MyDepartment departmentPage = PeopleFrame.Content as MyDepartment;
+                //    //OrgUserControl orgUserControl = departmentPage.FindName("OrgUsersUC") as OrgUserControl;
+                //    if (departmentPage != null)
+                //    {
+                //        departmentPage.EmployeeClicked += OnEmployeeClicked;
+                //    }
+                //}
+                //else
+                //{
+                //    NavigationStatus.Text = "Not Able to access data for the moment";
+                //}
                 //departmentPage.EmployeeClicked += OnEmployeeClicked;
             }
             if (MyReportButton.IsSelected)
@@ -151,46 +162,67 @@ namespace OrganizationUser
                 AllUserButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(0);
                 MyReportButton.BorderThickness = new Thickness(2, 0, 0, 0);
-                PeopleFrame.Navigate(typeof(MyDirectReports),this,new SuppressNavigationTransitionInfo());
+                PeopleFrame.Navigate(typeof(MyDirectReports), this, new SuppressNavigationTransitionInfo());
+                //Task t1 = PauseNavigation("MyDirectReport");
+                //t1.Start();
+                //if (!isTimeExceeded)
+                //{
+                //    PeopleFrame.Navigate(typeof(MyDirectReports), this, new SuppressNavigationTransitionInfo());
+                //}
+                //else
+                //{
+                //    NavigationStatus.Text = "Not Able to access data for the moment";
+                //}
+
             }
         }
-        public Task PauseNavigation()
-        {
-            Task t = new Task( async() =>
-             {
-                 for (int i = 0; EmployeeManager.Employees.Count == 0;i++)
-                 {
-                    await Task.Delay(1000);
-                     if(i==20)
-                     {
-                         isTimeExceeded = true;
-                         break;
-                     }
-                 }
-                 if (!isTimeExceeded)
-                 {
-                     await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                     {
-                         PeopleFrame.Navigate(typeof(AllUser), this);
-                         AllUser allUserPage = PeopleFrame.Content as AllUser;
-                         if (allUserPage != null)
-                         {
-                             //orgUserControl.EmployeeClicked += OnEmployeeClicked;
-                             allUserPage.EmployeeClicked += OnEmployeeClicked;
-                         }
-                     });
-                 }
-                 else
-                 {
-                     await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                     {
-                         NavigationStatus.Text = "Not Able to access data for the moment";
-                     });
-                 }
-             });
+        //public Task PauseNavigation(string contentToChange)
+        //{
+        //    Task t=new Task( async() =>
+        //     {
+        //        bool isTimeExceeded = false;
+        //        for (int i = 0; EmployeeManager.Employees.Count == 0;i++)
+        //        {
+        //        await Task.Delay(1000);
+        //            if(i==10)
+        //            {
+        //                isTimeExceeded = true;
+        //                break;
+        //            }
+        //        }
+        //        await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { 
+        //            if (!isTimeExceeded && contentToChange == "MyDepartment")
+        //            {
+        //                PeopleFrame.Navigate(typeof(MyDepartment), this, new SuppressNavigationTransitionInfo());
+        //                MyDepartment departmentPage = PeopleFrame.Content as MyDepartment;
+        //                if (departmentPage != null)
+        //                {
+        //                    departmentPage.EmployeeClicked += OnEmployeeClicked;
+        //                }
+        //            }
+                 
+        //            else if (!isTimeExceeded && contentToChange== "AllUser")
+        //            {
+        //                PeopleFrame.Navigate(typeof(AllUser), this, new SuppressNavigationTransitionInfo());
+        //                AllUser allUserPage = PeopleFrame.Content as AllUser;
+        //                if (allUserPage != null)
+        //                {
+        //                    allUserPage.EmployeeClicked += OnEmployeeClicked;
+        //                }
+        //            }
+        //            else if (!isTimeExceeded && contentToChange == "MyDirectReport")
+        //            {
+        //                PeopleFrame.Navigate(typeof(MyDirectReports), this, new SuppressNavigationTransitionInfo());
+        //            }
+        //            else
+        //            {
+        //                NavigationStatus.Text = "Not Able to access data for the moment";
+        //            }
+        //         });
+        //     });
           
-            return t;
-        }
+        //    return t;
+        //}
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.UnloadObject(PeopleUserControl);

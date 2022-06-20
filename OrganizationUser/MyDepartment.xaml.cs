@@ -1,5 +1,7 @@
 ﻿using OrganizationUser.Manager;
 using OrganizationUser.Model;
+using OrganizationUser.Usecase;
+using OrganizationUser.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,23 +29,29 @@ namespace OrganizationUser
     /// </summary>
     public sealed partial class MyDepartment : Page
     {
-        List<People> Peoples { get; set; }
-        ObservableCollection<People> DepartPeoples { get; set; }
-        SearchAlgo searchObj;
+        //List<People> Peoples { get; set; }
+        //ObservableCollection<People> DepartPeoples { get; set; }
+        //SearchAlgo searchObj;
+        private MyDepartmentViewModel viewModel;
         public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
         public event EmployeeDisplayEventHandler EmployeeClicked;
-        
-        
+        private Request request = new Request();
+        public const int DepartmentId = 15;
+        private MyDepartmentUseCase useCase;
+
         //internal EventManager NotifyInstance { get => _NotifyInstance; set => _NotifyInstance = value; }
 
         public MyDepartment()
         {
             this.InitializeComponent();
-            Peoples=EmployeeManager.Employees;
-            DepartPeoples=new ObservableCollection<People>(FilterDepartment());
-            searchObj=new SearchAlgo(DepartPeoples.ToList<People>());
+            this.DataContext = viewModel;
+            request.myDepartmentId = DepartmentId;
+            viewModel = new MyDepartmentViewModel(this);
+            useCase = new MyDepartmentUseCase(request,viewModel.presenterCallback);
+            useCase.Execute();
+            //Peoples=EmployeeManager.Employees;
+            //DepartPeoples=new ObservableCollection<People>(FilterDepartment());
         }
-
         //protected override void OnNavigatedTo(NavigationEventArgs e)
         //{
         //    mainPage=e.Parameter as MainPage;
@@ -58,21 +66,13 @@ namespace OrganizationUser
         //}
         public void EmployeeSearched(string data)
         {
-           bool res= searchObj.search(DepartPeoples,data);
-            SearchResult.Text = !res ? "No Results Found" : "";
+           bool res= viewModel.searchObject.search(viewModel.DepartmentPeoples,data);
+           SearchResult.Text = !res ? "No Results Found" : "";
         }
 
-        List<People> FilterDepartment()
+        public void ShowErrorMessage(string message)
         {
-            List<People> toReturn = new List<People>(); 
-            for(int i=0;i<Peoples.Count;i++)
-            {
-                if(EmployeeManager.me.Depart.Id==Peoples[i].Depart.Id)
-                {
-                    toReturn.Add(Peoples[i]);
-                }
-            }
-            return toReturn;
+            SearchResult.Text=message;
         }
 
         //private void OrgUsersUC_Tapped(object sender, TappedRoutedEventArgs e)

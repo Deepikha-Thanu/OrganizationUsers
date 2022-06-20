@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-06-10T11:25:20.297</Modified>
+      <Modified>2022-06-20T06:25:32.636</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\OrganizationUser.exe">
       <PackagePath>entrypoint\OrganizationUser.exe</PackagePath>
-      <Modified>2022-06-10T11:25:19.690</Modified>
+      <Modified>2022-06-20T06:25:32.136</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\deepikha-14216\.nuget\packages\microsoft.data.sqlite.core\6.0.5\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
       <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
@@ -98,6 +98,14 @@
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\MaleUser.png">
       <PackagePath>Assets\MaleUser.png</PackagePath>
       <Modified>2022-04-26T09:54:07.780</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\MaleUser1.png">
+      <PackagePath>Assets\MaleUser1.png</PackagePath>
+      <Modified>2022-06-13T13:36:00.322</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\MaleUser2.png">
+      <PackagePath>Assets\MaleUser2.png</PackagePath>
+      <Modified>2022-06-13T13:36:00.314</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SmallTile.scale-100.png">
       <PackagePath>Assets\SmallTile.scale-100.png</PackagePath>
@@ -307,6 +315,18 @@
       <PackagePath>Assets\WomenUser.png</PackagePath>
       <Modified>2022-04-26T09:54:24.167</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\WomenUser1.png">
+      <PackagePath>Assets\WomenUser1.png</PackagePath>
+      <Modified>2022-06-13T13:36:00.308</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\WomenUser2.png">
+      <PackagePath>Assets\WomenUser2.png</PackagePath>
+      <Modified>2022-06-13T13:36:00.301</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\WomenUser3.png">
+      <PackagePath>Assets\WomenUser3.png</PackagePath>
+      <Modified>2022-06-13T13:36:00.329</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2022-02-15T11:13:36.611</Modified>
@@ -346,31 +366,31 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-06-10T11:25:19.546</Modified>
+      <Modified>2022-06-20T06:25:32.004</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\AllUser.xbf">
       <PackagePath>AllUser.xbf</PackagePath>
-      <Modified>2022-06-10T11:25:19.518</Modified>
+      <Modified>2022-06-20T06:25:31.982</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-06-10T11:25:19.529</Modified>
+      <Modified>2022-06-20T06:25:31.991</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\MyDepartment.xbf">
       <PackagePath>MyDepartment.xbf</PackagePath>
-      <Modified>2022-06-10T11:25:19.533</Modified>
+      <Modified>2022-06-20T06:25:31.994</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\MyDirectReports.xbf">
       <PackagePath>MyDirectReports.xbf</PackagePath>
-      <Modified>2022-06-10T11:25:19.559</Modified>
+      <Modified>2022-06-20T06:25:32.016</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\OrgUserControl.xbf">
       <PackagePath>OrgUserControl.xbf</PackagePath>
-      <Modified>2022-06-10T11:25:19.537</Modified>
+      <Modified>2022-06-20T06:25:31.997</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\PeopleDataUserControl.xbf">
       <PackagePath>PeopleDataUserControl.xbf</PackagePath>
-      <Modified>2022-06-10T11:25:19.546</Modified>
+      <Modified>2022-06-20T06:25:32.004</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -378,11 +398,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-06-10T09:02:38.917</Modified>
+      <Modified>2022-06-20T05:50:03.855</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x64\Debug\Core\OrganizationUser.exe">
       <PackagePath>OrganizationUser.exe</PackagePath>
-      <Modified>2022-06-10T11:25:20.286</Modified>
+      <Modified>2022-06-20T06:25:32.627</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

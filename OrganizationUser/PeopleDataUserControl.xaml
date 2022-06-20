@@ -106,7 +106,7 @@
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" TriggerValue="Away"></local:StatusComparisonTrigger>
+                        <local:StatusComparisonTrigger DataValue="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" TriggerValue="Away"></local:StatusComparisonTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
@@ -114,7 +114,7 @@
                 </VisualState>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger DataValue="{x:Bind EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" TriggerValue="Office in"></local:StatusComparisonTrigger>
+                        <local:StatusComparisonTrigger DataValue="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" TriggerValue="Office in"></local:StatusComparisonTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
@@ -131,7 +131,7 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Image Name="EmployeeImage" Source="{x:Bind EmployeeToShow.ImageUrl,Mode=OneWay}" Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
+            <Image Name="EmployeeImage" Source="{x:Bind viewModel.EmployeeToShow.ImageUrl,Mode=OneWay}" Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
             <StackPanel Grid.Column="1">
                 <Grid >
                     <Grid.ColumnDefinitions>
@@ -139,12 +139,12 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock MaxWidth="110" x:Name="NameText" Text="{x:Bind EmployeeToShow.Fullname,Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
+                    <TextBlock MaxWidth="110" x:Name="NameText" Text="{x:Bind viewModel.EmployeeToShow.Fullname,Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
                     <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,10,0,0"></Ellipse>
-                    <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
+                    <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
                 </Grid>
-                <TextBlock Name="DepartmentText" Text="{x:Bind EmployeeToShow.Depart.Name,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
-                <TextBlock Name="DesignationText" Text="{x:Bind EmployeeToShow.Design.Name,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
+                <TextBlock Name="DepartmentText" Text="{x:Bind viewModel.EmployeeToShow.Depart.Name,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
+                <TextBlock Name="DesignationText" Text="{x:Bind viewModel.EmployeeToShow.Design.Name,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
                 <Button Name="CallButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE13A;" Margin="10,10,0,10"></Button>
@@ -230,21 +230,21 @@
                 <TextBlock Grid.Row="13" Grid.ColumnSpan="2" Text="Geo Location" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
                 <TextBlock Grid.Row="14" Text="Country:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
                 <TextBlock Grid.Row="15" Text="Local Time:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind EmployeeToShow.Fullname,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind EmployeeToShow.Email_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="4" Grid.Column="1" Text="{x:Bind EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="5" Grid.Column="1" Text="{x:Bind EmployeeToShow.Id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="7" Grid.Column="1" Text="{x:Bind EmployeeToShow.Design.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="8" Grid.Column="1" Text="{x:Bind EmployeeToShow.Depart.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Fullname,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Email_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="4" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="5" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="7" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Design.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="8" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Depart.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <HyperlinkButton Grid.Row="9" Grid.Column="1" Click="HyperlinkButton_Click" Margin="20,10,0,0">
-                    <TextBlock  Text="{x:Bind EmployeeToShow.ReportingTo.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="Blue" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left"></TextBlock>
+                    <TextBlock  Text="{x:Bind viewModel.EmployeeToShow.ReportingTo.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="Blue" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left"></TextBlock>
                 </HyperlinkButton>
                 <TextBox Grid.Row="10" Grid.Column="1" Text="-" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="11" Grid.Column="1" Text="{x:Bind EmployeeToShow.Employee_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="12" Grid.Column="1" Text="{x:Bind EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="14" Grid.Column="1" Text="{x:Bind EmployeeToShow.Country,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="15" Grid.Column="1" Text="{x:Bind EmployeeToShow.TimeOffset,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="11" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Employee_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="12" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="14" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Country,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="15" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.TimeOffset,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <HyperlinkButton Grid.Row="16" Grid.ColumnSpan="2" BorderBrush="Red">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="&#xE107;" FontFamily="Segoe MDL2 Assets" FontSize="16" Foreground="Red" Margin="10,10,0,0" VerticalAlignment="Center"></TextBlock>

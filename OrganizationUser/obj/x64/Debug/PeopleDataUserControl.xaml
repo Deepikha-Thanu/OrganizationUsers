@@ -106,7 +106,7 @@
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger x:ConnectionId='11'                                                                    TriggerValue="Away"></local:StatusComparisonTrigger>
+                        <local:StatusComparisonTrigger x:ConnectionId='11'                                                                              TriggerValue="Away"></local:StatusComparisonTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
@@ -114,7 +114,7 @@
                 </VisualState>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger x:ConnectionId='10'                                                                    TriggerValue="Office in"></local:StatusComparisonTrigger>
+                        <local:StatusComparisonTrigger x:ConnectionId='10'                                                                              TriggerValue="Office in"></local:StatusComparisonTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
@@ -131,7 +131,7 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Image x:ConnectionId='30' Name="EmployeeImage"                                                       Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
+            <Image x:ConnectionId='30' Name="EmployeeImage"                                                                 Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
             <StackPanel Grid.Column="1">
                 <Grid >
                     <Grid.ColumnDefinitions>
@@ -139,12 +139,12 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:ConnectionId='36' MaxWidth="110" x:Name="NameText"                                                     TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
+                    <TextBlock x:ConnectionId='36' MaxWidth="110" x:Name="NameText"                                                               TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
                     <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,10,0,0"></Ellipse>
-                    <TextBlock x:ConnectionId='37' VerticalAlignment="Center" Grid.Column="2" Name="StatusText"                                                               FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
+                    <TextBlock x:ConnectionId='37' VerticalAlignment="Center" Grid.Column="2" Name="StatusText"                                                                         FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
                 </Grid>
-                <TextBlock x:ConnectionId='34' Name="DepartmentText"                                                        TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
-                <TextBlock x:ConnectionId='35' Name="DesignationText"                                                        TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
+                <TextBlock x:ConnectionId='34' Name="DepartmentText"                                                                  TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
+                <TextBlock x:ConnectionId='35' Name="DesignationText"                                                                  TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
                 <Button x:ConnectionId='31' Name="CallButton" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE13A;" Margin="10,10,0,10"></Button>
@@ -230,21 +230,21 @@
                 <TextBlock Grid.Row="13" Grid.ColumnSpan="2" Text="Geo Location" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
                 <TextBlock Grid.Row="14" Text="Country:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
                 <TextBlock Grid.Row="15" Text="Local Time:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBox x:ConnectionId='15' Grid.Row="1" Grid.Column="1"                                                     Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='16' Grid.Row="2" Grid.Column="1"                                                     Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='17' Grid.Row="3" Grid.Column="1"                                                   Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='18' Grid.Row="4" Grid.Column="1"                                                   Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='19' Grid.Row="5" Grid.Column="1"                                               Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='20' Grid.Row="7" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='21' Grid.Row="8" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='15' Grid.Row="1" Grid.Column="1"                                                               Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='16' Grid.Row="2" Grid.Column="1"                                                               Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='17' Grid.Row="3" Grid.Column="1"                                                             Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='18' Grid.Row="4" Grid.Column="1"                                                             Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='19' Grid.Row="5" Grid.Column="1"                                                         Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='20' Grid.Row="7" Grid.Column="1"                                                                  Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='21' Grid.Row="8" Grid.Column="1"                                                                  Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <HyperlinkButton x:ConnectionId='22' Grid.Row="9" Grid.Column="1"                               Margin="20,10,0,0">
-                    <TextBlock x:ConnectionId='27'                                                              Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="Blue" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left"></TextBlock>
+                    <TextBlock x:ConnectionId='27'                                                                        Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="Blue" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left"></TextBlock>
                 </HyperlinkButton>
                 <TextBox Grid.Row="10" Grid.Column="1" Text="-" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='23' Grid.Row="11" Grid.Column="1"                                                        Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='24' Grid.Row="12" Grid.Column="1"                                                               Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='25' Grid.Row="14" Grid.Column="1"                                                    Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox x:ConnectionId='26' Grid.Row="15" Grid.Column="1"                                                       Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='23' Grid.Row="11" Grid.Column="1"                                                                  Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='24' Grid.Row="12" Grid.Column="1"                                                                         Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='25' Grid.Row="14" Grid.Column="1"                                                              Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox x:ConnectionId='26' Grid.Row="15" Grid.Column="1"                                                                 Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <HyperlinkButton Grid.Row="16" Grid.ColumnSpan="2" BorderBrush="Red">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="&#xE107;" FontFamily="Segoe MDL2 Assets" FontSize="16" Foreground="Red" Margin="10,10,0,0" VerticalAlignment="Center"></TextBlock>

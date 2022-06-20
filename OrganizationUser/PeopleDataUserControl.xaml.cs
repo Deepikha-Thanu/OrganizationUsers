@@ -1,4 +1,5 @@
 ﻿using OrganizationUser.Model;
+using OrganizationUser.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,30 +20,14 @@ using Windows.UI.Xaml.Navigation;
 
 namespace OrganizationUser
 {
-    public sealed partial class PeopleDataUserControl : UserControl,INotifyPropertyChanged
+    public sealed partial class PeopleDataUserControl : UserControl
     {
-        public People _EmployeeToShow;
-        public People EmployeeToShow
-        {
-            get { return _EmployeeToShow; }
-            set
-            {
-                _EmployeeToShow = value;
-                RaisePropertyChanged("EmployeeToShow");
-            }
-        }
-
-        //internal EventManager NotifyInstance { get => _NotifyInstance; set => _NotifyInstance = value; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void RaisePropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-        }
+        public PeopleDataUserControlViewModel viewModel = new PeopleDataUserControlViewModel();
+        
         public PeopleDataUserControl()
         {
             this.InitializeComponent();
+            this.DataContext = viewModel;
         }
         private void CommonChatButton_Click(object sender, RoutedEventArgs e)
         {
@@ -68,14 +53,14 @@ namespace OrganizationUser
 
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EmployeeToShow.ReportingTo == null || EmployeeToShow.ReportingTo.Name == "-")
+            if (viewModel.EmployeeToShow.ReportingTo == null || viewModel.EmployeeToShow.ReportingTo.Name == "-")
                 return;
-            if (EmployeeToShow.ReportingTo.ReportingTo == null)
+            if (viewModel.EmployeeToShow.ReportingTo.ReportingTo == null)
             {
-                EmployeeToShow.ReportingTo.ReportingTo = new People();
-                EmployeeToShow.ReportingTo.ReportingTo.Name = "-";
+                viewModel.EmployeeToShow.ReportingTo.ReportingTo = new People();
+                viewModel.EmployeeToShow.ReportingTo.ReportingTo.Name = "-";
             }
-            EmployeeToShow = EmployeeToShow.ReportingTo;
+            viewModel.EmployeeToShow = viewModel.EmployeeToShow.ReportingTo;
             EmployeeViewGrid.Visibility = Visibility.Visible;
             CloseButton.Visibility = Visibility.Visible;
         }

@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
+using OrganizationUser.ViewModel;
+using OrganizationUser.Usecase;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -28,11 +30,11 @@ namespace OrganizationUser
     /// </summary>
     public sealed partial class AllUser : Page
     {
-        ObservableCollection<People> Peoples { get; set; }
-        SearchAlgo searchObj;
-        public OrgUserControl userControl;
+        //ObservableCollection<People> Peoples { get; set; }
+        //SearchAlgo searchObj;
         public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
         public event EmployeeDisplayEventHandler EmployeeClicked;
+        private AllUserViewModel viewModel;
 
         //public event PropertyChangedEventHandler PropertyChanged;
         //void RaisePropertyChanged(string name)
@@ -60,15 +62,22 @@ namespace OrganizationUser
         public AllUser()
         {
             this.InitializeComponent();
-            Peoples=new ObservableCollection<People>(EmployeeManager.Employees);
-            searchObj=new SearchAlgo(Peoples.ToList<People>());
-            
+            viewModel=new AllUserViewModel(this);
+            this.DataContext = viewModel;
+            AllUserUseCase getAllEmployees= new AllUserUseCase(viewModel.presenterCallBack);
+            getAllEmployees.Execute();
+            //Peoples=new ObservableCollection<People>(EmployeeManager.Employees);
+            //searchObj=new SearchAlgo(Peoples.ToList<People>());
         }
-
+        public void ShowErrorMessage(string message)
+        {
+            SearchResult.Text = message;
+        }
+        
         public void EmployeeSearched(string data)
         {
-           bool result= searchObj.search(Peoples,data);
-           SearchResult.Text = (result || data=="")? "" : "No Results Found";
+           bool result= viewModel.searchObject.search(viewModel.Peoples,data);
+           SearchResult.Text = result? "" : "No Results Found";
         }
         //private void OrgUsersUC_Tapped(object sender, TappedRoutedEventArgs e)
         //{

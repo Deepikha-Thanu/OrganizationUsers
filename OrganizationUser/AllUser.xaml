@@ -103,7 +103,7 @@
     </Page.Resources>
     <Grid>
         <TextBlock x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
-        <GridView ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="AllUserGridView" ItemsSource="{x:Bind Peoples,Mode=OneWay}" Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" IsItemClickEnabled="True"  ItemClick="AllUserGridView_ItemClick">
+        <GridView ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="AllUserGridView" ItemsSource="{x:Bind viewModel.Peoples,Mode=OneWay}" Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" IsItemClickEnabled="True"  ItemClick="AllUserGridView_ItemClick">
             <GridView.ItemContainerTransitions>
                 <TransitionCollection>
                     <AddDeleteThemeTransition/>
