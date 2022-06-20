@@ -69,9 +69,12 @@ namespace OrganizationUser
             //Peoples=new ObservableCollection<People>(EmployeeManager.Employees);
             //searchObj=new SearchAlgo(Peoples.ToList<People>());
         }
-        public void ShowErrorMessage(string message)
+        public async void ShowErrorMessage(string message)
         {
-            SearchResult.Text = message;
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                SearchResult.Text = $"Unable to access the data because of the error{message}";
+            });
         }
         
         public void EmployeeSearched(string data)

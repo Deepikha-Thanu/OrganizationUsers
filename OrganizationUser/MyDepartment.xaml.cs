@@ -70,9 +70,12 @@ namespace OrganizationUser
            SearchResult.Text = !res ? "No Results Found" : "";
         }
 
-        public void ShowErrorMessage(string message)
+        public async void ShowErrorMessage(string message)
         {
-            SearchResult.Text=message;
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                SearchResult.Text = $"Unable to access the data because of the error{message}";
+            });  
         }
 
         //private void OrgUsersUC_Tapped(object sender, TappedRoutedEventArgs e)
