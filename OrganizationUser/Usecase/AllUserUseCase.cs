@@ -18,13 +18,13 @@ namespace OrganizationUser.Usecase
         //UsecaseCallback callback = new UsecaseCallback();
         public AllUserUseCase(ICallBack obj)
         {
-            ActionTodo = GetEmployeeOrgData;
+            //ActionTodo = GetEmployeeOrgData;
             callback = obj;
             usecaseCallback=new UsecaseCallback(this);
             dataRequestObject = new DataManager();
             //UsecaseCallback(this);
         }
-        public void GetEmployeeOrgData()
+        public override void Action()
         {
             dataRequestObject.GetAllEmployeesData(usecaseCallback);
         }

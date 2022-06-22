@@ -17,11 +17,11 @@ namespace OrganizationUser.Usecase
         {
             request = req;
             presenterCallback = obj;
-            ActionTodo = GetDepartmentPeople;
+            //ActionTodo = GetDepartmentPeople;
             dataRequestObject = new DataManager();
             usecaseCallback = new UseCaseCallback(this);
         }
-        public void GetDepartmentPeople()
+        public override void Action()
         {
             dataRequestObject.GetDepartmentEmployees(request, usecaseCallback);
         }

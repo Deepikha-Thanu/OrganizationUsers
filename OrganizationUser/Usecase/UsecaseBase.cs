@@ -8,14 +8,14 @@ namespace OrganizationUser.Usecase
 {
     public abstract class UsecaseBase
     {
-        public Action ActionTodo;
+        public abstract void Action();
         public void Execute()
         {
             try
             {
                 Task.Run(delegate ()
                 {
-                    ActionTodo();
+                    Action();
                 });
             }
             catch (Exception ex)
