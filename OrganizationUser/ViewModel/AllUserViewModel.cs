@@ -15,15 +15,18 @@ namespace OrganizationUser.ViewModel
     {
         //public ObservableCollection<People> Peoples { get; set; }
         public ObservableCollection<People> Peoples { get; set; }
-        public AllUser view;
-        public IPresenterCallBack presenterCallBack;
+        IView view;
+        ICallBack presenterCallBack;
+        AllUserUseCase allUserUsecase { get; set; }
         public AllUserViewModel(AllUser obj)
         {
             presenterCallBack= new PresenterCallback(this);
             Peoples = new ObservableCollection<People>();
             view = obj;
+            allUserUsecase = new AllUserUseCase(presenterCallBack);
+            allUserUsecase.Execute();
         }
-        private class PresenterCallback : IPresenterCallBack
+        private class PresenterCallback : ICallBack
         {
             AllUserViewModel allUserViewModel;
 
@@ -31,17 +34,18 @@ namespace OrganizationUser.ViewModel
             {
                 allUserViewModel = viewModelObj;
             }
-            public void OnError(string message)
+            public void OnError<T>(T message)
             {
-                allUserViewModel.view.ShowErrorMessage(message);
+                allUserViewModel.view.ShowErrorMessage(message.ToString());
             }
-            public async void OnSuccess(List<People> EmployeesData)
+            public async void OnSuccess<T>(T response)
             {
+                Response resp = response as Response;
                 await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
-                    for(int i=0;i<EmployeesData.Count;i++)
+                    for(int i=0;i<resp.EmployeesFromDB.Count;i++)
                     {
-                        allUserViewModel.Peoples.Add(EmployeesData[i]);
+                        allUserViewModel.Peoples.Add(resp.EmployeesFromDB[i]);
                     }
                 });
                 allUserViewModel.searchObject = new SearchAlgo(allUserViewModel.Peoples.ToList<People>());

@@ -1,5 +1,6 @@
 ﻿using OrganizationUser.Manager;
 using OrganizationUser.Model;
+using OrganizationUser.Usecase;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,18 +14,21 @@ namespace OrganizationUser.ViewModel
     public class MyDepartmentViewModel : ViewModelBase
     {
         public ObservableCollection<People> DepartmentPeoples;
-        public MyDepartment view;
-//        public  People me=new People();
-        
-        public IPresenterCallBack presenterCallback;
+        IView view;
+        MyDepartmentUseCase departmentUseCase;
+        private Request request = new Request();
+        public const int DepartmentId = 15;
+        //        public  People me=new People();
+
+        ICallBack presenterCallback;
         public MyDepartmentViewModel(MyDepartment obj)
         {
-            //Peoples = EmployeeManager.Employees;
             DepartmentPeoples = new ObservableCollection<People>();
             presenterCallback= new PresenterCallback(this);
             view = obj;
-            //FilterDepartment();
-            searchObject = new SearchAlgo(DepartmentPeoples.ToList<People>());
+            request.myDepartmentId = DepartmentId;
+            departmentUseCase = new MyDepartmentUseCase(request,presenterCallback);
+            departmentUseCase.Execute();
         }
         //void FilterDepartment()
         //{
@@ -48,27 +52,28 @@ namespace OrganizationUser.ViewModel
         //    //return toReturn;
         //    }
         //}
-        private class PresenterCallback : IPresenterCallBack
+        private class PresenterCallback : ICallBack
         {
             MyDepartmentViewModel myDepartmentViewModel;
             public PresenterCallback(MyDepartmentViewModel obj)
             {
                 myDepartmentViewModel = obj;
             }
-            public async void OnSuccess(List<People> DepartPeoples)
+            public async void OnSuccess<T>(T response)
             {
+                Response resp = response as Response;
                 await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
-                    for (int i=0;i<DepartPeoples.Count;i++)
+                    for (int i=0;i<resp.EmployeesFromDB.Count;i++)
                     {
-                        myDepartmentViewModel.DepartmentPeoples.Add(DepartPeoples[i]);
+                        myDepartmentViewModel.DepartmentPeoples.Add(resp.EmployeesFromDB[i]);
                     }
                 });
                 myDepartmentViewModel.searchObject=new SearchAlgo(myDepartmentViewModel.DepartmentPeoples.ToList<People>());
             }
-            public void OnError(string message)
+            public void OnError<T>(T message)
             {
-                myDepartmentViewModel.view.ShowErrorMessage(message);
+                myDepartmentViewModel.view.ShowErrorMessage(message.ToString());
             }
         }
     }

@@ -11,7 +11,5 @@ namespace OrganizationUser.ViewModel
     public class ViewModelBase
     {
         public SearchAlgo searchObject { get; set; }
-        public string ErrorMessage { get; set; }
-        public bool isError { get; set; }
     }
 }

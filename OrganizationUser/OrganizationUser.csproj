@@ -124,8 +124,9 @@
     </Compile>
     <Compile Include="DataBase\DataAdapter.cs" />
     <Compile Include="DataBase\DataHandler.cs" />
-    <Compile Include="Manager\IPresenterCallBack.cs" />
-    <Compile Include="Manager\IUsecaseCallBack.cs" />
+    <Compile Include="DataBase\IDataAdapter.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="Manager\ICallBack.cs" />
     <Compile Include="Manager\DataManager.cs" />
     <Compile Include="Manager\Request.cs" />
     <Compile Include="Manager\Response.cs" />
@@ -261,6 +262,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
+    </PackageReference>
+    <PackageReference Include="System.ObjectModel">
+      <Version>4.3.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

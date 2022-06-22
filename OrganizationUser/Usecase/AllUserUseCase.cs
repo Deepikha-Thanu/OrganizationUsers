@@ -13,10 +13,10 @@ namespace OrganizationUser.Usecase
     class AllUserUseCase : UsecaseBase
     {
         public DataManager dataRequestObject;
-        IPresenterCallBack callback;
-        UsecaseCallback usecaseCallback;
+        ICallBack callback;
+        ICallBack usecaseCallback;
         //UsecaseCallback callback = new UsecaseCallback();
-        public AllUserUseCase(IPresenterCallBack obj)
+        public AllUserUseCase(ICallBack obj)
         {
             ActionTodo = GetEmployeeOrgData;
             callback = obj;
@@ -37,18 +37,18 @@ namespace OrganizationUser.Usecase
         //{
         //    callback.OnError(message);
         //}
-        private class UsecaseCallback : IUsecaseCallBack
+        private class UsecaseCallback : ICallBack
         {
             AllUserUseCase allUserUseCase;
             public UsecaseCallback(AllUserUseCase usecaseObj)
             {
                 allUserUseCase = usecaseObj;
             }
-            public void OnSuccess(Response response)
+            public void OnSuccess<T>(T response)
             {
-                    allUserUseCase.callback.OnSuccess(response.EmployeesFromDB);
+                    allUserUseCase.callback.OnSuccess(response);
             }
-            public void OnError(string message)
+            public void OnError<T>(T message)
             {
                 allUserUseCase.callback.OnError(message);
             }

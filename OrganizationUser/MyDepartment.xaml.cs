@@ -18,7 +18,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Shapes;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,7 +26,7 @@ namespace OrganizationUser
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MyDepartment : Page
+    public sealed partial class MyDepartment : Page,IView
     {
         //List<People> Peoples { get; set; }
         //ObservableCollection<People> DepartPeoples { get; set; }
@@ -35,20 +34,14 @@ namespace OrganizationUser
         private MyDepartmentViewModel viewModel;
         public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
         public event EmployeeDisplayEventHandler EmployeeClicked;
-        private Request request = new Request();
-        public const int DepartmentId = 15;
-        private MyDepartmentUseCase useCase;
-
         //internal EventManager NotifyInstance { get => _NotifyInstance; set => _NotifyInstance = value; }
 
         public MyDepartment()
         {
             this.InitializeComponent();
-            this.DataContext = viewModel;
-            request.myDepartmentId = DepartmentId;
             viewModel = new MyDepartmentViewModel(this);
-            useCase = new MyDepartmentUseCase(request,viewModel.presenterCallback);
-            useCase.Execute();
+            //useCase = new MyDepartmentUseCase(request,viewModel.presenterCallback);
+            //useCase.Execute();
             //Peoples=EmployeeManager.Employees;
             //DepartPeoples=new ObservableCollection<People>(FilterDepartment());
         }

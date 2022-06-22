@@ -32,6 +32,7 @@ namespace OrganizationUser
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            
         }
 
         /// <summary>

@@ -9,11 +9,11 @@ namespace OrganizationUser.Usecase
 {
     class MyDepartmentUseCase : UsecaseBase
     {
-        public IPresenterCallBack presenterCallback;
+        public ICallBack presenterCallback;
         Request request;
         DataManager dataRequestObject;
-        IUsecaseCallBack usecaseCallback;
-        public MyDepartmentUseCase(Request req,IPresenterCallBack obj)
+        ICallBack usecaseCallback;
+        public MyDepartmentUseCase(Request req,ICallBack obj)
         {
             request = req;
             presenterCallback = obj;
@@ -25,18 +25,18 @@ namespace OrganizationUser.Usecase
         {
             dataRequestObject.GetDepartmentEmployees(request, usecaseCallback);
         }
-        private class UseCaseCallback : IUsecaseCallBack
+        private class UseCaseCallback : ICallBack
         {
             public MyDepartmentUseCase myDepartmentUseCase;
             public UseCaseCallback(MyDepartmentUseCase obj)
             {
                 myDepartmentUseCase = obj;
             }
-            public void OnSuccess(Response resp)
+            public void OnSuccess<T>(T resp)
             {
-                myDepartmentUseCase.presenterCallback.OnSuccess(resp.EmployeesFromDB);
+                myDepartmentUseCase.presenterCallback.OnSuccess(resp);
             }
-            public void OnError(string message)
+            public void OnError<T>(T message)
             {
                 myDepartmentUseCase.presenterCallback.OnError(message);
             }

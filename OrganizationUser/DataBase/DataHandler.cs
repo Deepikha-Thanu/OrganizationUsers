@@ -10,7 +10,7 @@ namespace OrganizationUser.DataBase
 {
     class DataHandler
     {
-        DataAdapter dataAdapter;
+        IDataAdapter dataAdapter;
         SqliteConnection conn;
         public DataHandler()
         {

@@ -28,14 +28,13 @@ namespace OrganizationUser
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AllUser : Page
+    public sealed partial class AllUser : Page,IView
     {
         //ObservableCollection<People> Peoples { get; set; }
         //SearchAlgo searchObj;
         public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
         public event EmployeeDisplayEventHandler EmployeeClicked;
         private AllUserViewModel viewModel;
-
         //public event PropertyChangedEventHandler PropertyChanged;
         //void RaisePropertyChanged(string name)
         //{
@@ -64,8 +63,8 @@ namespace OrganizationUser
             this.InitializeComponent();
             viewModel=new AllUserViewModel(this);
             this.DataContext = viewModel;
-            AllUserUseCase getAllEmployees= new AllUserUseCase(viewModel.presenterCallBack);
-            getAllEmployees.Execute();
+            //AllUserUseCase getAllEmployees= new AllUserUseCase(viewModel.presenterCallBack);
+            //getAllEmployees.Execute();
             //Peoples=new ObservableCollection<People>(EmployeeManager.Employees);
             //searchObj=new SearchAlgo(Peoples.ToList<People>());
         }
@@ -73,7 +72,7 @@ namespace OrganizationUser
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
-                SearchResult.Text = $"Unable to access the data because of the error{message}";
+                SearchResult.Text = $"Unable to access the data because of the error {message}";
             });
         }
         

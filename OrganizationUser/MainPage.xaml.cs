@@ -37,40 +37,8 @@ namespace OrganizationUser
         public MainPage()
         {
             this.InitializeComponent();
-
-            //new EmployeeManager();
-            //SubscribeEvents();
-            //PeopleFrame.Navigate(typeof(AllUser),this);
-            //EventManager.EmployeeClicked += EventManager_EmployeeClicked;
         }
-        //protected override void OnNavigatedTo(NavigationEventArgs e)
-        //{
-        //    if(e.Parameter as Type==typeof(AllUser))
-        //    {
-        //        allUserPage
-        //    }
-        //}
-        //private void EventManager_EmployeeClicked(object sender, People selectedEmp)
-        //{
-
-        //}
-
-        //private void InitialiseAllUser()
-        // {
-        //     allUserPage = PeopleFrame.Content as AllUser;
-        // }
-        //public void SubscribeEvents()
-        //{
-        //    if (PeopleFrame.Content is AllUser)
-        //    {
-                
-        //        //allUserPage.SampleText.Text = "Hi from Mainpage";
-        //    }
-        //    else
-        //    {
-                
-        //    }
-        //}
+        
         private void OnEmployeeClicked(object sender, People selectedEmp)
         {
             //this.UnloadObject(PeopleUserControl);
@@ -89,6 +57,7 @@ namespace OrganizationUser
                 AllUserButton.BorderThickness = new Thickness(2, 0, 0, 0);
                 PeopleFrame.Navigate(typeof(AllUser), this, new SuppressNavigationTransitionInfo());
                 AllUser allUserPage = PeopleFrame.Content as AllUser;
+                
                 if (allUserPage != null)
                 {
                     allUserPage.EmployeeClicked += OnEmployeeClicked;
@@ -133,6 +102,7 @@ namespace OrganizationUser
                 MyDepartmentButton.BorderThickness = new Thickness(2, 0, 0, 0);
                 PeopleFrame.Navigate(typeof(MyDepartment), this, new SuppressNavigationTransitionInfo());
                 MyDepartment departmentPage = PeopleFrame.Content as MyDepartment;
+               
                 if (departmentPage != null)
                 {
                     departmentPage.EmployeeClicked += OnEmployeeClicked;

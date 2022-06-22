@@ -8,14 +8,9 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser.DataBase
 {
-    class DataAdapter
+    class DataAdapter : IDataAdapter
     {
         SqliteConnection connection;
-        
-        public async void CreateDB()
-        {
-            await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFileAsync("EmployeeDatabase.db", Windows.Storage.CreationCollisionOption.OpenIfExists);
-        }
         public SqliteConnection GetConnection()
         {
             string dbPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path , "EmployeeDatabase.db");

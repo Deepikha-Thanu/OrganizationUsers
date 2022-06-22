@@ -14,7 +14,7 @@ namespace OrganizationUser.Manager
         DataHandler dataHandler = new DataHandler();
 
         
-        public void GetAllEmployeesData(IUsecaseCallBack callback)
+        public void GetAllEmployeesData(ICallBack callback)
         {
             Response response = new Response();
             try 
@@ -27,7 +27,7 @@ namespace OrganizationUser.Manager
                 callback.OnError(ex.Message);
             }
         }
-        public void GetDepartmentEmployees(Request req,IUsecaseCallBack callBack)
+        public void GetDepartmentEmployees(Request req,ICallBack callBack)
         {
             Response response = new Response();
             try
