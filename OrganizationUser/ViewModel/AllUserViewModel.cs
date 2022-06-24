@@ -34,9 +34,9 @@ namespace OrganizationUser.ViewModel
             {
                 allUserViewModel = viewModelObj;
             }
-            public void OnError<T>(T message)
+            public void OnError()
             {
-                allUserViewModel.view.ShowErrorMessage(message.ToString());
+                allUserViewModel.view.ShowError();
             }
             public async void OnSuccess<T>(T response)
             {
@@ -49,6 +49,10 @@ namespace OrganizationUser.ViewModel
                     }
                 });
                 allUserViewModel.searchObject = new SearchAlgo(allUserViewModel.Peoples.ToList<People>());
+            }
+            public void OnFailure(string message)
+            {
+                allUserViewModel.view.ShowErrorMessage(message);
             }
         }
         //public Task PauseNavigation(string contentToChange)

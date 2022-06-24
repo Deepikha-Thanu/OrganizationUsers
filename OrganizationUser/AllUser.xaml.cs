@@ -72,10 +72,17 @@ namespace OrganizationUser
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
-                SearchResult.Text = $"Unable to access the data because of the error {message}";
+                SearchResult.Text = message;
             });
         }
-        
+        public async void ShowError()
+        {
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                SearchResult.Text = "Something went wrong!";
+            });
+        }
+
         public void EmployeeSearched(string data)
         {
            bool result= viewModel.searchObject.search(viewModel.Peoples,data);

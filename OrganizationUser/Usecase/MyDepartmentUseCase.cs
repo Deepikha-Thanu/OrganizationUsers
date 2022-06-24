@@ -36,9 +36,13 @@ namespace OrganizationUser.Usecase
             {
                 myDepartmentUseCase.presenterCallback.OnSuccess(resp);
             }
-            public void OnError<T>(T message)
+            public void OnError()
             {
-                myDepartmentUseCase.presenterCallback.OnError(message);
+                myDepartmentUseCase.presenterCallback.OnError();
+            }
+            public void OnFailure(string message)
+            {
+                myDepartmentUseCase.presenterCallback.OnFailure(message);
             }
         }
     }

@@ -48,9 +48,13 @@ namespace OrganizationUser.Usecase
             {
                     allUserUseCase.callback.OnSuccess(response);
             }
-            public void OnError<T>(T message)
+            public void OnError()
             {
-                allUserUseCase.callback.OnError(message);
+                allUserUseCase.callback.OnError();
+            }
+            public void OnFailure(string message)
+            {
+                allUserUseCase.callback.OnFailure(message);
             }
         }
     }

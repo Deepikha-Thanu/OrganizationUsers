@@ -71,9 +71,13 @@ namespace OrganizationUser.ViewModel
                 });
                 myDepartmentViewModel.searchObject=new SearchAlgo(myDepartmentViewModel.DepartmentPeoples.ToList<People>());
             }
-            public void OnError<T>(T message)
+            public void OnError()
             {
-                myDepartmentViewModel.view.ShowErrorMessage(message.ToString());
+                myDepartmentViewModel.view.ShowError();
+            }
+            public void OnFailure(string message)
+            {
+                myDepartmentViewModel.view.ShowErrorMessage(message);
             }
         }
     }

@@ -20,11 +20,29 @@ namespace OrganizationUser.Manager
             try 
             {
                 response.EmployeesFromDB = dataHandler.ReadData();
-                callback.OnSuccess(response);
+                if (response.EmployeesFromDB == null)
+                {
+                    callback.OnFailure("Something went wrong!");
+                    return;
+                }
+                else
+                { 
+                    if (response.EmployeesFromDB.Count==0)
+                    {
+                        callback.OnFailure("Data is not available!");
+                        return;
+                    }
+                
+                    else
+                    {
+                        callback.OnSuccess(response);
+                        return;
+                    }
+                }
             }
             catch(Exception ex)
             {
-                callback.OnError(ex.Message);
+                callback.OnError();
             }
         }
         public void GetDepartmentEmployees(Request req,ICallBack callBack)
@@ -33,11 +51,28 @@ namespace OrganizationUser.Manager
             try
             {
                 response.EmployeesFromDB = dataHandler.ReadDepartmentData(req.myDepartmentId);
-                callBack.OnSuccess(response);
+                if (response.EmployeesFromDB.Count == 0)
+                {
+                    callBack.OnFailure("Data is not available!");
+                    return;
+                }
+                else
+                {
+                    if (response.EmployeesFromDB == null)
+                    {
+                        callBack.OnFailure("Something went wrong!");
+                        return;
+                    }
+                    else
+                    {
+                        callBack.OnSuccess(response);
+                        return;
+                    }
+                }
             }
             catch(Exception ex)
             {
-                callBack.OnError(ex.Message);
+                callBack.OnError();
             }
         }
     }

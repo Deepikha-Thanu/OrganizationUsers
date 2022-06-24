@@ -8,6 +8,7 @@ namespace OrganizationUser
 {
     interface IView
     {
+        void ShowError();
         void ShowErrorMessage(string message);
     }
 }

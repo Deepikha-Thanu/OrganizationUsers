@@ -9,6 +9,7 @@ namespace OrganizationUser.Manager
     interface ICallBack
     {
         void OnSuccess<T>(T response);
-        void OnError<T>(T message);
+        void OnError();
+        void OnFailure(string message);
     }
 }

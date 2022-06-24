@@ -20,8 +20,7 @@ namespace OrganizationUser.Usecase
             }
             catch (Exception ex)
             {
-                //PresenterCallback errorObj = new PresenterCallback();
-                //errorObj.OnError(ex.Message);
+                
             }
         }
     }
