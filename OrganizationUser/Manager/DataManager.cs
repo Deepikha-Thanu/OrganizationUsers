@@ -13,43 +13,34 @@ namespace OrganizationUser.Manager
     {
         DataHandler dataHandler = new DataHandler();
 
-        
-        public void GetAllEmployeesData(ICallBack callback)
-        {
-            Response response = new Response();
-            try 
-            {
-                response.EmployeesFromDB = dataHandler.ReadData();
-                if (response.EmployeesFromDB == null)
-                {
-                    callback.OnFailure("Something went wrong!");
-                    return;
-                }
-                else
-                { 
-                    if (response.EmployeesFromDB.Count==0)
-                    {
-                        callback.OnFailure("Data is not available!");
-                        return;
-                    }
-                
-                    else
-                    {
-                        callback.OnSuccess(response);
-                        return;
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                callback.OnError();
-            }
-        }
-        public void GetDepartmentEmployees(Request req,ICallBack callBack)
+        public void GetEmployeesData(Request req,ICallBack callBack)
         {
             Response response = new Response();
             try
             {
+                if (req.myDepartmentId == 0)
+                {
+                    response.EmployeesFromDB = dataHandler.ReadData();
+                    if (response.EmployeesFromDB == null)
+                    {
+                        callBack.OnFailure("Something went wrong!");
+                        return;
+                    }
+                    else
+                    {
+                        if (response.EmployeesFromDB.Count == 0)
+                        {
+                            callBack.OnFailure("Data is not available!");
+                            return;
+                        }
+
+                        else
+                        {
+                            callBack.OnSuccess(response);
+                            return;
+                        }
+                    }
+                }
                 response.EmployeesFromDB = dataHandler.ReadDepartmentData(req.myDepartmentId);
                 if (response.EmployeesFromDB.Count == 0)
                 {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Organization\\OrganizationUser\\OrganizationUser\\OrganizationUser.csproj": {}
+    "D:\\DeepikhaFolder\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj": {}
   },
   "projects": {
-    "D:\\Organization\\OrganizationUser\\OrganizationUser\\OrganizationUser.csproj": {
+    "D:\\DeepikhaFolder\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Organization\\OrganizationUser\\OrganizationUser\\OrganizationUser.csproj",
+        "projectUniqueName": "D:\\DeepikhaFolder\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj",
         "projectName": "OrganizationUser",
-        "projectPath": "D:\\Organization\\OrganizationUser\\OrganizationUser\\OrganizationUser.csproj",
-        "packagesPath": "C:\\Users\\deepikha-14216\\.nuget\\packages\\",
-        "outputPath": "D:\\Organization\\OrganizationUser\\OrganizationUser\\obj\\",
+        "projectPath": "D:\\DeepikhaFolder\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj",
+        "packagesPath": "C:\\Users\\Kathiravan\\.nuget\\packages\\",
+        "outputPath": "D:\\DeepikhaFolder\\OrganizationUsers\\OrganizationUser\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -19,7 +19,7 @@
           "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\deepikha-14216\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kathiravan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -42,6 +42,10 @@
             "Microsoft.Data.Sqlite": {
               "target": "Package",
               "version": "[6.0.5, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[6.0.0, )"
             },
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace OrganizationUser.DataBase
 {
@@ -14,7 +15,9 @@ namespace OrganizationUser.DataBase
         SqliteConnection conn;
         public DataHandler()
         {
-            dataAdapter = new DataAdapter();
+            ServiceProvider provider = DependencyInitializer.IntializeDependencies();
+            IDataAdapter adapter = provider.GetService(typeof(IDataAdapter)) as IDataAdapter;
+            dataAdapter = adapter;
             conn=dataAdapter.GetConnection();
             CreateTable();
             InsertDepartment();

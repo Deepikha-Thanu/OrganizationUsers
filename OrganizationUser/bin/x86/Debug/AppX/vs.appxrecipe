@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DEEPIKHA-14216</Machine>
-    <WindowsUser>deepikha-14216</WindowsUser>
+    <Machine>KATHIR-11767-NT</Machine>
+    <WindowsUser>Kathiravan</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>88e979f0-531e-4274-bd3c-30f126e42fb5</PackageIdentityName>
     <PackageIdentityPublisher>CN=deepikha-pt5222</PackageIdentityPublisher>
-    <IntermediateOutputPath>D:\Organization\OrganizationUser\OrganizationUser\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>D9F7C8945C2A62DF7F0B66D4F5C73B494D00C8FB9C1DF2C0B47DD58C83973EF7</RegisteredManifestChecksum>
+    <LayoutDir>D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>B161111C849DC473BC4854B5AB6A284C077DD378D856A0480BC3DA7C45B813F3</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>88e979f0-531e-4274-bd3c-30f126e42fb5_1.0.0.0_x86__cr965bsd9b0n8</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>88e979f0-531e-4274-bd3c-30f126e42fb5_cr965bsd9b0n8!App</RegisteredUserModeAppID>
     <RegisteredPackageID>88e979f0-531e-4274-bd3c-30f126e42fb5</RegisteredPackageID>
@@ -27,436 +27,448 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-06-21T12:49:48.680</Modified>
+      <Modified>2022-06-27T13:50:52.238</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\OrganizationUser.exe">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\OrganizationUser.exe">
       <PackagePath>entrypoint\OrganizationUser.exe</PackagePath>
-      <Modified>2022-06-21T12:49:46.472</Modified>
+      <Modified>2022-06-27T13:50:51.481</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\deepikha-14216\.nuget\packages\microsoft.data.sqlite.core\6.0.5\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
+    <AppxPackagedFile Include="C:\Users\Kathiravan\.nuget\packages\microsoft.bcl.asyncinterfaces\6.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
+      <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
+      <Modified>2021-10-22T23:42:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Kathiravan\.nuget\packages\microsoft.data.sqlite.core\6.0.5\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
       <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
       <Modified>2022-04-18T08:51:16.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\deepikha-14216\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.12\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
+    <AppxPackagedFile Include="C:\Users\Kathiravan\.nuget\packages\microsoft.extensions.dependencyinjection\6.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.dll">
+      <PackagePath>Microsoft.Extensions.DependencyInjection.dll</PackagePath>
+      <Modified>2021-10-22T23:48:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Kathiravan\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\6.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+      <PackagePath>Microsoft.Extensions.DependencyInjection.Abstractions.dll</PackagePath>
+      <Modified>2021-10-22T23:48:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Kathiravan\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.12\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2021-02-05T01:15:46.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\deepikha-14216\.nuget\packages\sqlitepclraw.bundle_e_sqlite3\2.0.6\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll">
+    <AppxPackagedFile Include="C:\Users\Kathiravan\.nuget\packages\sqlitepclraw.bundle_e_sqlite3\2.0.6\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll">
       <PackagePath>SQLitePCLRaw.batteries_v2.dll</PackagePath>
       <Modified>2021-09-03T18:04:58.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\deepikha-14216\.nuget\packages\sqlitepclraw.core\2.0.6\lib\netstandard2.0\SQLitePCLRaw.core.dll">
+    <AppxPackagedFile Include="C:\Users\Kathiravan\.nuget\packages\sqlitepclraw.core\2.0.6\lib\netstandard2.0\SQLitePCLRaw.core.dll">
       <PackagePath>SQLitePCLRaw.core.dll</PackagePath>
       <Modified>2021-09-03T18:04:16.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\deepikha-14216\.nuget\packages\sqlitepclraw.lib.e_sqlite3\2.0.6\runtimes\win10-x86\nativeassets\uap10.0\e_sqlite3.dll">
+    <AppxPackagedFile Include="C:\Users\Kathiravan\.nuget\packages\sqlitepclraw.lib.e_sqlite3\2.0.6\runtimes\win10-x86\nativeassets\uap10.0\e_sqlite3.dll">
       <PackagePath>e_sqlite3.dll</PackagePath>
       <Modified>2021-09-03T18:02:06.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\deepikha-14216\.nuget\packages\sqlitepclraw.provider.e_sqlite3\2.0.6\lib\uap10.0\SQLitePCLRaw.provider.e_sqlite3.dll">
+    <AppxPackagedFile Include="C:\Users\Kathiravan\.nuget\packages\sqlitepclraw.provider.e_sqlite3\2.0.6\lib\uap10.0\SQLitePCLRaw.provider.e_sqlite3.dll">
       <PackagePath>SQLitePCLRaw.provider.e_sqlite3.dll</PackagePath>
       <Modified>2021-09-03T18:04:36.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\deepikha-14216\.nuget\packages\system.runtime.compilerservices.unsafe\4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
+    <AppxPackagedFile Include="C:\Users\Kathiravan\.nuget\packages\system.runtime.compilerservices.unsafe\6.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
       <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
-      <Modified>2018-09-18T19:38:10.000</Modified>
+      <Modified>2021-10-22T23:40:46.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
       <Modified>2020-12-01T23:22:00.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\LargeTile.scale-100.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.476</Modified>
+      <Modified>2022-06-27T12:29:45.066</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\LargeTile.scale-125.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\LargeTile.scale-125.png">
       <PackagePath>Assets\LargeTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.498</Modified>
+      <Modified>2022-06-27T12:29:45.066</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\LargeTile.scale-150.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\LargeTile.scale-150.png">
       <PackagePath>Assets\LargeTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.523</Modified>
+      <Modified>2022-06-27T12:29:45.066</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\LargeTile.scale-200.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\LargeTile.scale-200.png">
       <PackagePath>Assets\LargeTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.559</Modified>
+      <Modified>2022-06-27T12:29:45.066</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\LargeTile.scale-400.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\LargeTile.scale-400.png">
       <PackagePath>Assets\LargeTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.667</Modified>
+      <Modified>2022-06-27T12:29:45.066</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\MaleUser.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\MaleUser.png">
       <PackagePath>Assets\MaleUser.png</PackagePath>
-      <Modified>2022-04-26T09:54:07.780</Modified>
+      <Modified>2022-06-27T12:29:45.082</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\MaleUser1.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\MaleUser1.png">
       <PackagePath>Assets\MaleUser1.png</PackagePath>
-      <Modified>2022-06-13T13:36:00.322</Modified>
+      <Modified>2022-06-27T12:29:45.082</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\MaleUser2.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\MaleUser2.png">
       <PackagePath>Assets\MaleUser2.png</PackagePath>
-      <Modified>2022-06-13T13:36:00.314</Modified>
+      <Modified>2022-06-27T12:29:45.082</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SmallTile.scale-100.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\SmallTile.scale-100.png">
       <PackagePath>Assets\SmallTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.148</Modified>
+      <Modified>2022-06-27T12:29:45.082</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SmallTile.scale-125.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\SmallTile.scale-125.png">
       <PackagePath>Assets\SmallTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.160</Modified>
+      <Modified>2022-06-27T12:29:45.082</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SmallTile.scale-150.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\SmallTile.scale-150.png">
       <PackagePath>Assets\SmallTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.172</Modified>
+      <Modified>2022-06-27T12:29:45.082</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SmallTile.scale-200.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\SmallTile.scale-200.png">
       <PackagePath>Assets\SmallTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.188</Modified>
+      <Modified>2022-06-27T12:29:45.082</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SmallTile.scale-400.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\SmallTile.scale-400.png">
       <PackagePath>Assets\SmallTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.207</Modified>
+      <Modified>2022-06-27T12:29:45.097</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.903</Modified>
+      <Modified>2022-06-27T12:29:45.097</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SplashScreen.scale-125.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\SplashScreen.scale-125.png">
       <PackagePath>Assets\SplashScreen.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.930</Modified>
+      <Modified>2022-06-27T12:29:45.097</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SplashScreen.scale-150.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\SplashScreen.scale-150.png">
       <PackagePath>Assets\SplashScreen.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.967</Modified>
+      <Modified>2022-06-27T12:29:45.097</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SplashScreen.scale-400.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\SplashScreen.scale-400.png">
       <PackagePath>Assets\SplashScreen.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:57.219</Modified>
+      <Modified>2022-06-27T12:29:45.097</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square150x150Logo.scale-100.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square150x150Logo.scale-100.png">
       <PackagePath>Assets\Square150x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.225</Modified>
+      <Modified>2022-06-27T12:29:45.097</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square150x150Logo.scale-125.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square150x150Logo.scale-125.png">
       <PackagePath>Assets\Square150x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.245</Modified>
+      <Modified>2022-06-27T12:29:45.097</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square150x150Logo.scale-150.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square150x150Logo.scale-150.png">
       <PackagePath>Assets\Square150x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.263</Modified>
+      <Modified>2022-06-27T12:29:45.097</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square150x150Logo.scale-400.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square150x150Logo.scale-400.png">
       <PackagePath>Assets\Square150x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.323</Modified>
+      <Modified>2022-06-27T12:29:45.113</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.838</Modified>
+      <Modified>2022-06-27T12:29:45.113</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.847</Modified>
+      <Modified>2022-06-27T12:29:45.113</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.882</Modified>
+      <Modified>2022-06-27T12:29:45.113</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.856</Modified>
+      <Modified>2022-06-27T12:29:45.113</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.865</Modified>
+      <Modified>2022-06-27T12:29:45.113</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.784</Modified>
+      <Modified>2022-06-27T12:29:45.113</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.828</Modified>
+      <Modified>2022-06-27T12:29:45.113</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.altform-unplated_targetsize-32.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.altform-unplated_targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.802</Modified>
+      <Modified>2022-06-27T12:29:45.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.810</Modified>
+      <Modified>2022-06-27T12:29:45.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.scale-100.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.scale-100.png">
       <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.677</Modified>
+      <Modified>2022-06-27T12:29:45.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.scale-125.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.scale-125.png">
       <PackagePath>Assets\Square44x44Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.687</Modified>
+      <Modified>2022-06-27T12:29:45.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.scale-150.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.scale-150.png">
       <PackagePath>Assets\Square44x44Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.697</Modified>
+      <Modified>2022-06-27T12:29:45.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.scale-400.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.scale-400.png">
       <PackagePath>Assets\Square44x44Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.719</Modified>
+      <Modified>2022-06-27T12:29:45.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.targetsize-16.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.729</Modified>
+      <Modified>2022-06-27T12:29:45.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.targetsize-24.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.targetsize-24.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.738</Modified>
+      <Modified>2022-06-27T12:29:45.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.targetsize-256.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.774</Modified>
+      <Modified>2022-06-27T12:29:45.144</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.targetsize-32.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.747</Modified>
+      <Modified>2022-06-27T12:29:45.144</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.targetsize-48.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.758</Modified>
+      <Modified>2022-06-27T12:29:45.144</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\StoreLogo.scale-100.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:57.229</Modified>
+      <Modified>2022-06-27T12:29:45.144</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\StoreLogo.scale-125.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\StoreLogo.scale-125.png">
       <PackagePath>Assets\StoreLogo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:57.239</Modified>
+      <Modified>2022-06-27T12:29:45.144</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\StoreLogo.scale-150.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\StoreLogo.scale-150.png">
       <PackagePath>Assets\StoreLogo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:57.249</Modified>
+      <Modified>2022-06-27T12:29:45.144</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\StoreLogo.scale-200.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\StoreLogo.scale-200.png">
       <PackagePath>Assets\StoreLogo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:57.260</Modified>
+      <Modified>2022-06-27T12:29:45.144</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\StoreLogo.scale-400.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\StoreLogo.scale-400.png">
       <PackagePath>Assets\StoreLogo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:57.274</Modified>
+      <Modified>2022-06-27T12:29:45.160</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Team.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Team.png">
       <PackagePath>Assets\Team.png</PackagePath>
-      <Modified>2022-04-25T04:29:11.266</Modified>
+      <Modified>2022-06-27T12:29:45.160</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Wide310x150Logo.scale-100.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Wide310x150Logo.scale-100.png">
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.338</Modified>
+      <Modified>2022-06-27T12:29:45.160</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Wide310x150Logo.scale-125.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Wide310x150Logo.scale-125.png">
       <PackagePath>Assets\Wide310x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.353</Modified>
+      <Modified>2022-06-27T12:29:45.160</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Wide310x150Logo.scale-150.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Wide310x150Logo.scale-150.png">
       <PackagePath>Assets\Wide310x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.369</Modified>
+      <Modified>2022-06-27T12:29:45.160</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Wide310x150Logo.scale-400.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Wide310x150Logo.scale-400.png">
       <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.458</Modified>
+      <Modified>2022-06-27T12:29:45.160</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\WomenUser.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\WomenUser.png">
       <PackagePath>Assets\WomenUser.png</PackagePath>
-      <Modified>2022-04-26T09:54:24.167</Modified>
+      <Modified>2022-06-27T12:29:45.160</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\WomenUser1.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\WomenUser1.png">
       <PackagePath>Assets\WomenUser1.png</PackagePath>
-      <Modified>2022-06-13T13:36:00.308</Modified>
+      <Modified>2022-06-27T12:29:45.160</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\WomenUser2.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\WomenUser2.png">
       <PackagePath>Assets\WomenUser2.png</PackagePath>
-      <Modified>2022-06-13T13:36:00.301</Modified>
+      <Modified>2022-06-27T12:29:45.176</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\WomenUser3.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\WomenUser3.png">
       <PackagePath>Assets\WomenUser3.png</PackagePath>
-      <Modified>2022-06-13T13:36:00.329</Modified>
+      <Modified>2022-06-27T12:29:45.176</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2022-02-15T11:13:36.611</Modified>
+      <Modified>2022-06-27T12:29:45.082</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:57.023</Modified>
+      <Modified>2022-06-27T12:29:45.097</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.282</Modified>
+      <Modified>2022-06-27T12:29:45.113</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.707</Modified>
+      <Modified>2022-06-27T12:29:45.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.793</Modified>
+      <Modified>2022-06-27T12:29:45.144</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-17T08:59:56.393</Modified>
+      <Modified>2022-06-27T12:29:45.160</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2022-04-20T10:22:02.750</Modified>
+      <Modified>2022-06-27T12:29:45.254</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\OrganizationUser.xr.xml">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\OrganizationUser.xr.xml">
       <PackagePath>OrganizationUser.xr.xml</PackagePath>
-      <Modified>2022-06-21T12:49:46.210</Modified>
+      <Modified>2022-06-27T12:29:47.262</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-06-21T12:49:46.276</Modified>
+      <Modified>2022-06-27T13:50:51.341</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\AllUser.xbf">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\AllUser.xbf">
       <PackagePath>AllUser.xbf</PackagePath>
-      <Modified>2022-06-21T12:49:46.237</Modified>
+      <Modified>2022-06-27T13:50:51.312</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-06-21T12:49:46.252</Modified>
+      <Modified>2022-06-27T13:50:51.324</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\MyDepartment.xbf">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\MyDepartment.xbf">
       <PackagePath>MyDepartment.xbf</PackagePath>
-      <Modified>2022-06-21T12:49:46.258</Modified>
+      <Modified>2022-06-27T13:50:51.329</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\MyDirectReports.xbf">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\MyDirectReports.xbf">
       <PackagePath>MyDirectReports.xbf</PackagePath>
-      <Modified>2022-06-21T12:49:46.292</Modified>
+      <Modified>2022-06-27T13:50:51.355</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\OrgUserControl.xbf">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\OrgUserControl.xbf">
       <PackagePath>OrgUserControl.xbf</PackagePath>
-      <Modified>2022-06-21T12:49:46.262</Modified>
+      <Modified>2022-06-27T13:50:51.332</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\PeopleDataUserControl.xbf">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\PeopleDataUserControl.xbf">
       <PackagePath>PeopleDataUserControl.xbf</PackagePath>
-      <Modified>2022-06-21T12:49:46.276</Modified>
+      <Modified>2022-06-27T13:50:51.341</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2020-12-01T21:22:06.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-06-21T12:49:46.809</Modified>
+      <Modified>2022-06-27T13:50:51.773</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Organization\OrganizationUser\OrganizationUser\bin\x86\Debug\Core\OrganizationUser.exe">
+    <AppxPackagedFile Include="D:\DeepikhaFolder\OrganizationUsers\OrganizationUser\bin\x86\Debug\Core\OrganizationUser.exe">
       <PackagePath>OrganizationUser.exe</PackagePath>
-      <Modified>2022-06-21T12:49:48.666</Modified>
+      <Modified>2022-06-27T13:50:52.225</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
-    <ResolvedSDKReference Include="C:\Users\deepikha-14216\.nuget\packages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
+    <ResolvedSDKReference Include="C:\Users\Kathiravan\.nuget\packages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
       <Name>Microsoft.NET.CoreRuntime.2.2</Name>
       <Version>2.2.29713.2</Version>
       <Architecture>x86</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.2.2, MinVersion = 2.2.29713.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\deepikha-14216\.nuget\packages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
+      <AppxLocation>C:\Users\Kathiravan\.nuget\packages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\deepikha-14216\.nuget\packages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
+    <ResolvedSDKReference Include="C:\Users\Kathiravan\.nuget\packages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
       <Name>Microsoft.NET.CoreRuntime.2.2</Name>
       <Version>2.2.29713.2</Version>
       <Architecture>x64</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.2.2, MinVersion = 2.2.29713.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\deepikha-14216\.nuget\packages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
+      <AppxLocation>C:\Users\Kathiravan\.nuget\packages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\deepikha-14216\.nuget\packages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
+    <ResolvedSDKReference Include="C:\Users\Kathiravan\.nuget\packages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
       <Name>Microsoft.NET.CoreRuntime.2.2</Name>
       <Version>2.2.29713.2</Version>
       <Architecture>arm</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.2.2, MinVersion = 2.2.29713.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\deepikha-14216\.nuget\packages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
+      <AppxLocation>C:\Users\Kathiravan\.nuget\packages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\deepikha-14216\.nuget\packages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
+    <ResolvedSDKReference Include="C:\Users\Kathiravan\.nuget\packages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
       <Name>Microsoft.NET.CoreFramework.Debug.2.2</Name>
       <Version>2.2.29301.2</Version>
       <Architecture>x86</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.CoreFramework.Debug.2.2, MinVersion = 2.2.29301.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\deepikha-14216\.nuget\packages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
+      <AppxLocation>C:\Users\Kathiravan\.nuget\packages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\deepikha-14216\.nuget\packages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
+    <ResolvedSDKReference Include="C:\Users\Kathiravan\.nuget\packages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
       <Name>Microsoft.NET.CoreFramework.Debug.2.2</Name>
       <Version>2.2.29301.2</Version>
       <Architecture>x64</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.CoreFramework.Debug.2.2, MinVersion = 2.2.29301.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\deepikha-14216\.nuget\packages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
+      <AppxLocation>C:\Users\Kathiravan\.nuget\packages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\deepikha-14216\.nuget\packages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
+    <ResolvedSDKReference Include="C:\Users\Kathiravan\.nuget\packages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
       <Name>Microsoft.NET.CoreFramework.Debug.2.2</Name>
       <Version>2.2.29301.2</Version>
       <Architecture>arm</Architecture>
       <FrameworkIdentity>Name = Microsoft.NET.CoreFramework.Debug.2.2, MinVersion = 2.2.29301.2, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\deepikha-14216\.nuget\packages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
+      <AppxLocation>C:\Users\Kathiravan\.nuget\packages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.12\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>

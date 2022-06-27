@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser.Usecase
 {
-    class MyDepartmentUseCase : UsecaseBase
+    class GetEmployees : UsecaseBase
     {
         public ICallBack presenterCallback;
         Request request;
         DataManager dataRequestObject;
         ICallBack usecaseCallback;
-        public MyDepartmentUseCase(Request req,ICallBack obj)
+        public GetEmployees(Request req,ICallBack obj)
         {
             request = req;
             presenterCallback = obj;
@@ -23,12 +23,12 @@ namespace OrganizationUser.Usecase
         }
         public override void Action()
         {
-            dataRequestObject.GetDepartmentEmployees(request, usecaseCallback);
+            dataRequestObject.GetEmployeesData(request, usecaseCallback);
         }
         private class UseCaseCallback : ICallBack
         {
-            public MyDepartmentUseCase myDepartmentUseCase;
-            public UseCaseCallback(MyDepartmentUseCase obj)
+            public GetEmployees myDepartmentUseCase;
+            public UseCaseCallback(GetEmployees obj)
             {
                 myDepartmentUseCase = obj;
             }
