@@ -13,7 +13,7 @@ namespace OrganizationUser
         public static ServiceProvider IntializeDependencies()
         {
             ServiceCollection collections = new ServiceCollection();
-            collections.AddScoped<IDataAdapter,DataAdapter>();
+            collections.AddSingleton<IDataAdapter,DataAdapter>();
             ServiceProvider provider = collections.BuildServiceProvider();
             return provider;
         }

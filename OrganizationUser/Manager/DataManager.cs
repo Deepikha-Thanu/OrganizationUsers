@@ -1,4 +1,5 @@
-﻿using OrganizationUser.DataBase;
+﻿using Microsoft.Extensions.DependencyInjection;
+using OrganizationUser.DataBase;
 using OrganizationUser.Model;
 using OrganizationUser.Usecase;
 using System;
@@ -11,8 +12,9 @@ namespace OrganizationUser.Manager
 {
     class DataManager
     {
+        public static DataManager dataManager = new DataManager();
         DataHandler dataHandler = new DataHandler();
-
+        
         public void GetEmployeesData(Request req,ICallBack callBack)
         {
             Response response = new Response();

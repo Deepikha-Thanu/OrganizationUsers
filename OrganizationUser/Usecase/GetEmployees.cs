@@ -11,19 +11,18 @@ namespace OrganizationUser.Usecase
     {
         public ICallBack presenterCallback;
         Request request;
-        DataManager dataRequestObject;
         ICallBack usecaseCallback;
         public GetEmployees(Request req,ICallBack obj)
         {
             request = req;
             presenterCallback = obj;
             //ActionTodo = GetDepartmentPeople;
-            dataRequestObject = new DataManager();
+            //dataRequestObject = new DataManager();
             usecaseCallback = new UseCaseCallback(this);
         }
         public override void Action()
         {
-            dataRequestObject.GetEmployeesData(request, usecaseCallback);
+            DataManager.dataManager.GetEmployeesData(request, usecaseCallback);
         }
         private class UseCaseCallback : ICallBack
         {

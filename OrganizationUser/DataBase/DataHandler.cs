@@ -17,6 +17,7 @@ namespace OrganizationUser.DataBase
         {
             ServiceProvider provider = DependencyInitializer.IntializeDependencies();
             IDataAdapter adapter = provider.GetService(typeof(IDataAdapter)) as IDataAdapter;
+            int hashValue=adapter.GetHashCode();
             dataAdapter = adapter;
             conn=dataAdapter.GetConnection();
             CreateTable();

@@ -17,15 +17,15 @@ namespace OrganizationUser.ViewModel
         public ObservableCollection<People> Peoples { get; set; }
         IView view;
         ICallBack presenterCallBack;
-        GetEmployees Usecase { get; set; }
+        //GetEmployees Usecase { get; set; }
         public AllUserViewModel(AllUser obj)
         {
             presenterCallBack= new PresenterCallback(this);
             Peoples = new ObservableCollection<People>();
             view = obj;
             Request req = new Request();
-            Usecase = new GetEmployees(req,presenterCallBack);
-            Usecase.Execute();
+            new GetEmployees(req,presenterCallBack).Execute();
+            //Usecase.Execute();
         }
         private class PresenterCallback : ICallBack
         {
