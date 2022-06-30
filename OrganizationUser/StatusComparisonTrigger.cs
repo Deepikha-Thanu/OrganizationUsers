@@ -37,7 +37,7 @@ namespace OrganizationUser
         public readonly DependencyProperty TriggerValueProperty = DependencyProperty.Register(nameof(TriggerValue), typeof(string), typeof(StatusComparisonTrigger), new PropertyMetadata(NotEqual, (s, e) =>
          {
              var statusTrigger=s as StatusComparisonTrigger;
-             CheckTriggerStatus(statusTrigger, statusTrigger.DataValue, (string)e.NewValue);
+             //CheckTriggerStatus(statusTrigger, statusTrigger.DataValue, (string)e.NewValue);
          }));
         private static void CheckTriggerStatus(StatusComparisonTrigger statusComparisonTrigger,string dataValue,string triggerValue)
         {
