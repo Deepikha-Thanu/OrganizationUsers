@@ -82,7 +82,7 @@
         <TextBlock x:Name="EmailIDText" Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Grid.Row="2" FontSize="14" Text="{x:Bind People.Email_id,Mode=OneWay}" Margin="10,0,10,7" ToolTipService.ToolTip="{x:Bind People.Email_id,Mode=OneWay}"></TextBlock>
         <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DepartmentText" FontSize="16" Grid.Row="3" Text="{x:Bind People.Depart.Name,Mode=OneWay}" Margin="10,0,10,5" ToolTipService.ToolTip="{x:Bind People.Depart.Name,Mode=OneWay}"></TextBlock>
         <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DesignationText" Grid.Row="4" FontSize="14" Text="{x:Bind People.Design.Name,Mode=OneWay}" Margin="10,0,0,10" ToolTipService.ToolTip="{x:Bind People.Design.Name,Mode=OneWay}"></TextBlock>
-        <StackPanel Name="TaskStackPanel" Orientation="Horizontal" Grid.Row="3" Grid.RowSpan="2" Visibility="Collapsed" Background="{ThemeResource SystemChromeMediumColor}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <StackPanel Name="TaskStackPanel" Orientation="Horizontal" Grid.Row="3" Grid.RowSpan="3" Visibility="Collapsed" Background="{ThemeResource SystemChromeMediumColor}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Button Style="{StaticResource HoverButtonStyle}" x:Name="CallButton" FontFamily="Segoe MDL2 Assets" Content="&#xE13A;"></Button>
             <Button Style="{StaticResource HoverButtonStyle}" x:Name="VideoButton" FontFamily="Segoe MDL2 Assets" Content="&#xE714;"></Button>
             <Button Style="{StaticResource HoverButtonStyle}" x:Name="MessageButton" FontFamily="Segoe MDL2 Assets" Content="&#xE134;"></Button>

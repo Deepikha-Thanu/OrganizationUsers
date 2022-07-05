@@ -15,13 +15,16 @@ namespace OrganizationUser.ViewModel
     {
         //public ObservableCollection<People> Peoples { get; set; }
         public ObservableCollection<People> Peoples { get; set; }
+        public ObservableCollection<People> ReportingTo { get; set; }
         IView view;
         ICallBack presenterCallBack;
         //GetEmployees Usecase { get; set; }
+        //Sample data
         public AllUserViewModel(AllUser obj)
         {
             presenterCallBack= new PresenterCallback(this);
             Peoples = new ObservableCollection<People>();
+            ReportingTo = new ObservableCollection<People>();
             view = obj;
             Request req = new Request();
             new GetEmployees(req,presenterCallBack).Execute();
@@ -30,7 +33,7 @@ namespace OrganizationUser.ViewModel
         private class PresenterCallback : ICallBack
         {
             AllUserViewModel allUserViewModel;
-
+            //just for github comment
             public PresenterCallback(AllUserViewModel viewModelObj)
             {
                 allUserViewModel = viewModelObj;
@@ -46,7 +49,16 @@ namespace OrganizationUser.ViewModel
                 {
                     for(int i=0;i<resp.EmployeesFromDB.Count;i++)
                     {
+                        if(resp.EmployeesFromDB[i].ReportingTo==null)
+                        {
+                            resp.EmployeesFromDB[i].ReportingTo = new People();
+                            resp.EmployeesFromDB[i].ReportingTo.Name = "-";
+                        }
                         allUserViewModel.Peoples.Add(resp.EmployeesFromDB[i]);
+                    }
+                    for (int i = 0; i < resp.ReportingTo.Count; i++)
+                    {
+                        allUserViewModel.ReportingTo.Add(resp.ReportingTo[i]);
                     }
                 });
                 allUserViewModel.searchObject = new SearchAlgo(allUserViewModel.Peoples.ToList<People>());

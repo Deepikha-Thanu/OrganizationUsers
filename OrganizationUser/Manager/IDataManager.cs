@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser.Manager
 {
-    class Request
+    interface IDataManager
     {
-
-        public int myDepartmentId { get; set; }
+        void GetEmployeesData(Request req, ICallBack callBack);
     }
 }

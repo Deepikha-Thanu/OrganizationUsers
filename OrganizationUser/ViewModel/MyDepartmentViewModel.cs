@@ -15,10 +15,8 @@ namespace OrganizationUser.ViewModel
     {
         public ObservableCollection<People> DepartmentPeoples;
         IView view;
-        //GetEmployees departmentUseCase;
-        private Request request = new Request();
         public const int DepartmentId = 15;
-        //        public  People me=new People();
+        public List<People> ReportingTo;
 
         ICallBack presenterCallback;
         public MyDepartmentViewModel(MyDepartment obj)
@@ -26,7 +24,7 @@ namespace OrganizationUser.ViewModel
             DepartmentPeoples = new ObservableCollection<People>();
             presenterCallback= new PresenterCallback(this);
             view = obj;
-            request.myDepartmentId = DepartmentId;
+            Request request = new Request() { myDepartmentId = DepartmentId };
             new GetEmployees(request,presenterCallback).Execute();
             //departmentUseCase.Execute();
         }

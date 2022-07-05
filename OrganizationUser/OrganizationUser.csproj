@@ -125,15 +125,19 @@
     <Compile Include="DataBase\DataAdapter.cs" />
     <Compile Include="DataBase\DataHandler.cs" />
     <Compile Include="DataBase\IDataAdapter.cs" />
+    <Compile Include="DataBase\IDataHandler.cs" />
     <Compile Include="DependencyInitializer.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="Manager\ICallBack.cs" />
     <Compile Include="Manager\DataManager.cs" />
+    <Compile Include="Manager\IDataManager.cs" />
     <Compile Include="Manager\Request.cs" />
     <Compile Include="Manager\Response.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manager\SingletonVariables.cs" />
+    <Compile Include="Manager\UCResponse.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Designation.cs" />
     <Compile Include="Model\People.cs" />

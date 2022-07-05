@@ -10,5 +10,6 @@ namespace OrganizationUser.Manager
     class Response
     {
         public List<People> EmployeesFromDB { get; set; }
+        public List<People> ReportingTo { get; set; }
     }
 }

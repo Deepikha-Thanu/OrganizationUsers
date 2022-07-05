@@ -102,8 +102,22 @@
         </Style>
     </Page.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
         <TextBlock x:ConnectionId='15' x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
-        <GridView x:ConnectionId='16' ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="AllUserGridView"                                                      Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" IsItemClickEnabled="True"                                       >
+        <StackPanel Grid.Row="0" Margin="10">
+            <TextBlock Text="Reporting To List:" FontSize="20"></TextBlock>
+            <GridView x:ConnectionId='19' Grid.Row="1"                                             >
+                <GridView.ItemTemplate>
+                    <DataTemplate                         >
+                        <TextBlock x:ConnectionId='21' Margin="10"                      Width="100" Height="Auto"></TextBlock>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </StackPanel>
+        <GridView x:ConnectionId='16' Grid.Row="1" ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="AllUserGridView"                                                      Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" IsItemClickEnabled="True"                                       >
             <GridView.ItemContainerTransitions>
                 <TransitionCollection>
                     <AddDeleteThemeTransition/>

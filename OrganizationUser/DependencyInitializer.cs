@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using OrganizationUser.DataBase;
+using OrganizationUser.Manager;
 
 namespace OrganizationUser
 {
@@ -13,7 +14,9 @@ namespace OrganizationUser
         public static ServiceProvider IntializeDependencies()
         {
             ServiceCollection collections = new ServiceCollection();
-            collections.AddSingleton<IDataAdapter,DataAdapter>();
+            collections.AddScoped<IDataAdapter,DataAdapter>();
+            collections.AddScoped<IDataHandler, DataHandler>();
+            collections.AddScoped<IDataManager, DataManager>();
             ServiceProvider provider = collections.BuildServiceProvider();
             return provider;
         }

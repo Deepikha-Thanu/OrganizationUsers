@@ -9,20 +9,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace OrganizationUser.DataBase
 {
-    class DataHandler
+    class DataHandler : IDataHandler
     {
         IDataAdapter dataAdapter;
         SqliteConnection conn;
         public DataHandler()
         {
-            ServiceProvider provider = DependencyInitializer.IntializeDependencies();
-            IDataAdapter adapter = provider.GetService(typeof(IDataAdapter)) as IDataAdapter;
-            int hashValue=adapter.GetHashCode();
-            dataAdapter = adapter;
+            dataAdapter = (DependencyInitializer.IntializeDependencies()).GetService(typeof(IDataAdapter)) as IDataAdapter;
             conn=dataAdapter.GetConnection();
             CreateTable();
             InsertDepartment();
-            InsertDesign();
+            InsertDesignation();
             InsertPeople();
         }
         public void CreateTable()
@@ -85,7 +82,7 @@ namespace OrganizationUser.DataBase
             //insertDepartmentData(appx);
             //insertDepartmentData(mail);
         }
-        public void InsertDesign()
+        public void InsertDesignation()
         {
             List<Designation> designations = new List<Designation>();
             designations.Add(new Designation() { Id = 1020, Name = "Project Trainee" });
@@ -93,7 +90,7 @@ namespace OrganizationUser.DataBase
             designations.Add(new Designation() { Id = 186, Name = "Project Lead" });
             foreach (Designation designation in designations)
             {
-                InsertDesignData(designation);
+                InsertDesignationData(designation);
             }
             //insertDesignData(pt);
             //insertDesignData(mts);
@@ -145,7 +142,7 @@ namespace OrganizationUser.DataBase
                 conn.Close();
             }
         }
-        public void InsertDesignData(Designation design)
+        public void InsertDesignationData(Designation design)
         {
             try
             {
@@ -232,7 +229,54 @@ namespace OrganizationUser.DataBase
                 return null;
             }
         }
+        public List<People> GetReportingTo()
+        {
+            try
+            {
+                conn.Open();
+                SqliteDataReader dataReader;
+                SqliteCommand readCommand = conn.CreateCommand();
+                readCommand.CommandText = "SELECT * From People AS employee JOIN People as reporting ON reporting.ReportingToId=employee.Id";
+                dataReader = readCommand.ExecuteReader();
+                List<People> toReturn = new List<People>();
+                for (int i = 0; dataReader.Read(); i++)
+                {
 
+                    toReturn.Add(new People()
+                    {
+                        Id = dataReader.GetInt32(0),
+                        Employee_id = dataReader.GetString(1),
+                        Firstname = dataReader.GetString(2),
+                        Lastname = dataReader.GetString(3),
+                        //ReportingTo = dataReader.IsDBNull(4) ? null : GetPeopleObj(dataReader.GetInt32(4)),
+                        CheckinStatus_Text = dataReader.GetString(5),
+                        Mobile = dataReader.GetInt64(6),
+                        Type = (Emp_type)Enum.Parse(typeof(Emp_type), dataReader.GetString(7)),
+                        Zoid = dataReader.GetInt64(8),
+                        Organization_id = dataReader.GetInt32(9),
+                        Email_id = dataReader.GetString(10),
+                        TimeOffset = DateTimeOffset.Parse(dataReader.GetString(11)),
+                        Lang = (Language)Enum.Parse(typeof(Language), dataReader.GetString(12)),
+                        Stat = (Status)Enum.Parse(typeof(Status), dataReader.GetString(13)),
+                        Depart = GetDepartmentObj(dataReader.GetInt32(14)),
+                        Design = GetDesignObj(dataReader.GetInt32(15)),
+                        Fullname = dataReader.GetString(16),
+                        Checkin_status = Convert.ToBoolean(dataReader.GetString(17)),
+                        ImageUrl = dataReader.GetString(18),
+                        DisplayName = dataReader.GetString(19),
+                        Name = dataReader.GetString(20),
+                        Country = dataReader.GetString(21)
+                    });
+                }
+                conn.Close();
+                return toReturn;
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                return null;
+            }
+        }
         public List<People> ReadDepartmentData(int departId)
         {
             try

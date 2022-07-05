@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DeepikhaFolder\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj": {}
+    "D:\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj": {}
   },
   "projects": {
-    "D:\\DeepikhaFolder\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj": {
+    "D:\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DeepikhaFolder\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj",
+        "projectUniqueName": "D:\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj",
         "projectName": "OrganizationUser",
-        "projectPath": "D:\\DeepikhaFolder\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj",
-        "packagesPath": "C:\\Users\\Kathiravan\\.nuget\\packages\\",
-        "outputPath": "D:\\DeepikhaFolder\\OrganizationUsers\\OrganizationUser\\obj\\",
+        "projectPath": "D:\\OrganizationUsers\\OrganizationUser\\OrganizationUser.csproj",
+        "packagesPath": "C:\\Users\\deepikha-14216\\.nuget\\packages\\",
+        "outputPath": "D:\\OrganizationUsers\\OrganizationUser\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -19,7 +19,7 @@
           "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Kathiravan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\deepikha-14216\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

@@ -10,10 +10,22 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser.Manager
 {
-    class DataManager
+    class DataManager : IDataManager
     {
-        public static DataManager dataManager = new DataManager();
-        DataHandler dataHandler = new DataHandler();
+        //public static IDataManager dataManagerInstance;
+        //public static IDataManager DataManagerInstance
+        //{
+        //    get
+        //    {
+        //        dataManagerInstance =(DependencyInitializer.IntializeDependencies()).GetService(typeof(IDataManager)) as IDataManager;
+        //        return dataManagerInstance;
+        //    }
+        //}
+        IDataHandler dataHandler;
+        public DataManager()
+        {
+            dataHandler=(DependencyInitializer.IntializeDependencies()).GetService(typeof(IDataHandler)) as IDataHandler;
+        }
         
         public void GetEmployeesData(Request req,ICallBack callBack)
         {
@@ -23,6 +35,7 @@ namespace OrganizationUser.Manager
                 if (req.myDepartmentId == 0)
                 {
                     response.EmployeesFromDB = dataHandler.ReadData();
+                    response.ReportingTo = dataHandler.GetReportingTo();
                     if (response.EmployeesFromDB == null)
                     {
                         callBack.OnFailure("Something went wrong!");
@@ -43,23 +56,26 @@ namespace OrganizationUser.Manager
                         }
                     }
                 }
-                response.EmployeesFromDB = dataHandler.ReadDepartmentData(req.myDepartmentId);
-                if (response.EmployeesFromDB.Count == 0)
-                {
-                    callBack.OnFailure("Data is not available!");
-                    return;
-                }
                 else
                 {
-                    if (response.EmployeesFromDB == null)
+                    response.EmployeesFromDB = dataHandler.ReadDepartmentData(req.myDepartmentId);
+                    if (response.EmployeesFromDB.Count == 0)
                     {
-                        callBack.OnFailure("Something went wrong!");
+                        callBack.OnFailure("Data is not available!");
                         return;
                     }
                     else
                     {
-                        callBack.OnSuccess(response);
-                        return;
+                        if (response.EmployeesFromDB == null)
+                        {
+                            callBack.OnFailure("Something went wrong!");
+                            return;
+                        }
+                        else
+                        {
+                            callBack.OnSuccess(response);
+                            return;
+                        }
                     }
                 }
             }

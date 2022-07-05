@@ -22,26 +22,26 @@ namespace OrganizationUser.Usecase
         }
         public override void Action()
         {
-            DataManager.dataManager.GetEmployeesData(request, usecaseCallback);
+            SingletonVariables.DataManager.GetEmployeesData(request, usecaseCallback);
         }
         private class UseCaseCallback : ICallBack
         {
-            public GetEmployees myDepartmentUseCase;
+            public GetEmployees myUseCase;
             public UseCaseCallback(GetEmployees obj)
             {
-                myDepartmentUseCase = obj;
+                myUseCase = obj;
             }
             public void OnSuccess<T>(T resp)
             {
-                myDepartmentUseCase.presenterCallback.OnSuccess(resp);
+                myUseCase.presenterCallback.OnSuccess(resp);
             }
             public void OnError()
             {
-                myDepartmentUseCase.presenterCallback.OnError();
+                myUseCase.presenterCallback.OnError();
             }
             public void OnFailure(string message)
             {
-                myDepartmentUseCase.presenterCallback.OnFailure(message);
+                myUseCase.presenterCallback.OnFailure(message);
             }
         }
     }

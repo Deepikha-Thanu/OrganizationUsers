@@ -1,4 +1,4 @@
-﻿using OrganizationUser.Manager;
+﻿using OrganizationUser.ViewModel;
 using OrganizationUser.Model;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace OrganizationUser
 {
-    public sealed partial class OrgUserControl : UserControl
+    public sealed partial class OrgUserControl : UserControl,IView
     {
         public People People { get { return this.DataContext as People; } }
         public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
@@ -87,6 +87,17 @@ namespace OrganizationUser
                InfoEmployeeClicked.Invoke(this,chosen);
             }
         }
+
+        public void ShowError()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowErrorMessage(string message)
+        {
+            throw new NotImplementedException();
+        }
+
         //private void InfoButton_Click(object sender, RoutedEventArgs e)
         //{
         //    People chosen = (sender as FrameworkElement).DataContext as People;

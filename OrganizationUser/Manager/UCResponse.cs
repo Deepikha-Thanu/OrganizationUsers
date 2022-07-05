@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrganizationUser.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser.Manager
 {
-    class Request
+    class UCResponse
     {
-
-        public int myDepartmentId { get; set; }
+        public List<People> ReportingToPeople { get; set; }
     }
 }
