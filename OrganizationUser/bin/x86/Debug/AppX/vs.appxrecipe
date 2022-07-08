@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-07-08T07:08:25.376</Modified>
+      <Modified>2022-07-08T07:30:16.873</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\OrganizationUser.exe">
       <PackagePath>entrypoint\OrganizationUser.exe</PackagePath>
-      <Modified>2022-07-08T07:08:24.923</Modified>
+      <Modified>2022-07-08T07:30:15.230</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\deepikha-14216\.nuget\packages\microsoft.bcl.asyncinterfaces\6.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
       <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
@@ -414,7 +414,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\Core\OrganizationUser.exe">
       <PackagePath>OrganizationUser.exe</PackagePath>
-      <Modified>2022-07-08T07:08:25.366</Modified>
+      <Modified>2022-07-08T07:30:16.860</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

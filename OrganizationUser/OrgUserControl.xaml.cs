@@ -49,6 +49,7 @@ namespace OrganizationUser
             TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
             departTextblock.Visibility = Visibility.Collapsed;
             designTextblock.Visibility = Visibility.Collapsed;
+            ReportingToText.Visibility = Visibility.Collapsed;
             ChildPopup.Visibility = Visibility.Visible;
         }
         private void AllUserDataGrid_PointerExited(object sender, PointerRoutedEventArgs e)
@@ -76,6 +77,7 @@ namespace OrganizationUser
             TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");
             departTextblock.Visibility = Visibility.Visible;
             designTextblock.Visibility = Visibility.Visible;
+            ReportingToText.Visibility = Visibility.Visible;
             ChildPopup.Visibility = Visibility.Collapsed;
         }
 

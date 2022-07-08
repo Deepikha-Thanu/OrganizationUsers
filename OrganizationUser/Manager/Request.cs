@@ -8,7 +8,6 @@ namespace OrganizationUser.Manager
 {
     class Request
     {
-
         public int myDepartmentId { get; set; }
     }
 }
