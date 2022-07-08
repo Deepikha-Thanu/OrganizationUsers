@@ -20,7 +20,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace OrganizationUser
 {
-    public sealed partial class PeopleDataUserControl : UserControl
+    public sealed partial class PeopleDataUserControl : UserControl,IView
     {
         public PeopleDataUserControlViewModel viewModel = new PeopleDataUserControlViewModel();
         
@@ -53,16 +53,27 @@ namespace OrganizationUser
 
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (viewModel.EmployeeToShow.ReportingTo == null || viewModel.EmployeeToShow.ReportingTo.Name == "-")
-                return;
-            if (viewModel.EmployeeToShow.ReportingTo.ReportingTo == null)
-            {
-                viewModel.EmployeeToShow.ReportingTo.ReportingTo = new People();
-                viewModel.EmployeeToShow.ReportingTo.ReportingTo.Name = "-";
-            }
-            viewModel.EmployeeToShow = viewModel.EmployeeToShow.ReportingTo;
+            //if (viewModel.EmployeeToShow.ReportingTo == null || viewModel.EmployeeToShow.ReportingTo.Name == "-")
+            //    return;
+            //if (viewModel.EmployeeToShow.ReportingTo.ReportingTo == null)
+            //{
+            //    viewModel.EmployeeToShow.ReportingTo.ReportingTo = new People();
+            //    viewModel.EmployeeToShow.ReportingTo.ReportingTo.Name = "-";
+            //}
+            //viewModel.EmployeeToShow = viewModel.EmployeeToShow.ReportingTo;
+            viewModel.ChangeEmployeeToShow();
             EmployeeViewGrid.Visibility = Visibility.Visible;
             CloseButton.Visibility = Visibility.Visible;
+        }
+
+        public void ShowError()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowErrorMessage(string message)
+        {
+            throw new NotImplementedException();
         }
     }
 }

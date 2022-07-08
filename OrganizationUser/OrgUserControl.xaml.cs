@@ -22,8 +22,8 @@ namespace OrganizationUser
 {
     public sealed partial class OrgUserControl : UserControl,IView
     {
-        public People People { get { return this.DataContext as People; } }
-        public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
+        public BusinessPeopleModel People { get { return this.DataContext as BusinessPeopleModel; } }
+        public delegate void EmployeeDisplayEventHandler(object sender, BusinessPeopleModel selectedEmp);
         public event EmployeeDisplayEventHandler InfoEmployeeClicked;
         public OrgUserControl()
         {
@@ -81,7 +81,7 @@ namespace OrganizationUser
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
-            People chosen=(sender as FrameworkElement).DataContext as People;
+            BusinessPeopleModel chosen=(sender as FrameworkElement).DataContext as BusinessPeopleModel;
             if(chosen!=null)
             {
                InfoEmployeeClicked.Invoke(this,chosen);

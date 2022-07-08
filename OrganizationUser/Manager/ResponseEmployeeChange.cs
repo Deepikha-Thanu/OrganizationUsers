@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser.Manager
 {
-    class Response
+    class ResponseEmployeeChange
     {
-        public List<BusinessPeopleModel> BusinessEmployeesData { get; set; }
-        //public Dictionary<int,string> ReportingToPair { get; set; }
+        public BusinessPeopleModel EmployeeFromId { get; set; }
     }
 }

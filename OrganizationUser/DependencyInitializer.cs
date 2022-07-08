@@ -14,9 +14,9 @@ namespace OrganizationUser
         public static ServiceProvider IntializeDependencies()
         {
             ServiceCollection collections = new ServiceCollection();
-            collections.AddScoped<IDataAdapter,DataAdapter>();
-            collections.AddScoped<IDataHandler, DataHandler>();
-            collections.AddScoped<IDataManager, DataManager>();
+            collections.AddSingleton<IDataAdapter,DataAdapter>();
+            collections.AddSingleton<IDataHandler, DataHandler>();
+            collections.AddSingleton<IDataManager, DataManager>();
             ServiceProvider provider = collections.BuildServiceProvider();
             return provider;
         }

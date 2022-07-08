@@ -8,6 +8,7 @@ namespace OrganizationUser.Manager
 {
     interface IDataManager
     {
-        void GetEmployeesData(Request req, ICallBack callBack);
+        void GetBusinessData(Request req, ICallBack callBack);
+        void GetEmployeeWithId(RequestEmployeeChange req, ICallBack callBack);
     }
 }

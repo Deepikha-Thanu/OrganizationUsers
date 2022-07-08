@@ -15,6 +15,7 @@
             <Setter Property="FontSize" Value="14"></Setter>
             <Setter Property="BorderBrush" Value="{ThemeResource SystemChromeHighColor}"></Setter>
             <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"></Setter>
         </Style>
     </UserControl.Resources>
         <Grid Name="AllUserDataGrid" CornerRadius="10,0,10,0" Background="{ThemeResource SystemRevealAltMediumHighColor}" Width="200" Height="230" FocusVisualMargin="0" FocusVisualPrimaryBrush="Transparent" PointerEntered="AllUserDataGrid_PointerEntered" PointerExited="AllUserDataGrid_PointerExited">
@@ -80,13 +81,13 @@
             <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind People.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,0,10,0"></TextBlock>
         </Grid>
         <TextBlock x:Name="EmailIDText" Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Grid.Row="2" FontSize="14" Text="{x:Bind People.Email_id,Mode=OneWay}" Margin="10,0,10,7" ToolTipService.ToolTip="{x:Bind People.Email_id,Mode=OneWay}"></TextBlock>
-        <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DepartmentText" FontSize="16" Grid.Row="3" Text="{x:Bind People.Depart.Name,Mode=OneWay}" Margin="10,0,10,5" ToolTipService.ToolTip="{x:Bind People.Depart.Name,Mode=OneWay}"></TextBlock>
-        <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DesignationText" Grid.Row="4" FontSize="14" Text="{x:Bind People.Design.Name,Mode=OneWay}" Margin="10,0,0,10" ToolTipService.ToolTip="{x:Bind People.Design.Name,Mode=OneWay}"></TextBlock>
+        <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DepartmentText" FontSize="16" Grid.Row="3" Text="{x:Bind People.DepartmentName,Mode=OneWay}" Margin="10,0,10,5" ToolTipService.ToolTip="{x:Bind People.DepartmentName,Mode=OneWay}"></TextBlock>
+        <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DesignationText" Grid.Row="4" FontSize="14" Text="{x:Bind People.DesignationName,Mode=OneWay}" Margin="10,0,0,10" ToolTipService.ToolTip="{x:Bind People.DesignationName,Mode=OneWay}"></TextBlock>
         <StackPanel Name="TaskStackPanel" Orientation="Horizontal" Grid.Row="3" Grid.RowSpan="3" Visibility="Collapsed" Background="{ThemeResource SystemChromeMediumColor}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <Button Style="{StaticResource HoverButtonStyle}" x:Name="CallButton" FontFamily="Segoe MDL2 Assets" Content="&#xE13A;"></Button>
-            <Button Style="{StaticResource HoverButtonStyle}" x:Name="VideoButton" FontFamily="Segoe MDL2 Assets" Content="&#xE714;"></Button>
-            <Button Style="{StaticResource HoverButtonStyle}" x:Name="MessageButton" FontFamily="Segoe MDL2 Assets" Content="&#xE134;"></Button>
-            <Button Style="{StaticResource HoverButtonStyle}" x:Name="InfoButton" FontFamily="Segoe MDL2 Assets" Content="&#xE171;" Click="InfoButton_Click"></Button>
+            <Button Style="{StaticResource HoverButtonStyle}" x:Name="CallButton" Content="&#xE13A;"></Button>
+            <Button Style="{StaticResource HoverButtonStyle}" x:Name="VideoButton" Content="&#xE714;"></Button>
+            <Button Style="{StaticResource HoverButtonStyle}" x:Name="MessageButton" Content="&#xE134;"></Button>
+            <Button Style="{StaticResource HoverButtonStyle}" x:Name="InfoButton" Content="&#xE171;" Click="InfoButton_Click"></Button>
         </StackPanel>
     </Grid>
 </UserControl>

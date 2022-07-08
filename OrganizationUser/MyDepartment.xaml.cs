@@ -32,7 +32,7 @@ namespace OrganizationUser
         //ObservableCollection<People> DepartPeoples { get; set; }
         //SearchAlgo searchObj;
         private MyDepartmentViewModel viewModel;
-        public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
+        public delegate void EmployeeDisplayEventHandler(object sender, BusinessPeopleModel selectedEmp);
         public event EmployeeDisplayEventHandler EmployeeClicked;
         //internal EventManager NotifyInstance { get => _NotifyInstance; set => _NotifyInstance = value; }
 
@@ -89,7 +89,7 @@ namespace OrganizationUser
 
         private void MyDepartmentGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            People chosen = e.ClickedItem as People;
+            BusinessPeopleModel chosen = e.ClickedItem as BusinessPeopleModel;
             //OrgUserControl orgUser = sender as OrgUserControl;
             //if (orgUser != null)
             //{
@@ -97,7 +97,7 @@ namespace OrganizationUser
             //}
         }
 
-        private void OrgUsersUC_InfoEmployeeClicked(object sender, People selectedEmp)
+        private void OrgUsersUC_InfoEmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
         {
             EmployeeClicked.Invoke(this, selectedEmp);
         }

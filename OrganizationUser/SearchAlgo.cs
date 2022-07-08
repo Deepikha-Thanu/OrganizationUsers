@@ -10,11 +10,11 @@ namespace OrganizationUser
 {
     public class SearchAlgo
     {
-        Dictionary<int, People> RemovedPosPeople = new Dictionary<int, People>();
+        Dictionary<int, BusinessPeopleModel> RemovedPosPeople = new Dictionary<int, BusinessPeopleModel>();
         Dictionary<int, string> PeoplePosition = new Dictionary<int, string>();
         int j = 0;
         int Length;
-        public SearchAlgo(List<People> Peoples)
+        public SearchAlgo(List<BusinessPeopleModel> Peoples)
         {
             for (int i = 0; i < Peoples.Count; i++)
             {
@@ -22,7 +22,7 @@ namespace OrganizationUser
             }
             Length = Peoples.Count;
         }
-        public bool search(ObservableCollection<People> Peoples,string data)
+        public bool search(ObservableCollection<BusinessPeopleModel> Peoples,string data)
         {
             //bool res = false;
             //List<People> tempPeople = Peoples.ToList();

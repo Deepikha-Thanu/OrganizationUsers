@@ -13,7 +13,7 @@ namespace OrganizationUser.ViewModel
 {
     public class MyDepartmentViewModel : ViewModelBase
     {
-        public ObservableCollection<People> DepartmentPeoples;
+        public ObservableCollection<BusinessPeopleModel> DepartmentPeoples;
         IView view;
         public const int DepartmentId = 15;
         public List<People> ReportingTo;
@@ -21,11 +21,11 @@ namespace OrganizationUser.ViewModel
         ICallBack presenterCallback;
         public MyDepartmentViewModel(MyDepartment obj)
         {
-            DepartmentPeoples = new ObservableCollection<People>();
+            DepartmentPeoples = new ObservableCollection<BusinessPeopleModel>();
             presenterCallback= new PresenterCallback(this);
             view = obj;
             Request request = new Request() { myDepartmentId = DepartmentId };
-            new GetEmployees(request,presenterCallback).Execute();
+            new GetEmployeesBusinessData(request,presenterCallback).Execute();
             //departmentUseCase.Execute();
         }
         //void FilterDepartment()
@@ -62,12 +62,12 @@ namespace OrganizationUser.ViewModel
                 Response resp = response as Response;
                 await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
-                    for (int i=0;i<resp.EmployeesFromDB.Count;i++)
+                    for (int i=0;i<resp.BusinessEmployeesData.Count;i++)
                     {
-                        myDepartmentViewModel.DepartmentPeoples.Add(resp.EmployeesFromDB[i]);
+                        myDepartmentViewModel.DepartmentPeoples.Add(resp.BusinessEmployeesData[i]);
                     }
                 });
-                myDepartmentViewModel.searchObject=new SearchAlgo(myDepartmentViewModel.DepartmentPeoples.ToList<People>());
+                myDepartmentViewModel.searchObject=new SearchAlgo(myDepartmentViewModel.DepartmentPeoples.ToList<BusinessPeopleModel>());
             }
             public void OnError()
             {

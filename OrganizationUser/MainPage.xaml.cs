@@ -39,7 +39,7 @@ namespace OrganizationUser
             this.InitializeComponent();
         }
         
-        private void OnEmployeeClicked(object sender, People selectedEmp)
+        private void OnEmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
         {
             //this.UnloadObject(PeopleUserControl);
             peopleDataUserControl = this.FindName("PeopleUserControl") as PeopleDataUserControl;

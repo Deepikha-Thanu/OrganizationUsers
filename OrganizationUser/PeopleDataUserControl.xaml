@@ -30,6 +30,7 @@
             <Setter Property="FontSize" Value="18"></Setter>
             <Setter Property="BorderBrush" Value="{ThemeResource SystemChromeHighColor}"></Setter>
             <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"></Setter>
         </Style>
         <Style x:Key="ButtonStyle1" TargetType="Button">
             <Setter Property="Background" Value="{ThemeResource ButtonBackground}"/>
@@ -152,13 +153,13 @@
                     <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,10,0,0"></Ellipse>
                     <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
                 </Grid>
-                <TextBlock Name="DepartmentText" Text="{x:Bind viewModel.EmployeeToShow.Depart.Name,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
-                <TextBlock Name="DesignationText" Text="{x:Bind viewModel.EmployeeToShow.Design.Name,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
+                <TextBlock Name="DepartmentText" Text="{x:Bind viewModel.EmployeeToShow.DepartmentName,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
+                <TextBlock Name="DesignationText" Text="{x:Bind viewModel.EmployeeToShow.DesignationName,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
-                <Button Name="CallButton" Style="{StaticResource HoverButtonStyle}" FontFamily="Segoe MDL2 Assets" Content="&#xE13A;"></Button>
-                <Button Name="VideoButton" Style="{StaticResource HoverButtonStyle}" FontFamily="Segoe MDL2 Assets" Content="&#xE714;"></Button>
-                <Button Name="MessageButton" Style="{StaticResource HoverButtonStyle}" FontFamily="Segoe MDL2 Assets" Content="&#xE134;" Margin="10,10,10,10"></Button>
+                <Button Name="CallButton" Style="{StaticResource HoverButtonStyle}"  Content="&#xE13A;"></Button>
+                <Button Name="VideoButton" Style="{StaticResource HoverButtonStyle}" Content="&#xE714;"></Button>
+                <Button Name="MessageButton" Style="{StaticResource HoverButtonStyle}" Content="&#xE134;" Margin="10,10,10,10"></Button>
             </StackPanel>
         </Grid>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
@@ -239,15 +240,15 @@
                 <TextBlock Grid.Row="13" Grid.ColumnSpan="2" Text="Geo Location" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
                 <TextBlock Grid.Row="14" Text="Country:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
                 <TextBlock Grid.Row="15" Text="Local Time:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Fullname,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.DisplayName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Email_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <TextBox Grid.Row="4" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <TextBox Grid.Row="5" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="7" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Design.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="8" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Depart.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="7" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.DesignationName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                <TextBox Grid.Row="8" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.DepartmentName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <HyperlinkButton Grid.Row="9" Grid.Column="1" Click="HyperlinkButton_Click" Margin="20,10,0,0">
-                    <TextBlock  Text="{x:Bind viewModel.EmployeeToShow.ReportingTo.Name,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="Blue" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left"></TextBlock>
+                    <TextBlock  Text="{x:Bind viewModel.EmployeeToShow.ReportingToName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="Blue" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left"></TextBlock>
                 </HyperlinkButton>
                 <TextBox Grid.Row="10" Grid.Column="1" Text="-" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <TextBox Grid.Row="11" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Employee_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>

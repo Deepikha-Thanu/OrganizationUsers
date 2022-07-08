@@ -16,10 +16,10 @@ namespace OrganizationUser.DataBase
         void InsertDepartmentData(Department depart);
         void InsertDesignationData(Designation design);
         void InsertPeopleData(People people);
-        List<People> ReadData();
-        List<People> GetReportingTo();
-        List<People> ReadDepartmentData(int departId);
-        People GetPeopleObj(int id);
+        List<BusinessPeopleModel> ReadData();
+        BusinessPeopleModel GetReportingToEmployee(long id);
+        List<BusinessPeopleModel> ReadDepartmentData(int departId);
+        //People GetPeopleObj(int id);
         Department GetDepartmentObj(int id);
         Designation GetDesignObj(int id);
 

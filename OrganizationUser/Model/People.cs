@@ -31,7 +31,7 @@ namespace OrganizationUser.Model
         string _Employee_id;
         string _Firstname;
         string _Lastname;
-        People _ReportingTo;
+        long _ReportingToId;
         string _CheckinStatus_Text;
         long _Mobile;
         Emp_type _Type;
@@ -41,8 +41,8 @@ namespace OrganizationUser.Model
         DateTimeOffset _TimeOffset;
         Language _Lang;
         Status _Stat;
-        Department _Depart;
-        Designation _Design;
+        int _DepartId;
+        int _DesignId;
         string _Fullname;
         bool _Checkin_status;
         string _ImageUrl;
@@ -66,13 +66,12 @@ namespace OrganizationUser.Model
         public string Name { get => _Name; set => _Name = value; }
         public string ImageUrl { get => _ImageUrl; set => _ImageUrl = value; }
         public string Country { get => _Country; set => _Country = value; }
-        internal People ReportingTo { get => _ReportingTo; set => _ReportingTo = value; }
+        internal long ReportingToId { get => _ReportingToId; set => _ReportingToId = value; }
         internal Emp_type Type { get => _Type; set => _Type = value; }
         internal Language Lang { get => _Lang; set => _Lang = value; }
         internal Status Stat { get => _Stat; set => _Stat = value; }
-        internal Department Depart { get => _Depart; set => _Depart = value; }
-        internal Designation Design { get => _Design; set => _Design = value; }
-
+        internal int DepartId { get => _DepartId; set => _DepartId = value; }
+        internal int DesignId { get => _DesignId; set => _DesignId = value; }
 
     }
 }

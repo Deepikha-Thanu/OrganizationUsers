@@ -110,7 +110,7 @@
                 </TransitionCollection>
             </GridView.ItemContainerTransitions>
             <GridView.ItemTemplate>
-                <DataTemplate                         >
+                <DataTemplate                                      >
                     <local:OrgUserControl x:ConnectionId='18' x:Name="OrgUsersUC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20"                                                     ></local:OrgUserControl>
                 </DataTemplate>
             </GridView.ItemTemplate>

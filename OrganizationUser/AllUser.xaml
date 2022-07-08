@@ -102,29 +102,29 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <Grid.RowDefinitions>
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions>-->
         <TextBlock x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
-        <StackPanel Grid.Row="0" Margin="10">
+        <!--<StackPanel Grid.Row="0" Margin="10">
             <TextBlock Text="Reporting To List:" FontSize="20"></TextBlock>
-            <GridView Grid.Row="1" ItemsSource="{x:Bind viewModel.ReportingTo}">
+            <GridView Grid.Row="1" ItemsSource="{x:Bind viewModel.ReportingToPeople}">
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="data:People">
                         <TextBlock Margin="10" Text="{x:Bind Name}" Width="100" Height="Auto"></TextBlock>
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
-        </StackPanel>
-        <GridView Grid.Row="1" ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="AllUserGridView" ItemsSource="{x:Bind viewModel.Peoples,Mode=OneWay}" Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" IsItemClickEnabled="True"  ItemClick="AllUserGridView_ItemClick">
+        </StackPanel>-->
+        <GridView ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="AllUserGridView" ItemsSource="{x:Bind viewModel.Employees,Mode=OneWay}" Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" IsItemClickEnabled="True"  ItemClick="AllUserGridView_ItemClick">
             <GridView.ItemContainerTransitions>
                 <TransitionCollection>
                     <AddDeleteThemeTransition/>
                 </TransitionCollection>
             </GridView.ItemContainerTransitions>
             <GridView.ItemTemplate>
-                <DataTemplate  x:Name="AllDataTemplate" x:DataType="data:People">
+                <DataTemplate  x:Name="AllDataTemplate" x:DataType="data:BusinessPeopleModel">
                     <local:OrgUserControl x:Name="OrgUsersUC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" InfoEmployeeClicked="OrgUsersUC_EmployeeClicked"></local:OrgUserControl>
                 </DataTemplate>
             </GridView.ItemTemplate>

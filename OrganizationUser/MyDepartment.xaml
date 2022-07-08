@@ -110,7 +110,7 @@
                 </TransitionCollection>
             </GridView.ItemContainerTransitions>
             <GridView.ItemTemplate>
-                <DataTemplate x:DataType="data:People">
+                <DataTemplate x:DataType="data:BusinessPeopleModel">
                     <local:OrgUserControl x:Name="OrgUsersUC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" InfoEmployeeClicked="OrgUsersUC_InfoEmployeeClicked"></local:OrgUserControl>
                 </DataTemplate>
             </GridView.ItemTemplate>

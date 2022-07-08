@@ -7,12 +7,21 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser.Usecase
 {
-    class GetEmployees : UsecaseBase
+    class GetEmployeesBusinessData : UsecaseBase
     {
         public ICallBack presenterCallback;
         Request request;
         ICallBack usecaseCallback;
-        public GetEmployees(Request req,ICallBack obj)
+        IDataManager dataManagerInstance;
+        public IDataManager DataManagerInstance
+        {
+            get
+            {
+                dataManagerInstance = (DependencyInitializer.IntializeDependencies()).GetService(typeof(IDataManager)) as IDataManager;
+                return dataManagerInstance;
+            }
+        }
+        public GetEmployeesBusinessData(Request req,ICallBack obj)
         {
             request = req;
             presenterCallback = obj;
@@ -22,12 +31,12 @@ namespace OrganizationUser.Usecase
         }
         public override void Action()
         {
-            SingletonVariables.DataManager.GetEmployeesData(request, usecaseCallback);
+            DataManagerInstance.GetBusinessData(request, usecaseCallback);
         }
         private class UseCaseCallback : ICallBack
         {
-            public GetEmployees myUseCase;
-            public UseCaseCallback(GetEmployees obj)
+            public GetEmployeesBusinessData myUseCase;
+            public UseCaseCallback(GetEmployeesBusinessData obj)
             {
                 myUseCase = obj;
             }

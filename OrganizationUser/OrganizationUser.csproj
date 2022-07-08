@@ -132,12 +132,13 @@
     <Compile Include="Manager\DataManager.cs" />
     <Compile Include="Manager\IDataManager.cs" />
     <Compile Include="Manager\Request.cs" />
+    <Compile Include="Manager\RequestEmployeeChange.cs" />
     <Compile Include="Manager\Response.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager\SingletonVariables.cs" />
-    <Compile Include="Manager\UCResponse.cs" />
+    <Compile Include="Manager\ResponseEmployeeChange.cs" />
+    <Compile Include="Model\BusinessPeopleModel.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Designation.cs" />
     <Compile Include="Model\People.cs" />
@@ -156,7 +157,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchAlgo.cs" />
     <Compile Include="StatusComparisonTrigger.cs" />
-    <Compile Include="Usecase\GetEmployees.cs" />
+    <Compile Include="Usecase\GetEmployeesBusinessData.cs" />
+    <Compile Include="Usecase\GetEmployeeWithId.cs" />
     <Compile Include="Usecase\UsecaseBase.cs" />
     <Compile Include="ViewModel\AllUserViewModel.cs" />
     <Compile Include="ViewModel\MyDepartmentViewModel.cs" />

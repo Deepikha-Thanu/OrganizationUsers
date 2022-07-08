@@ -32,7 +32,7 @@ namespace OrganizationUser
     {
         //ObservableCollection<People> Peoples { get; set; }
         //SearchAlgo searchObj;
-        public delegate void EmployeeDisplayEventHandler(object sender, People selectedEmp);
+        public delegate void EmployeeDisplayEventHandler(object sender, BusinessPeopleModel selectedEmp);
         public event EmployeeDisplayEventHandler EmployeeClicked;
         private AllUserViewModel viewModel;
         //public event PropertyChangedEventHandler PropertyChanged;
@@ -85,7 +85,7 @@ namespace OrganizationUser
 
         public void EmployeeSearched(string data)
         {
-           bool result= viewModel.searchObject.search(viewModel.Peoples,data);
+           bool result= viewModel.searchObject.search(viewModel.Employees,data);
            SearchResult.Text = result? "" : "No Results Found";
         }
         //private void OrgUsersUC_Tapped(object sender, TappedRoutedEventArgs e)
@@ -95,11 +95,11 @@ namespace OrganizationUser
 
         private void AllUserGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            People chosen = e.ClickedItem as People;
+            BusinessPeopleModel chosen = e.ClickedItem as BusinessPeopleModel;
             EmployeeClicked?.Invoke(this, chosen);
         }
 
-        private void OrgUsersUC_EmployeeClicked(object sender, People selectedEmp)
+        private void OrgUsersUC_EmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
         {
             EmployeeClicked?.Invoke(this, selectedEmp);   
         }

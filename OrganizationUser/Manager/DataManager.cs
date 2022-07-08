@@ -24,26 +24,27 @@ namespace OrganizationUser.Manager
         IDataHandler dataHandler;
         public DataManager()
         {
+            int value=this.GetHashCode();
             dataHandler=(DependencyInitializer.IntializeDependencies()).GetService(typeof(IDataHandler)) as IDataHandler;
         }
         
-        public void GetEmployeesData(Request req,ICallBack callBack)
+        public void GetBusinessData(Request req,ICallBack callBack)
         {
             Response response = new Response();
             try
             {
                 if (req.myDepartmentId == 0)
                 {
-                    response.EmployeesFromDB = dataHandler.ReadData();
-                    response.ReportingTo = dataHandler.GetReportingTo();
-                    if (response.EmployeesFromDB == null)
+                    response.BusinessEmployeesData = dataHandler.ReadData();
+                    //response.ReportingToPair = dataHandler.GetReportingTo();
+                    if (response.BusinessEmployeesData == null)
                     {
                         callBack.OnFailure("Something went wrong!");
                         return;
                     }
                     else
                     {
-                        if (response.EmployeesFromDB.Count == 0)
+                        if (response.BusinessEmployeesData.Count == 0)
                         {
                             callBack.OnFailure("Data is not available!");
                             return;
@@ -58,17 +59,18 @@ namespace OrganizationUser.Manager
                 }
                 else
                 {
-                    response.EmployeesFromDB = dataHandler.ReadDepartmentData(req.myDepartmentId);
-                    if (response.EmployeesFromDB.Count == 0)
+                    response.BusinessEmployeesData = dataHandler.ReadDepartmentData(req.myDepartmentId);
+                    if (response.BusinessEmployeesData == null)
                     {
-                        callBack.OnFailure("Data is not available!");
+                        callBack.OnFailure("Something went wrong!");
                         return;
                     }
+                    
                     else
                     {
-                        if (response.EmployeesFromDB == null)
+                        if (response.BusinessEmployeesData.Count == 0)
                         {
-                            callBack.OnFailure("Something went wrong!");
+                            callBack.OnFailure("Data is not available!");
                             return;
                         }
                         else
@@ -82,6 +84,22 @@ namespace OrganizationUser.Manager
             catch(Exception ex)
             {
                 callBack.OnError();
+            }
+        }
+
+        public void GetEmployeeWithId(RequestEmployeeChange request,ICallBack callBack)
+        {
+            ResponseEmployeeChange response = new ResponseEmployeeChange();
+            response.EmployeeFromId = dataHandler.GetReportingToEmployee(request.EmployeeId);
+            if (response.EmployeeFromId == null)
+            {
+                callBack.OnFailure("Something went wrong!");
+                return;
+            }
+            else
+            {
+                callBack.OnSuccess(response);
+                return;
             }
         }
     }
