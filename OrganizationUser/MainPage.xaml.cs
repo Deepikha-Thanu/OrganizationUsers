@@ -128,7 +128,7 @@ namespace OrganizationUser
             }
             if (MyReportButton.IsSelected)
             {
-                this.UnloadObject(PeopleUserControl);
+                this.UnloadObject(peopleDataUserControl);
                 AllUserButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(0);
                 MyReportButton.BorderThickness = new Thickness(2, 0, 0, 0);
@@ -195,7 +195,7 @@ namespace OrganizationUser
         //}
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this.UnloadObject(PeopleUserControl);
+            this.UnloadObject(peopleDataUserControl);
             string toSearch=SearchBox.Text;
             //AllUser allUserPage = PeopleFrame.Content as AllUser;
             //MyDepartment department = PeopleFrame.Content as MyDepartment;
@@ -219,7 +219,22 @@ namespace OrganizationUser
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.UnloadObject(PeopleUserControl);
+            this.UnloadObject(peopleDataUserControl);
+        }
+
+        private void VisualStateGroup_CurrentStateChanged(object sender, VisualStateChangedEventArgs e)
+        {
+            if(peopleDataUserControl!=null)
+            { 
+                if(e.NewState.Name=="NarrowState")
+                {
+                   peopleDataUserControl.Visibility=Visibility.Collapsed;
+                }
+                else
+                {
+                    peopleDataUserControl.Visibility = Visibility.Visible;
+                }
+            }
         }
 
         //private void Page_Loaded(object sender, RoutedEventArgs e)

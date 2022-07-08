@@ -15,7 +15,7 @@ namespace OrganizationUser.DataBase
         SqliteConnection connection;
         public DataHandler()
         {
-            dataAdapter = (DependencyInitializer.IntializeDependencies()).GetService(typeof(IDataAdapter)) as IDataAdapter;
+            dataAdapter = (DependencyInitializer.dependencyInitializer.IntializeDependencies()).GetService(typeof(IDataAdapter)) as IDataAdapter;
             connection = dataAdapter.GetConnection();
             CreateTable();
             InsertDepartment();

@@ -23,9 +23,8 @@ namespace OrganizationUser.Manager
         //}
         IDataHandler dataHandler;
         public DataManager()
-        {
-            int value=this.GetHashCode();
-            dataHandler=(DependencyInitializer.IntializeDependencies()).GetService(typeof(IDataHandler)) as IDataHandler;
+        { 
+            dataHandler=(DependencyInitializer.dependencyInitializer.IntializeDependencies()).GetService(typeof(IDataHandler)) as IDataHandler;
         }
         
         public void GetBusinessData(Request req,ICallBack callBack)

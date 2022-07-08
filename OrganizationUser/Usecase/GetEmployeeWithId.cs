@@ -21,7 +21,7 @@ namespace OrganizationUser.Usecase
         }
         public override void Action()
         {
-            (DependencyInitializer.IntializeDependencies().GetService(typeof(IDataManager)) as IDataManager).GetEmployeeWithId(request,usecaseCallBack);
+            (DependencyInitializer.dependencyInitializer.IntializeDependencies().GetService(typeof(IDataManager)) as IDataManager).GetEmployeeWithId(request,usecaseCallBack);
         }
 
         private class UsecaseCallback : ICallBack

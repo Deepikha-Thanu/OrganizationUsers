@@ -188,13 +188,14 @@
     </Page.Resources>
     <Grid>
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
+            <VisualStateGroup CurrentStateChanged="VisualStateGroup_CurrentStateChanged">
                 <VisualState x:Name="NarrowState">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="400"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBar.Visibility" Value="Collapsed"></Setter>
+                        <!--<Setter Target="PeopleUserControl.Visibility" Value="Collapsed"></Setter>-->
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="WideState">
@@ -203,6 +204,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBar.Visibility" Value="Visible"></Setter>
+                        <!--<Setter Target="PeopleUserControl.Visibility" Value="Visible"></Setter>-->
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

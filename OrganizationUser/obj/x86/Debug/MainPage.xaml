@@ -188,21 +188,23 @@
     </Page.Resources>
     <Grid>
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:ConnectionId='27' x:Name="NarrowState">
+            <VisualStateGroup x:ConnectionId='27'                                                           >
+                <VisualState x:ConnectionId='28' x:Name="NarrowState">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="400"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBar.Visibility" Value="Collapsed"></Setter>
+                        <!--<Setter Target="PeopleUserControl.Visibility" Value="Collapsed"></Setter>-->
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState x:ConnectionId='28' x:Name="WideState">
+                <VisualState x:ConnectionId='29' x:Name="WideState">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="900"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBar.Visibility" Value="Visible"></Setter>
+                        <!--<Setter Target="PeopleUserControl.Visibility" Value="Visible"></Setter>-->
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -222,41 +224,41 @@
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>-->
             <RelativePanel Background="{ThemeResource AppBarBackgroundThemeBrush}">
-                <TextBlock x:ConnectionId='37' Name="HeaderIcon" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Text="&#xE8D4;" FontSize="30" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="10"></TextBlock>
-                <TextBlock x:ConnectionId='38' Name="HeaderText" RelativePanel.RightOf="HeaderIcon" Text="People" FontSize="30" FontWeight="Bold" Margin="10" VerticalAlignment="Center"></TextBlock>
-                <StackPanel x:ConnectionId='39' Name="SearchBar" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel= "True" RelativePanel.AlignVerticalCenterWithPanel="True" BorderBrush="{ThemeResource TextBoxBorderThemeBrush}" BorderThickness="2" Visibility="Visible">
-                    <Button x:ConnectionId='40' Name="SearchIcon" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE1A3;" Background="Transparent"  RelativePanel.RightOf="SearchBox" RelativePanel.AlignVerticalCenterWithPanel="True">
+                <TextBlock x:ConnectionId='38' Name="HeaderIcon" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Text="&#xE8D4;" FontSize="30" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="10"></TextBlock>
+                <TextBlock x:ConnectionId='39' Name="HeaderText" RelativePanel.RightOf="HeaderIcon" Text="People" FontSize="30" FontWeight="Bold" Margin="10" VerticalAlignment="Center"></TextBlock>
+                <StackPanel x:ConnectionId='40' Name="SearchBar" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel= "True" RelativePanel.AlignVerticalCenterWithPanel="True" BorderBrush="{ThemeResource TextBoxBorderThemeBrush}" BorderThickness="2" Visibility="Visible">
+                    <Button x:ConnectionId='41' Name="SearchIcon" FontFamily="Segoe MDL2 Assets" FontSize="18" Content="&#xE1A3;" Background="Transparent"  RelativePanel.RightOf="SearchBox" RelativePanel.AlignVerticalCenterWithPanel="True">
                     </Button>
-                    <TextBox x:ConnectionId='41' Style="{StaticResource SearchBoxStyle}" Name="SearchBox" Width="300" PlaceholderText="Search the name" BorderBrush="Transparent"                                     Background="Transparent" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent"></TextBox>
+                    <TextBox x:ConnectionId='42' Style="{StaticResource SearchBoxStyle}" Name="SearchBox" Width="300" PlaceholderText="Search the name" BorderBrush="Transparent"                                     Background="Transparent" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent"></TextBox>
                 </StackPanel>
             </RelativePanel>
-            <Grid x:ConnectionId='33' Name="FrameEmployeeViewGrid" Grid.Row="1">
+            <Grid x:ConnectionId='34' Name="FrameEmployeeViewGrid" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:ConnectionId='34' x:Name="NavigationStatus" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <Frame x:ConnectionId='35' Name="PeopleFrame" Grid.Column="0"></Frame>
-                <local:PeopleDataUserControl x:ConnectionId='36' Grid.Column="1" x:Name="PeopleUserControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Load="False"                                  ></local:PeopleDataUserControl>
+                <TextBlock x:ConnectionId='35' x:Name="NavigationStatus" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <Frame x:ConnectionId='36' Name="PeopleFrame" Grid.Column="0"></Frame>
+                <local:PeopleDataUserControl x:ConnectionId='37' Grid.Column="1" x:Name="PeopleUserControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Load="False"                                  ></local:PeopleDataUserControl>
             </Grid>
                
         </Grid>
         <StackPanel Background="#36454F">
             <TextBlock Text="People" FontSize="26" Margin="10" FontWeight="Bold" Foreground="White"></TextBlock>
-            <ListBox x:ConnectionId='29' Name="PeopleTabView" SelectionMode="Single"                                                    Background="LimeGreen"  ItemContainerStyle="{StaticResource ListItemStyle}">
-                <ListBoxItem x:ConnectionId='30' Name="AllUserButton" IsSelected="True">
+            <ListBox x:ConnectionId='30' Name="PeopleTabView" SelectionMode="Single"                                                    Background="LimeGreen"  ItemContainerStyle="{StaticResource ListItemStyle}">
+                <ListBoxItem x:ConnectionId='31' Name="AllUserButton" IsSelected="True">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource IconTextStyle}" Text="&#xE902;" HorizontalAlignment="Left"></TextBlock>
                         <TextBlock Text="All User" HorizontalAlignment="Left" Foreground="White"></TextBlock>
                     </StackPanel>
                 </ListBoxItem>
-                <ListBoxItem x:ConnectionId='31' Name="MyDepartmentButton">
+                <ListBoxItem x:ConnectionId='32' Name="MyDepartmentButton">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" >
                         <TextBlock Style="{StaticResource IconTextStyle}" Text="&#xE902;" HorizontalAlignment="Left"></TextBlock>
                         <TextBlock Text="My Department" HorizontalAlignment="Left" Foreground="White" ></TextBlock>
                     </StackPanel>
                 </ListBoxItem>
-                <ListBoxItem x:ConnectionId='32' Name="MyReportButton">
+                <ListBoxItem x:ConnectionId='33' Name="MyReportButton">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource IconTextStyle}" Text="&#xE902;" Margin="0,0,10,0" HorizontalAlignment="Left"></TextBlock>
                         <TextBlock Text="My Direct Reports" HorizontalAlignment="Left" Foreground="White"></TextBlock>
