@@ -75,5 +75,31 @@ namespace OrganizationUser
         {
             throw new NotImplementedException();
         }
+        public SolidColorBrush StatusColor(Status status)
+        {
+            if (status == Status.Out)
+            {
+                return new SolidColorBrush(Windows.UI.Colors.Gray);
+            }
+            else
+            {
+                return new SolidColorBrush(Windows.UI.Colors.LimeGreen);
+            }
+        }
+        public string CheckinStatusEnumToString(Status status)
+        {
+            if (status == Status.OfficeIn)
+            {
+                return "Office In";
+            }
+            else if (status == Status.Out)
+            {
+                return "Out";
+            }
+            else
+            {
+                return "Remote In";
+            }
+        }
     }
 }

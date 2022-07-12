@@ -113,7 +113,7 @@ namespace OrganizationUser.DataBase
                 People srimathi = new People() { Employee_id = "2839", Id = 37989, Firstname = "Srimathi", Lastname = "Selvam", CheckinStatus_Text = "Office in", Mobile = 9372937429, Zoid = 1297853, Organization_id = 16729, Email_id = "srimathi.selvam@zohocorp.com", TimeOffset = DateTime.Now, Fullname = "Srimathi", Checkin_status = true, DisplayName = "Sri", Name = "Srimathi", ImageUrl = "Assets/WomenUser2.png", Country = "India", ReportingToId = 123402, Type = Emp_type.Paid, Lang = Language.English, Stat = Status.OfficeIn, DesignId = 123, DepartId = 16 };
                 People rajesh = new People() { Employee_id = "2390", Id = 159332, Firstname = "Rajesh", Lastname = "Kumar", CheckinStatus_Text = "Office in", Mobile = 9883749222, Zoid = 1454903, Organization_id = 12315, Email_id = "rajesh.kumar@zohocorp.com", TimeOffset = DateTime.Now, Fullname = "Rajesh Kumar", Checkin_status = true, DisplayName = "Rajesh", Name = "Rajesh", ImageUrl = "Assets/MaleUser2.png", Country = "India", ReportingToId = 129434, Type = Emp_type.Paid, Lang = Language.English, Stat = Status.Out, DesignId = 123, DepartId = 15 };
                 People priya = new People() { Employee_id = "13567", Id = 28903, Firstname = "Priya", Lastname = "Dhasan", CheckinStatus_Text = "Away", Mobile = 94530235532, Zoid = 653232, Organization_id = 17890, Email_id = "priyadhasan@zohocorp.com", TimeOffset = DateTime.Now, Fullname = "Priya Dhasan", Checkin_status = true, DisplayName = "Priya Dhasan", Name = "Priya Dhasan", ImageUrl = "Assets/WomenUser3.png", Country = "India", ReportingToId = 129434, Type = Emp_type.Paid, Lang = Language.English, Stat = Status.Out, DesignId = 123, DepartId = 15 };
-                People EmptyData = new People() { Employee_id = "-", Id = 1, Firstname = "-", Lastname = "-", CheckinStatus_Text = "-", Mobile = 0, Zoid = 0, Organization_id = 0, Email_id = "-", TimeOffset = DateTime.Now, Fullname = "-", Checkin_status = false, DisplayName = "-", Name = "-", ImageUrl = "-", Country = "-", ReportingToId = 0, Type = Emp_type.Paid, Lang = Language.English, Stat = Status.Officein, DesignId = 0, DepartId = 0 };
+                People EmptyData = new People() { Employee_id = "-", Id = 1, Firstname = "-", Lastname = "-", CheckinStatus_Text = "-", Mobile = 0, Zoid = 0, Organization_id = 0, Email_id = "-", TimeOffset = DateTime.Now, Fullname = "-", Checkin_status = false, DisplayName = "-", Name = "-", ImageUrl = "-", Country = "-", ReportingToId = 0, Type = Emp_type.Paid, Lang = Language.English, Stat = Status.OfficeIn, DesignId = 0, DepartId = 0 };
                 InsertPeopleData(Ram);
                 InsertPeopleData(Rahul);
                 InsertPeopleData(me);
@@ -218,7 +218,7 @@ namespace OrganizationUser.DataBase
                 SqliteDataReader dataReader;
                 SqliteCommand readCommand = connection.CreateCommand();
                 readCommand.CommandText = "Select reporting.Id,employee.Id,reporting.Employee_Id,reporting.Name,employee.Name,reporting.Fullname,reporting.DisplayName,reporting.EmailId," +
-                    "reporting.Mobile,reporting.Country,reporting.CheckinStatusText,reporting.ImageUrl,dept.Name,design.Name " +
+                    "reporting.Mobile,reporting.Country,reporting.CheckinStatusText,reporting.Status,reporting.ImageUrl,dept.Name,design.Name " +
                     "from People as employee " +
                     "Join People as reporting " +
                     "ON employee.ID = reporting.ReportingToId " +
@@ -241,9 +241,10 @@ namespace OrganizationUser.DataBase
                         Mobile = dataReader.GetInt64(8),
                         Country = dataReader.GetString(9),
                         CheckinStatus_Text = dataReader.GetString(10),
-                        ImageUrl = dataReader.GetString(11),
-                        DepartmentName = dataReader.GetString(12),
-                        DesignationName = dataReader.GetString(13)
+                        Stat=(Status)Enum.Parse(typeof(Status),dataReader.GetString(11)),
+                        ImageUrl = dataReader.GetString(12),
+                        DepartmentName = dataReader.GetString(13),
+                        DesignationName = dataReader.GetString(14)
                     }
                     );;
                 }

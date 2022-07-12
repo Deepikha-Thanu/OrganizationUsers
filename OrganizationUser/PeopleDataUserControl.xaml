@@ -93,7 +93,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <VisualStateManager.VisualStateGroups>
+        <!--<VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
@@ -112,7 +112,7 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        </VisualStateManager.VisualStateGroups>-->
         <Button Grid.Row="0" Canvas.ZIndex="20" Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Top"  FontFamily="Segoe MDL2 Assets" Content="&#xE106;" FontSize="16" x:Load="False"></Button>
         <!--<Button Name="CloseButton" FontFamily="Segoe MDL2 Assets" Content="&#xE10A;" FontSize="16" Click="CloseButton_Click"></Button>-->
         <Grid Canvas.ZIndex="10" Grid.Row="0" Background="{ThemeResource SystemChromeMediumColor}">
@@ -132,7 +132,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock MaxWidth="110" x:Name="NameText" Text="{x:Bind viewModel.EmployeeToShow.Fullname,Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
                     <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,10,0,0"></Ellipse>
-                    <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="{ThemeResource PeopleAppAccentColor}" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
+                    <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind CheckinStatusEnumToString(viewModel.EmployeeToShow.Stat),Mode=OneWay}" FontSize="16" Foreground="{x:Bind StatusColor(viewModel.EmployeeToShow.Stat),Mode=OneWay}" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
                 </Grid>
                 <TextBlock Name="DepartmentText" Text="{x:Bind viewModel.EmployeeToShow.DepartmentName,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
                 <TextBlock Name="DesignationText" Text="{x:Bind viewModel.EmployeeToShow.DesignationName,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
@@ -229,7 +229,7 @@
                 <TextBox Grid.Row="7" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.DesignationName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <TextBox Grid.Row="8" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.DepartmentName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <HyperlinkButton Grid.Row="9" Grid.Column="1" Click="HyperlinkButton_Click" Margin="20,10,0,0">
-                    <TextBlock  Text="{x:Bind viewModel.EmployeeToShow.ReportingToName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="Blue" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left"></TextBlock>
+                    <TextBlock  Text="{x:Bind viewModel.EmployeeToShow.ReportingToName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource SystemAccentColorLight2}" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left"></TextBlock>
                 </HyperlinkButton>
                 <TextBox Grid.Row="10" Grid.Column="1" Text="-" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
                 <TextBox Grid.Row="11" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Employee_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>

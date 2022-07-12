@@ -400,10 +400,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerDownThemeAnimation" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerUpThemeAnimation" />
-    <RootType FullName="OrganizationUser.StatusComparisonTrigger">
-      <RootProperty Name="DataValue" />
-      <RootProperty Name="TriggerValue" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
       <RootProperty Name="Margin" />
       <RootProperty Name="Content" />
