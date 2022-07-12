@@ -67,7 +67,7 @@ namespace OrganizationUser.ViewModel
                         myDepartmentViewModel.DepartmentPeoples.Add(resp.BusinessEmployeesData[i]);
                     }
                 });
-                myDepartmentViewModel.searchObject=new SearchAlgo(myDepartmentViewModel.DepartmentPeoples.ToList<BusinessPeopleModel>());
+                myDepartmentViewModel.searchObject=new SearchAlgorithm(myDepartmentViewModel.DepartmentPeoples.ToList<BusinessPeopleModel>());
             }
             public void OnError()
             {

@@ -301,4 +301,11 @@ D:\OrganizationUsers\OrganizationUser\obj\x86\Debug\qualifiers.txt.intermediate
 D:\OrganizationUsers\OrganizationUser\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 D:\OrganizationUsers\OrganizationUser\obj\x86\Debug\ProjectArchitectures.txt
 D:\OrganizationUsers\OrganizationUser\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_637424617200000000.json
-D:\OrganizationUsers\OrganizationUser\obj\x86\Debug\OrganizationUser.csproj.AssemblyReference.cache
+D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\WomenUserControl.xbf
+D:\OrganizationUsers\OrganizationUser\obj\x86\Debug\WomenUserControl.g.i.cs
+D:\OrganizationUsers\OrganizationUser\obj\x86\Debug\WomenUserControl.g.cs
+D:\OrganizationUsers\OrganizationUser\obj\x86\Debug\WomenUserControl.xaml
+D:\OrganizationUsers\OrganizationUser\obj\x86\Debug\WomenUserControl.xbf
+D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\OrganizationDictionary.xbf
+D:\OrganizationUsers\OrganizationUser\obj\x86\Debug\OrganizationDictionary.xaml
+D:\OrganizationUsers\OrganizationUser\obj\x86\Debug\OrganizationDictionary.xbf

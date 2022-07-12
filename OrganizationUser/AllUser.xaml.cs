@@ -101,7 +101,12 @@ namespace OrganizationUser
 
         private void OrgUsersUC_EmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
         {
-            EmployeeClicked?.Invoke(this, selectedEmp);   
+            EmployeeClicked?.Invoke(this, selectedEmp); 
+        }
+
+        private void WomenUserTemplate_InfoEmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
+        {
+            EmployeeClicked?.Invoke(this, selectedEmp);
         }
 
         //private void AllUserGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)

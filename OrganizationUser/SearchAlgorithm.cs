@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser
 {
-    public class SearchAlgo
+    public class SearchAlgorithm
     {
         Dictionary<int, BusinessPeopleModel> RemovedPosPeople = new Dictionary<int, BusinessPeopleModel>();
         Dictionary<int, string> PeoplePosition = new Dictionary<int, string>();
         int j = 0;
         int Length;
-        public SearchAlgo(List<BusinessPeopleModel> Peoples)
+        public SearchAlgorithm(List<BusinessPeopleModel> Peoples)
         {
             for (int i = 0; i < Peoples.Count; i++)
             {

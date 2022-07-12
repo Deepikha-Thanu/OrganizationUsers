@@ -7,16 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <Style TargetType="Button" x:Key="HoverButtonStyle">
-            <Setter Property="Foreground" Value="{ThemeResource AppBarItemForegroundThemeBrush}"></Setter>
-            <Setter Property="Margin" Value="10,10,0,10"></Setter>
-            <Setter Property="Background" Value="{ThemeResource SystemChromeAltHighColor}"></Setter>
-            <Setter Property="CornerRadius" Value="2"></Setter>
-            <Setter Property="FontSize" Value="14"></Setter>
-            <Setter Property="BorderBrush" Value="{ThemeResource SystemChromeHighColor}"></Setter>
-            <Setter Property="BorderThickness" Value="2"></Setter>
-            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"></Setter>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="OrganizationDictionary.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
         <Grid Name="AllUserDataGrid" CornerRadius="10,0,10,0" Background="{ThemeResource SystemRevealAltMediumHighColor}" Width="200" Height="250" FocusVisualMargin="0" FocusVisualPrimaryBrush="Transparent" PointerEntered="AllUserDataGrid_PointerEntered" PointerExited="AllUserDataGrid_PointerExited">
         <Grid.RowDefinitions>
@@ -27,7 +22,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <VisualStateManager.VisualStateGroups>
+        <!--<VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
@@ -47,7 +42,7 @@
                         <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
                     </VisualState.Setters>
                 </VisualState>
-            </VisualStateGroup>
+            </VisualStateGroup>-->
             <!--<VisualStateGroup>
                 <VisualState x:Name="NarrowWindow">
                     <VisualState.StateTriggers>
@@ -68,7 +63,7 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>-->
-        </VisualStateManager.VisualStateGroups>
+        <!--</VisualStateManager.VisualStateGroups>-->
         <Rectangle Margin="0,10,0,0" x:Name="TransRectangle" Fill="Transparent" Grid.RowSpan="4" Canvas.ZIndex="0"></Rectangle>
         <Image x:Name="EmployeeImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Canvas.ZIndex="10" Source="{x:Bind People.ImageUrl,Mode=OneWay}" Width="100" Height="100" Margin="0,10,0,10"></Image>
         <Grid x:Name="DataGrid"  Grid.Row="1" Canvas.ZIndex="10">
@@ -79,17 +74,17 @@
             </Grid.ColumnDefinitions>
             <TextBlock TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Black" Text="{x:Bind People.Fullname,Mode=OneWay}" Margin="10,0,10,0" HorizontalAlignment="Left" ToolTipService.ToolTip="{x:Bind People.Fullname,Mode=OneWay}"></TextBlock>
             <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,0,0,0"></Ellipse>
-            <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind People.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,0,10,0"></TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind People.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="{x:Bind People.StatusColor(People.CheckinStatus_Text)}" FontWeight="SemiBold" Margin="10,0,10,0"></TextBlock>
         </Grid>
         <TextBlock x:Name="EmailIDText" Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Grid.Row="2" FontSize="14" Text="{x:Bind People.Email_id,Mode=OneWay}" Margin="10,0,10,7" ToolTipService.ToolTip="{x:Bind People.Email_id,Mode=OneWay}"></TextBlock>
         <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DepartmentText" FontSize="16" Grid.Row="3" Text="{x:Bind People.DepartmentName,Mode=OneWay}" Margin="10,0,10,5" ToolTipService.ToolTip="{x:Bind People.DepartmentName,Mode=OneWay}"></TextBlock>
         <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="ReportingToText" FontSize="16" Grid.Row="4" Text="{x:Bind People.ReportingToName,Mode=OneWay}" Margin="10,0,10,5" ToolTipService.ToolTip="{x:Bind People.DepartmentName,Mode=OneWay}"></TextBlock>
         <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DesignationText" Grid.Row="5" FontSize="14" Text="{x:Bind People.DesignationName,Mode=OneWay}" Margin="10,0,0,10" ToolTipService.ToolTip="{x:Bind People.DesignationName,Mode=OneWay}"></TextBlock>
         <StackPanel Name="TaskStackPanel" Orientation="Horizontal" Grid.Row="3" Grid.RowSpan="3" Visibility="Collapsed" Background="{ThemeResource SystemChromeMediumColor}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <Button Style="{StaticResource HoverButtonStyle}" x:Name="CallButton" Content="&#xE13A;"></Button>
-            <Button Style="{StaticResource HoverButtonStyle}" x:Name="VideoButton" Content="&#xE714;"></Button>
-            <Button Style="{StaticResource HoverButtonStyle}" x:Name="MessageButton" Content="&#xE134;"></Button>
-            <Button Style="{StaticResource HoverButtonStyle}" x:Name="InfoButton" Content="&#xE171;" Click="InfoButton_Click"></Button>
+            <Button Style="{StaticResource HoverButtonStyle}" x:Name="CallButton" Content="&#xE13A;" FontSize="14"></Button>
+            <Button Style="{StaticResource HoverButtonStyle}" x:Name="VideoButton" Content="&#xE714;" FontSize="14"></Button>
+            <Button Style="{StaticResource HoverButtonStyle}" x:Name="MessageButton" Content="&#xE134;" FontSize="14"></Button>
+            <Button Style="{StaticResource HoverButtonStyle}" x:Name="InfoButton" Content="&#xE171;" Click="InfoButton_Click" FontSize="14"></Button>
         </StackPanel>
     </Grid>
 </UserControl>

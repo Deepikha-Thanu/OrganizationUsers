@@ -100,7 +100,14 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Page.Resources>
+        <DataTemplate  x:Key="MenDataTemplate" x:DataType="data:BusinessPeopleModel">
+            <local:OrgUserControl x:Name="MenUserTemplate" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" InfoEmployeeClicked="OrgUsersUC_EmployeeClicked"></local:OrgUserControl>
+        </DataTemplate>
+        <DataTemplate  x:Key="WomenDataTemplate" x:DataType="data:BusinessPeopleModel">
+            <local:WomenUserControl x:Name="WomenUserTemplate" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" InfoEmployeeClicked="WomenUserTemplate_InfoEmployeeClicked"></local:WomenUserControl>
+        </DataTemplate>
+        <local:EmployeeDataTemplateSelector x:Key="EmployeeTemplateSelctor" Men="{StaticResource MenDataTemplate}" Women="{StaticResource WomenDataTemplate}"></local:EmployeeDataTemplateSelector>
+    </Page.Resources> 
     <Grid>
         <!--<Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -117,17 +124,15 @@
                 </GridView.ItemTemplate>
             </GridView>
         </StackPanel>-->
-        <GridView ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="AllUserGridView" ItemsSource="{x:Bind viewModel.Employees,Mode=OneWay}" Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" IsItemClickEnabled="True"  ItemClick="AllUserGridView_ItemClick">
+        <GridView ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="AllUserGridView" ItemsSource="{x:Bind viewModel.Employees,Mode=OneWay}" Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" IsItemClickEnabled="True"  ItemClick="AllUserGridView_ItemClick" ItemTemplateSelector="{StaticResource EmployeeTemplateSelctor}">
             <GridView.ItemContainerTransitions>
                 <TransitionCollection>
                     <AddDeleteThemeTransition/>
                 </TransitionCollection>
             </GridView.ItemContainerTransitions>
-            <GridView.ItemTemplate>
-                <DataTemplate  x:Name="AllDataTemplate" x:DataType="data:BusinessPeopleModel">
-                    <local:OrgUserControl x:Name="OrgUsersUC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" InfoEmployeeClicked="OrgUsersUC_EmployeeClicked"></local:OrgUserControl>
-                </DataTemplate>
-            </GridView.ItemTemplate>
+            <!--<GridView.ItemTemplate>
+               
+            </GridView.ItemTemplate>-->
         </GridView>
     </Grid>
 </Page>

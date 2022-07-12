@@ -48,6 +48,26 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.DataTemplate">
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="OrganizationUser.EmployeeDataTemplateSelector">
+      <RootProperty Name="Men" />
+      <RootProperty Name="Women" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
+    <RootType FullName="OrganizationUser.WomenUserControl">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootEvent Name="InfoEmployeeClicked" />
+    </RootType>
+    <RootType FullName="OrganizationUser.OrgUserControl">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootEvent Name="InfoEmployeeClicked" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Setter">
       <RootProperty Name="Property" />
       <RootProperty Name="Value" />
@@ -99,7 +119,6 @@
       <RootProperty Name="Storyboard" />
       <RootProperty Name="StateTriggers" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Children" />
       <RootProperty Name="Resources" />
@@ -154,9 +173,10 @@
       <RootProperty Name="FocusVisualPrimaryBrush" />
       <RootProperty Name="FocusVisualSecondaryBrush" />
       <RootProperty Name="IsItemClickEnabled" />
+      <RootProperty Name="ItemTemplateSelector" />
       <RootProperty Name="ItemContainerTransitions" />
-      <RootProperty Name="ItemTemplate" />
       <RootProperty Name="SelectionMode" />
+      <RootProperty Name="ItemTemplate" />
       <RootEvent Name="ItemClick" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
@@ -164,15 +184,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.AddDeleteThemeTransition" />
-    <RootType FullName="Windows.UI.Xaml.DataTemplate">
-      <RootProperty Name="Template" />
-    </RootType>
-    <RootType FullName="OrganizationUser.OrgUserControl">
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootEvent Name="InfoEmployeeClicked" />
-    </RootType>
     <RootType FullName="OrganizationUser.AllUser" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListBoxItem">
       <RootProperty Name="Name" />
@@ -346,13 +357,14 @@
     <RootType FullName="OrganizationUser.MainPage" />
     <RootType FullName="OrganizationUser.MyDepartment" />
     <RootType FullName="OrganizationUser.MyDirectReports" />
+    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
+      <RootProperty Name="MergedDictionaries" />
+      <RootProperty Name="Source" />
+      <RootProperty Name="ThemeDictionaries" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
-    </RootType>
-    <RootType FullName="OrganizationUser.StatusComparisonTrigger">
-      <RootProperty Name="DataValue" />
-      <RootProperty Name="TriggerValue" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Margin" />
@@ -384,14 +396,15 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerDownThemeAnimation" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerUpThemeAnimation" />
+    <RootType FullName="OrganizationUser.StatusComparisonTrigger">
+      <RootProperty Name="DataValue" />
+      <RootProperty Name="TriggerValue" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
       <RootProperty Name="Margin" />
       <RootProperty Name="Content" />
       <RootProperty Name="BorderBrush" />
       <RootEvent Name="Click" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
-      <RootProperty Name="ThemeDictionaries" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
       <RootProperty Name="Color" />

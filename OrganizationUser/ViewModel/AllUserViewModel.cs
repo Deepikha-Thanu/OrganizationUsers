@@ -108,7 +108,7 @@ namespace OrganizationUser.ViewModel
                     //allUserViewModel.ReportingTo=resp.ReportingToPair;
                     //}
                 });
-                allUserViewModel.searchObject = new SearchAlgo(allUserViewModel.Employees.ToList<BusinessPeopleModel>());
+                allUserViewModel.searchObject = new SearchAlgorithm(allUserViewModel.Employees.ToList<BusinessPeopleModel>());
             }
             public void OnFailure(string message)
             {

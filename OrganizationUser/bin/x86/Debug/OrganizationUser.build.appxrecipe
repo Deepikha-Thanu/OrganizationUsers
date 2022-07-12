@@ -309,11 +309,17 @@
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\MyDirectReports.xbf">
       <PackagePath>MyDirectReports.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\OrganizationDictionary.xbf">
+      <PackagePath>OrganizationDictionary.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\OrgUserControl.xbf">
       <PackagePath>OrgUserControl.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\PeopleDataUserControl.xbf">
       <PackagePath>PeopleDataUserControl.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\WomenUserControl.xbf">
+      <PackagePath>WomenUserControl.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>

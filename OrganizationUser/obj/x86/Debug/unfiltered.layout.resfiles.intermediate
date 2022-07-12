@@ -63,7 +63,9 @@ App.xbf
 MainPage.xbf
 MyDepartment.xbf
 MyDirectReports.xbf
+OrganizationDictionary.xbf
 OrganizationUser.xr.xml
 OrgUserControl.xbf
 PeopleDataUserControl.xbf
+WomenUserControl.xbf
 Properties\Default.rd.xml

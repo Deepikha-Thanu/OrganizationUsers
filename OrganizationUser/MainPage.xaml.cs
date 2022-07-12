@@ -128,7 +128,7 @@ namespace OrganizationUser
             }
             if (MyReportButton.IsSelected)
             {
-                this.UnloadObject(peopleDataUserControl);
+                this.UnloadObject(PeopleUserControl);
                 AllUserButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(0);
                 MyReportButton.BorderThickness = new Thickness(2, 0, 0, 0);
@@ -195,7 +195,7 @@ namespace OrganizationUser
         //}
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this.UnloadObject(peopleDataUserControl);
+            this.UnloadObject(PeopleUserControl);
             string toSearch=SearchBox.Text;
             //AllUser allUserPage = PeopleFrame.Content as AllUser;
             //MyDepartment department = PeopleFrame.Content as MyDepartment;

@@ -127,6 +127,7 @@
     <Compile Include="DataBase\IDataAdapter.cs" />
     <Compile Include="DataBase\IDataHandler.cs" />
     <Compile Include="DependencyInitializer.cs" />
+    <Compile Include="EmployeeDataTemplateSelector.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="Manager\ICallBack.cs" />
     <Compile Include="Manager\DataManager.cs" />
@@ -155,7 +156,7 @@
       <DependentUpon>PeopleDataUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchAlgo.cs" />
+    <Compile Include="SearchAlgorithm.cs" />
     <Compile Include="StatusComparisonTrigger.cs" />
     <Compile Include="Usecase\GetEmployeesBusinessData.cs" />
     <Compile Include="Usecase\GetEmployeeWithId.cs" />
@@ -164,6 +165,9 @@
     <Compile Include="ViewModel\MyDepartmentViewModel.cs" />
     <Compile Include="ViewModel\PeopleDataUserControlViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="WomenUserControl.xaml.cs">
+      <DependentUpon>WomenUserControl.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -253,11 +257,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OrganizationDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OrgUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PeopleDataUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WomenUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
