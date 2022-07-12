@@ -13,15 +13,30 @@ namespace OrganizationUser.Model
         public string DepartmentName { get; set; }
         public string DesignationName { get; set; }
 
-        public SolidColorBrush StatusColor(string status)
+        public SolidColorBrush StatusColor(Status status)
         {
-            if(status=="Away")
+            if(status==Status.Out)
             {
-                return new SolidColorBrush(Windows.UI.Colors.Orange);
+                return new SolidColorBrush(Windows.UI.Colors.Gray);
             }
             else
             {
                 return new SolidColorBrush(Windows.UI.Colors.LimeGreen);
+            }
+        }
+        public string CheckinStatusEnumToString(Status status)
+        {
+            if(status==Status.OfficeIn)
+            {
+                return "Office In";
+            }
+            else if(status==Status.Out)
+            {
+                return "Out";
+            }
+            else
+            {
+                return "Remote In";
             }
         }
     }

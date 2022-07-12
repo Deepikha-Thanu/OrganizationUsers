@@ -8,20 +8,20 @@ using Windows.UI;
 
 namespace OrganizationUser.Model
 {
-    enum Emp_type
+    public enum Emp_type
     {
         Paid, Unpaid, Contract
     }
 
-    enum Language
+    public enum Language
     {
         English, French
     }
 
-    enum Status
+    public enum Status
     {
-        Away,
-        Officein,
+        RemoteIn,
+        OfficeIn,
         Out
     }
     

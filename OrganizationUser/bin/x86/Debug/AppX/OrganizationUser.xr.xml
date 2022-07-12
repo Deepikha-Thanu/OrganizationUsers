@@ -6,7 +6,17 @@
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
       <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="Resources" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
+      <RootProperty Name="ThemeDictionaries" />
+      <RootProperty Name="MergedDictionaries" />
+      <RootProperty Name="Source" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
+      <RootProperty Name="Color" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Background" />
       <RootProperty Name="Resources" />
@@ -55,7 +65,6 @@
       <RootProperty Name="Men" />
       <RootProperty Name="Women" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="OrganizationUser.WomenUserControl">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
@@ -357,11 +366,6 @@
     <RootType FullName="OrganizationUser.MainPage" />
     <RootType FullName="OrganizationUser.MyDepartment" />
     <RootType FullName="OrganizationUser.MyDirectReports" />
-    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
-      <RootProperty Name="MergedDictionaries" />
-      <RootProperty Name="Source" />
-      <RootProperty Name="ThemeDictionaries" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
@@ -405,9 +409,6 @@
       <RootProperty Name="Content" />
       <RootProperty Name="BorderBrush" />
       <RootEvent Name="Click" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
-      <RootProperty Name="Color" />
     </RootType>
   </Roots.RootTypes>
 </Roots>

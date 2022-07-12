@@ -74,7 +74,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Black" Text="{x:Bind People.Fullname,Mode=OneWay}" Margin="10,0,10,0" HorizontalAlignment="Left" ToolTipService.ToolTip="{x:Bind People.Fullname,Mode=OneWay}"></TextBlock>
             <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,0,0,0"></Ellipse>
-            <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind People.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="{x:Bind People.StatusColor(People.CheckinStatus_Text)}" FontWeight="SemiBold" Margin="10,0,10,0"></TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind People.CheckinStatusEnumToString(People.Stat),Mode=OneWay}" FontSize="16" Foreground="{x:Bind People.StatusColor(People.Stat),Mode=OneWay}" FontWeight="SemiBold" Margin="10,0,10,0"></TextBlock>
         </Grid>
         <TextBlock x:Name="EmailIDText" Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Grid.Row="2" FontSize="14" Text="{x:Bind People.Email_id,Mode=OneWay}" Margin="10,0,10,7" ToolTipService.ToolTip="{x:Bind People.Email_id,Mode=OneWay}"></TextBlock>
         <TextBlock Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DepartmentText" FontSize="16" Grid.Row="3" Text="{x:Bind People.DepartmentName,Mode=OneWay}" Margin="10,0,10,5" ToolTipService.ToolTip="{x:Bind People.DepartmentName,Mode=OneWay}"></TextBlock>

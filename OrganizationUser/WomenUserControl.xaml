@@ -10,17 +10,11 @@
     d:DesignWidth="400">
 
     <UserControl.Resources>
-        <Style TargetType="Button" x:Key="HoverButtonStyle">
-            <Setter Property="Foreground" Value="{ThemeResource AppBarItemForegroundThemeBrush}"></Setter>
-            <Setter Property="Margin" Value="10,10,0,10"></Setter>
-            <Setter Property="Background" Value="{ThemeResource SystemChromeAltHighColor}"></Setter>
-            <Setter Property="CornerRadius" Value="2"></Setter>
-            <Setter Property="FontSize" Value="14"></Setter>
-            <Setter Property="BorderBrush" Value="{ThemeResource SystemChromeHighColor}"></Setter>
-            <Setter Property="BorderThickness" Value="2"></Setter>
-            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"></Setter>
-            <Setter Property="Foreground" Value="{ThemeResource AppBarItemForegroundThemeBrush}"></Setter>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="OrganizationDictionary.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <!--<VisualStateManager.VisualStateGroups>
@@ -45,8 +39,8 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>-->
-        <Ellipse Width="300" Height="300" Fill="{ThemeResource SystemAccentColorLight3}" Canvas.ZIndex="10"></Ellipse>
-        <Grid Canvas.ZIndex="20" Name="AllUserDataGrid" CornerRadius="30" Background="{ThemeResource SystemAccentColorLight3}" Width="200" Height="250" FocusVisualMargin="0" FocusVisualPrimaryBrush="Transparent" PointerEntered="AllUserDataGrid_PointerEntered" PointerExited="AllUserDataGrid_PointerExited">
+        <Ellipse Width="300" Height="300" Fill="{ThemeResource SystemAccentColorDark1}" Canvas.ZIndex="10"></Ellipse>
+        <Grid Canvas.ZIndex="20" Name="AllUserDataGrid" CornerRadius="30" Background="Transparent" Width="200" Height="250" FocusVisualMargin="0" FocusVisualPrimaryBrush="Transparent" PointerEntered="AllUserDataGrid_PointerEntered" PointerExited="AllUserDataGrid_PointerExited">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -87,7 +81,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Black" Text="{x:Bind People.Fullname,Mode=OneWay}" Margin="10,0,10,0" HorizontalAlignment="Left" ToolTipService.ToolTip="{x:Bind People.Fullname,Mode=OneWay}"></TextBlock>
                 <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,0,0,0"></Ellipse>
-                <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind People.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="{x:Bind People.StatusColor(People.CheckinStatus_Text)}" FontWeight="SemiBold" Margin="10,0,10,0"></TextBlock>
+                <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind People.CheckinStatusEnumToString(People.Stat),Mode=OneWay}" FontSize="16" Foreground="{x:Bind People.StatusColor(People.Stat)}" FontWeight="SemiBold" Margin="10,0,10,0"></TextBlock>
             </Grid>
             <TextBlock Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" x:Name="EmailIDText" Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Grid.Row="2" FontSize="14" Text="{x:Bind People.Email_id,Mode=OneWay}" Margin="10,0,10,7" ToolTipService.ToolTip="{x:Bind People.Email_id,Mode=OneWay}"></TextBlock>
             <TextBlock Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" Canvas.ZIndex="10" TextTrimming="CharacterEllipsis" Name="DepartmentText" FontSize="16" Grid.Row="3" Text="{x:Bind People.DepartmentName,Mode=OneWay}" Margin="10,0,10,5" ToolTipService.ToolTip="{x:Bind People.DepartmentName,Mode=OneWay}"></TextBlock>

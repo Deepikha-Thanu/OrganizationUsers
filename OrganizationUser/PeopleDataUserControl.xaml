@@ -43,7 +43,7 @@
                                                     <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPointerOver}"/>
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="LimeGreen"/>
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PeopleAppAccentColor}"/>
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
                                                     <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}"/>
@@ -132,7 +132,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock MaxWidth="110" x:Name="NameText" Text="{x:Bind viewModel.EmployeeToShow.Fullname,Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
                     <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,10,0,0"></Ellipse>
-                    <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="LimeGreen" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
+                    <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" FontSize="16" Foreground="{ThemeResource PeopleAppAccentColor}" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
                 </Grid>
                 <TextBlock Name="DepartmentText" Text="{x:Bind viewModel.EmployeeToShow.DepartmentName,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
                 <TextBlock Name="DesignationText" Text="{x:Bind viewModel.EmployeeToShow.DesignationName,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
@@ -144,7 +144,7 @@
             </StackPanel>
         </Grid>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Style="{StaticResource ButtonStyle1}" Name="PeopleButton" Content="People" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" BorderBrush="LimeGreen" BorderThickness="0,0,0,2" Click="PeopleButton_Click">
+            <Button Style="{StaticResource ButtonStyle1}" Name="PeopleButton" Content="People" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" BorderBrush="{ThemeResource PeopleAppAccentColor}" BorderThickness="0,0,0,2" Click="PeopleButton_Click">
                 <Button.Resources>
                     <ResourceDictionary>
                         <ResourceDictionary.ThemeDictionaries>
@@ -162,7 +162,7 @@
                     </ResourceDictionary>
                 </Button.Resources>
             </Button>
-            <Button Name="CommonChatButton" Style="{StaticResource ButtonStyle1}" Content="Chats in common" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" Click="CommonChatButton_Click" BorderBrush="LimeGreen" BorderThickness="0">
+            <Button Name="CommonChatButton" Style="{StaticResource ButtonStyle1}" Content="Chats in common" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" Click="CommonChatButton_Click" BorderBrush="{ThemeResource PeopleAppAccentColor}" BorderThickness="0">
                 <Button.Resources>
                     <ResourceDictionary>
                         <ResourceDictionary.ThemeDictionaries>

@@ -245,7 +245,7 @@
         </Grid>
         <StackPanel Background="#36454F">
             <TextBlock Text="People" FontSize="26" Margin="10" FontWeight="Bold" Foreground="White"></TextBlock>
-            <ListBox Name="PeopleTabView" SelectionMode="Single" SelectionChanged="PeopleTabView_SelectionChanged"  Background="LimeGreen"  ItemContainerStyle="{StaticResource ListItemStyle}">
+            <ListBox Name="PeopleTabView" SelectionMode="Single" SelectionChanged="PeopleTabView_SelectionChanged"  Background="{ThemeResource PeopleAppAccentColor}"  ItemContainerStyle="{StaticResource ListItemStyle}">
                 <ListBoxItem Name="AllUserButton" IsSelected="True">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource IconTextStyle}" Text="&#xE902;" HorizontalAlignment="Left"></TextBlock>
