@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser
 {
-    interface IView
+    public interface IView
     {
         void ShowError();
         void ShowErrorMessage(string message);

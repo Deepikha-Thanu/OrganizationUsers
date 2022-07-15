@@ -102,6 +102,16 @@ namespace OrganizationUser
             EmployeeClicked.Invoke(this, selectedEmp);
         }
 
+        private void OrgUsersUC_EmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
+        {
+            EmployeeClicked?.Invoke(this, selectedEmp);
+        }
+
+        private void WomenUserTemplate_InfoEmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
+        {
+            EmployeeClicked?.Invoke(this, selectedEmp);
+        }
+
         //private void OrgUserControl_Loaded(object sender, RoutedEventArgs e)
         //{
         //    Rectangle tappedRect = (Rectangle)(sender as UserControl).FindName("TransRectangle");

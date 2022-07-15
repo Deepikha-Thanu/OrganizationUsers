@@ -265,7 +265,7 @@ namespace OrganizationUser.DataBase
                 SqliteDataReader dataReader;
                 SqliteCommand readCommand = connection.CreateCommand();
                 readCommand.CommandText = "Select reporting.Id,employee.Id,reporting.Employee_Id,reporting.Name,employee.Name,reporting.Fullname,reporting.DisplayName," +
-                    "reporting.EmailId,reporting.Mobile,reporting.Country,reporting.CheckinStatusText,reporting.ImageUrl,dept.Name,design.Name " +
+                    "reporting.EmailId,reporting.Mobile,reporting.Country,reporting.CheckinStatusText,reporting.Status,reporting.ImageUrl,dept.Name,design.Name " +
                     "from People as employee " +
                     "Join People as reporting " +
                     "ON employee.ID = reporting.ReportingToId and reporting.Id = @Id " +
@@ -289,9 +289,10 @@ namespace OrganizationUser.DataBase
                         Mobile = dataReader.GetInt64(8),
                         Country = dataReader.GetString(9),
                         CheckinStatus_Text = dataReader.GetString(10),
-                        ImageUrl = dataReader.GetString(11),
-                        DepartmentName = dataReader.GetString(12),
-                        DesignationName = dataReader.GetString(13)
+                        Stat = (Status)Enum.Parse(typeof(Status), dataReader.GetString(11)),
+                        ImageUrl = dataReader.GetString(12),
+                        DepartmentName = dataReader.GetString(13),
+                        DesignationName = dataReader.GetString(14)
                     };
                 }
                 connection.Close();
@@ -310,7 +311,7 @@ namespace OrganizationUser.DataBase
                 connection.Open();
                 SqliteDataReader dataReader;
                 SqliteCommand readCommand = connection.CreateCommand();
-                readCommand.CommandText = "Select reporting.Id,employee.Id,reporting.Employee_Id,reporting.Name,employee.Name,reporting.Fullname,reporting.DisplayName,reporting.EmailId,reporting.Mobile,reporting.Country,reporting.CheckinStatusText,reporting.ImageUrl,dept.Name,design.Name " +
+                readCommand.CommandText = "Select reporting.Id,employee.Id,reporting.Employee_Id,reporting.Name,employee.Name,reporting.Fullname,reporting.DisplayName,reporting.EmailId,reporting.Mobile,reporting.Country,reporting.CheckinStatusText,reporting.Status,reporting.ImageUrl,dept.Name,design.Name " +
                     "from People as employee " +
                     "Join People as reporting ON employee.ID = reporting.ReportingToId " +
                     "Join Department as dept ON reporting.DepartmentId = dept.Id and dept.Id = 15 " +
@@ -333,9 +334,10 @@ namespace OrganizationUser.DataBase
                         Mobile = dataReader.GetInt64(8),
                         Country = dataReader.GetString(9),
                         CheckinStatus_Text = dataReader.GetString(10),
-                        ImageUrl = dataReader.GetString(11),
-                        DepartmentName = dataReader.GetString(12),
-                        DesignationName = dataReader.GetString(13)
+                        Stat= (Status)Enum.Parse(typeof(Status), dataReader.GetString(11)),
+                        ImageUrl = dataReader.GetString(12),
+                        DepartmentName = dataReader.GetString(13),
+                        DesignationName = dataReader.GetString(14)
                     }
                     ); ;
                 }

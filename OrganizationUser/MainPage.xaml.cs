@@ -33,7 +33,8 @@ namespace OrganizationUser
     
     public sealed partial class MainPage : Page
     {
-        PeopleDataUserControl peopleDataUserControl;
+        public PeopleDataUserControl peopleDataUserControl;
+        bool IsNarrowState=false;
         public MainPage()
         {
             this.InitializeComponent();
@@ -42,9 +43,17 @@ namespace OrganizationUser
         private void OnEmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
         {
             //this.UnloadObject(PeopleUserControl);
+            CloseButton.Visibility = Visibility.Visible;
             peopleDataUserControl = this.FindName("PeopleUserControl") as PeopleDataUserControl;
             //peopleDataUserControl.MakeVisible();
             peopleDataUserControl.viewModel.EmployeeToShow=selectedEmp;
+            if(IsNarrowState)
+            {
+                PeopleFrame.Visibility = Visibility.Collapsed;
+                Grid.SetColumn(PeopleUserControl, 0);
+                Grid.SetColumnSpan(PeopleUserControl, 2);
+                CloseButton.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void PeopleTabView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -55,6 +64,8 @@ namespace OrganizationUser
                 MyReportButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(0);
                 AllUserButton.BorderThickness = new Thickness(2, 0, 0, 0);
+                CloseButton.Visibility = Visibility.Collapsed;
+                PeopleFrame.Visibility = Visibility.Visible;
                 PeopleFrame.Navigate(typeof(AllUser), this, new SuppressNavigationTransitionInfo());
                 AllUser allUserPage = PeopleFrame.Content as AllUser;
                 
@@ -100,6 +111,8 @@ namespace OrganizationUser
                 AllUserButton.BorderThickness = new Thickness(0);
                 MyReportButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(2, 0, 0, 0);
+                CloseButton.Visibility = Visibility.Collapsed;
+                PeopleFrame.Visibility = Visibility.Visible;
                 PeopleFrame.Navigate(typeof(MyDepartment), this, new SuppressNavigationTransitionInfo());
                 MyDepartment departmentPage = PeopleFrame.Content as MyDepartment;
                
@@ -132,6 +145,8 @@ namespace OrganizationUser
                 AllUserButton.BorderThickness = new Thickness(0);
                 MyDepartmentButton.BorderThickness = new Thickness(0);
                 MyReportButton.BorderThickness = new Thickness(2, 0, 0, 0);
+                CloseButton.Visibility = Visibility.Collapsed;
+                PeopleFrame.Visibility = Visibility.Visible;
                 PeopleFrame.Navigate(typeof(MyDirectReports), this, new SuppressNavigationTransitionInfo());
                 //Task t1 = PauseNavigation("MyDirectReport");
                 //t1.Start();
@@ -211,28 +226,119 @@ namespace OrganizationUser
             }
         }
 
-        private void PeopleUserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            Button closeButton = (sender as UserControl).FindName("CloseButton") as Button;
-            closeButton.Click += CloseButton_Click;
-        }
+        //private void PeopleUserControl_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    Button closeButton = (sender as UserControl).FindName("CloseButton") as Button;
+        //    closeButton.Click += CloseButton_Click;
+        //}
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.UnloadObject(peopleDataUserControl);
+            CloseButton.Visibility = Visibility.Collapsed;
+            if(IsNarrowState)
+            { 
+                 PeopleFrame.Visibility = Visibility.Visible;
+            }
         }
 
         private void VisualStateGroup_CurrentStateChanged(object sender, VisualStateChangedEventArgs e)
         {
-            if(peopleDataUserControl!=null)
-            { 
-                if(e.NewState.Name=="NarrowState")
+            if(e.NewState.Name=="NarrowState")
+            {
+                IsNarrowState = true;
+                if (PeopleUserControl != null)
                 {
-                   peopleDataUserControl.Visibility=Visibility.Collapsed;
+                    Grid.SetColumn(PeopleUserControl, 0);
+                    Grid.SetColumnSpan(PeopleUserControl, 2);
+                    PeopleUserControl.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    PeopleUserControl.VerticalAlignment = VerticalAlignment.Stretch;
+                    PeopleFrame.Visibility = Visibility.Collapsed;
+                    FrameEmployeeViewGrid.ColumnDefinitions[0].Width = new GridLength(1, GridUnitType.Star);
+                    CloseButton.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    peopleDataUserControl.Visibility = Visibility.Visible;
+                    PeopleFrame.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                IsNarrowState = false;
+                if (PeopleUserControl != null)
+                {
+                    Grid.SetColumn(PeopleUserControl, 1);
+                    Grid.SetColumnSpan(PeopleUserControl, 1);
+                    PeopleFrame.Visibility = Visibility.Visible;
+                    FrameEmployeeViewGrid.ColumnDefinitions[0].Width = new GridLength(1,GridUnitType.Star);
+                    FrameEmployeeViewGrid.ColumnDefinitions[1].Width = new GridLength(1, GridUnitType.Auto);
+                    CloseButton.Visibility = Visibility.Visible;
+                    //PeopleUserControl.Width = 500;
+                }
+            }
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(PeopleUserControl!=null)
+            { 
+                this.UnloadObject(PeopleUserControl);
+                PeopleFrame.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                if(PeopleFrame.CanGoBack)
+                {
+                    PeopleFrame.GoBack();
+                    if(PeopleFrame.SourcePageType==typeof(AllUser))
+                    {
+                        PeopleTabView.SelectedIndex=0;
+                    }
+                    else if(PeopleFrame.SourcePageType==typeof(MyDepartment))
+                    {
+                        PeopleTabView.SelectedIndex = 1;
+                    }
+                    else
+                    {
+                        PeopleTabView.SelectedIndex = 2;
+                    }
+                }
+            }
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            if (MainPageGrid.ActualWidth <= 1065)
+            {
+                IsNarrowState = true;
+                if (PeopleUserControl != null)
+                {
+                    Grid.SetColumn(PeopleUserControl, 0);
+                    Grid.SetColumnSpan(PeopleUserControl, 2);
+                    PeopleUserControl.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    PeopleUserControl.VerticalAlignment = VerticalAlignment.Stretch;
+                    PeopleFrame.Visibility = Visibility.Collapsed;
+                    FrameEmployeeViewGrid.ColumnDefinitions[0].Width = new GridLength(1, GridUnitType.Star);
+                    CloseButton.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    PeopleFrame.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                IsNarrowState = false;
+                if (PeopleUserControl != null)
+                {
+                    Grid.SetColumn(PeopleUserControl, 1);
+                    Grid.SetColumnSpan(PeopleUserControl, 1);
+                    PeopleFrame.Visibility = Visibility.Visible;
+                    FrameEmployeeViewGrid.ColumnDefinitions[0].Width = new GridLength(1, GridUnitType.Star);
+                    FrameEmployeeViewGrid.ColumnDefinitions[1].Width = new GridLength(1, GridUnitType.Auto);
+                    CloseButton.Visibility = Visibility.Visible;
+
                 }
             }
         }

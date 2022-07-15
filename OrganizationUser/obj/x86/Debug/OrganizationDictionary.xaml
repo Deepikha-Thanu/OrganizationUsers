@@ -4,6 +4,7 @@
     <Style TargetType="TextBlock" x:Key="DataViewHeadTextBlockStyle">
         <Setter Property="FontSize" Value="16"></Setter>
         <Setter Property="Foreground" Value="Gray"></Setter>
+        <Setter Property="Width" Value="100"></Setter>
         <Setter Property="Margin" Value="20,10,0,0"></Setter>
     </Style>
     <Style TargetType="TextBox" x:Key="DataViewHeadTextBoxStyle">
@@ -14,6 +15,8 @@
         <Setter Property="BorderBrush" Value="Transparent"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="Width" Value="300"></Setter>
+        <Setter Property="TextWrapping" Value="Wrap"></Setter>
     </Style>
     <Style TargetType="Button" x:Key="HoverButtonStyle">
         <Setter Property="Foreground" Value="{ThemeResource AppBarItemForegroundThemeBrush}"></Setter>
@@ -21,7 +24,7 @@
         <Setter Property="Background" Value="{ThemeResource SystemChromeAltHighColor}"></Setter>
         <Setter Property="CornerRadius" Value="2"></Setter>
         <Setter Property="FontSize" Value="18"></Setter>
-        <Setter Property="BorderBrush" Value="{ThemeResource SystemChromeHighColor}"></Setter>
+        <Setter Property="BorderBrush" Value="{ThemeResource HoverButtonBorderColor}"></Setter>
         <Setter Property="BorderThickness" Value="2"></Setter>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"></Setter>
     </Style>

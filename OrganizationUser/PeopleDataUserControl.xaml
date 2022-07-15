@@ -5,8 +5,7 @@
     xmlns:local="using:OrganizationUser"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    d:DesignWidth="500">
+    mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -87,165 +86,167 @@
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid Name="EmployeeViewGrid" HorizontalAlignment="Right" Width="500">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <!--<VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger DataValue="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" TriggerValue="Away"></local:StatusComparisonTrigger>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <local:StatusComparisonTrigger DataValue="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" TriggerValue="Office in"></local:StatusComparisonTrigger>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>-->
-        <Button Grid.Row="0" Canvas.ZIndex="20" Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Top"  FontFamily="Segoe MDL2 Assets" Content="&#xE106;" FontSize="16" x:Load="False"></Button>
-        <!--<Button Name="CloseButton" FontFamily="Segoe MDL2 Assets" Content="&#xE10A;" FontSize="16" Click="CloseButton_Click"></Button>-->
-        <Grid Canvas.ZIndex="10" Grid.Row="0" Background="{ThemeResource SystemChromeMediumColor}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <Image Name="EmployeeImage" Source="{x:Bind viewModel.EmployeeToShow.ImageUrl,Mode=OneWay}" Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
-            <StackPanel Grid.Column="1">
-                <Grid >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock MaxWidth="110" x:Name="NameText" Text="{x:Bind viewModel.EmployeeToShow.Fullname,Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
-                    <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,10,0,0"></Ellipse>
-                    <TextBlock VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind CheckinStatusEnumToString(viewModel.EmployeeToShow.Stat),Mode=OneWay}" FontSize="16" Foreground="{x:Bind StatusColor(viewModel.EmployeeToShow.Stat),Mode=OneWay}" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
-                </Grid>
-                <TextBlock Name="DepartmentText" Text="{x:Bind viewModel.EmployeeToShow.DepartmentName,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
-                <TextBlock Name="DesignationText" Text="{x:Bind viewModel.EmployeeToShow.DesignationName,Mode=OneWay}" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18"></TextBlock>
-            </StackPanel>
-            <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
-                <Button Name="CallButton" Style="{StaticResource HoverButtonStyle}"  Content="&#xE13A;"></Button>
-                <Button Name="VideoButton" Style="{StaticResource HoverButtonStyle}" Content="&#xE714;"></Button>
-                <Button Name="MessageButton" Style="{StaticResource HoverButtonStyle}" Content="&#xE134;" Margin="10,10,10,10"></Button>
-            </StackPanel>
-        </Grid>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Style="{StaticResource ButtonStyle1}" Name="PeopleButton" Content="People" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" BorderBrush="{ThemeResource PeopleAppAccentColor}" BorderThickness="0,0,0,2" Click="PeopleButton_Click">
-                <Button.Resources>
-                    <ResourceDictionary>
-                        <ResourceDictionary.ThemeDictionaries>
-                            <ResourceDictionary x:Key="Dark">
-                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White"/>
-                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
-                                <SolidColorBrush x:Key="ButtonBackgroundPointerPressed" Color="Transparent"/>
-                            </ResourceDictionary>
-                            <ResourceDictionary x:Key="Light">
-                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
-                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
-                                <SolidColorBrush x:Key="ButtonBackgroundPointerPressed" Color="Transparent"/>
-                            </ResourceDictionary>
-                        </ResourceDictionary.ThemeDictionaries>
-                    </ResourceDictionary>
-                </Button.Resources>
-            </Button>
-            <Button Name="CommonChatButton" Style="{StaticResource ButtonStyle1}" Content="Chats in common" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" Click="CommonChatButton_Click" BorderBrush="{ThemeResource PeopleAppAccentColor}" BorderThickness="0">
-                <Button.Resources>
-                    <ResourceDictionary>
-                        <ResourceDictionary.ThemeDictionaries>
-                            <ResourceDictionary x:Key="Dark">
-                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White"/>
-                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
-                            </ResourceDictionary>
-                            <ResourceDictionary x:Key="Light">
-                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
-                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
-                            </ResourceDictionary>
-                        </ResourceDictionary.ThemeDictionaries>
-                    </ResourceDictionary>
-                </Button.Resources>
-            </Button>
-        </StackPanel>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2">
-            <Grid Grid.Row="2" Name="PeopleGrid" Visibility="Visible">
+    <Grid>
+    <TextBlock x:Name="ErrorText" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+        <Grid Name="EmployeeViewGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+        
+            <!--<VisualStateManager.VisualStateGroups>
+                <VisualStateGroup>
+                    <VisualState>
+                        <VisualState.StateTriggers>
+                            <local:StatusComparisonTrigger DataValue="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" TriggerValue="Away"></local:StatusComparisonTrigger>
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="StatusText.Foreground" Value="Orange"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState>
+                        <VisualState.StateTriggers>
+                            <local:StatusComparisonTrigger DataValue="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" TriggerValue="Office in"></local:StatusComparisonTrigger>
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="StatusText.Foreground" Value="LimeGreen"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>-->
+            <!--<Button Name="CloseButton" FontFamily="Segoe MDL2 Assets" Content="&#xE10A;" FontSize="16" Click="CloseButton_Click"></Button>-->
+            <Grid Canvas.ZIndex="10" Grid.Row="0" Background="{ThemeResource SystemChromeMediumColor}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.ColumnSpan="2" Text="Contact" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
-                <TextBlock Grid.Row="1" Text="Name:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="2" Text="Email:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="3" Text="Work Phone:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="4" Text="Personal Phone:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="5" Text="Extension:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="6" Grid.ColumnSpan="2" Text="Work" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
-                <TextBlock Grid.Row="7" Text="Designation:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="8" Text="Department:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="9" Text="Reporting To:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="10" Text="Seating Loaction:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="11" Text="Employee ID:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="12" Text="Status:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="13" Grid.ColumnSpan="2" Text="Geo Location" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
-                <TextBlock Grid.Row="14" Text="Country:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBlock Grid.Row="15" Text="Local Time:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.DisplayName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Email_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="4" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="5" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="7" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.DesignationName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="8" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.DepartmentName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <HyperlinkButton Grid.Row="9" Grid.Column="1" Click="HyperlinkButton_Click" Margin="20,10,0,0">
-                    <TextBlock  Text="{x:Bind viewModel.EmployeeToShow.ReportingToName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource SystemAccentColorLight2}" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left"></TextBlock>
-                </HyperlinkButton>
-                <TextBox Grid.Row="10" Grid.Column="1" Text="-" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="11" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Employee_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="12" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="14" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Country,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <TextBox Grid.Row="15" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.TimeOffset,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
-                <HyperlinkButton Grid.Row="16" Grid.ColumnSpan="2" BorderBrush="Red">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="&#xE107;" FontFamily="Segoe MDL2 Assets" FontSize="16" Foreground="Red" Margin="10,10,0,0" VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="Delete Contact" FontSize="16" Foreground="Red" Margin="10,10,0,0" VerticalAlignment="Center"></TextBlock>
-                    </StackPanel>
-                </HyperlinkButton>
+                <Image Name="EmployeeImage" Source="{x:Bind viewModel.EmployeeToShow.ImageUrl,Mode=OneWay}" Width="100" Height="100" RelativePanel.AlignLeftWithPanel="True" Margin="10"></Image>
+                <StackPanel Grid.Column="1">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Width="100" x:Name="NameText" Text="{x:Bind viewModel.EmployeeToShow.Fullname,Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="Medium" Margin="10,10,0,0"></TextBlock>
+                        <Ellipse VerticalAlignment="Center" Grid.Column="1" Fill="Gray" Height="5" Width="5" Margin="10,10,0,0"></Ellipse>
+                        <TextBlock Width="100" VerticalAlignment="Center" Grid.Column="2" Name="StatusText" Text="{x:Bind CheckinStatusEnumToString(viewModel.EmployeeToShow.Stat),Mode=OneWay}" FontSize="16" Foreground="{x:Bind StatusColor(viewModel.EmployeeToShow.Stat),Mode=OneWay}" FontWeight="SemiBold" Margin="10,10,0,0"></TextBlock>
+                    </Grid>
+                    <TextBlock Name="DepartmentText" Text="{x:Bind viewModel.EmployeeToShow.DepartmentName,Mode=OneWay}" Width="200" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18" HorizontalAlignment="Left"></TextBlock>
+                    <TextBlock Name="DesignationText" Text="{x:Bind viewModel.EmployeeToShow.DesignationName,Mode=OneWay}" Width="200" TextTrimming="CharacterEllipsis" Margin="10,10,0,0" FontSize="18" HorizontalAlignment="Left"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
+                    <Button Name="CallButton" Style="{StaticResource HoverButtonStyle}"  Content="&#xE13A;"></Button>
+                    <Button Name="VideoButton" Style="{StaticResource HoverButtonStyle}" Content="&#xE714;"></Button>
+                    <Button Name="MessageButton" Style="{StaticResource HoverButtonStyle}" Content="&#xE134;" Margin="10,10,10,10"></Button>
+                </StackPanel>
             </Grid>
-        </ScrollViewer>
-        <Grid Name="CommonChatGrid" Grid.Row="2" Visibility="Collapsed">
-            <TextBlock Text="Under Development" Margin="0,20,0,0" HorizontalAlignment="Center"></TextBlock>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button Style="{StaticResource ButtonStyle1}" Name="PeopleButton" Content="People" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" BorderBrush="{ThemeResource PeopleAppAccentColor}" BorderThickness="0,0,0,2" Click="PeopleButton_Click">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Dark">
+                                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerPressed" Color="Transparent"/>
+                                </ResourceDictionary>
+                                <ResourceDictionary x:Key="Light">
+                                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerPressed" Color="Transparent"/>
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                </Button>
+                <Button Name="CommonChatButton" Style="{StaticResource ButtonStyle1}" Content="Chats in common" FontSize="18" Margin="10,10,10,0" Background="Transparent" FontWeight="Medium" Click="CommonChatButton_Click" BorderBrush="{ThemeResource PeopleAppAccentColor}" BorderThickness="0">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Dark">
+                                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
+                                </ResourceDictionary>
+                                <ResourceDictionary x:Key="Light">
+                                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2" HorizontalAlignment="Stretch">
+                <Grid Grid.Row="2" Name="PeopleGrid" Visibility="Visible" HorizontalAlignment="Left">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Text="Contact" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
+                    <TextBlock Grid.Row="1" Text="Name:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="2" Text="Email:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="3" Text="Work Phone:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="4" Text="Personal Phone:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="5" Text="Extension:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="6" Grid.ColumnSpan="2" Text="Work" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
+                    <TextBlock Grid.Row="7" Text="Designation:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="8" Text="Department:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="9" Text="Reporting To:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="10" Text="Seating Loaction:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="11" Text="Employee ID:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="12" Text="Status:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="13" Grid.ColumnSpan="2" Text="Geo Location" Margin="10,10,0,0" FontWeight="SemiBold"></TextBlock>
+                    <TextBlock Grid.Row="14" Text="Country:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBlock Grid.Row="15" Text="Local Time:" Style="{StaticResource DataViewHeadTextBlockStyle}"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.DisplayName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Email_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <TextBox Grid.Row="4" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Mobile,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <TextBox Grid.Row="5" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <TextBox Grid.Row="7" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.DesignationName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <TextBox Grid.Row="8" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.DepartmentName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <HyperlinkButton Grid.Row="9" Grid.Column="1" Click="HyperlinkButton_Click" Margin="20,10,0,0">
+                        <TextBlock  Text="{x:Bind viewModel.EmployeeToShow.ReportingToName,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBlockStyle}" Foreground="{ThemeResource SystemAccentColorLight2}" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left"></TextBlock>
+                    </HyperlinkButton>
+                    <TextBox Grid.Row="10" Grid.Column="1" Text="-" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <TextBox Grid.Row="11" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Employee_id,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <TextBox Grid.Row="12" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.CheckinStatus_Text,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <TextBox Grid.Row="14" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.Country,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <TextBox Grid.Row="15" Grid.Column="1" Text="{x:Bind viewModel.EmployeeToShow.TimeOffset,Mode=OneWay}" Style="{StaticResource DataViewHeadTextBoxStyle}"></TextBox>
+                    <HyperlinkButton Grid.Row="16" Grid.ColumnSpan="2" BorderBrush="Red">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE107;" FontFamily="Segoe MDL2 Assets" FontSize="16" Foreground="Red" Margin="10,10,0,0" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="Delete Contact" FontSize="16" Foreground="Red" Margin="10,10,0,0" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </HyperlinkButton>
+                </Grid>
+            </ScrollViewer>
+            <Grid Name="CommonChatGrid" Grid.Row="2" Visibility="Collapsed">
+                <TextBlock Text="Under Development" Margin="0,20,0,0" HorizontalAlignment="Center"></TextBlock>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

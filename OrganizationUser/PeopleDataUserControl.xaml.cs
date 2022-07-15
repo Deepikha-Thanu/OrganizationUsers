@@ -22,10 +22,11 @@ namespace OrganizationUser
 {
     public sealed partial class PeopleDataUserControl : UserControl,IView
     {
-        public PeopleDataUserControlViewModel viewModel = new PeopleDataUserControlViewModel();
+        public PeopleDataUserControlViewModel viewModel; 
         
         public PeopleDataUserControl()
         {
+            viewModel = new PeopleDataUserControlViewModel(this);
             this.InitializeComponent();
             this.DataContext = viewModel;
         }
@@ -63,17 +64,26 @@ namespace OrganizationUser
             //viewModel.EmployeeToShow = viewModel.EmployeeToShow.ReportingTo;
             viewModel.ChangeEmployeeToShow();
             EmployeeViewGrid.Visibility = Visibility.Visible;
-            CloseButton.Visibility = Visibility.Visible;
+            //CloseButton.Visibility = Visibility.Visible;
         }
 
-        public void ShowError()
+        public async void ShowError()
         {
-            throw new NotImplementedException();
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                EmployeeViewGrid.Visibility = Visibility.Collapsed;
+                ErrorText.Text = "Something went wrong";
+            });
         }
 
-        public void ShowErrorMessage(string message)
+        public async void ShowErrorMessage(string message)
         {
-            throw new NotImplementedException();
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+             {
+                 EmployeeViewGrid.Visibility = Visibility.Collapsed;
+                 ErrorText.Text = message;
+             });
+            
         }
         public SolidColorBrush StatusColor(Status status)
         {

@@ -2,19 +2,21 @@
     x:Class="OrganizationUser.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:OrganizationUser"
-    RequestedTheme="Dark">
+    xmlns:local="using:OrganizationUser">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="PeopleAppAccentColor" Color="{StaticResource SystemAccentColorLight2}"></SolidColorBrush>
+                    <SolidColorBrush x:Key="PeopleGridViewColor" Color="Black"></SolidColorBrush>
+                    <SolidColorBrush x:Key="HoverButtonBorderColor" Color="LightGray"></SolidColorBrush>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="PeopleAppAccentColor" Color="LimeGreen"></SolidColorBrush>
+                    <SolidColorBrush x:Key="PeopleGridViewColor" Color="White"></SolidColorBrush>
+                    <SolidColorBrush x:Key="HoverButtonBorderColor" Color="SlateGray"></SolidColorBrush>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-
 </Application>

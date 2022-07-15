@@ -13,7 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-        <Grid Name="AllUserDataGrid" CornerRadius="10,0,10,0" Background="{ThemeResource SystemRevealAltMediumHighColor}" Width="200" Height="250" FocusVisualMargin="0" FocusVisualPrimaryBrush="Transparent" PointerEntered="AllUserDataGrid_PointerEntered" PointerExited="AllUserDataGrid_PointerExited">
+        <Grid Name="AllUserDataGrid" CornerRadius="10,0,10,0" Background="{ThemeResource PeopleGridViewColor}" Width="200" Height="250" FocusVisualMargin="0" FocusVisualPrimaryBrush="Transparent" PointerEntered="AllUserDataGrid_PointerEntered" PointerExited="AllUserDataGrid_PointerExited">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>

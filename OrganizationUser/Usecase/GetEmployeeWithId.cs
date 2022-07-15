@@ -33,12 +33,12 @@ namespace OrganizationUser.Usecase
             }
             public void OnError()
             {
-                throw new NotImplementedException();
+                usecase.presentercallback.OnError();
             }
 
             public void OnFailure(string message)
             {
-                throw new NotImplementedException();
+                usecase.presentercallback.OnFailure(message);
             }
 
             public void OnSuccess<T>(T response)

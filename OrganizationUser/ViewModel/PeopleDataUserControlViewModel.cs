@@ -14,6 +14,11 @@ namespace OrganizationUser.ViewModel
     public class PeopleDataUserControlViewModel : INotifyPropertyChanged
     {
         public BusinessPeopleModel _EmployeeToShow;
+        public IView view;
+        public PeopleDataUserControlViewModel(IView obj)
+        {
+            view = obj;
+        }
         public BusinessPeopleModel EmployeeToShow
         {
             get { return _EmployeeToShow; }
@@ -45,12 +50,12 @@ namespace OrganizationUser.ViewModel
 
         public void ShowError()
         {
-            throw new NotImplementedException();
+            view.ShowError();
         }
 
         public void ShowErrorMessage(string message)
         {
-            throw new NotImplementedException();
+            view.ShowErrorMessage(message);
         }
         private class PresenterCallBack :ICallBack
         {
@@ -62,12 +67,12 @@ namespace OrganizationUser.ViewModel
 
             public void OnError()
             {
-                throw new NotImplementedException();
+                viewModel.ShowError();
             }
 
             public void OnFailure(string message)
             {
-                throw new NotImplementedException();
+                viewModel.ShowErrorMessage(message);
             }
 
             public async void OnSuccess<T>(T response)

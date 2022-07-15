@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-07-12T10:50:10.519</Modified>
+      <Modified>2022-07-15T10:41:37.190</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\OrganizationUser.exe">
       <PackagePath>entrypoint\OrganizationUser.exe</PackagePath>
-      <Modified>2022-07-12T10:50:09.622</Modified>
+      <Modified>2022-07-15T10:41:26.611</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\deepikha-14216\.nuget\packages\microsoft.bcl.asyncinterfaces\6.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
       <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
@@ -374,43 +374,43 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\OrganizationUser.xr.xml">
       <PackagePath>OrganizationUser.xr.xml</PackagePath>
-      <Modified>2022-07-12T10:35:19.126</Modified>
+      <Modified>2022-07-15T09:29:30.955</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-07-12T10:35:19.220</Modified>
+      <Modified>2022-07-15T10:41:21.465</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\AllUser.xbf">
       <PackagePath>AllUser.xbf</PackagePath>
-      <Modified>2022-07-12T10:35:19.163</Modified>
+      <Modified>2022-07-15T10:24:27.191</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-07-12T10:35:19.182</Modified>
+      <Modified>2022-07-15T10:24:27.206</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\MyDepartment.xbf">
       <PackagePath>MyDepartment.xbf</PackagePath>
-      <Modified>2022-07-12T10:35:19.190</Modified>
+      <Modified>2022-07-15T10:24:27.206</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\MyDirectReports.xbf">
       <PackagePath>MyDirectReports.xbf</PackagePath>
-      <Modified>2022-07-12T10:35:19.241</Modified>
+      <Modified>2022-07-15T10:24:27.238</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\OrganizationDictionary.xbf">
       <PackagePath>OrganizationDictionary.xbf</PackagePath>
-      <Modified>2022-07-12T10:50:09.489</Modified>
+      <Modified>2022-07-15T10:41:21.465</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\OrgUserControl.xbf">
       <PackagePath>OrgUserControl.xbf</PackagePath>
-      <Modified>2022-07-12T10:35:19.244</Modified>
+      <Modified>2022-07-15T10:24:27.238</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\PeopleDataUserControl.xbf">
       <PackagePath>PeopleDataUserControl.xbf</PackagePath>
-      <Modified>2022-07-12T10:50:09.489</Modified>
+      <Modified>2022-07-15T10:24:27.206</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\WomenUserControl.xbf">
       <PackagePath>WomenUserControl.xbf</PackagePath>
-      <Modified>2022-07-12T10:35:19.253</Modified>
+      <Modified>2022-07-15T10:24:27.238</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -418,11 +418,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-07-12T10:01:55.802</Modified>
+      <Modified>2022-07-13T10:05:13.752</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\bin\x86\Debug\Core\OrganizationUser.exe">
       <PackagePath>OrganizationUser.exe</PackagePath>
-      <Modified>2022-07-12T10:50:10.498</Modified>
+      <Modified>2022-07-15T10:41:37.174</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

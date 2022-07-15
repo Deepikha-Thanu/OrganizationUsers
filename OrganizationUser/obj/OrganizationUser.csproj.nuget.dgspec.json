@@ -50,10 +50,6 @@
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
               "version": "[6.2.12, )"
-            },
-            "System.ObjectModel": {
-              "target": "Package",
-              "version": "[4.3.0, )"
             }
           },
           "imports": [
