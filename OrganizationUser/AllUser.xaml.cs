@@ -98,7 +98,6 @@ namespace OrganizationUser
             BusinessPeopleModel chosen = e.ClickedItem as BusinessPeopleModel;
             EmployeeClicked?.Invoke(this, chosen);
         }
-
         private void OrgUsersUC_EmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
         {
             EmployeeClicked?.Invoke(this, selectedEmp); 
@@ -107,6 +106,11 @@ namespace OrganizationUser
         private void WomenUserTemplate_InfoEmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
         {
             EmployeeClicked?.Invoke(this, selectedEmp);
+        }
+
+        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            
         }
 
         //private void AllUserGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)

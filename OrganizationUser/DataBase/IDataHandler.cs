@@ -16,7 +16,9 @@ namespace OrganizationUser.DataBase
         void InsertDepartmentData(Department depart);
         void InsertDesignationData(Designation design);
         void InsertPeopleData(People people);
-        List<BusinessPeopleModel> ReadData();
+        Dictionary<long, string> GetReportingToDetails();
+        Dictionary<long, string> GetReportingToDetailsOfDepartment(int id);
+        List<BusinessPeopleModel> ReadPeopleData();
         BusinessPeopleModel GetReportingToEmployee(long id);
         List<BusinessPeopleModel> ReadDepartmentData(int departId);
         //People GetPeopleObj(int id);

@@ -43,7 +43,19 @@ namespace OrganizationUser.Usecase
             }
             public void OnSuccess<T>(T resp)
             {
-                myUseCase.presenterCallback.OnSuccess(resp);
+                Response response = resp as Response;
+                for(int i=0;i<response.BusinessEmployeesData.Count;i++)
+                {
+                    if(response.BusinessEmployeesData[i].ReportingToId!=0)
+                    {
+                        response.BusinessEmployeesData[i].ReportingToName = response.ReportingToPair[response.BusinessEmployeesData[i].ReportingToId];
+                    }
+                    else
+                    {
+                        response.BusinessEmployeesData[i].ReportingToName = "-";
+                    }
+                }
+                myUseCase.presenterCallback.OnSuccess(response);
             }
             public void OnError()
             {

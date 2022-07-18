@@ -200,7 +200,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBar.Visibility" Value="Collapsed"></Setter>
-                        <Setter Target="BackButton.Visibility" Value="Visible"></Setter>
+                        <!--<Setter Target="BackButton.Visibility" Value="Visible"></Setter>-->
                         <!--<Setter Target="PeopleFrame.Visibility" Value="Collapsed"></Setter>-->
                         <!--<Setter Target="PeopleUserControl.Visibility" Value="Collapsed"></Setter>-->
                     </VisualState.Setters>
@@ -211,7 +211,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBar.Visibility" Value="Visible"></Setter>
-                        <Setter Target="BackButton.Visibility" Value="Collapsed"></Setter>
+                        <!--<Setter Target="BackButton.Visibility" Value="Collapsed"></Setter>-->
                         <!--<Setter Target="PeopleUserControl.(Grid.Column)" Value="1"></Setter>-->
                         <!--<Setter Target="PeopleUserControl.Visibility" Value="Visible"></Setter>-->
                     </VisualState.Setters>
@@ -233,7 +233,7 @@
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>-->
             <RelativePanel Background="{ThemeResource AppBarBackgroundThemeBrush}">
-                <Button x:ConnectionId='40' x:Name="BackButton" FontFamily="Segoe MDL2 Assets" Content="&#xE0A6;" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource HoverButtonStyle}" FontSize="18" Margin="10,5,0,5" RelativePanel.AlignVerticalCenterWithPanel="True"                         ></Button>
+                <Button x:ConnectionId='40' x:Name="BackButton" FontFamily="Segoe MDL2 Assets" Content="&#xE0A6;" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource HoverButtonStyle}" FontSize="18" Margin="10,5,0,5" RelativePanel.AlignVerticalCenterWithPanel="True"                          Visibility="Collapsed"></Button>
                 <TextBlock x:ConnectionId='41' Name="HeaderIcon" RelativePanel.RightOf="BackButton"  FontFamily="Segoe MDL2 Assets" Text="&#xE8D4;" FontSize="30" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="10"></TextBlock>
                 <TextBlock x:ConnectionId='42' Name="HeaderText" RelativePanel.RightOf="HeaderIcon" Text="People" FontSize="30" FontWeight="Bold" Margin="10" VerticalAlignment="Center"></TextBlock>
                 <StackPanel x:ConnectionId='43' Name="SearchBar" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel= "True" RelativePanel.AlignVerticalCenterWithPanel="True" BorderBrush="{ThemeResource TextBoxBorderThemeBrush}" BorderThickness="2" Visibility="Visible">

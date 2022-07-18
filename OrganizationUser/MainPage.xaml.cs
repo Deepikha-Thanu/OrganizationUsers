@@ -35,14 +35,16 @@ namespace OrganizationUser
     {
         public PeopleDataUserControl peopleDataUserControl;
         bool IsNarrowState=false;
+        int backOffset = 0;
         public MainPage()
         {
             this.InitializeComponent();
         }
         
-        private void OnEmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
+        public void OnEmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
         {
             //this.UnloadObject(PeopleUserControl);
+            BackButton.Visibility = Visibility.Visible;
             CloseButton.Visibility = Visibility.Visible;
             peopleDataUserControl = this.FindName("PeopleUserControl") as PeopleDataUserControl;
             //peopleDataUserControl.MakeVisible();
@@ -58,6 +60,7 @@ namespace OrganizationUser
 
         private void PeopleTabView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             if (AllUserButton.IsSelected)
             {
                 this.UnloadObject(PeopleUserControl);
@@ -73,6 +76,7 @@ namespace OrganizationUser
                 {
                     allUserPage.EmployeeClicked += OnEmployeeClicked;
                 }
+     
                 //Task t1 = PauseNavigation("AllUser");
                 //t1.Start();
 
@@ -114,8 +118,8 @@ namespace OrganizationUser
                 CloseButton.Visibility = Visibility.Collapsed;
                 PeopleFrame.Visibility = Visibility.Visible;
                 PeopleFrame.Navigate(typeof(MyDepartment), this, new SuppressNavigationTransitionInfo());
-                MyDepartment departmentPage = PeopleFrame.Content as MyDepartment;
-               
+                
+                MyDepartment departmentPage = PeopleFrame.Content as MyDepartment;             
                 if (departmentPage != null)
                 {
                     departmentPage.EmployeeClicked += OnEmployeeClicked;
@@ -284,25 +288,7 @@ namespace OrganizationUser
             { 
                 this.UnloadObject(PeopleUserControl);
                 PeopleFrame.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                if(PeopleFrame.CanGoBack)
-                {
-                    PeopleFrame.GoBack();
-                    if(PeopleFrame.SourcePageType==typeof(AllUser))
-                    {
-                        PeopleTabView.SelectedIndex=0;
-                    }
-                    else if(PeopleFrame.SourcePageType==typeof(MyDepartment))
-                    {
-                        PeopleTabView.SelectedIndex = 1;
-                    }
-                    else
-                    {
-                        PeopleTabView.SelectedIndex = 2;
-                    }
-                }
+                BackButton.Visibility = Visibility.Collapsed;
             }
         }
 

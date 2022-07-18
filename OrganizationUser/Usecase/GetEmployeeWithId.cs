@@ -41,9 +41,9 @@ namespace OrganizationUser.Usecase
                 usecase.presentercallback.OnFailure(message);
             }
 
-            public void OnSuccess<T>(T response)
+            public void OnSuccess<T>(T resp)
             {
-                usecase.presentercallback.OnSuccess<T>(response);
+                usecase.presentercallback.OnSuccess(resp);
             }
         }
     }

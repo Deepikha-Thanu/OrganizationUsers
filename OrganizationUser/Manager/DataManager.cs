@@ -34,7 +34,8 @@ namespace OrganizationUser.Manager
             {
                 if (req.myDepartmentId == 0)
                 {
-                    response.BusinessEmployeesData = dataHandler.ReadData();
+                    response.BusinessEmployeesData = dataHandler.ReadPeopleData();
+                    response.ReportingToPair = dataHandler.GetReportingToDetails();
                     //response.ReportingToPair = dataHandler.GetReportingTo();
                     if (response.BusinessEmployeesData == null)
                     {
@@ -59,6 +60,7 @@ namespace OrganizationUser.Manager
                 else
                 {
                     response.BusinessEmployeesData = dataHandler.ReadDepartmentData(req.myDepartmentId);
+                    response.ReportingToPair = dataHandler.GetReportingToDetailsOfDepartment(req.myDepartmentId);
                     if (response.BusinessEmployeesData == null)
                     {
                         callBack.OnFailure("Something went wrong!");

@@ -180,6 +180,9 @@
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\MaleUser5.png" />
+    <Content Include="Assets\MaleUser4.png" />
+    <Content Include="Assets\MaleUser3.png" />
     <Content Include="Assets\MaleUser.png" />
     <Content Include="Assets\MaleUser1.png" />
     <Content Include="Assets\MaleUser2.png" />
@@ -227,6 +230,9 @@
     <Content Include="Assets\WomenUser.png" />
     <Content Include="Assets\WomenUser1.png" />
     <Content Include="Assets\WomenUser2.png" />
+    <Content Include="Assets\WomenUser6.png" />
+    <Content Include="Assets\WomenUser5.png" />
+    <Content Include="Assets\WomenUser4.png" />
     <Content Include="Assets\WomenUser3.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

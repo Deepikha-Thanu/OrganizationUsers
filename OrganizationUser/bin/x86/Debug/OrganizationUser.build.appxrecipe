@@ -81,6 +81,15 @@
       <PackagePath>Assets\LargeTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\Assets\MaleUser5.png">
+      <PackagePath>Assets\MaleUser5.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\Assets\MaleUser4.png">
+      <PackagePath>Assets\MaleUser4.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\Assets\MaleUser3.png">
+      <PackagePath>Assets\MaleUser3.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\Assets\MaleUser.png">
       <PackagePath>Assets\MaleUser.png</PackagePath>
     </AppxPackagedFile>
@@ -261,6 +270,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\Assets\WomenUser2.png">
       <PackagePath>Assets\WomenUser2.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\Assets\WomenUser6.png">
+      <PackagePath>Assets\WomenUser6.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\Assets\WomenUser5.png">
+      <PackagePath>Assets\WomenUser5.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\Assets\WomenUser4.png">
+      <PackagePath>Assets\WomenUser4.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\OrganizationUsers\OrganizationUser\Assets\WomenUser3.png">
       <PackagePath>Assets\WomenUser3.png</PackagePath>
