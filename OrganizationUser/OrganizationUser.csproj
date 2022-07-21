@@ -160,6 +160,7 @@
     <Compile Include="StatusComparisonTrigger.cs" />
     <Compile Include="Usecase\GetEmployeesBusinessData.cs" />
     <Compile Include="Usecase\GetEmployeeWithId.cs" />
+    <Compile Include="Usecase\GetSearchedEmployees.cs" />
     <Compile Include="Usecase\UsecaseBase.cs" />
     <Compile Include="ViewModel\AllUserViewModel.cs" />
     <Compile Include="ViewModel\MyDepartmentViewModel.cs" />

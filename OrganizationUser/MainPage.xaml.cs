@@ -35,7 +35,6 @@ namespace OrganizationUser
     {
         public PeopleDataUserControl peopleDataUserControl;
         bool IsNarrowState=false;
-        int backOffset = 0;
         public MainPage()
         {
             this.InitializeComponent();
@@ -44,13 +43,14 @@ namespace OrganizationUser
         public void OnEmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
         {
             //this.UnloadObject(PeopleUserControl);
-            BackButton.Visibility = Visibility.Visible;
+            
             CloseButton.Visibility = Visibility.Visible;
             peopleDataUserControl = this.FindName("PeopleUserControl") as PeopleDataUserControl;
             //peopleDataUserControl.MakeVisible();
             peopleDataUserControl.viewModel.EmployeeToShow=selectedEmp;
             if(IsNarrowState)
             {
+                BackButton.Visibility = Visibility.Visible;
                 PeopleFrame.Visibility = Visibility.Collapsed;
                 Grid.SetColumn(PeopleUserControl, 0);
                 Grid.SetColumnSpan(PeopleUserControl, 2);

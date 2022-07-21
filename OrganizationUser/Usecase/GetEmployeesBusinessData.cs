@@ -18,7 +18,6 @@ namespace OrganizationUser.Usecase
             get
             {
                 dataManagerInstance = (DependencyInitializer.dependencyInitializer.IntializeDependencies()).GetService(typeof(IDataManager)) as IDataManager;
-                int value=dataManagerInstance.GetHashCode();
                 return dataManagerInstance;
             }
         }

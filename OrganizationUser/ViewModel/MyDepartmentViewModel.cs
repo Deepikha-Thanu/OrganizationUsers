@@ -17,39 +17,25 @@ namespace OrganizationUser.ViewModel
         IView view;
         public const int DepartmentId = 15;
         public List<People> ReportingTo;
-
+        public bool IsDataAvailable = true;
+        public bool IsSearchResults = false;
         ICallBack presenterCallback;
         public MyDepartmentViewModel(MyDepartment obj)
         {
             DepartmentPeoples = new ObservableCollection<BusinessPeopleModel>();
             presenterCallback= new PresenterCallback(this);
             view = obj;
-            Request request = new Request() { myDepartmentId = DepartmentId };
-            new GetEmployeesBusinessData(request,presenterCallback).Execute();
-            //departmentUseCase.Execute();
         }
-        //void FilterDepartment()
-        //{
-        //    if (Peoples != null) { 
-        //    for (int i = 0; i < Peoples.Count; i++)
-        //    {
-        //        if (Peoples[i].Id == myId)
-        //        {
-        //            me = Peoples[i];
-        //            break;
-        //        }
-        //    }
-           
-        //    for (int i = 0; i < Peoples.Count; i++)
-        //    {
-        //        if (me.Depart.Id == Peoples[i].Depart.Id)
-        //        {
-        //            DepartmentPeoples.Add(Peoples[i]);
-        //        }
-        //    }
-        //    //return toReturn;
-        //    }
-        //}
+        public void SearchEmployees(double start, double offset, string searchString)
+        {
+            Request req = new Request { SearchString = searchString, Start = start, Offset = offset,MyDepartmentId=DepartmentId };
+            new GetSearchedEmployees(req, presenterCallback).Execute();
+        }
+        public void GetDataForOffset(double start,double offset)
+        {
+            Request request = new Request() { MyDepartmentId = DepartmentId, Start=start,Offset=offset};
+            new GetEmployeesBusinessData(request, presenterCallback).Execute();
+        }
         private class PresenterCallback : ICallBack
         {
             MyDepartmentViewModel myDepartmentViewModel;
@@ -60,14 +46,29 @@ namespace OrganizationUser.ViewModel
             public async void OnSuccess<T>(T response)
             {
                 Response resp = response as Response;
-                await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                if (!resp.IsSearchResults)
                 {
-                    for (int i=0;i<resp.BusinessEmployeesData.Count;i++)
+                    myDepartmentViewModel.IsDataAvailable = resp.IsDataAvailable;
+                    await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                     {
-                        myDepartmentViewModel.DepartmentPeoples.Add(resp.BusinessEmployeesData[i]);
-                    }
-                });
-                myDepartmentViewModel.searchObject=new SearchAlgorithm(myDepartmentViewModel.DepartmentPeoples.ToList<BusinessPeopleModel>());
+                        for (int i = 0; i < resp.BusinessEmployeesData.Count; i++)
+                        {
+                            myDepartmentViewModel.DepartmentPeoples.Add(resp.BusinessEmployeesData[i]);
+                        }
+                    });
+                }
+                else
+                {
+                    await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        myDepartmentViewModel.DepartmentPeoples.Clear();
+                        for (int i = 0; i < resp.BusinessEmployeesData.Count; i++)
+                        {
+                            myDepartmentViewModel.DepartmentPeoples.Add(resp.BusinessEmployeesData[i]);
+                        }
+                    });
+                }
+               // myDepartmentViewModel.searchObject=new SearchAlgorithm(myDepartmentViewModel.DepartmentPeoples.ToList<BusinessPeopleModel>());
             }
             public void OnError()
             {

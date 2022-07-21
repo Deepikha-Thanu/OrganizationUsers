@@ -35,6 +35,10 @@ namespace OrganizationUser
         public delegate void EmployeeDisplayEventHandler(object sender, BusinessPeopleModel selectedEmp);
         public event EmployeeDisplayEventHandler EmployeeClicked;
         private AllUserViewModel viewModel;
+        private double PreviousOffset;
+        private double Start=0;
+        private const int Offset=12;
+        private string SearchString;
         //public event PropertyChangedEventHandler PropertyChanged;
         //void RaisePropertyChanged(string name)
         //{
@@ -72,6 +76,7 @@ namespace OrganizationUser
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
+                viewModel.Employees.Clear();
                 SearchResult.Text = message;
             });
         }
@@ -79,14 +84,22 @@ namespace OrganizationUser
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
+                viewModel.Employees.Clear();
                 SearchResult.Text = "Something went wrong!";
             });
         }
 
         public void EmployeeSearched(string data)
         {
-           bool result= viewModel.searchObject.search(viewModel.Employees,data);
-           SearchResult.Text = result? "" : "No Results Found";
+            //bool result= viewModel.searchObject.search(viewModel.Employees,data);
+            //SearchResult.Text = result? "" : "No Results Found";
+            viewModel.IsSearchResults = String.IsNullOrWhiteSpace(data) ? false : true;
+            SearchString = data;
+            viewModel.SearchEmployees(0,Offset,data);
+            viewModel.IsDataAvailable = true;
+            PreviousOffset = 0;
+            Start = String.IsNullOrWhiteSpace(data) ? Offset : 0;
+            SearchResult.Text = "";
         }
         //private void OrgUsersUC_Tapped(object sender, TappedRoutedEventArgs e)
         //{
@@ -110,7 +123,24 @@ namespace OrganizationUser
 
         private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
         {
-            
+            if(AllUserScrollBar.VerticalOffset>PreviousOffset && AllUserScrollBar.VerticalOffset-PreviousOffset>80 && viewModel.IsDataAvailable && !viewModel.IsSearchResults)
+            {
+                viewModel.GetDataForOffset(Start,Offset);
+                Start = Start + 12;
+                PreviousOffset = AllUserScrollBar.VerticalOffset;
+            }
+            if(AllUserScrollBar.VerticalOffset > PreviousOffset && AllUserScrollBar.VerticalOffset - PreviousOffset > 80 && viewModel.IsDataAvailable && viewModel.IsSearchResults)
+            {
+                viewModel.SearchEmployees(Start, Offset,SearchString);
+                Start = Start + 12;
+                PreviousOffset = AllUserScrollBar.VerticalOffset;
+            }
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            viewModel.GetDataForOffset(0,12);
+            Start = Start + 12;
         }
 
         //private void AllUserGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -108,19 +108,21 @@
         </DataTemplate>
         <local:EmployeeDataTemplateSelector x:Key="EmployeeTemplateSelctor" Men="{StaticResource MenDataTemplate}" Women="{StaticResource WomenDataTemplate}"></local:EmployeeDataTemplateSelector>
     </Page.Resources>
-    <Grid>
+    <Grid Loaded="MainGrid_Loaded">
         <TextBlock x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
-        <GridView ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="MyDepartmentGridView" ItemsSource="{x:Bind viewModel.DepartmentPeoples,Mode=OneWay}" Margin="10" SelectionMode="Single" IsItemClickEnabled="True" ItemClick="MyDepartmentGridView_ItemClick" ItemTemplateSelector="{StaticResource EmployeeTemplateSelctor}">
-            <GridView.ItemContainerTransitions>
-                <TransitionCollection>
-                    <AddDeleteThemeTransition></AddDeleteThemeTransition>
-                </TransitionCollection>
-            </GridView.ItemContainerTransitions>
-            <!--<GridView.ItemTemplate>
-                <DataTemplate x:DataType="data:BusinessPeopleModel">
-                    <local:OrgUserControl x:Name="OrgUsersUC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" InfoEmployeeClicked="OrgUsersUC_InfoEmployeeClicked"></local:OrgUserControl>
-                </DataTemplate>
-            </GridView.ItemTemplate>-->
-        </GridView>
+        <ScrollViewer x:Name="DepartmentScrollbar" ViewChanged="ScrollViewer_ViewChanged" VerticalScrollBarVisibility="Visible">
+            <GridView ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="MyDepartmentGridView" ItemsSource="{x:Bind viewModel.DepartmentPeoples,Mode=OneWay}" Margin="10" SelectionMode="Single" IsItemClickEnabled="True" ItemClick="MyDepartmentGridView_ItemClick" ItemTemplateSelector="{StaticResource EmployeeTemplateSelctor}">
+                <GridView.ItemContainerTransitions>
+                    <TransitionCollection>
+                        <ReorderThemeTransition/>
+                    </TransitionCollection>
+                </GridView.ItemContainerTransitions>
+                <!--<GridView.ItemTemplate>
+                    <DataTemplate x:DataType="data:BusinessPeopleModel">
+                        <local:OrgUserControl x:Name="OrgUsersUC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" InfoEmployeeClicked="OrgUsersUC_InfoEmployeeClicked"></local:OrgUserControl>
+                    </DataTemplate>
+                </GridView.ItemTemplate>-->
+            </GridView>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -178,6 +178,7 @@
       <RootProperty Name="MinWidth" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="VerticalScrollBarVisibility" />
       <RootProperty Name="Content" />
       <RootProperty Name="HorizontalScrollBarVisibility" />
       <RootProperty Name="HorizontalScrollMode" />
@@ -187,7 +188,6 @@
       <RootProperty Name="IsHorizontalRailEnabled" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="VerticalScrollBarVisibility" />
       <RootProperty Name="VerticalScrollMode" />
       <RootProperty Name="ZoomMode" />
       <RootProperty Name="HorizontalAlignment" />
@@ -220,7 +220,7 @@
       <RootProperty Name="Mode" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
-    <RootType FullName="Windows.UI.Xaml.Media.Animation.AddDeleteThemeTransition" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.ReorderThemeTransition" />
     <RootType FullName="OrganizationUser.AllUser" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListBoxItem">
       <RootProperty Name="Name" />

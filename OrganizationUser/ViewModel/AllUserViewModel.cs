@@ -16,10 +16,10 @@ namespace OrganizationUser.ViewModel
     {
         //public ObservableCollection<People> Peoples { get; set; }
         public ObservableCollection<BusinessPeopleModel> Employees { get; set; }
-        //public ObservableCollection<BusinessPeopleModel> ReportingToPeople { get; set; }
-       
         IView view;
         ICallBack presenterCallBack;
+        public bool IsDataAvailable = true;
+        public bool IsSearchResults = false;
         //GetEmployees Usecase { get; set; }
         //Sample data
         public AllUserViewModel(AllUser obj)
@@ -28,11 +28,20 @@ namespace OrganizationUser.ViewModel
             Employees = new ObservableCollection<BusinessPeopleModel>();
             //ReportingToPeople = new ObservableCollection<People>();
             view = obj;
-            Request req = new Request();
-            new GetEmployeesBusinessData(req,presenterCallBack).Execute();
             //Usecase.Execute();
         }
-
+        public void GetDataForOffset(double start,double offset)
+        {
+            Request req = new Request();
+            req.Offset = offset;
+            req.Start = start;
+            new GetEmployeesBusinessData(req, presenterCallBack).Execute();
+        }
+        public void SearchEmployees(double start,double offset,string searchString)
+        {
+            Request req = new Request { SearchString = searchString,Start=start,Offset=offset };
+            new GetSearchedEmployees(req, presenterCallBack).Execute();
+        }
         //public void InitializeReportingTo()
         //{
         //    var ReportingToGroup = from employee in Peoples
@@ -60,7 +69,6 @@ namespace OrganizationUser.ViewModel
         private class PresenterCallback : ICallBack
         {
             AllUserViewModel allUserViewModel;
-            //just for github comment
             public PresenterCallback(AllUserViewModel viewModelObj)
             {
                 allUserViewModel = viewModelObj;
@@ -71,44 +79,33 @@ namespace OrganizationUser.ViewModel
             }
             public async void OnSuccess<T>(T response)
             {
+                //Response check = response as Response;
+                //Response ObjectConvertion = response as Response;
                 Response resp = response as Response;
-                List<long> ReportingToId = new List<long>();
-                //foreach (var people in resp.EmployeesFromDB)
-                //{
-                //    if (people.ReportingTo != null && !ReportingToId.Contains(people.ReportingTo.Id))
-                //    {
-                //        ReportingToId.Add(people.ReportingTo.Id);
-                //    }
-                //    else
-                //    {
-                //        ReportingToId.Add(0);
-                //    }
-                //}
-
-                await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                if (!resp.IsSearchResults)
                 {
-                    for(int i=0;i<resp.BusinessEmployeesData.Count;i++)
+                    allUserViewModel.IsDataAvailable = resp.IsDataAvailable;
+                    await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                     {
-                        //if(resp.EmployeesFromDB[i].ReportingTo==null)
-                        //{
-                        //    resp.EmployeesFromDB[i].ReportingTo = new People();
-                        //    resp.EmployeesFromDB[i].ReportingTo.Name = "-";
-                        //}
-                        allUserViewModel.Employees.Add(resp.BusinessEmployeesData[i]);
-                    }
+                        for(int i=0;i<resp.BusinessEmployeesData.Count;i++)
+                        { 
+                            allUserViewModel.Employees.Add(resp.BusinessEmployeesData[i]);
+                        }
+                    });
+                }
+                else
+                {
+                    await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                     {
+                         allUserViewModel.Employees.Clear();
+                         for (int i = 0; i < resp.BusinessEmployeesData.Count; i++)
+                         {
+                             allUserViewModel.Employees.Add(resp.BusinessEmployeesData[i]);
+                         }
+                     });
+                }
+                //allUserViewModel.searchObject = new SearchAlgorithm(allUserViewModel.Employees.ToList<BusinessPeopleModel>());
 
-                    //var ListOfReporting = allUserViewModel.Employees.Where(x => ReportingToId.Contains(x.Id));
-                    //foreach(var emp in ListOfReporting)
-                    //{
-                    //    allUserViewModel.ReportingToPeople.Add(emp);
-                    //}
-                    //allUserViewModel.InitializeReportingTo();
-                    //for (int i = 0; i < resp.ReportingToPair.Count; i++)
-                    //{
-                    //allUserViewModel.ReportingTo=resp.ReportingToPair;
-                    //}
-                });
-                allUserViewModel.searchObject = new SearchAlgorithm(allUserViewModel.Employees.ToList<BusinessPeopleModel>());
             }
             public void OnFailure(string message)
             {

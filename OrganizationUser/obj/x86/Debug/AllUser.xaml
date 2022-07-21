@@ -108,12 +108,12 @@
         </DataTemplate>
         <local:EmployeeDataTemplateSelector x:Key="EmployeeTemplateSelector" Men="{StaticResource MenDataTemplate}" Women="{StaticResource WomenDataTemplate}"></local:EmployeeDataTemplateSelector>
     </Page.Resources>
-    <Grid>
+    <Grid x:ConnectionId='19'                     >
             <!--<Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>-->
-            <TextBlock x:ConnectionId='19' x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
+            <TextBlock x:ConnectionId='20' x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
             <!--<StackPanel Grid.Row="0" Margin="10">
             <TextBlock Text="Reporting To List:" FontSize="20"></TextBlock>
             <GridView Grid.Row="1" ItemsSource="{x:Bind viewModel.ReportingToPeople}">
@@ -124,16 +124,17 @@
                 </GridView.ItemTemplate>
             </GridView>
         </StackPanel>-->
-        <ScrollViewer x:ConnectionId='20'                                       >
-            <GridView x:ConnectionId='21' ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="AllUserGridView"                                                        Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" IsItemClickEnabled="True"                                        ItemTemplateSelector="{StaticResource EmployeeTemplateSelector}">
+
+        <ScrollViewer x:ConnectionId='21'                                        x:Name="AllUserScrollBar" VerticalScrollBarVisibility="Visible">
+            <GridView x:ConnectionId='22' ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="AllUserGridView"                                                        Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" IsItemClickEnabled="True"                                        ItemTemplateSelector="{StaticResource EmployeeTemplateSelector}">
                 <GridView.ItemContainerTransitions>
                     <TransitionCollection>
-                        <AddDeleteThemeTransition/>
+                        <ReorderThemeTransition/>
                     </TransitionCollection>
                 </GridView.ItemContainerTransitions>
                 <!--<GridView.ItemTemplate>
                
-            </GridView.ItemTemplate>-->
+                </GridView.ItemTemplate>-->
             </GridView>
         </ScrollViewer>
     </Grid>

@@ -34,6 +34,10 @@ namespace OrganizationUser
         private MyDepartmentViewModel viewModel;
         public delegate void EmployeeDisplayEventHandler(object sender, BusinessPeopleModel selectedEmp);
         public event EmployeeDisplayEventHandler EmployeeClicked;
+        private double PreviousOffset;
+        private double Start = 0;
+        private const int Offset = 12;
+        private string SearchString;
         //internal EventManager NotifyInstance { get => _NotifyInstance; set => _NotifyInstance = value; }
 
         public MyDepartment()
@@ -59,21 +63,30 @@ namespace OrganizationUser
         //}
         public void EmployeeSearched(string data)
         {
-           bool res= viewModel.searchObject.search(viewModel.DepartmentPeoples,data);
-           SearchResult.Text = !res ? "No Results Found" : "";
+            //bool res= viewModel.searchObject.search(viewModel.DepartmentPeoples,data);
+            //SearchResult.Text = !res ? "No Results Found" : "";
+            viewModel.IsSearchResults = String.IsNullOrWhiteSpace(data) ? false : true;
+            SearchString = data;
+            viewModel.SearchEmployees(0, Offset, data);
+            viewModel.IsDataAvailable = true;
+            PreviousOffset = 0;
+            Start = String.IsNullOrWhiteSpace(data) ? Offset : 0;
+            SearchResult.Text = "";
         }
 
         public async void ShowErrorMessage(string message)
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
+                viewModel.DepartmentPeoples.Clear();
                 SearchResult.Text = message;
-            });  
+            });
         }
         public async void ShowError()
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
+                viewModel.DepartmentPeoples.Clear();
                 SearchResult.Text = "Something went wrong!";
             });
         }
@@ -110,6 +123,28 @@ namespace OrganizationUser
         private void WomenUserTemplate_InfoEmployeeClicked(object sender, BusinessPeopleModel selectedEmp)
         {
             EmployeeClicked?.Invoke(this, selectedEmp);
+        }
+
+        private void MainGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            viewModel.GetDataForOffset(0, 12);
+        }
+
+        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            if(DepartmentScrollbar.VerticalOffset > PreviousOffset && DepartmentScrollbar.VerticalOffset - PreviousOffset > 80 && viewModel.IsDataAvailable && !viewModel.IsSearchResults)
+            {
+                viewModel.GetDataForOffset(Start, Offset);
+                Start = Start + 12;
+                PreviousOffset = DepartmentScrollbar.VerticalOffset;
+            }
+            if (DepartmentScrollbar.VerticalOffset > PreviousOffset && DepartmentScrollbar.VerticalOffset - PreviousOffset > 80 && viewModel.IsDataAvailable && viewModel.IsSearchResults)
+            {
+                viewModel.SearchEmployees(Start, Offset, SearchString);
+                Start = Start + 12;
+                PreviousOffset = DepartmentScrollbar.VerticalOffset;
+            }
+
         }
 
         //private void OrgUserControl_Loaded(object sender, RoutedEventArgs e)

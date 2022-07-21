@@ -108,7 +108,7 @@
         </DataTemplate>
         <local:EmployeeDataTemplateSelector x:Key="EmployeeTemplateSelector" Men="{StaticResource MenDataTemplate}" Women="{StaticResource WomenDataTemplate}"></local:EmployeeDataTemplateSelector>
     </Page.Resources>
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
             <!--<Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -124,16 +124,17 @@
                 </GridView.ItemTemplate>
             </GridView>
         </StackPanel>-->
-        <ScrollViewer ViewChanged="ScrollViewer_ViewChanged">
+
+        <ScrollViewer ViewChanged="ScrollViewer_ViewChanged" x:Name="AllUserScrollBar" VerticalScrollBarVisibility="Visible">
             <GridView ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="AllUserGridView" ItemsSource="{x:Bind viewModel.Employees,Mode=OneWay}" Margin="10" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" IsItemClickEnabled="True"  ItemClick="AllUserGridView_ItemClick" ItemTemplateSelector="{StaticResource EmployeeTemplateSelector}">
                 <GridView.ItemContainerTransitions>
                     <TransitionCollection>
-                        <AddDeleteThemeTransition/>
+                        <ReorderThemeTransition/>
                     </TransitionCollection>
                 </GridView.ItemContainerTransitions>
                 <!--<GridView.ItemTemplate>
                
-            </GridView.ItemTemplate>-->
+                </GridView.ItemTemplate>-->
             </GridView>
         </ScrollViewer>
     </Grid>

@@ -43,6 +43,11 @@ namespace OrganizationUser.Usecase
 
             public void OnSuccess<T>(T resp)
             {
+                ResponseEmployeeChange response = resp as ResponseEmployeeChange;
+                if(response.EmployeeFromId.ReportingToId==0)
+                {
+                    response.EmployeeFromId.ReportingToName = "-";
+                }
                 usecase.presentercallback.OnSuccess(resp);
             }
         }

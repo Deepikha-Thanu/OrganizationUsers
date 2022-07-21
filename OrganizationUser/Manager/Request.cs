@@ -8,6 +8,9 @@ namespace OrganizationUser.Manager
 {
     class Request
     {
-        public int myDepartmentId { get; set; }
+        public int MyDepartmentId { get; set; }
+        public double Start { get; set; }
+        public double Offset { get; set; }
+        public string SearchString {get; set;}
     }
 }

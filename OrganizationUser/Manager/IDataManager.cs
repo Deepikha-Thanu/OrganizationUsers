@@ -10,5 +10,6 @@ namespace OrganizationUser.Manager
     {
         void GetBusinessData(Request req, ICallBack callBack);
         void GetEmployeeWithId(RequestEmployeeChange req, ICallBack callBack);
+        void GetSearchedEmployees(Request req, ICallBack callBack);
     }
 }

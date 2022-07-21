@@ -220,7 +220,7 @@ namespace OrganizationUser.DataBase
                 connection.Close();
             }
         }
-        public List<BusinessPeopleModel> ReadPeopleData()
+        public List<BusinessPeopleModel> ReadPeopleData(double start,double offset)
         {
             try
             {
@@ -231,7 +231,9 @@ namespace OrganizationUser.DataBase
                     "People.Mobile,People.Country,People.CheckinStatusText,People.Status,People.ImageUrl,Department.Name,Designation.Name " +
                     "from People " +
                     "Join Department ON People.DepartmentId = Department.Id " +
-                    "Join Designation ON People.DesignationId = Designation.Id ORDER BY People.Id desc";
+                    "Join Designation ON People.DesignationId = Designation.Id ORDER BY People.Id desc LIMIT @Start,@Offset";
+                readCommand.Parameters.AddWithValue("@Start", start);
+                readCommand.Parameters.AddWithValue("@Offset", offset);
                 dataReader = readCommand.ExecuteReader();
                 List<BusinessPeopleModel> toReturn = new List<BusinessPeopleModel>();
                 for (int i = 0; dataReader.Read(); i++)
@@ -264,16 +266,16 @@ namespace OrganizationUser.DataBase
                 return null;
             }
         }
-        public Dictionary<long,string> GetReportingToDetails()
+        public Dictionary<long,string> GetReportingToDetails(string reportingToList)
         {
             try 
             { 
-                
+  
                 connection.Open();
                 Dictionary<long, string> toReturn = new Dictionary<long, string>();
                 SqliteDataReader dataReader;
                 SqliteCommand readerCommand = connection.CreateCommand();
-                readerCommand.CommandText = "Select Id,Name from People where Id in(Select distinct ReportingToId from(Select * from People order by People.Id desc));";
+                readerCommand.CommandText = $"Select Id,Name from People where Id in ({reportingToList});";
                 dataReader = readerCommand.ExecuteReader();
                 for(int i=0;dataReader.Read();i++)
                 {
@@ -324,7 +326,7 @@ namespace OrganizationUser.DataBase
                     };
                 }
                 readCommand.Dispose();
-                if(toReturn.ReportingToId!=0)
+                if(toReturn!=null)
                 { 
                     readCommand.CommandText = "Select Name from People where Id =(Select ReportingToId from(Select * from People where People.Id=@ID));";
                     readCommand.Parameters.AddWithValue("@ID", id);
@@ -343,32 +345,34 @@ namespace OrganizationUser.DataBase
                 return null;
             }
         }
-        public Dictionary<long, string> GetReportingToDetailsOfDepartment(int id)
-        {
-            try
-            {
+        //public Dictionary<long, string> GetReportingToDetailsOfDepartment(int id,double start,double offset)
+        //{
+        //    try
+        //    {
 
-                connection.Open();
-                Dictionary<long, string> toReturn = new Dictionary<long, string>();
-                SqliteDataReader dataReader;
-                SqliteCommand readerCommand = connection.CreateCommand();
-                readerCommand.CommandText = "Select Id,Name from People where Id in(Select distinct ReportingToId from(Select * from People where People.DepartmentId=@Id order by People.Id desc));";
-                readerCommand.Parameters.AddWithValue("@Id", id);
-                dataReader = readerCommand.ExecuteReader();
-                for (int i = 0; dataReader.Read(); i++)
-                {
-                    toReturn.Add(dataReader.GetInt32(0), dataReader.GetString(1));
-                }
-                return toReturn;
-            }
-            catch (Exception ex)
-            {
-                connection.Close();
-                return null;
-            }
-        }
+        //        connection.Open();
+        //        Dictionary<long, string> toReturn = new Dictionary<long, string>();
+        //        SqliteDataReader dataReader;
+        //        SqliteCommand readerCommand = connection.CreateCommand();
+        //        readerCommand.CommandText = "Select Id,Name from People where Id in(Select distinct ReportingToId from(Select * from People where People.DepartmentId=@Id order by People.Id desc Limit @Start,@Offset));";
+        //        readerCommand.Parameters.AddWithValue("@Id", id);
+        //        readerCommand.Parameters.AddWithValue("@Start", start);
+        //        readerCommand.Parameters.AddWithValue("@Offset", offset);
+        //        dataReader = readerCommand.ExecuteReader();
+        //        for (int i = 0; dataReader.Read(); i++)
+        //        {
+        //            toReturn.Add(dataReader.GetInt32(0), dataReader.GetString(1));
+        //        }
+        //        return toReturn;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        connection.Close();
+        //        return null;
+        //    }
+        //}
 
-        public List<BusinessPeopleModel> ReadDepartmentData(int departId)
+        public List<BusinessPeopleModel> ReadDepartmentData(int departId,double start,double offset)
         {
             try
             {
@@ -381,8 +385,10 @@ namespace OrganizationUser.DataBase
                     "Join Department ON People.DepartmentId = Department.Id " +
                     "Join Designation ON People.DesignationId = Designation.Id " +
                     "where People.DepartmentId=@Id " +
-                    "ORDER BY People.Id desc; ";
+                    "ORDER BY People.Id desc Limit @Start,@Offset; ";
                 readCommand.Parameters.AddWithValue("@Id", departId);
+                readCommand.Parameters.AddWithValue("@Start", start);
+                readCommand.Parameters.AddWithValue("@Offset", offset);
                 dataReader = readCommand.ExecuteReader();
                 List<BusinessPeopleModel> toReturn = new List<BusinessPeopleModel>();
                 for (int i = 0; dataReader.Read(); i++)
@@ -457,6 +463,127 @@ namespace OrganizationUser.DataBase
         //                Name = dataReader.GetString(20),
         //                Country = dataReader.GetString(21)
         //            };
+        //        }
+        //        return toReturn;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        connection.Close();
+        //        return null;
+        //    }
+        //}
+        public List<BusinessPeopleModel> SearchEmployee(double start,double offset,string searchString)
+        {
+            try
+            {
+                string pattern = searchString + "%";
+                connection.Open();
+                SqliteDataReader dataReader;
+                SqliteCommand readCommand = connection.CreateCommand();
+                readCommand.CommandText = "Select People.Id,People.Employee_Id,People.Name,People.Fullname,People.DisplayName,People.ReportingToId,People.EmailId," +
+                    "People.Mobile,People.Country,People.CheckinStatusText,People.Status,People.ImageUrl,Department.Name,Designation.Name " +
+                    "from People " +
+                    "JOIN Department ON People.DepartmentId = Department.Id " +
+                    "JOIN Designation ON People.DesignationId = Designation.Id " +
+                    "WHERE People.Fullname LIKE @Pattern ORDER BY People.Id desc LIMIT @Start,@Offset";
+                readCommand.Parameters.AddWithValue("@Pattern", pattern);
+                readCommand.Parameters.AddWithValue("@Start", start);
+                readCommand.Parameters.AddWithValue("@Offset", offset);
+                dataReader = readCommand.ExecuteReader();
+                List<BusinessPeopleModel> toReturn = new List<BusinessPeopleModel>();
+                for (int i = 0; dataReader.Read(); i++)
+                {
+                    toReturn.Add(new BusinessPeopleModel()
+                    {
+                        Id = dataReader.GetInt32(0),
+                        Employee_id = dataReader.GetString(1),
+                        Name = dataReader.GetString(2),
+                        Fullname = dataReader.GetString(3),
+                        DisplayName = dataReader.GetString(4),
+                        ReportingToId = dataReader.GetInt32(5),
+                        Email_id = dataReader.GetString(6),
+                        Mobile = dataReader.GetInt64(7),
+                        Country = dataReader.GetString(8),
+                        CheckinStatus_Text = dataReader.GetString(9),
+                        Stat = (Status)Enum.Parse(typeof(Status), dataReader.GetString(10)),
+                        ImageUrl = dataReader.GetString(11),
+                        DepartmentName = dataReader.GetString(12),
+                        DesignationName = dataReader.GetString(13)
+                    }
+                    );
+                }
+                connection.Close();
+                return toReturn;
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                return null;
+            }
+        }
+        public List<BusinessPeopleModel> SearchEmployeeForId(double start, double offset, string searchString,long deptId)
+        {
+            try
+            {
+                string pattern = searchString + "%";
+                connection.Open();
+                SqliteDataReader dataReader;
+                SqliteCommand readCommand = connection.CreateCommand();
+                readCommand.CommandText = "Select People.Id,People.Employee_Id,People.Name,People.Fullname,People.DisplayName,People.ReportingToId,People.EmailId," +
+                    "People.Mobile,People.Country,People.CheckinStatusText,People.Status,People.ImageUrl,Department.Name,Designation.Name " +
+                    "from People " +
+                    "JOIN Department ON People.DepartmentId = Department.Id " +
+                    "JOIN Designation ON People.DesignationId = Designation.Id " +
+                    "WHERE People.DepartmentId=@Id and People.Fullname LIKE @Pattern ORDER BY People.Id desc LIMIT @Start,@Offset";
+                readCommand.Parameters.AddWithValue("@Pattern", pattern);
+                readCommand.Parameters.AddWithValue("@Start", start);
+                readCommand.Parameters.AddWithValue("@Offset", offset);
+                readCommand.Parameters.AddWithValue("@Id", deptId);
+                dataReader = readCommand.ExecuteReader();
+                List<BusinessPeopleModel> toReturn = new List<BusinessPeopleModel>();
+                for (int i = 0; dataReader.Read(); i++)
+                {
+                    toReturn.Add(new BusinessPeopleModel()
+                    {
+                        Id = dataReader.GetInt32(0),
+                        Employee_id = dataReader.GetString(1),
+                        Name = dataReader.GetString(2),
+                        Fullname = dataReader.GetString(3),
+                        DisplayName = dataReader.GetString(4),
+                        ReportingToId = dataReader.GetInt32(5),
+                        Email_id = dataReader.GetString(6),
+                        Mobile = dataReader.GetInt64(7),
+                        Country = dataReader.GetString(8),
+                        CheckinStatus_Text = dataReader.GetString(9),
+                        Stat = (Status)Enum.Parse(typeof(Status), dataReader.GetString(10)),
+                        ImageUrl = dataReader.GetString(11),
+                        DepartmentName = dataReader.GetString(12),
+                        DesignationName = dataReader.GetString(13)
+                    }
+                    );
+                }
+                connection.Close();
+                return toReturn;
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                return null;
+            }
+        }
+        //public Dictionary<long,string> SearchReportingTo(double start,double offset,string searchString)
+        //{
+        //    try
+        //    {
+        //        connection.Open();
+        //        Dictionary<long, string> toReturn = new Dictionary<long, string>();
+        //        SqliteDataReader dataReader;
+        //        SqliteCommand readerCommand = connection.CreateCommand();
+        //        readerCommand.CommandText = $"Select Id,Name from People where Id in ({searchString});";
+        //        dataReader = readerCommand.ExecuteReader();
+        //        for (int i = 0; dataReader.Read(); i++)
+        //        {
+        //            toReturn.Add(dataReader.GetInt32(0), dataReader.GetString(1));
         //        }
         //        return toReturn;
         //    }

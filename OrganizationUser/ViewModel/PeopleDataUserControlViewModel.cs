@@ -39,7 +39,7 @@ namespace OrganizationUser.ViewModel
         }
         public void ChangeEmployeeToShow()
         {
-            if(EmployeeToShow.ReportingToId!=1)
+            if(EmployeeToShow.ReportingToId!=0)
             { 
                 RequestEmployeeChange request = new RequestEmployeeChange();
                 ICallBack presenterCallBack = new PresenterCallBack(this);

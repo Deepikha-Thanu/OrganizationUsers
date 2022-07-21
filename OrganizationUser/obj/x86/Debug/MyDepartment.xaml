@@ -108,20 +108,22 @@
         </DataTemplate>
         <local:EmployeeDataTemplateSelector x:Key="EmployeeTemplateSelctor" Men="{StaticResource MenDataTemplate}" Women="{StaticResource WomenDataTemplate}"></local:EmployeeDataTemplateSelector>
     </Page.Resources>
-    <Grid>
-        <TextBlock x:ConnectionId='19' x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
-        <GridView x:ConnectionId='20' ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="MyDepartmentGridView"                                                                Margin="10" SelectionMode="Single" IsItemClickEnabled="True"                                            ItemTemplateSelector="{StaticResource EmployeeTemplateSelctor}">
-            <GridView.ItemContainerTransitions>
-                <TransitionCollection>
-                    <AddDeleteThemeTransition></AddDeleteThemeTransition>
-                </TransitionCollection>
-            </GridView.ItemContainerTransitions>
-            <!--<GridView.ItemTemplate>
-                <DataTemplate x:DataType="data:BusinessPeopleModel">
-                    <local:OrgUserControl x:Name="OrgUsersUC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" InfoEmployeeClicked="OrgUsersUC_InfoEmployeeClicked"></local:OrgUserControl>
-                </DataTemplate>
-            </GridView.ItemTemplate>-->
-        </GridView>
+    <Grid x:ConnectionId='19'                         >
+        <TextBlock x:ConnectionId='20' x:Name="SearchResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" FontSize="20"></TextBlock>
+        <ScrollViewer x:ConnectionId='21' x:Name="DepartmentScrollbar"                                        VerticalScrollBarVisibility="Visible">
+            <GridView x:ConnectionId='22' ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Name="MyDepartmentGridView"                                                                Margin="10" SelectionMode="Single" IsItemClickEnabled="True"                                            ItemTemplateSelector="{StaticResource EmployeeTemplateSelctor}">
+                <GridView.ItemContainerTransitions>
+                    <TransitionCollection>
+                        <ReorderThemeTransition/>
+                    </TransitionCollection>
+                </GridView.ItemContainerTransitions>
+                <!--<GridView.ItemTemplate>
+                    <DataTemplate x:DataType="data:BusinessPeopleModel">
+                        <local:OrgUserControl x:Name="OrgUsersUC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" InfoEmployeeClicked="OrgUsersUC_InfoEmployeeClicked"></local:OrgUserControl>
+                    </DataTemplate>
+                </GridView.ItemTemplate>-->
+            </GridView>
+        </ScrollViewer>
     </Grid>
 </Page>
 
