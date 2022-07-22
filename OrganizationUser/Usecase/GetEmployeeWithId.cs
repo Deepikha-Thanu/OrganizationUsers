@@ -10,10 +10,10 @@ namespace OrganizationUser.Usecase
 {
     class GetEmployeeWithId : UsecaseBase
     {
-        ICallBack presentercallback;
+        IPresenterCallback<ResponseEmployeeChange> presentercallback;
         RequestEmployeeChange request;
-        ICallBack usecaseCallBack;
-        public GetEmployeeWithId(ICallBack obj,RequestEmployeeChange req)
+        IUsecaseCallback<ResponseEmployeeChange> usecaseCallBack;
+        public GetEmployeeWithId(IPresenterCallback<ResponseEmployeeChange> obj,RequestEmployeeChange req)
         {
             presentercallback = obj;
             request = req;
@@ -21,10 +21,10 @@ namespace OrganizationUser.Usecase
         }
         public override void Action()
         {
-            (DependencyInitializer.dependencyInitializer.IntializeDependencies().GetService(typeof(IDataManager)) as IDataManager).GetEmployeeWithId(request,usecaseCallBack);
+            (DependencyInitializer.DependencyInitializerInstance.IntializeDependencies().GetService(typeof(IReportingToWithIdDataManager)) as IReportingToWithIdDataManager).GetEmployeeWithId(request,usecaseCallBack);
         }
 
-        private class UsecaseCallback : ICallBack
+        private class UsecaseCallback : IUsecaseCallback<ResponseEmployeeChange>
         {
             GetEmployeeWithId usecase;
             public UsecaseCallback(GetEmployeeWithId obj)
@@ -41,14 +41,13 @@ namespace OrganizationUser.Usecase
                 usecase.presentercallback.OnFailure(message);
             }
 
-            public void OnSuccess<T>(T resp)
+            public void OnSuccess(ResponseEmployeeChange response)
             {
-                ResponseEmployeeChange response = resp as ResponseEmployeeChange;
                 if(response.EmployeeFromId.ReportingToId==0)
                 {
                     response.EmployeeFromId.ReportingToName = "-";
                 }
-                usecase.presentercallback.OnSuccess(resp);
+                usecase.presentercallback.OnSuccess(response);
             }
         }
     }

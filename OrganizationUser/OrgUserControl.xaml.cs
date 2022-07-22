@@ -43,7 +43,7 @@ namespace OrganizationUser
             //Popup childPopup = (Popup)childGrid.FindName("TaskPopup");
             //childPopup.IsOpen = true;
 
-            Panel root = sender as Panel;
+            Grid root = sender as Grid;
             StackPanel ChildPopup = (StackPanel)root.FindName("TaskStackPanel");
             TextBlock departTextblock = (TextBlock)root.FindName("DepartmentText");
             TextBlock designTextblock = (TextBlock)root.FindName("DesignationText");

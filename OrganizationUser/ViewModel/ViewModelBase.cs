@@ -10,6 +10,6 @@ namespace OrganizationUser.ViewModel
 {
     public class ViewModelBase
     {
-        public SearchAlgorithm searchObject { get; set; }
+
     }
 }

@@ -9,19 +9,10 @@ namespace OrganizationUser.Usecase
 {
     class GetSearchedEmployees : UsecaseBase
     {
-        private  ICallBack PresenterCallback;
-        private ICallBack CallBackOfUsecase;
-        private IDataManager dataManagerInstance;
-        private Request RequestOfSearch;
-        private IDataManager DataManagerInstance
-        {
-            get
-            {
-                dataManagerInstance = (DependencyInitializer.dependencyInitializer.IntializeDependencies()).GetService(typeof(IDataManager)) as IDataManager;
-                return dataManagerInstance;
-            }
-        }
-        public GetSearchedEmployees(Request req,ICallBack obj)
+        private IPresenterCallback<SearchResponse> PresenterCallback;
+        private IUsecaseCallback<SearchResponse> CallBackOfUsecase;
+        private SearchRequest RequestOfSearch;
+        public GetSearchedEmployees(SearchRequest req,IPresenterCallback<SearchResponse> obj)
         {
             RequestOfSearch = req;
             PresenterCallback = obj;
@@ -29,9 +20,9 @@ namespace OrganizationUser.Usecase
         }
         public override void Action()
         {
-            DataManagerInstance.GetSearchedEmployees(RequestOfSearch, CallBackOfUsecase);
+            (DependencyInitializer.DependencyInitializerInstance.IntializeDependencies().GetService(typeof(ISearchDataManager)) as ISearchDataManager).GetSearchedEmployees(RequestOfSearch, CallBackOfUsecase);
         }
-        class UsecaseCallback : ICallBack
+        class UsecaseCallback : IUsecaseCallback<SearchResponse>
         {
             public GetSearchedEmployees Usecase;
             public UsecaseCallback(GetSearchedEmployees obj)
@@ -48,9 +39,9 @@ namespace OrganizationUser.Usecase
                 Usecase.PresenterCallback.OnFailure(message);
             }
 
-            public void OnSuccess<T>(T resp)
+            public void OnSuccess(SearchResponse response)
             {
-                Response response = resp as Response;
+                
                 for (int i = 0; i < response.BusinessEmployeesData.Count; i++)
                 {
                     if (response.BusinessEmployeesData[i].ReportingToId != 0)

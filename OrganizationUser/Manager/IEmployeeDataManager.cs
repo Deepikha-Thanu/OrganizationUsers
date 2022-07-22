@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser.Manager
 {
-    interface ICallBack
+    interface IEmployeeDataManager
     {
-        void OnSuccess<T>(T response);
-        void OnError();
-        void OnFailure(string message);
+        void GetBusinessData(EmployeeRequest req, IUsecaseCallback<EmployeeResponse> callBack);
     }
 }

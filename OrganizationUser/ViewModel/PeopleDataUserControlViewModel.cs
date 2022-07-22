@@ -42,7 +42,7 @@ namespace OrganizationUser.ViewModel
             if(EmployeeToShow.ReportingToId!=0)
             { 
                 RequestEmployeeChange request = new RequestEmployeeChange();
-                ICallBack presenterCallBack = new PresenterCallBack(this);
+                IPresenterCallback<ResponseEmployeeChange> presenterCallBack = new PresenterCallBack(this);
                 request.EmployeeId = EmployeeToShow.ReportingToId;
                 new GetEmployeeWithId(presenterCallBack,request).Execute();
             }
@@ -57,7 +57,7 @@ namespace OrganizationUser.ViewModel
         {
             view.ShowErrorMessage(message);
         }
-        private class PresenterCallBack :ICallBack
+        private class PresenterCallBack :IPresenterCallback<ResponseEmployeeChange>
         {
             public PeopleDataUserControlViewModel viewModel;
             public PresenterCallBack(PeopleDataUserControlViewModel obj)
@@ -75,7 +75,7 @@ namespace OrganizationUser.ViewModel
                 viewModel.ShowErrorMessage(message);
             }
 
-            public async void OnSuccess<T>(T response)
+            public async void OnSuccess(ResponseEmployeeChange response)
             {
                 await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                  {

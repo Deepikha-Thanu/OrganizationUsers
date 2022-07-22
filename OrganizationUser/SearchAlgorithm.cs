@@ -22,6 +22,35 @@ namespace OrganizationUser
             }
             Length = Peoples.Count;
         }
+        public static string ListToStringConvertion(List<BusinessPeopleModel> listToConvert)
+        {
+            int i;
+            string ReportingToList = "";
+            if (listToConvert.Count == 1)
+            {
+                ReportingToList = ReportingToList + listToConvert[0].ReportingToId.ToString();
+                return ReportingToList;
+            }
+            for (i = 0; i < listToConvert.Count; i++)
+            {
+                if (!ReportingToList.Contains(listToConvert[i].ReportingToId + ","))
+                {
+                    if (i == 0)
+                    {
+                        ReportingToList = ReportingToList + listToConvert[i].ReportingToId.ToString();
+                    }
+                    else
+                    {
+                        ReportingToList = ReportingToList + ", " + listToConvert[i].ReportingToId.ToString();
+                    }
+                }
+            }
+            //if (!ReportingToList.Contains(listToConvert[i].ReportingToId + ","))
+            //{
+            //    ReportingToList = ReportingToList + listToConvert[i].ReportingToId.ToString();
+            //}
+            return ReportingToList;
+        }
         public bool search(ObservableCollection<BusinessPeopleModel> Peoples,string data)
         {
             //bool res = false;

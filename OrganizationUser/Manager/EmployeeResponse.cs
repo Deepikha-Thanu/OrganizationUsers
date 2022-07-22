@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser.Manager
 {
-    class Response
+    class EmployeeResponse
     {
         public List<BusinessPeopleModel> BusinessEmployeesData { get; set; }
         //public Dictionary<int,string> ReportingToPair { get; set; }
         public Dictionary<long,string> ReportingToPair { get; set; }
         public bool IsDataAvailable = true;
-        public bool IsSearchResults = false;
+        
     }
 }

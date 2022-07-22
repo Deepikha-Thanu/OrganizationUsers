@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace OrganizationUser.Manager
 {
-    class Request
+    class EmployeeRequest
     {
         public int MyDepartmentId { get; set; }
         public double Start { get; set; }
         public double Offset { get; set; }
-        public string SearchString {get; set;}
+        
     }
 }

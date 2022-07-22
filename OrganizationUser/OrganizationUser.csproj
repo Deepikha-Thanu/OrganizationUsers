@@ -129,16 +129,23 @@
     <Compile Include="DependencyInitializer.cs" />
     <Compile Include="EmployeeDataTemplateSelector.cs" />
     <Compile Include="IView.cs" />
-    <Compile Include="Manager\ICallBack.cs" />
-    <Compile Include="Manager\DataManager.cs" />
-    <Compile Include="Manager\IDataManager.cs" />
-    <Compile Include="Manager\Request.cs" />
+    <Compile Include="Manager\IReportingToWithIdDataManager.cs" />
+    <Compile Include="Manager\ISearchDataManager.cs" />
+    <Compile Include="Manager\IUsecaseCallback.cs" />
+    <Compile Include="Manager\EmployeeDataManager.cs" />
+    <Compile Include="Manager\IEmployeeDataManager.cs" />
+    <Compile Include="Manager\EmployeeRequest.cs" />
+    <Compile Include="Manager\IPresenterCallback.cs" />
+    <Compile Include="Manager\ReportingToWithIdDataManager.cs" />
     <Compile Include="Manager\RequestEmployeeChange.cs" />
-    <Compile Include="Manager\Response.cs" />
+    <Compile Include="Manager\EmployeeResponse.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager\ResponseEmployeeChange.cs" />
+    <Compile Include="Manager\SearchDataManager.cs" />
+    <Compile Include="Manager\SearchRequest.cs" />
+    <Compile Include="Manager\SearchResponse.cs" />
     <Compile Include="Model\BusinessPeopleModel.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Designation.cs" />

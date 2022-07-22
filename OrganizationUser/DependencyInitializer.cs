@@ -11,15 +11,17 @@ namespace OrganizationUser
 {
     class DependencyInitializer
     {
-        ServiceCollection collections = new ServiceCollection();
-        public static DependencyInitializer dependencyInitializer = new DependencyInitializer();
+        ServiceCollection Collections = new ServiceCollection();
+        public static DependencyInitializer DependencyInitializerInstance = new DependencyInitializer();
         ServiceProvider provider;
         DependencyInitializer()
         {
-            collections.AddSingleton<IDataAdapter, DataAdapter>();
-            collections.AddSingleton<IDataHandler, DataHandler>();
-            collections.AddSingleton<IDataManager, DataManager>();
-            provider = collections.BuildServiceProvider();
+            Collections.AddSingleton<IDataAdapter, DataAdapter>();
+            Collections.AddSingleton<IDataHandler, DataHandler>();
+            Collections.AddSingleton<IEmployeeDataManager, EmployeeDataManager>();
+            Collections.AddSingleton<ISearchDataManager, SearchDataManager>();
+            Collections.AddSingleton<IReportingToWithIdDataManager, ReportingToWithIdDataManager>();
+            provider = Collections.BuildServiceProvider();
         }
 
         public ServiceProvider IntializeDependencies()

@@ -9,19 +9,10 @@ namespace OrganizationUser.Usecase
 {
     class GetEmployeesBusinessData : UsecaseBase
     {
-        public ICallBack presenterCallback;
-        Request request;
-        ICallBack usecaseCallback;
-        IDataManager dataManagerInstance;
-        public IDataManager DataManagerInstance
-        {
-            get
-            {
-                dataManagerInstance = (DependencyInitializer.dependencyInitializer.IntializeDependencies()).GetService(typeof(IDataManager)) as IDataManager;
-                return dataManagerInstance;
-            }
-        }
-        public GetEmployeesBusinessData(Request req,ICallBack obj)
+        public IPresenterCallback<EmployeeResponse> presenterCallback;
+        EmployeeRequest request;
+        IUsecaseCallback<EmployeeResponse> usecaseCallback;
+        public GetEmployeesBusinessData(EmployeeRequest req,IPresenterCallback<EmployeeResponse> obj)
         {
             request = req;
             presenterCallback = obj;
@@ -31,18 +22,18 @@ namespace OrganizationUser.Usecase
         }
         public override void Action()
         {
-            DataManagerInstance.GetBusinessData(request, usecaseCallback);
+            (DependencyInitializer.DependencyInitializerInstance.IntializeDependencies().GetService(typeof(IEmployeeDataManager)) as IEmployeeDataManager).GetBusinessData(request, usecaseCallback);
         }
-        private class UseCaseCallback : ICallBack
+        private class UseCaseCallback : IUsecaseCallback<EmployeeResponse>
         {
             public GetEmployeesBusinessData myUseCase;
             public UseCaseCallback(GetEmployeesBusinessData obj)
             {
                 myUseCase = obj;
             }
-            public void OnSuccess<T>(T resp)
+            public void OnSuccess(EmployeeResponse resp)
             {
-                Response response = resp as Response;
+                EmployeeResponse response = resp as EmployeeResponse;
                 for(int i=0;i<response.BusinessEmployeesData.Count;i++)
                 {
                     if(response.BusinessEmployeesData[i].ReportingToId!=0)
